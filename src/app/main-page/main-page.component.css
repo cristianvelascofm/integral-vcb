@@ -1,0 +1,35 @@
+/* Iconos */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+.main_page{
+    min-height: 100vh;
+    height: 100%;
+    padding: 0px;
+    /* background-color: yellowgreen; */
+}
+
+
+.login{
+    /* background-color: blue; */
+    height: 100vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+footer{
+	/* position: fixed; */
+
+    background-image: url('../../assets/images/bandera.png');
+	background-position: initial;
+	background-repeat: no-repeat;
+    height: 100px;
+    padding: 0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

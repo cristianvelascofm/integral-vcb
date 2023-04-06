@@ -1,0 +1,118 @@
+
+header{
+    /* display: inline-block; */
+    overflow: hidden;
+    min-height: 70px;
+    width: 100vw;
+    box-shadow: 5px 0px 5px rgb(0,40,130);
+  
+    /* background-color: red; */
+  }
+  
+  .button-menu{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    /* background-color: #45CE30; */
+    height: 70px;
+    padding-top: 0px;
+    border-right: solid 2px rgb(230,0,10);
+    
+  
+  }
+  .logo{
+    height: 70px;
+    
+    /* background-color: #4834DF; */
+    background-image: url('../../assets/images/Escudo_VCB_Negro.png');
+    background-repeat: no-repeat;
+    background-size: 11%;
+    background-position-y: 2px;
+    background-position-x: 25px;
+  }
+  
+  #menuCheckbox{
+    display: none;
+  }
+  
+  label{
+    position: block;
+    /* top: 50px; */
+    right: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    cursor: pointer;
+    /* background-color: chocolate; */
+    transition: 0.6s ease transform;
+  }
+  label div{
+    width: 20px;
+    height: 10px;
+    background-color: rgb(0,40,130);
+    margin-bottom: 6px;
+    margin-left: 0;
+    border-radius: 6px;
+    transition: 0.3s ease width, 0.3s ease margin-left, 0.3s ease margin-bottom, 0.3s ease background-color;
+  } 
+  label div:first-child{
+    width: 30px;
+    
+  }
+  label div:nth-child(2){
+    width: 20px;
+    background-color: rgb(230,0,10);
+  }
+  label div:last-child{
+    width: 30px;
+    background-color: rgb(46, 179, 184);
+  }
+  #menuCheckbox:checked + label{
+    transform: translateY(-50%) rotateZ(-90deg);
+  }
+  
+  #menuCheckbox:checked + label div
+  {
+    width: 12px;
+    margin-left: 12px;
+    margin-bottom: 3px;
+  }
+  #menuCheckbox:checked + label div:first-child{
+    background-color: #FF3031;
+  }
+  #menuCheckbox:checked + label div:nth-child(2){
+    background-color: #4834DF;
+  }
+  #menuCheckbox:checked + label div:nth-child(3){
+    background-color: #45CE30;
+  }
+  
+  
+  .lateral-menu{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+  }
+  
+  
+  .container-content{
+    /* background-color: red; */
+    display: flex;
+    padding-left: 150px;
+    /* justify-content: center; */
+    width: 100vw;
+    height: 87vh;
+  }
+  
+  
+  .lateral-left{
+    padding-top: 15px;
+    /* width: 400px; */
+    /* background-color: #45CE30; */
+  }
+  
+  .lateral-right{
+    /* background-color: aqua; */
+  }

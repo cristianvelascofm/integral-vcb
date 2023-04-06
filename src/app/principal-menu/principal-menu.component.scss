@@ -1,0 +1,203 @@
+$document: rgb(64, 51, 182);
+$event: rgb(228, 26, 38);
+$place: rgb(0, 170, 229);
+$budget: rgb(98, 139, 11);
+$config: rgb(175, 175, 175);
+
+$background: #edf5e1;
+$shadow: #CCCCCC;
+$illumination: #fdc6be;
+
+
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+
+.background {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: .75s;
+}
+
+.nav {
+  padding: 0px;
+  width: 50px;
+  margin: auto auto auto 0;
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 13px;
+
+
+}
+
+ul {
+  list-style-type: none;
+
+}
+
+li a {
+  // padding: 10px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  // text-align:center;
+  font-size: 15px;
+  color: $background;
+  text-decoration: none;
+  position: relative;
+  margin-bottom: 3px;
+  border-radius: 15%;
+  // border-top-right-radius: 25%;
+}
+
+
+li a .icon{
+  // background-color: #CCCCCC;
+  color: rgb(219, 105, 105);
+  // display: flex;
+  // padding-top: 5px;
+  // padding-left: 10px;
+  margin-left: 19px;
+  margin-top: 15px;
+  // align-items: center;
+  height: auto;
+  width: auto;
+}
+
+li a:hover .icon{
+  color: #CCCCCC;
+  margin-left: 19px;
+  margin-top: 25px;
+  // padding-top: 15px;
+  // padding-left: 10px;
+}
+
+// li a .gdc {
+//   position: flex;
+//   color: $background;
+//   align-items: center;
+//   // padding-left: 10px;
+//   // padding-top: 5px;
+// }
+
+// li a:hover .gdc {
+//   color: #000;
+//   padding-left: 10px;
+//   // padding-top: 15px;
+// }
+
+
+li a:hover .circle {
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 4%;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  animation: illuminate 2s ease-out infinite;
+  background: $illumination;
+}
+
+
+li i {
+  height: 50px;
+}
+
+li a:hover i {
+  transform: translateY(-10px);
+  height: 500px;
+}
+
+// Definición del efecto del Texto antes de la transición
+li a .title {
+  height: 150px !important;
+  color: red;
+  font-size: 0px;
+  transition: .7s;
+  margin-left: 30px;
+  margin-top: 0px;
+  border-top: 0px;
+  // padding-top: 10px;
+  background-color: #CCCCCC;
+  // padding-top: 50px;
+  
+}
+
+// Definición del efecto del Texto después de la transición
+li a:hover .title {
+  transform: translateY(10px);
+  font-size: 15px;
+  
+  
+
+}
+
+li a:hover {
+  width: 200px;
+  border-radius: 5%;
+}
+
+li a.title:hover {
+  transform: translateY(-10px);
+}
+
+.nav li:first-child a {
+  background: $document !important;
+}
+
+.nav li:nth-child(2) a {
+  background: $event !important;
+}
+
+.nav li:nth-child(3) a {
+  background: $place !important;
+}
+
+.nav li:nth-child(4) a {
+  background: $budget !important;
+}
+
+.nav li:nth-child(5) a {
+  background: $config !important;
+}
+
+
+// .nav li:first-child:hover ~ .background {
+//   background: $home;
+// }
+// .nav li:nth-child(2):hover ~ .background {
+//   background: $twitter;
+// }
+// .nav li:nth-child(3):hover ~ .background {
+//   background: $codepen;
+// }
+
+// .nav li:nth-child(4):hover ~ .background {
+//   background: $github;
+// }
+
+@keyframes illuminate {
+  0% {
+    transform: scale(.7, .7);
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+
