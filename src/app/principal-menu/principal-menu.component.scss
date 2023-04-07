@@ -13,15 +13,7 @@ $illumination: #fdc6be;
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 
-.background {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition: .75s;
-}
+
 
 .nav {
   padding: 0px;
@@ -43,7 +35,7 @@ ul {
 
 li a {
   // padding: 10px;
-  display: block;
+  display: flex;
   width: 50px;
   height: 50px;
   // text-align:center;
@@ -59,7 +51,7 @@ li a {
 
 li a .icon{
   // background-color: #CCCCCC;
-  color: rgb(219, 105, 105);
+  color: $background;
   // display: flex;
   // padding-top: 5px;
   // padding-left: 10px;
@@ -113,20 +105,18 @@ li i {
 
 li a:hover i {
   transform: translateY(-10px);
-  height: 500px;
 }
 
 // Definición del efecto del Texto antes de la transición
 li a .title {
   height: 150px !important;
-  color: red;
+  color: $background;
   font-size: 0px;
   transition: .7s;
-  margin-left: 30px;
-  margin-top: 0px;
+  margin-left: 20px;
   border-top: 0px;
   // padding-top: 10px;
-  background-color: #CCCCCC;
+  // background-color: #CCCCCC;
   // padding-top: 50px;
   
 }

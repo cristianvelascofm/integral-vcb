@@ -7,8 +7,9 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrincipalMenuComponent } from './principal-menu/principal-menu.component';
 import { LoginPanelComponent } from './login-panel/login-panel.component';
-import { HomePanelComponent } from './home-panel/home-panel.component';
 import { DocumentPanelComponent } from './document-panel/document-panel.component';
+import { EventPanelComponent } from './event-panel/event-panel.component';
+import { HomeModuleComponent } from './home-module/home-module.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { DocumentPanelComponent } from './document-panel/document-panel.componen
     HomePageComponent,
     PrincipalMenuComponent,
     LoginPanelComponent,
-    HomePanelComponent,
-    DocumentPanelComponent
+    DocumentPanelComponent,
+    EventPanelComponent,
+    HomeModuleComponent,
   ],
   imports: [
     BrowserModule,
