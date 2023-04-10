@@ -11,6 +11,9 @@ import { DocumentPanelComponent } from './document-panel/document-panel.componen
 import { EventPanelComponent } from './event-panel/event-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
 
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,7 @@ import { HomeModuleComponent } from './home-module/home-module.component';
     LoginPanelComponent,
     DocumentPanelComponent,
     EventPanelComponent,
+    CanvasJSChart,
     HomeModuleComponent,
   ],
   imports: [
