@@ -1,0 +1,515 @@
+<div class="row container-content mb-2">
+    <div class="mt-3">
+        <h4 class="text-uppercase">Gestión Documental</h4>
+    </div>
+
+    <div class="col-6 lateral-left p-0 ">
+
+        <div class=" document-resume container-fluid">
+            <section id="resume" class="p-2 mb-1">
+                <div class="col ">
+                    <p>Recepción de Documentos</p>
+                </div>
+            </section>
+
+            <section class="table-reception-doc" style="margin-bottom: 0px;">
+                <div class="col-12">
+                    <div class="card crd-reception">
+                        <div class="card-content p-0">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-right p-1" style="width: 100%;">
+                                        <div class="">
+                                            <div class="row header-search">
+                                                <div class="col-8 ">
+                                                    <mat-form-field class="example-form-field" appearance="fill">
+                                                        <mat-label>Buscar en Recepción</mat-label>
+                                                        <input matInput (keyup)="applyFilter($event)"
+                                                            [(ngModel)]="terminoBusqueda" placeholder="Ingrese un Valor"
+                                                            #input>
+                                                        <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
+                                                            aria-label="Borrar" (click)="terminoBusqueda=''">
+                                                            <mat-icon>close</mat-icon>
+                                                        </button>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button mat-raised-button extended color="primary"
+                                                        (click)="open(newReception, 'new-reception')">Nueva
+                                                        Recepción</button>
+                                                </div>
+
+                                            </div>
+
+                                            <table mat-table [dataSource]="dataSource"
+                                                class="mat-elevation-z8 table-reception demo-table" style="margin-top: 0px;"
+                                                #tabla1>
+
+                                                <ng-container matColumnDef="codigo">
+                                                    <th mat-header-cell *matHeaderCellDef> Código </th>
+                                                    <td [title]="document_reception._id" mat-cell *matCellDef="let document_reception">
+                                                        {{document_reception._id}} </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="descripcion">
+                                                    <th mat-header-cell *matHeaderCellDef> Asunto </th>
+                                                    <td [title]="document_reception.asunto" mat-cell *matCellDef="let document_reception">
+                                                        {{document_reception.asunto}}
+                                                    </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="fecha">
+                                                    <th mat-header-cell *matHeaderCellDef> Fecha Recepción </th>
+                                                    <td [title]="document_reception.fecha_recepcion" mat-cell *matCellDef="let document_reception">
+                                                        {{document_reception.fecha_recepcion}} </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="funcionario">
+                                                    <th mat-header-cell *matHeaderCellDef> Funcionario </th>
+                                                    <td [title]="document_reception.funcionario_recepcion" mat-cell *matCellDef="let document_reception">
+                                                        {{document_reception.funcionario_recepcion}} </td>
+                                                </ng-container>
+
+                                                <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                                            </table>
+                                            <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
+                                            
+                                                style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-1 mb-2">
+                <div class="col ">
+                    <p>Generalidades</p>
+                </div>
+            </section>
+
+            <section class="resume">
+                <div class="row" style="display: flex; align-items: center; justify-content: center;">
+                    <div class="col-5">
+                        <div class="card crd">
+                            <div class="card-content">
+                                <div class="card-body p-2">
+                                    <div class="row d-flex">
+                                        <div class="col-2">
+                                            <i class="icon-book-open primary font-large-2"></i>
+                                        </div>
+                                        <div class="col-10" style="text-align: right;">
+                                            <h3>{{totalDocs}}</h3>
+                                            <span class="primary">Total</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-5">
+                        <div class="card crd">
+                            <div class="card-content">
+                                <div class="card-body p-2">
+                                    <div class="row d-flex">
+                                        <div class="col-2">
+                                            <i class="icon-docs info font-large-2"></i>
+                                        </div>
+                                        <div class="col-10" style="text-align: right;">
+                                            <h3>{{generatedDocs}}</h3>
+                                            <span class="info">Generados</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <div class="col-6 lateral-right p-0">
+        <div class="mt-1 document-vcb container-fluid">
+            <section id="resume" class="p-2 ">
+                <div class="col ">
+                    <p>Documentos Vicerrectoría de Cultura y Bienestar</p>
+                </div>
+            </section>
+            <section class="table-vcb-doc" style="margin-bottom: 0px;">
+                <div class="col-12 ">
+                    <div class="card crd-vcb">
+                        <div class="card-content p-0">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-right p-2" style="width: 100%;">
+                                        <div class="">
+                                            <div class="row header-search">
+                                                <div class="col-8">
+
+                                                    <mat-form-field class="example-form-field" appearance="fill">
+                                                        <mat-label>Buscar en VCB</mat-label>
+                                                        <input matInput (keyup)="applyFilterVCB($event)"
+                                                            [(ngModel)]="terminoBusquedaVCB"
+                                                            placeholder="Ingrese un Valor" #input>
+                                                        <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
+                                                            aria-label="Borrar" (click)="terminoBusqueda=''">
+                                                            <mat-icon>close</mat-icon>
+                                                        </button>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button mat-raised-button extended color="accent"
+                                                        (click)="open(newTRD, 'new-trd')">Nuevo
+                                                        Documento</button>
+                                                </div>
+                                            </div>
+
+                                            <table mat-table [dataSource]="dataSourceVCB"
+                                                class="mat-elevation-z8 table-vcb" style="margin-top: 0px;" #tabla2>
+
+                                                <ng-container matColumnDef="trd">
+                                                    <th mat-header-cell *matHeaderCellDef> TRD </th>
+                                                    <td [title]="document_vcb._id"mat-cell *matCellDef="let document_vcb">
+                                                        {{document_vcb._id}} </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="asunto">
+                                                    <th mat-header-cell *matHeaderCellDef> Asunto </th>
+                                                    <td [title]="document_vcb.asunto" mat-cell *matCellDef="let document_vcb">
+                                                        {{document_vcb.asunto}}
+                                                    </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="fecha">
+                                                    <th mat-header-cell *matHeaderCellDef> Fecha Documento </th>
+                                                    <td [title]="document_vcb.fecha_recepcion" mat-cell *matCellDef="let document_vcb">
+                                                        {{document_vcb.fecha_recepcion}} </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="funcionario">
+                                                    <th mat-header-cell *matHeaderCellDef> Funcionario </th>
+                                                    <td [title]="document_vcb.funcionario_recepcion" mat-cell *matCellDef="let document_vcb">
+                                                        {{document_vcb.funcionario_recepcion}} </td>
+                                                </ng-container>
+                                                <tr mat-header-row *matHeaderRowDef="columnasVCB"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: columnasVCB;"></tr>
+                                            </table>
+                                            <mat-paginator #paginatorVCB [pageSizeOptions]="[3]" showFirstLastButtons
+                                                style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="mt-1 mb-2">
+                <div class="col ">
+                    <p>Mis Documentos</p>
+                </div>
+            </section>
+
+            <section class="resume ">
+                <div class="row" style="display: flex; align-items: center; justify-content: center;">
+                    <div class="col-5">
+                        <div class="card crd">
+                            <div class="card-content">
+                                <div class="card-body p-2">
+                                    <div class="row d-flex">
+                                        <div class="col-2">
+                                            <i class="icon-doc warning font-large-2"></i>
+                                        </div>
+                                        <div class="col-10 media-body" style="text-align: right;">
+                                            <h3>{{pendingDocs}}</h3>
+                                            <span class="warning">Pendientes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="card crd">
+                            <div class="card-content">
+                                <div class="card-body p-2">
+                                    <div class="row d-flex">
+                                        <div class="col-2">
+                                            <i class="icon-note success font-large-2"></i>
+                                        </div>
+                                        <div class="col-10" style="text-align: right;">
+                                            <h3>{{availableDocs}}</h3>
+                                            <span class="success">Disponibles</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Nueva Recepción -->
+<ng-template class="modal-reception" #newReception let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <i class="icon-book-open font-large-2 icon-reception"></i>
+        <h1 class="modal-title-reception" id="modal-basic-title">Recepción de Documentos</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body document-form">
+        <form>
+            <div class="form-group">
+                <div class="" style="text-align: right; font-size: small;">
+                    <label class="date-label">
+                        <span class="blue-text">Fecha y Hora:</span>
+                        <span class="green-text">{{fechaHora }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="asunto">Asunto:</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documento.asunto" required>
+                </div>
+
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="remitente">Remitente:</label>
+
+                </div>
+
+
+                <div class="col-9 ng-autocomplete">
+                    <ng-autocomplete class="remitente-recepcion" [data]="data" [searchKeyword]="keyword"
+                        placeholder="Remitente" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                        (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate">
+
+                        >
+
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.name"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                    <!-- <input type="text" id="remitente" name="remitente" [(ngModel)]="documento.remitente" required> -->
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="emisor">Emisor:</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="emisor" name="emisor" [(ngModel)]="documento.emisor" required>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="fecha">Fecha del Documento:</label>
+
+                </div>
+                <div class="col-9">
+                    <input type="date" id="fecha" name="fecha" [(ngModel)]="documento.fecha" required>
+
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="archivo">Archivo:</label>
+
+                </div>
+                <div class="col-9">
+                    <input type="file" id="archivo" name="archivo">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="observaciones">Observaciones:</label>
+                <textarea id="observaciones" name="observaciones" [(ngModel)]="documento.observaciones"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Aceptar</button>
+        </form>
+    </div>
+</ng-template>
+
+<!-- Modal Seleccion de Asunto para asignación de TRD -->
+<ng-template class="modal-trd" #newTRD let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" style="color: blac;">Nuevo Documento</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body document-form">
+        <p>Asunto del Documento:</p>
+        <div class="input-group input-group-lg">
+            <input type="text" id="buscador" placeholder="Ingrese el Asunto" (input)="buscarCategorias($event)"
+                class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <ul class="subcategorias-lista">
+                    <li id="c-categoria" (click)="formularioCategoria(newDocument,categoria)"
+                        *ngFor="let categoria of categoriasFiltradas">
+                        {{ categoria.nombre }}
+                        <ul class="subcategorias-lista">
+                            <li id="sub-categoria" (click)="formularioCategoria(newDocument, categoria.subcategoria)"
+                                *ngFor="let subcategoria of categoria.subcategorias">{{ subcategoria }}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</ng-template>
+
+<!-- Modal Formulario Nuevo Documento -->
+<ng-template class="modal-newDocument" #newDocument let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" style="color: blue;">{{titleNewDocument}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body document-form">
+        <form>
+            <div class="form-group">
+                <div class="" style="text-align: right; font-size: small;">
+                    <label class="date-label">
+                        <span class="blue-text">Fecha y Hora:</span>
+                        <span class="green-text">{{fechaHora }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="asunto">Asunto:</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documentoVCB.asunto" required>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="asunto">Dirigido a:</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documentoVCB.dirigido" required>
+                </div>
+
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="remitente">Remitente:</label>
+
+                </div>
+                <div class="col-9">
+                    <select class="form-select" id="inputGroupSelect01">
+                        <option selected>Seleccione...</option>
+                        <option value="1">Cesar Alfaro Mosquera Dorado - Vicerrector de Cultura y Bienestar</option>
+                        <option value="2">Isabel Cristina Chamorro López - Gestora de Calidad</option>
+                        <option value="3">María Fernanda Restrepo - Coordinadora Área Comunicaciones VCB</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" value=""
+                            aria-label="Checkbox for following text input">
+                        <label for="fecha">En respuesta de:</label>
+                    </div>
+                </div>
+                <div class="col-9">
+
+                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documentoVCB.answer" required>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-3">
+                    <label for="archivo">Archivo:</label>
+
+                </div>
+                <div class="col-9">
+                    <input type="file" id="archivo" name="archivo">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="observaciones">Observaciones:</label>
+                <textarea id="observaciones" name="observaciones" [(ngModel)]="documentoVCB.observaciones"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" (click)="aceptForm(aceptarForm,'acept')">Aceptar</button>
+        </form>
+    </div>
+</ng-template>
+
+<!-- Modal de Confirmación de Creación de Nuevo Documento -->
+<ng-template class="modal-ok" #aceptarForm let-c="close" let-d="dismiss">
+    <div class="modal-ok">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Documento Creado</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body ">
+            <h2>Oficio Creado con Éxito</h2>
+            <h3>TRD: 7.1-52.5/321</h3>
+            <h3>Fecha: </h3> <span class="green-text">{{fechaHora }}</span>
+        </div>
+        <p>Se ha Generado el Hilo de Envío Exitosamente</p>
+    </div>
+</ng-template>
+
+<!-- 
+<div>
+    <mat-form-field>
+        <input matInput [(ngModel)]="valor1" type="number" placeholder="Ingrese primer valor">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="valor2" type="number" placeholder="Ingrese segundo valor">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Operaciones" [(ngModel)]="seleccionada" name="operacion">
+            <mat-option *ngFor="let op of operaciones" [value]="op.valor">
+                {{op.muestraValor}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="operar()">Operar</button>
+    <p>El resultado es:{{resultado}}</p>
+
+</div> -->

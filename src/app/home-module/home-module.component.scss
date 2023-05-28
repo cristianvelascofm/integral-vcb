@@ -1,107 +1,28 @@
 .container-content{
-    /* background-color: red; */
+    //  background-color: red; 
     display: flex;
-    padding-left: 150px;
-    /* justify-content: center; */
+    padding-left: 120px;
+    //  justify-content: center; 
     width: 100vw;
     height: 87vh;
   }
   
-  
   .lateral-left{
     padding-top: 15px;
     /* width: 400px; */
-    /* background-color: #45CE30; */
+    //  background-color: #45CE30;    
   }
   
   .lateral-right{
-    /* background-color: aqua; */
+    padding-top: 15px;
+    padding-left: 30px;
+    //  background-color: aqua; 
   }
 
-$progress-width: 150px;
-$progress-height: 150px;
-$progress-bg-color: #ebebeb;
-$progress-bar-colors: #00c853, #ffab00, #dd2c00;
-$progress-border-width: 10px;
-$progress-border-color: #fff;
-$progress-text-color: #333;
-$progress-font-size: 24px;
-
-
-.progress-chart {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.doc-container{
+  // background-color: coral;
 }
 
-.progress {
-  position: relative;
-  width: $progress-width;
-  height: $progress-height;
-  background-color: $progress-bg-color;
-  border-radius: 50%;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  margin: 10px;
-  overflow: hidden;
-}
-
-.progress::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  border: $progress-border-width solid $progress-border-color;
-  width: calc(100% - #{$progress-border-width * 2});
-  height: calc(100% - #{$progress-border-width * 2});
-}
-
-.progress span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.progress-left {
-  left: 0;
-}
-
-.progress-right {
-  left: 50%;
-}
-
-.progress-bar {
-  position: absolute;
-}
-
-
-$chart-size: 200px;
-
-.progress-chart {
-  position: relative;
-  width: $chart-size;
-  height: $chart-size;
-  border-radius: 50%;
-  background-color: #E5E5E5;
-  
-  .progress-bar {
-    position: absolute;
-    height: 100%;
-    border-radius: 50%;
-    
-    &.bg-warning {
-      z-index: 2;
-      transform: rotate(144deg);
-    }
-    
-    &.bg-danger {
-      z-index: 3;
-      transform: rotate(252deg);
-    }
-  }
+.ev-container{
+  // background-color: darkcyan;
 }

@@ -1,11 +1,32 @@
 <div class="main_page">
+	<header>
+		<div class="row">
+			<div class="col col-11 logo">
+			</div>
+			<div class="col button col-1">
+				<div class="dropdown">
+					<button class="btn btn-danger rounded-circle btn-md" type="button" id="dropdownMenuButton"
+						data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user"></i>
+					</button>
+					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#"><i class="fa fa-user-circle"></i> Cuenta</a>
+						<a class="dropdown-item" href="#"><i class="fa fa-user-circle"></i> Supervisiorías</a>
+						<a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Cerrar sesión</a>
+					</div>
+				</div>
 
-    <!-- <div class="login">
+			</div>
+		</div>
+	</header>
+
+	<!-- <div class="login">
 		<app-login-panel></app-login-panel>
 	</div> -->
 	<div class="main">
 		<app-home-page></app-home-page>
 	</div>
-	<footer></footer>
+	<footer>Vicerrectoría de Cultura y Bienestar | Universidad del Cauca | {{ getCurrentYear() }} ©</footer>
 
 </div>
+

@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./principal-menu.component.scss']
 })
 export class PrincipalMenuComponent {
+  
+  change(){}
 
 }

@@ -11,6 +11,82 @@
 }
 
 
+header{
+    /* display: inline-block; */
+    overflow: hidden;
+    min-height: 70px;
+    width: 100vw;
+    box-shadow: 5px 0px 5px rgb(0,40,130);
+  
+    background-color: rgb(0,40,102);
+  }
+
+    
+  .logo{
+    height: 70px;
+    background-image: url('../../assets/images/EscudoVCB_Blanco.png');
+    background-repeat: no-repeat;
+    background-size: 11%;
+    background-position-y: 2px;
+    background-position-x: 25px;
+  }
+
+
+  .dropdown {
+    position: fixed;
+    /* display: inline-block; */
+    z-index: 1;
+  }
+
+  .btn{
+    /* background-color: red;
+    color: white; */
+  }
+
+  .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dropdown-toggle {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 5px);
+    z-index: 1000;
+    min-width: 160px;
+    padding: 0.5rem 0;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+  }
+  
+  .dropdown-item {
+    padding: 0.25rem 1.5rem;
+    font-size: 14px;
+  }
+  
+  .dropdown-divider {
+    margin: 0;
+  }
+  
+
+
+
+
 .login{
     /* background-color: blue; */
     height: 100vh;
@@ -23,13 +99,15 @@
 
 footer{
 	/* position: fixed; */
-
-    background-image: url('../../assets/images/bandera.png');
+    background-color: rgb(173, 0, 0);
+    /* background-image: url('../../assets/images/bandera.png'); */
 	background-position: initial;
 	background-repeat: no-repeat;
-    height: 100px;
+    height: 30px;
     padding: 0px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    text-align: center;
+    color: white;
 }

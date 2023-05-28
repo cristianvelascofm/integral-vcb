@@ -1,30 +1,50 @@
-$document: rgb(64, 51, 182);
-$event: rgb(228, 26, 38);
-$place: rgb(0, 170, 229);
-$budget: rgb(138, 194, 18);
-$config: rgb(175, 175, 175);
+// $document: rgb(64, 51, 182);
+// $event: rgb(228, 26, 38);
+// $place: rgb(0, 170, 229);
+// $budget: rgb(138, 194, 18);
+// $config: rgb(175, 175, 175);
 
-$base-color: rgba(64, 51, 182, 0.164);
-$mid-color: rgba(0, 0, 255, 0.164);
-$light-color: rgb(255, 255, 255);
+// $base-color: rgba(64, 51, 182, 0.164);
+// $mid-color: rgba(0, 0, 255, 0.164);
+// $light-color: rgb(255, 255, 255);
 
 $shadow-color: rgba(0, 0, 0, 0.3);
 $shadow-size: 20px;
 
 
-.card-event {
-  height: 300px;
+.event-resume{
+    background-color: rgba(176, 170, 231, 0.11);
+    // border-radius: 25px;
+    box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+}
+
+
+.card-body{
+    // background-color: red;
+    padding-top: 20px;
+}
+
+.card-content{
+    padding-top: 0px;
+}
+
+.card{
+    margin: 0px !important;
+}
+
+.crd-carousel{
+//   height: 300px;
   // width: 260px;
   margin-top: 35px;
   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
   transform: translateY(-$shadow-size);
-  border-radius: 25px;
+//   border-radius: 25px;
   background: linear-gradient(to right, rgba(228, 26, 38, 0.13), #ffffff, rgb(228, 26, 38, 0.13));
   background-size: 600% 600%;
   background-position: 0% 0%;
   /* Cambia la posición inicial del gradiente */
   animation: gradient-animation 5s linear infinite;
-
+text-align: center;
   // Agrega una superposición
   &::before {
     content: "";
@@ -37,81 +57,116 @@ $shadow-size: 20px;
   }
 }
 
-.card-header-event {
-  text-align: initial;
-  border-bottom: 1px solid transparent;
-  /* Hacemos el borde inferior transparente */
-  border-image: linear-gradient(to right, $event 60%, transparent 40%) 1;
-  /* Agregamos el border-image */
-  margin-bottom: 10px;
-  padding-left: 20px;
-  padding-top: 25px;
+.carousel-item{
+    height: 450px;
 }
-
-.crd-carousel {
-  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
-  height: 210px;
-  // width: 195px;
-  margin-left: 31px;
-  margin-right: 31px;
-  border-radius: 15px
-}
-
-.carousel-inner {
-  padding-top: 5px;
-  height: 235px !important;
-
-}
-
-.carousel {
-  height: 200px !important;
-  background-color: #cfd8dc00 !important;
-
-  // padding-left: 50px;
-  // padding-right: 50px;   
-}
-
-.carousel-item {
-  // display: flex;
-  height: 210px !important;
-  //  background-color: aqua; 
-  // background-color: rgba(0, 255, 255, 0) !important;
-  // width: 370px;
-}
-
-
 
 
 @keyframes gradient-animation {
-  0% {
-    background-position: -10% 50%;
-    /* Cambia la posición inicial del gradiente */
+    0% {
+      background-position: -10% 50%;
+      /* Cambia la posición inicial del gradiente */
+    }
+  
+    90% {
+      background-position: 100% 450%;
+    }
+  
+    100% {
+      background-position: 110% 50%;
+      /* Mueve la posición ligeramente más allá del 100% */
+    }
   }
 
-  90% {
-    background-position: 100% 450%;
-  }
-
-  100% {
-    background-position: 110% 50%;
-    /* Mueve la posición ligeramente más allá del 100% */
-  }
-}
-
-
-
-
-
-p {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 14px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid $budget;
-  color: $document;
-
-
-}
-
-// i {
-//   color: black;
+// .card-header-event {
+//   color: $event;
+//   text-align: initial;
+//   border-bottom: 1px solid transparent;
+//   /* Hacemos el borde inferior transparente */
+//   border-image: linear-gradient(to right, $event 60%, transparent 40%) 1;
+//   /* Agregamos el border-image */
+//   margin-bottom: 10px;
+//   padding-left: 20px;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
 // }
+
+// .crd-carousel {
+//   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+//   height: 210px;
+//   // width: 195px;
+//   margin-left: 31px;
+//   margin-right: 31px;
+//   border-radius: 15px
+// }
+
+// .carousel-inner {
+//   padding-top: 5px;
+//   height: 235px !important;
+
+// }
+
+// .carousel {
+//   height: 200px !important;
+//   background-color: #cfd8dc00 !important;
+
+//   // padding-left: 50px;
+//   // padding-right: 50px;   
+// }
+
+// .carousel-item {
+//   // display: flex;
+//   height: 210px !important;
+//   //  background-color: aqua; 
+//   // background-color: rgba(0, 255, 255, 0) !important;
+//   // width: 370px;
+// }
+
+
+
+
+// @keyframes gradient-animation {
+//   0% {
+//     background-position: -10% 50%;
+//     /* Cambia la posición inicial del gradiente */
+//   }
+
+//   90% {
+//     background-position: 100% 450%;
+//   }
+
+//   100% {
+//     background-position: 110% 50%;
+//     /* Mueve la posición ligeramente más allá del 100% */
+//   }
+// }
+
+
+
+
+
+// p {
+//   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+//   font-size: 14px;
+//   padding-bottom: 5px;
+//   border-bottom: 2px solid $event;
+//   color: $document;
+
+
+// }
+
+// // i {
+// //   color: black;
+// // }
+
+
+// .card-title{
+//   color: $event;
+// }
+
+// .btn{
+//   background-color: $event;
+//   color: white;
+//   cursor: pointer !important;
+// }
+

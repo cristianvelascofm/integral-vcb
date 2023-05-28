@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./document-panel.component.scss']
 })
 export class DocumentPanelComponent {
-
+  
+  totalDocs=271;
+  generatedDocs=29;
+  pendingDocs=6;
+  availableDocs=4;
 }

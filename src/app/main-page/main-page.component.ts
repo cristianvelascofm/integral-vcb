@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-
+  currentYear = new Date().getFullYear();
+  
+  getCurrentYear() {
+    return this.currentYear;
+  }
 }

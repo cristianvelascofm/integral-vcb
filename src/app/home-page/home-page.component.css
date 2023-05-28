@@ -1,38 +1,5 @@
-
-header{
-    /* display: inline-block; */
-    overflow: hidden;
-    min-height: 70px;
-    width: 100vw;
-    box-shadow: 5px 0px 5px rgb(0,40,130);
-  
-    /* background-color: red; */
-  }
-  
-  .button-menu{
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    /* background-color: #45CE30; */
-    height: 70px;
-    padding-top: 0px;
-    border-right: solid 2px rgb(230,0,10);
-    
-  
-  }
-  .logo{
-    height: 70px;
-    background-image: url('../../assets/images/Escudo_VCB_Negro.png');
-    background-repeat: no-repeat;
-    background-size: 11%;
-    background-position-y: 2px;
-    background-position-x: 25px;
-  }
-
-  
   .lateral-menu{
-    position: absolute;
+    position: sticky;
     z-index: 1;
     top: 50%;
   }
-  

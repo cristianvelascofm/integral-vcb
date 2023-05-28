@@ -112,13 +112,8 @@ li a .title {
   height: 150px !important;
   color: $background;
   font-size: 0px;
-  transition: .7s;
+  transition: 0.2s;
   margin-left: 20px;
-  border-top: 0px;
-  // padding-top: 10px;
-  // background-color: #CCCCCC;
-  // padding-top: 50px;
-  
 }
 
 // Definición del efecto del Texto después de la transición
@@ -140,22 +135,26 @@ li a.title:hover {
 }
 
 .nav li:first-child a {
-  background: $document !important;
+  background: blue !important;
 }
 
 .nav li:nth-child(2) a {
-  background: $event !important;
+  background: $document !important;
 }
 
 .nav li:nth-child(3) a {
-  background: $place !important;
+  background: $event !important;
 }
 
 .nav li:nth-child(4) a {
-  background: $budget !important;
+  background: $place !important;
 }
 
 .nav li:nth-child(5) a {
+  background: $budget !important;
+}
+
+.nav li:nth-child(6) a {
   background: $config !important;
 }
 

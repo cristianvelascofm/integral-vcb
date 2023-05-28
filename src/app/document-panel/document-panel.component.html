@@ -1,24 +1,88 @@
-  <!-- Resumén Documental -->
-  <div class="card crd mb-3">
-    <div class="card-header card-header-document">Gestión Documental</div>
-    <div class="row card-body text-primary">
-      <div class="done col-4">
-        <div class="circle-done">
-          <span class="number">27</span>
+<div class="mt-1 document-resume container-fluid">
+  <!-- <section id="resume" >
+    <div class="col ">
+    <h4 class="text-uppercase">Gestión Documental</h4>
+    <p>Resumen</p>
+  </div>
+  </section> -->
+  <section class="mt-2">
+    <div class="row">
+      <div class="col-xl-6 col-sm-5 col-md-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-book-open primary font-large-2"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{totalDocs}}</h3>
+                  <span class="primary">Total</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="title-done"><i class="far fa-file-alt"></i> Realizados</div>
       </div>
-      <div class="todo col-4">
-        <div class="circle-todo">
-          <span class="number">4</span>
+
+      <div class="col-xl-6 col-md-6 col-sm-5 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-docs info font-large-2"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{generatedDocs}}</h3>
+                  <span class="info">Generados</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="title-todo"><i class="far fa-file-alt"></i> Pendientes</div>
-      </div>
-      <div class="available col-4">
-        <div class="circle-available">
-          <span class="number">6</span>
-        </div>
-        <div class="title-available"><i class="far fa-file-alt"></i> Disponibles</div>
       </div>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="col-xl-6 col-sm-5 col-md-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-doc warning font-large-2"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{pendingDocs}}</h3>
+                  <span class="warning">Pendientes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-sm-5 col-md-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-note success font-large-2"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{availableDocs}}</h3>
+                  <span  class="success">Disponibles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+

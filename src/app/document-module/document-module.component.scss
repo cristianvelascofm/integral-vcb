@@ -1,0 +1,511 @@
+$document: rgb(64, 51, 182);
+$event: rgb(228, 26, 38);
+$place: rgb(0, 170, 229);
+$budget: rgb(138, 194, 18);
+$config: rgb(175, 175, 175);
+
+$base-color: rgba(64, 51, 182, 0.164);
+$mid-color: rgba(0, 0, 255, 0.164);
+$light-color: rgb(255, 255, 255);
+
+$shadow-color: rgba(0, 0, 0, 0.3);
+$shadow-size: 20px;
+
+
+// @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css');
+// @import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css');
+
+// @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.container-content {
+  display: flex;
+  padding-top: 0px;
+  padding-left: 95px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+  width: 100vw;
+  height: 62vh;
+}
+
+.lateral-left {
+  padding-top: 0px !important;
+}
+
+.lateral-right {
+  padding-top: 0px !important;
+}
+
+
+.table-reception-doc {
+  // background-color: red !important;
+  height: auto;
+}
+
+.table-vcb-doc {
+  // background-color: blueviolet !important;
+  height: auto;
+}
+
+.example-form-field {
+  width: 100%;
+  background-color: #cccccc00;
+}
+
+
+
+
+.document-resume {
+  background-color: rgba(176, 170, 231, 0.11);
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+}
+
+.document-vcb {
+  background-color: rgba(176, 170, 231, 0.11);
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+}
+
+// .document-vcb {
+//   background-color: rgba(176, 170, 231, 0.11);
+//   // border-radius: 25px; 
+//   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+//   height: 75vh;
+// }
+
+
+// .search-input {
+//   width: 100%;
+//   padding: 8px;
+//   font-size: 14px;
+// }
+
+// .data-table {
+//   width: 100%;
+//   border-collapse: collapse;
+// }
+
+// .data-table td {
+//   white-space: nowrap;
+//   /* Evita el salto de línea */
+//   overflow: hidden;
+//   /* Oculta el contenido que desborda */
+//   text-overflow: ellipsis;
+//   /* Muestra puntos suspensivos (...) cuando el contenido desborda */
+//   max-width: 180px;
+//   min-width: 80px;
+// }
+
+// .data-table td:hover {
+//   cursor: pointer;
+// }
+
+// .data-table th,
+// .data-table td {
+//   padding: 8px;
+//   border: 1px solid #ccc;
+// }
+
+// .data-table th {
+//   background-color: #f0f0f0;
+//   font-weight: bold;
+// }
+.mat-table td:hover {
+  cursor: pointer !important;
+}
+.crd {
+  height: 80px;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.418);
+  border-radius: 10px;
+  //
+  background-size: 600% 600%;
+  background-position: 0% 0%;
+  cursor: pointer;
+}
+
+.crd:hover{
+  cursor: pointer;
+  background-color:  rgba(64, 51, 182, 0.06);
+}
+
+// .card {
+//   display: flex !important;
+//   // margin-top: 50px;
+
+//   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+//   transform: translateY(-$shadow-size);
+//   border-radius: 10px;
+//   // background: linear-gradient(to right, rgba(64, 51, 182, 0.13), #ffffff, rgb(64, 51, 182, 0.13));
+//   // background-size: 600% 600%;
+//   // background-position: 0% 0%;
+//   // min-width: 190px;
+//   // height: 55vh;
+//   margin-top: 0px;
+//   // background-color: red;
+//   padding: 0px;
+//   border: 0px;
+//   // Agrega una superposición
+//   &::before {
+//     content: "";
+//     position: flex;
+//     top: 0;
+//     left: 0;
+//     // width: 100%;
+//     // height: ;
+//     // background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), transparent 40%);
+//     // z-index: 1;
+//   }
+// }
+
+
+
+.crd-reception {
+  display: flex !important;
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+  transform: translateY(-$shadow-size);
+  border-radius: 10px;
+  height: 51vh !important;
+  min-height: 51vh !important;
+  max-height: 51vh !important;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 0px;
+
+  &::before {
+    content: "";
+    position: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+}
+
+.header-search {
+  // height: auto !important;
+  width: 100% !important;
+
+}
+
+.crd-vcb {
+  display: flex !important;
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+  transform: translateY(-$shadow-size);
+  border-radius: 10px;
+  height: 51vh !important;
+  min-height: 51vh !important;
+  max-height: 51vh !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+  border: 0px;
+
+  &::before {
+    content: "";
+    position: flex;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+  }
+
+}
+
+
+.table-reception {
+  height: 28vh !important;
+  min-height: 28vh !important;
+  max-height: 28vh !important;
+  // width: 100% !important;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  white-space: nowrap;
+  /* Evita el salto de línea */
+  overflow: hidden;
+  /* Oculta el contenido que desborda */
+  text-overflow: ellipsis;
+  /* Muestra puntos suspensivos (...) cuando el contenido desborda */
+  max-width: 180px;
+  min-width: 80px;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+  background-color:  rgba(64, 51, 182, 0.068);
+  cursor: pointer;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+.table-vcb {
+  height: 28vh !important;
+  min-height: 28vh !important;
+  max-height: 28vh !important;
+  // width: 600% !important;
+}
+
+
+
+.categorias-lista {
+  list-style-type: none;
+  padding: 0;
+}
+
+.categorias-lista li {
+  margin-bottom: 5px;
+  background-color: lightgray;
+  padding: 5px;
+}
+
+.subcategorias-lista {
+  display: inline-block;
+  list-style-type: none;
+  padding: 0;
+}
+
+#sub-categoria:hover {
+  cursor: pointer;
+  background-color: #337ab7;
+  color: #ccc;
+
+}
+
+#c-categoria:hover {
+  cursor: pointer;
+
+  // color: #ccc;
+}
+
+// MODAL DE CONFIRMACIÓN
+.modal-ok {
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+
+    .modal-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .btn-close {
+      border: none;
+      background-color: transparent;
+      font-size: 1.5rem;
+      cursor: pointer;
+
+      &:hover {
+        color: #ff0000;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .green-text {
+      color: green;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+}
+
+
+// MODAL RECEPCIÓN DE DOCUMETOS
+.icon-reception {
+  color: $document;
+}
+
+.modal-title-reception {
+  color: $document;
+
+  margin-left: 20px;
+}
+
+.modal-header {
+  border-bottom: solid 1px $document;
+  box-shadow: 0 10px 10px $shadow-color;
+
+}
+
+
+.date-label .blue-text {
+  color: black;
+}
+
+.date-label .green-text {
+  color: $document;
+  margin-left: 5px;
+}
+
+input[type="text"] {
+  border: none;
+  // border-bottom: solid 1px $document;
+  outline: none;
+  // background-color: #f2f2f200;
+}
+
+input[type="date"] {
+  border: none;
+  border-bottom: solid 1px $document;
+  outline: none;
+}
+
+
+
+.subcategorias-lista li {
+  display: block;
+  margin-bottom: 5px;
+  background-color: lightgray;
+  padding: 5px;
+}
+
+
+@keyframes gradient-animation {
+  0% {
+    background-position: -10% 50%;
+    /* Cambia la posición inicial del gradiente */
+  }
+
+  90% {
+    background-position: 100% 450%;
+  }
+
+  100% {
+    background-position: 110% 50%;
+    /* Mueve la posición ligeramente más allá del 100% */
+  }
+}
+
+
+::ng-deep .mat-form-field-appeareance-fill .mat-form.field-flex {
+  background-color: red !important;
+}
+
+.inputa {
+  color: #ccc;
+  background-color: #286090;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+
+.remitente-recepcion {
+  border: none !important;
+  outline: none !important;
+  width: 50%;
+  color: red;
+  background-color: red;
+}
+
+
+.document-form {
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 20px 20px rgba(64, 51, 182, 0.247);
+  ;
+
+  // h2 {
+  //   text-align: center;
+  //   margin-bottom: 20px;
+  // }
+
+  form {
+    .form-group {
+      margin-bottom: 25px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: $document;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      input[type="file"] {
+        width: 100%;
+        // padding: 8 border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 3px;
+        // box-sizing: border-box;
+        color: $document;
+
+        &:focus {
+          // outline: none;
+          border-bottom: solid 2px $document;
+          border-color: $document; // Cambia el color del borde al obtener el enfoque
+        }
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+        min-height: 100px;
+        max-height: 100px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical; // Permite redimensionar verticalmente el textarea si se necesita
+        color: $document;
+
+        &:focus {
+          outline: none;
+          border-color: $document ; // Cambia el color del borde al obtener el enfoque
+        }
+      }
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: $document;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 10px 10px $shadow-color;
+
+      &:hover {
+        background-color: #286090;
+
+      }
+    }
+  }
+}
