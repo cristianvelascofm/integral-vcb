@@ -28,13 +28,13 @@
                                                             [(ngModel)]="terminoBusqueda" placeholder="Ingrese un Valor"
                                                             #input>
                                                         <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
-                                                            aria-label="Borrar" (click)="terminoBusqueda=''">
+                                                            aria-label="Borrar" (click)="cleanSearchReception()">
                                                             <mat-icon>close</mat-icon>
                                                         </button>
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-4">
-                                                    <button mat-raised-button extended color="primary"
+                                                    <button mat-raised-button extended color="primary" style="top: 25%;"
                                                         (click)="open(newReception, 'new-reception')">Nueva
                                                         Recepción</button>
                                                 </div>
@@ -42,31 +42,35 @@
                                             </div>
 
                                             <table mat-table [dataSource]="dataSource"
-                                                class="mat-elevation-z8 table-reception demo-table" style="margin-top: 0px;"
-                                                #tabla1>
+                                                class="mat-elevation-z8 table-reception demo-table"
+                                                style="margin-top: 0px;" #tabla1>
 
                                                 <ng-container matColumnDef="codigo">
                                                     <th mat-header-cell *matHeaderCellDef> Código </th>
-                                                    <td [title]="document_reception._id" mat-cell *matCellDef="let document_reception">
+                                                    <td [title]="document_reception._id" mat-cell
+                                                        *matCellDef="let document_reception">
                                                         {{document_reception._id}} </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="descripcion">
                                                     <th mat-header-cell *matHeaderCellDef> Asunto </th>
-                                                    <td [title]="document_reception.asunto" mat-cell *matCellDef="let document_reception">
+                                                    <td [title]="document_reception.asunto" mat-cell
+                                                        *matCellDef="let document_reception">
                                                         {{document_reception.asunto}}
                                                     </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="fecha">
                                                     <th mat-header-cell *matHeaderCellDef> Fecha Recepción </th>
-                                                    <td [title]="document_reception.fecha_recepcion" mat-cell *matCellDef="let document_reception">
+                                                    <td [title]="document_reception.fecha_recepcion" mat-cell
+                                                        *matCellDef="let document_reception">
                                                         {{document_reception.fecha_recepcion}} </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="funcionario">
                                                     <th mat-header-cell *matHeaderCellDef> Funcionario </th>
-                                                    <td [title]="document_reception.funcionario_recepcion" mat-cell *matCellDef="let document_reception">
+                                                    <td [title]="document_reception.funcionario_recepcion" mat-cell
+                                                        *matCellDef="let document_reception">
                                                         {{document_reception.funcionario_recepcion}} </td>
                                                 </ng-container>
 
@@ -74,7 +78,6 @@
                                                 <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
                                             </table>
                                             <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
-                                            
                                                 style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
                                         </div>
                                     </div>
@@ -151,19 +154,20 @@
                                             <div class="row header-search">
                                                 <div class="col-8">
 
-                                                    <mat-form-field class="example-form-field" appearance="fill">
+                                                    <mat-form-field color="accent" class="example-form-field"
+                                                        appearance="fill">
                                                         <mat-label>Buscar en VCB</mat-label>
                                                         <input matInput (keyup)="applyFilterVCB($event)"
                                                             [(ngModel)]="terminoBusquedaVCB"
                                                             placeholder="Ingrese un Valor" #input>
-                                                        <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
-                                                            aria-label="Borrar" (click)="terminoBusqueda=''">
+                                                        <button *ngIf="terminoBusquedaVCB" matSuffix mat-icon-button
+                                                            aria-label="Borrar" (click)="cleanSearchVCB()">
                                                             <mat-icon>close</mat-icon>
                                                         </button>
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-4">
-                                                    <button mat-raised-button extended color="accent"
+                                                    <button mat-raised-button extended color="accent" style="top: 25%;"
                                                         (click)="open(newTRD, 'new-trd')">Nuevo
                                                         Documento</button>
                                                 </div>
@@ -174,26 +178,30 @@
 
                                                 <ng-container matColumnDef="trd">
                                                     <th mat-header-cell *matHeaderCellDef> TRD </th>
-                                                    <td [title]="document_vcb._id"mat-cell *matCellDef="let document_vcb">
+                                                    <td [title]="document_vcb._id" mat-cell
+                                                        *matCellDef="let document_vcb">
                                                         {{document_vcb._id}} </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="asunto">
                                                     <th mat-header-cell *matHeaderCellDef> Asunto </th>
-                                                    <td [title]="document_vcb.asunto" mat-cell *matCellDef="let document_vcb">
+                                                    <td [title]="document_vcb.asunto" mat-cell
+                                                        *matCellDef="let document_vcb">
                                                         {{document_vcb.asunto}}
                                                     </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="fecha">
                                                     <th mat-header-cell *matHeaderCellDef> Fecha Documento </th>
-                                                    <td [title]="document_vcb.fecha_recepcion" mat-cell *matCellDef="let document_vcb">
+                                                    <td [title]="document_vcb.fecha_recepcion" mat-cell
+                                                        *matCellDef="let document_vcb">
                                                         {{document_vcb.fecha_recepcion}} </td>
                                                 </ng-container>
 
                                                 <ng-container matColumnDef="funcionario">
                                                     <th mat-header-cell *matHeaderCellDef> Funcionario </th>
-                                                    <td [title]="document_vcb.funcionario_recepcion" mat-cell *matCellDef="let document_vcb">
+                                                    <td [title]="document_vcb.funcionario_recepcion" mat-cell
+                                                        *matCellDef="let document_vcb">
                                                         {{document_vcb.funcionario_recepcion}} </td>
                                                 </ng-container>
                                                 <tr mat-header-row *matHeaderRowDef="columnasVCB"></tr>
@@ -261,98 +269,153 @@
 
 
 <!-- Modal Nueva Recepción -->
-<ng-template class="modal-reception" #newReception let-c="close" let-d="dismiss">
+<ng-template class="modal-reception " #newReception let-c="close" let-d="dismiss">|
     <div class="modal-header">
         <i class="icon-book-open font-large-2 icon-reception"></i>
         <h1 class="modal-title-reception" id="modal-basic-title">Recepción de Documentos</h1>
-        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="c('Cross click')"></button>
     </div>
-    <div class="modal-body document-form">
-        <form>
-            <div class="form-group">
-                <div class="" style="text-align: right; font-size: small;">
-                    <label class="date-label">
-                        <span class="blue-text">Fecha y Hora:</span>
-                        <span class="green-text">{{fechaHora }}</span>
-                    </label>
-                </div>
+    <div class="modal-body document-form  ">
+        <!-- <form [formGroup]="formNewDocumentReception" (ngSubmit)="addNewDocumentReception()"> -->
+        <div class="form-group">
+            <div class="" style="text-align: right; font-size: small;">
+                <label class="date-label">
+                    <span class="blue-text">Fecha y Hora:</span>
+                    <span class="green-text">{{fechaHora }}</span>
+                </label>
             </div>
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="asunto">Asunto:</label>
-                </div>
-                <div class="col-9">
-                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documento.asunto" required>
+            <div class="row" style="text-align: right;">
+                <div class="col-10">
+                    <mat-checkbox class="checkbox-emisor" [(ngModel)]="recepcionFisica">Físico</mat-checkbox>
                 </div>
 
-            </div>
-
-
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="remitente">Remitente:</label>
-
-                </div>
-
-
-                <div class="col-9 ng-autocomplete">
-                    <ng-autocomplete class="remitente-recepcion" [data]="data" [searchKeyword]="keyword"
-                        placeholder="Remitente" (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
-                        (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
-                        [notFoundTemplate]="notFoundTemplate">
-
-                        >
-
-                    </ng-autocomplete>
-
-                    <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.name"></a>
-                    </ng-template>
-
-                    <ng-template #notFoundTemplate let-notFound>
-                        <div [innerHTML]="notFound"></div>
-                    </ng-template>
-                    <!-- <input type="text" id="remitente" name="remitente" [(ngModel)]="documento.remitente" required> -->
+                <div class="col-2">
+                    <mat-checkbox class="checkbox-emisor" [(ngModel)]="recepcionVirtual">Virtual</mat-checkbox>
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="emisor">Emisor:</label>
-                </div>
-                <div class="col-9">
-                    <input type="text" id="emisor" name="emisor" [(ngModel)]="documento.emisor" required>
-                </div>
+        </div>
+        <!-- Asunto -->
+        <div class="row form-group ">
+            <div class="col-2" style="display: flex; align-items: center;">
+                <label for="asasunto">Asunto:</label>
             </div>
 
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="fecha">Fecha del Documento:</label>
+            <div class="col-10">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Asunto del Documento</mat-label>
+                    <input matInput placeholder="Asunto del Documento" #inputAsunto [(ngModel)]="asunto">
+                    <button *ngIf="asunto" matSuffix mat-icon-button aria-label="Borrar" (click)="asunto=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
 
-                </div>
-                <div class="col-9">
-                    <input type="date" id="fecha" name="fecha" [(ngModel)]="documento.fecha" required>
+            </div>
+        </div>
+        <!-- Remitente - Emisor -->
+        <div class="row  form-group">
+            <div class="col-2 " style="display: flex; align-items: center;">
+                <label for="remitente">Remitente:</label>
+            </div>
+            <div class="col-10" style="display: flex; align-items: center;">
 
-                </div>
+                <ng-autocomplete [data]="remitente" [searchKeyword]="buscarRemitente"
+                    placeholder="Remitente del Documento" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" notFoundText="Sin Resultados">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
             </div>
 
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="archivo">Archivo:</label>
 
-                </div>
-                <div class="col-9">
-                    <input type="file" id="archivo" name="archivo">
+        </div>
 
+        <!-- Emisor -->
+        <div class="row  form-group">
+            <div class="col-2 " style="display: flex; align-items: center;">
+                <mat-checkbox class="checkbox-emisor" [(ngModel)]="emisorEnabled">Emisor</mat-checkbox>
+            </div>
+            <div class="col-10" style="display: flex; align-items: center;">
+
+                <ng-autocomplete [disabled]="!emisorEnabled" [data]="emisor" [searchKeyword]="buscarEmisor"
+                    placeholder="Emisor del Documento" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" notFoundText="Sin Resultados">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+
+
+        </div>
+        <!-- Fecha Documento -->
+        <div class="row mt-3" style="display: flex; justify-content: center; align-items: center;">
+            <div class="col-6">
+                <div class="row form-group">
+                    <div class="col-2">
+                        <label for="fecha">Fecha Documento:</label>
+
+                    </div>
+                    <div class="col-8">
+                        <input type="date" id="fecha" name="fecha" [(ngModel)]="documento.fecha" required>
+
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="observaciones">Observaciones:</label>
-                <textarea id="observaciones" name="observaciones" [(ngModel)]="documento.observaciones"></textarea>
-            </div>
+            <div class="col-6">
+                <div class="row form-group">
+                    <div class="col-2">
+                        <mat-checkbox class="checkbox-emisor" [(ngModel)]="fechaAsuntoEnabled">Fecha
+                            Asunto</mat-checkbox>
 
-            <button type="submit" class="btn-submit">Aceptar</button>
-        </form>
+                    </div>
+                    <div class="col-8">
+                        <input type="date" [disabled]="!fechaAsuntoEnabled" id="fecha" name="fecha"
+                            [(ngModel)]="documento.fecha" required>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archivo -->
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="archivo">Archivo:</label>
+            </div>
+            <div class="col-10">
+                <input type="file" id="archivo" name="archivo" accept="application/pdf">
+            </div>
+        </div>
+
+        <!-- Observaciones -->
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones" [(ngModel)]="documento.observaciones"></textarea>
+        </div>
+
+
+
+        <!-- </form> -->
+    </div>
+    <div class="modal-footer">
+        <!-- <button class="btn-submit" (click)="newReceptionOK(newReception,'new-reception')">Aceptar</button> -->
+        <button mat-raised-button color="primary"
+            (click)="newReceptionOK(newReception,'new-reception')">Aceptar</button>
+
     </div>
 </ng-template>
 
@@ -364,29 +427,25 @@
     </div>
     <div class="modal-body document-form">
         <p>Asunto del Documento:</p>
-        <div class="input-group input-group-lg">
-            <input type="text" id="buscador" placeholder="Ingrese el Asunto" (input)="buscarCategorias($event)"
-                class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <div>
+            <ng-autocomplete [data]="categorias" [searchKeyword]="buscarCategoriaTRD"
+                placeholder="Remitente del Documento" (selected)='selectEventC($event)'
+                (inputChanged)='onChangeSearchC($event)' (inputFocused)='onFocused($event)'
+                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" notFoundText="Sin Resultados">
+            </ng-autocomplete>
 
+            <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+                <div [innerHTML]="notFound"></div>
+            </ng-template>
         </div>
-
-        <div class="row">
-            <div class="col-6">
-
-                <ul class="subcategorias-lista">
-                    <li id="c-categoria" (click)="formularioCategoria(newDocument,categoria)"
-                        *ngFor="let categoria of categoriasFiltradas">
-                        {{ categoria.nombre }}
-                        <ul class="subcategorias-lista">
-                            <li id="sub-categoria" (click)="formularioCategoria(newDocument, categoria.subcategoria)"
-                                *ngFor="let subcategoria of categoria.subcategorias">{{ subcategoria }}</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
+        <div style=" display: flex; justify-content: flex-end;">
+            <button *ngIf="trd" mat-button color="primary"
+                (click)="d('Cross click');open(newDocument,'new-document')">Siguiente</button>
         </div>
-
     </div>
 
 </ng-template>
@@ -398,81 +457,161 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
     </div>
     <div class="modal-body document-form">
-        <form>
-            <div class="form-group">
-                <div class="" style="text-align: right; font-size: small;">
-                    <label class="date-label">
-                        <span class="blue-text">Fecha y Hora:</span>
-                        <span class="green-text">{{fechaHora }}</span>
-                    </label>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="asunto">Asunto:</label>
-                </div>
-                <div class="col-9">
-                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documentoVCB.asunto" required>
-                </div>
-
-            </div>
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="asunto">Dirigido a:</label>
-                </div>
-                <div class="col-9">
-                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documentoVCB.dirigido" required>
-                </div>
-
+        <div class="row form-group ">
+            <div class="col-2" style="display: flex; align-items: center;">
+                <label for="asasunto">Nombre del Responsable del Avance:</label>
             </div>
 
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="remitente">Remitente:</label>
+            <div class="col-10">
+                <ng-autocomplete [data]="responsableAvance" [searchKeyword]="buscarResponsableAvance"
+                    placeholder="Remitente del Documento" (selected)='selectEventResponsableAvance($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" notFoundText="Sin Resultados">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+
+            </div>
+        </div>
+
+        <div class="row form-group ">
+            <div class="col-6">
+                <div class="col-2" style="display: flex; align-items: center;">
+                    <label for="asasunto">Identificación:</label>
+                </div>
+
+                <div class="col-10">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Identificación</mat-label>
+                        <input matInput placeholder="Identificación" #inputAsunto
+                            [(ngModel)]="identificacionResponsableAvance">
+                        <button *ngIf="identificacionResponsableAvance" matSuffix mat-icon-button aria-label="Borrar"
+                            (click)="identificacionResponsableAvance=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
 
                 </div>
-                <div class="col-9">
-                    <select class="form-select" id="inputGroupSelect01">
-                        <option selected>Seleccione...</option>
-                        <option value="1">Cesar Alfaro Mosquera Dorado - Vicerrector de Cultura y Bienestar</option>
-                        <option value="2">Isabel Cristina Chamorro López - Gestora de Calidad</option>
-                        <option value="3">María Fernanda Restrepo - Coordinadora Área Comunicaciones VCB</option>
-                    </select>
+
+            </div>
+            <div class="col-6">
+                <div class="col-2" style="display: flex; align-items: center;">
+                    <label for="asasunto">Expedición:</label>
+                </div>
+
+                <div class="col-10">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Expedición</mat-label>
+                        <input matInput placeholder="Expedición" #inputAsunto [(ngModel)]="expedicionResponsableAvance">
+                        <button *ngIf="expedicionResponsableAvance" matSuffix mat-icon-button aria-label="Borrar"
+                            (click)="expedicionResponsableAvance=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-3">
-                    <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value=""
-                            aria-label="Checkbox for following text input">
-                        <label for="fecha">En respuesta de:</label>
+        </div>
+
+
+        <div class="row form-group ">
+            <div class="col-6">
+                <div class="col-2" style="display: flex; align-items: center;">
+                    <label for="asasunto">E-mail:</label>
+                </div>
+
+                <div class="col-10">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input matInput placeholder="E-mail" #inputAsunto [(ngModel)]="correoResponsableAvance">
+                        <button *ngIf="correoResponsableAvance" matSuffix mat-icon-button aria-label="Borrar"
+                            (click)="correoResponsableAvance=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="col-2" style="display: flex; align-items: center;">
+                    <label for="asasunto">Celular:</label>
+                </div>
+
+                <div class="col-10">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Celular</mat-label>
+                        <input matInput placeholder="Celular" #inputAsunto [(ngModel)]="celularResponsableAvance">
+                        <button *ngIf="celularResponsableAvance" matSuffix mat-icon-button aria-label="Borrar"
+                            (click)="celularResponsableAvance=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row form-group ">
+            <div class="col-2" style="display: flex; align-items: center;">
+                <label for="asasunto">Con Cargo a:</label>
+            </div>
+
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-checkbox class="checkbox-emisor" [(ngModel)]="funcionamientoAvance">Funcionamiento</mat-checkbox>           
+                    </div>
+                    <div class="col-6">
+                        <mat-checkbox class="checkbox-emisor" [(ngModel)]="inversionAvance">Inversión</mat-checkbox>
                     </div>
                 </div>
-                <div class="col-9">
+             
 
-                    <input type="text" id="asunto" name="asunto" [(ngModel)]="documentoVCB.answer" required>
-                </div>
+
+
+            </div>
+        </div>
+        <div class="row form-group ">
+            <div class="col-2" style="display: flex; align-items: center;">
+                <label for="asasunto">Concepto:</label>
             </div>
 
-            <div class="row form-group">
-                <div class="col-3">
-                    <label for="archivo">Archivo:</label>
+            <div class="col-10">
+               
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Concepto</mat-label>
+                    <input matInput placeholder="Concepto" #inputAsunto [(ngModel)]="conceptoAvance">
+                    <button *ngIf="conceptoAvance" matSuffix mat-icon-button aria-label="Borrar"
+                        (click)="conceptoAvance=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
 
-                </div>
-                <div class="col-9">
-                    <input type="file" id="archivo" name="archivo">
-
-                </div>
             </div>
-            <div class="form-group">
-                <label for="observaciones">Observaciones:</label>
-                <textarea id="observaciones" name="observaciones" [(ngModel)]="documentoVCB.observaciones"></textarea>
-            </div>
+        </div>
 
-            <button type="submit" class="btn-submit" (click)="aceptForm(aceptarForm,'acept')">Aceptar</button>
-        </form>
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones" [(ngModel)]="documento.observaciones"></textarea>
+        </div>
+
+
     </div>
+    <div class="modal-footer">
+        <!-- <button class="btn-submit" (click)="newReceptionOK(newReception,'new-reception')">Aceptar</button> -->
+        <button mat-raised-button color="primary"
+            (click)="newReceptionOK(newReception,'new-reception')">Aceptar</button>
+
+    </div>
+
 </ng-template>
 
 <!-- Modal de Confirmación de Creación de Nuevo Documento -->
@@ -490,26 +629,3 @@
         <p>Se ha Generado el Hilo de Envío Exitosamente</p>
     </div>
 </ng-template>
-
-<!-- 
-<div>
-    <mat-form-field>
-        <input matInput [(ngModel)]="valor1" type="number" placeholder="Ingrese primer valor">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput [(ngModel)]="valor2" type="number" placeholder="Ingrese segundo valor">
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-select placeholder="Operaciones" [(ngModel)]="seleccionada" name="operacion">
-            <mat-option *ngFor="let op of operaciones" [value]="op.valor">
-                {{op.muestraValor}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="operar()">Operar</button>
-    <p>El resultado es:{{resultado}}</p>
-
-</div> -->

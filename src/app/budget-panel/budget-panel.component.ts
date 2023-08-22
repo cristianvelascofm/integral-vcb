@@ -10,7 +10,7 @@ export class BudgetPanelComponent {
 		animationEnabled: true,
 		backgroundColor: "rgba(64, 51, 182, 0.0)",
 		//   width: 300,
-		height: 260,
+		height: 170,
 		title: {
 			text: "Funcionamiento",
 
@@ -36,7 +36,7 @@ export class BudgetPanelComponent {
 		animationEnabled: true,
 		backgroundColor: "rgba(64, 51, 182, 0.0)",
 		//   width: 300,
-		height: 260,
+		height: 170,
 		title: {
 			text: "Inversión",
 

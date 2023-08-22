@@ -29,6 +29,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon'
+import { MatMenuModule } from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -49,9 +51,11 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
   imports: [
     BrowserModule,
     MatIconModule,
+    MatMenuModule,
     MatButtonModule,
     AppRoutingModule,
     MatTableModule,
+    MatCheckboxModule,
     MatPaginatorModule,
     MatInputModule,
     AutocompleteLibModule,

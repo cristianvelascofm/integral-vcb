@@ -5,9 +5,9 @@
 			</div>
 			<div class="col button col-1">
 				<div class="dropdown">
-					<button class="btn btn-danger rounded-circle btn-md" type="button" id="dropdownMenuButton"
-						data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-user"></i>
+					<button mat-mini-fab color="accent" id="dropdownMenuButton" aria-label="Usuario"
+						aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+						<mat-icon>account_circle</mat-icon>
 					</button>
 					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
 						<a class="dropdown-item" href="#"><i class="fa fa-user-circle"></i> Cuenta</a>
@@ -18,15 +18,20 @@
 
 			</div>
 		</div>
-	</header>
+	</header> 
 
-	<!-- <div class="login">
+
+
+<!-- 	<div class="login">
 		<app-login-panel></app-login-panel>
-	</div> -->
-	<div class="main">
+	</div>-->
+
+
+
+
+ <div class="main">
 		<app-home-page></app-home-page>
 	</div>
-	<footer>Vicerrectoría de Cultura y Bienestar | Universidad del Cauca | {{ getCurrentYear() }} ©</footer>
+	<footer>Vicerrectoría de Cultura y Bienestar | Universidad del Cauca | {{ getCurrentYear() }} ©</footer> 
 
 </div>
-

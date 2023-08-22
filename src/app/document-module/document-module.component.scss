@@ -1,3 +1,7 @@
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css');
+@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css');
+
 $document: rgb(64, 51, 182);
 $event: rgb(228, 26, 38);
 $place: rgb(0, 170, 229);
@@ -10,15 +14,6 @@ $light-color: rgb(255, 255, 255);
 
 $shadow-color: rgba(0, 0, 0, 0.3);
 $shadow-size: 20px;
-
-
-// @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
-@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css');
-@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css');
-@import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css');
-// @import url('https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css');
-
-// @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 .container-content {
   display: flex;
@@ -67,53 +62,10 @@ $shadow-size: 20px;
   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
 }
 
-// .document-vcb {
-//   background-color: rgba(176, 170, 231, 0.11);
-//   // border-radius: 25px; 
-//   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
-//   height: 75vh;
-// }
-
-
-// .search-input {
-//   width: 100%;
-//   padding: 8px;
-//   font-size: 14px;
-// }
-
-// .data-table {
-//   width: 100%;
-//   border-collapse: collapse;
-// }
-
-// .data-table td {
-//   white-space: nowrap;
-//   /* Evita el salto de línea */
-//   overflow: hidden;
-//   /* Oculta el contenido que desborda */
-//   text-overflow: ellipsis;
-//   /* Muestra puntos suspensivos (...) cuando el contenido desborda */
-//   max-width: 180px;
-//   min-width: 80px;
-// }
-
-// .data-table td:hover {
-//   cursor: pointer;
-// }
-
-// .data-table th,
-// .data-table td {
-//   padding: 8px;
-//   border: 1px solid #ccc;
-// }
-
-// .data-table th {
-//   background-color: #f0f0f0;
-//   font-weight: bold;
-// }
 .mat-table td:hover {
   cursor: pointer !important;
 }
+
 .crd {
   height: 80px;
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.418);
@@ -124,9 +76,9 @@ $shadow-size: 20px;
   cursor: pointer;
 }
 
-.crd:hover{
+.crd:hover {
   cursor: pointer;
-  background-color:  rgba(64, 51, 182, 0.06);
+  background-color: rgba(64, 51, 182, 0.06);
 }
 
 // .card {
@@ -236,7 +188,7 @@ $shadow-size: 20px;
 
 .mat-mdc-row:hover .mat-mdc-cell {
   border-color: currentColor;
-  background-color:  rgba(64, 51, 182, 0.068);
+  background-color: rgba(64, 51, 182, 0.068);
   cursor: pointer;
 }
 
@@ -423,89 +375,118 @@ input[type="date"] {
   width: 100%;
 }
 
+.sugerencias-lista {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+}
 
+.sugerencias-lista li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.sugerencias-lista li:hover {
+  background-color: #e0e0e0;
+}
+.checkbox-emisor{
+  width: 100%;
+  // padding: 8 border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px;
+  // box-sizing: border-box;
+  color: $document;
+}
 
 .remitente-recepcion {
-  border: none !important;
-  outline: none !important;
-  width: 50%;
+  // border: none !important;
+  // outline: none !important;
+  // width: 50%;
+
   color: red;
   background-color: red;
 }
 
 
 .document-form {
+  padding-left: 50px;
+  padding-right: 50px;
   width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
   box-shadow: 0 20px 20px rgba(64, 51, 182, 0.247);
   ;
 
-  // h2 {
-  //   text-align: center;
-  //   margin-bottom: 20px;
-  // }
 
-  form {
-    .form-group {
-      margin-bottom: 25px;
 
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 500;
-        color: $document;
-      }
+  .form-group {
+    margin-bottom: 25px;
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: $document;
+    }
 
-      input[type="text"],
-      input[type="date"],
-      input[type="file"] {
-        width: 100%;
-        // padding: 8 border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 3px;
-        // box-sizing: border-box;
-        color: $document;
+    input[type="date"]{
+      width: 80%;
+      margin-left: 30px;
+    }
+    input[type="text"],
+    
+    input[type="file"] {
+      width: 100%;
+      // padding: 8 border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 3px;
+      // box-sizing: border-box;
+      color: $document;
 
-        &:focus {
-          // outline: none;
-          border-bottom: solid 2px $document;
-          border-color: $document; // Cambia el color del borde al obtener el enfoque
-        }
-      }
-
-      textarea {
-        width: 100%;
-        height: 100px;
-        min-height: 100px;
-        max-height: 100px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical; // Permite redimensionar verticalmente el textarea si se necesita
-        color: $document;
-
-        &:focus {
-          outline: none;
-          border-color: $document ; // Cambia el color del borde al obtener el enfoque
-        }
+      &:focus {
+        // outline: none;
+        border-bottom: solid 2px $document;
+        border-color: $document; // Cambia el color del borde al obtener el enfoque
       }
     }
 
-    .btn-submit {
-      display: block;
+    textarea {
       width: 100%;
-      padding: 10px;
-      background-color: $document;
-      color: #fff;
-      border: none;
+      height: 100px;
+      min-height: 100px;
+      max-height: 100px;
+      padding: 8px;
+      border: 1px solid #ccc;
       border-radius: 4px;
-      cursor: pointer;
-      box-shadow: 0 10px 10px $shadow-color;
+      resize: vertical; // Permite redimensionar verticalmente el textarea si se necesita
+      color: $document;
 
-      &:hover {
-        background-color: #286090;
-
+      &:focus {
+        outline: none;
+        border-color: $document ; // Cambia el color del borde al obtener el enfoque
       }
+    }
+  }
+
+  .btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: $document;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 10px 10px $shadow-color;
+
+    &:hover {
+      background-color: #286090;
+
     }
   }
 }

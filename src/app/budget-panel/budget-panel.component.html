@@ -1,4 +1,4 @@
-<div class="card crd mb-3">
+<!-- <div class="card crd mb-3">
     <div class="card-header card-header-document">Presupuesto</div>
     <div class="row card-body text-primary">
         
@@ -6,4 +6,20 @@
         <canvasjs-chart class="col-6 canva" [options]="investmentBudget"></canvasjs-chart>
     </div>
 
+</div> -->
+
+<div class="mt-1 document-resume container-fluid">
+    <section id="resume" >
+        <div class="col ">
+        <h4 class="text-uppercase">Gestión Financiera</h4>
+        <p>Resumen</p>
+      </div>
+      </section>
+      <section class="mt-2">
+        <div class="row card-body text-primary">
+        
+            <canvasjs-chart class="col-6 canva" [options]="operatingBudget"></canvasjs-chart>
+            <canvasjs-chart class="col-6 canva" [options]="investmentBudget"></canvasjs-chart>
+        </div>
+      </section>
 </div>
