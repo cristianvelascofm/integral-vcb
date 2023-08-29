@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
-  home = false;
-  document = true;
+  home = true;
+  document = false;
 
 // Control de la Vista de Módulos (Navegación de vistas de Páginas)
   pageControl(page:string){

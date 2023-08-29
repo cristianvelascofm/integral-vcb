@@ -11,50 +11,58 @@ $light-color: rgb(255, 255, 255);
 $shadow-color: rgba(0, 0, 0, 0.3);
 $shadow-size: 20px;
 
-.document-resume{
-    background-color: rgba(176, 170, 231, 0.11);
-    // border-radius: 25px; 
-    box-shadow: 0 $shadow-size $shadow-size $shadow-color;
-    height: 40vh;
+.document-resume {
+  background-color: rgba(176, 170, 231, 0.11);
+  // border-radius: 25px; 
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+
+  height: 350px;
+  max-height: 350px;
+  min-height: 350px;
+  width: 690px;
+  min-width: 690px;
+  max-width: 690px;
+}
+
+.number {
+  font-size: 25px;
+  margin-bottom: 0px !important;
+}
+
+.img-icon {
+  margin-top: 15%;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 
 .card {
-  display: flex !important;
-  // margin-top: 50px;
-    
   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
-  transform: translateY(-$shadow-size);
+  // transform: translateY(-$shadow-size);
   border-radius: 25px;
-  background: linear-gradient(to right, rgba(64, 51, 182, 0.13), #ffffff, rgb(64, 51, 182, 0.13));
+  background: linear-gradient(to right, rgba(64, 51, 182, 0.13), #ffffff, rgba(38, 20, 202, 0.13));
   background-size: 600% 600%;
   background-position: 0% 0%;
   /* Cambia la posición inicial del gradiente */
   animation: gradient-animation 5s linear infinite;
-  min-width: 190px;
+  min-width: 280px !important;
+  width: 280px !important;
   height: 90px;
-  // Agrega una superposición
+
+  // // // Agrega una superposición
   &::before {
     content: "";
     position: flex;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+  // //   // height: 100%;
     background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), transparent 40%);
     z-index: 1;
   }
 }
 
-// .card-header-document {
-//   color: $document;
-//   text-align: initial;
-//   border-bottom: 1px solid transparent;
-//   /* Hacemos el borde inferior transparente */
-//   border-image: linear-gradient(to right, $document 60%, transparent 40%) 1;
-//   /* Agregamos el border-image */
-//   margin-bottom: 10px;
-// }
+
 
 
 @keyframes gradient-animation {
@@ -74,89 +82,6 @@ $shadow-size: 20px;
 }
 
 
-// .done {
-//   // background-color: $budget;
-//   // color: $budget;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   cursor: pointer;
-// }
-
-// .done:hover {
-//   background-color: rgba(138, 194, 18, 0.055);
-// }
-
-// .todo {
-//   // background-color: $event;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   cursor: pointer;
-// }
-
-// .todo:hover {
-//   background-color: rgba(228, 26, 39, 0.055);
-// }
-
-// .available {
-//   // background-color: $document;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   cursor: pointer;
-// }
-
-// .available:hover {
-//   background-color: rgba(0, 170, 229, 0.055);
-
-// }
-
-
-// .circle-done {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   border-radius: 50%;
-//   border: 2px solid $budget;
-//   color: $budget;
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin: 0 auto;
-//   box-shadow: 3px 3px 15px 1px;
-// }
-
-// .circle-todo {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   border-radius: 50%;
-//   border: 2px solid $event;
-//   color: $event;
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin: 0 auto;
-//   box-shadow: 3px 3px 15px 1px;
-// }
-
-// .circle-available {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border-radius: 50%;
-//   border: 2px solid $place;
-//   color: $place;
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin: 0 auto;
-//   box-shadow: 3px 3px 15px 1px;
-// }
-
 
 
 // @import '~@fortawesome/fontawesome-free/css/all.css';
@@ -170,40 +95,12 @@ $shadow-size: 20px;
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 
-// .number {
-//   display: inline-block;
-//   width: 100%;
-//   text-align: center;
-// }
 
-// .title-done {
-//   text-align: center;
-//   margin-top: 10px;
-//   color: $budget;
-//   font-weight: bold;
-//   font-size: 16px;
-// }
 
-// .title-todo {
-//   text-align: center;
-//   margin-top: 10px;
-//   color: $event;
-//   font-weight: bold;
-//   font-size: 16px;
-// }
-
-// .title-available {
-//   text-align: center;
-//   margin-top: 10px;
-//   color: $place;
-//   font-weight: bold;
-//   font-size: 16px;
-// }
-
-.card:hover{
-    cursor: pointer;
-//   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-//   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+.card:hover {
+  cursor: pointer;
+  //   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  //   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 
@@ -217,204 +114,31 @@ $shadow-size: 20px;
 //  * w: http://animista.net, t: @cssanimista
 //  * ---------------------------------------------- */
 
-// /**
-//  * ----------------------------------------
-//  * animation scale-up-center
-//  * ----------------------------------------
-//  */
-// @-webkit-keyframes scale-up-center {
-//   0% {
-//     -webkit-transform: scale(1);
-//     transform: scale(1);
-//   }
+/**
+ * ----------------------------------------
+ * animation scale-up-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 
-//   100% {
-//     -webkit-transform: scale(1);
-//     transform: scale(1);
-//   }
-// }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 
-// @keyframes scale-up-center {
-//   0% {
-//     -webkit-transform: scale(0.5);
-//     transform: scale(0.5);
-//   }
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
 
-//   100% {
-//     -webkit-transform: scale(1);
-//     transform: scale(1);
-//   }
-// }
-
-// // .grey-bg {  
-// //   background-color: #F5F7FA;
-// // }
-
-// .done {
-//   // background-color: $budget;
-//   // color: $budget;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   cursor: pointer;
-// }
-
-// .done:hover {
-//   background-color: rgba(138, 194, 18, 0.055);
-// }
-
-// .todo {
-//   // background-color: $event;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   cursor: pointer;
-// }
-
-// .todo:hover {
-//   background-color: rgba(228, 26, 39, 0.055);
-// }
-
-// .available {
-//   // background-color: $document;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-//   cursor: pointer;
-// }
-
-// .available:hover {
-//   background-color: rgba(0, 170, 229, 0.055);
-// }
-
-
-// .circle-done {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 60%;
-//   height: 70%;
-//   border-radius: 50%;
-//   border: 2px solid $budget;
-//   color: $budget;
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin: 0 auto;
-//   box-shadow: 3px 3px 15px 1px;
-// }
-
-// .circle-todo {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 80px;
-//   height: 80px;
-//   border-radius: 50%;
-//   border: 2px solid $event;
-//   color: $event;
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin: 0 auto;
-//   box-shadow: 3px 3px 15px 1px;
-// }
-
-// .circle-available {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 80px;
-//   height: 80px;
-//   border-radius: 50%;
-//   border: 2px solid $place;
-//   color: $place;
-//   font-size: 24px;
-//   font-weight: bold;
-//   margin: 0 auto;
-//   box-shadow: 3px 3px 15px 1px;
-// }
-
-
-// .number {
-//   display: inline-block;
-//   width: 100%;
-//   text-align: center;
-// }
-
-// .title-done {
-//   text-align: center;
-//   margin-top: 10px;
-//   color: $budget;
-//   font-weight: bold;
-//   font-size: 16px;
-// }
-
-// .title-todo {
-//   text-align: center;
-//   margin-top: 10px;
-//   color: $event;
-//   font-weight: bold;
-//   font-size: 16px;
-// }
-
-// .title-available {
-//   text-align: center;
-//   margin-top: 10px;
-//   color: $place;
-//   font-weight: bold;
-//   font-size: 16px;
-// }
-
-// .todo:hover .circle-todo {
-//   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-//   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-// }
-
-// .done:hover .circle-done {
-
-//   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-//   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-// }
-
-// .available:hover .circle-available {
-//   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-//   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-// }
-
-// /* ----------------------------------------------
-//  * Generated by Animista on 2023-4-5 15:3:23
-//  * Licensed under FreeBSD License.
-//  * See http://animista.net/license for more info. 
-//  * w: http://animista.net, t: @cssanimista
-//  * ---------------------------------------------- */
-
-// /**
-//  * ----------------------------------------
-//  * animation scale-up-center
-//  * ----------------------------------------
-//  */
-// @-webkit-keyframes scale-up-center {
-//   0% {
-//     -webkit-transform: scale(0.5);
-//     transform: scale(0.5);
-//   }
-
-//   100% {
-//     -webkit-transform: scale(1);
-//     transform: scale(1);
-//   }
-// }
-
-// @keyframes scale-up-center {
-//   0% {
-//     -webkit-transform: scale(0.5);
-//     transform: scale(0.5);
-//   }
-
-//   100% {
-//     -webkit-transform: scale(1);
-//     transform: scale(1);
-//   }
-// }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

@@ -1,13 +1,78 @@
 <div class="mt-1 document-resume container-fluid">
-  <section id="resume" >
+  <section id="resume">
     <div class="col ">
-    <h4 class="text-uppercase">Gestión Documental</h4>
-    <p>Resumen</p>
-  </div>
+      <h4 class="text-uppercase">Gestión Documental</h4>
+      <p>Resumen</p>
+    </div>
   </section>
-  <section class="mt-2">
+
+  <section class="mt-2" style="display: grid; justify-content: center; align-items: center; ">
     <div class="row">
-      <div class="col-xl-6 col-sm-5 col-md-6 col-12">
+      <div class="col-6" style="padding-right:70px;">
+        <div class="card  row text-center">
+
+          <div class="col-6">
+            <img src="../../assets/images/icon/documentos_totales.png" alt="" class="img-icon">
+          </div>
+
+          <div class="col-6">
+            <p class="number">{{totalDocs}}</p>
+            <p>Documentos Totales</p>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+      <div class="col-6">
+        <div class="card row  text-center">
+          <div class="col-6">
+            <p class="number">{{generatedDocs}}</p>
+            <p>Documentos Generados</p>
+          </div>
+          <div class="col-6">
+            <img src="../../assets/images/icon/documentos_generados.png" alt="" class="img-icon">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-6">
+        <div class="card row text-center">
+          <div class="col-6">
+            <img src="../../assets/images/icon/documentos_pendientes.png" alt="" class="img-icon">
+          </div>
+
+          <div class="col-6">
+            <p class="number">{{totalDocs}}</p>
+            <p>Documentos Pendientes</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card row text-center">
+          <div class="col-6">
+            <p class="number">{{generatedDocs}}</p>
+            <p>Cupo Disponible</p>
+          </div>
+
+          <div class="col-6">
+            <img src="../../assets/images/icon/documentos_cupo.png" alt="" class="img-icon">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- <section class="mt-2">
+    <div class="row">
+      <div class="col-xl-6 col-sm-5 col-md-6 col-12 ">
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -82,7 +147,6 @@
       </div>
     </div>
 
-  </section>
+  </section> -->
 
 </div>
-
