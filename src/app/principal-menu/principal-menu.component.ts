@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-principal-menu',
@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
 })
 export class PrincipalMenuComponent {
   
-  change(){}
+  @Output()
+  menuSelector: EventEmitter <string> = new EventEmitter <string>();
+  
+
+
+  changeWindow(window: string){
+    this.menuSelector.emit(window);
+  }
 
 }

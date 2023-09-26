@@ -1,5 +1,5 @@
 <div class="main_page">
-	<header>
+	<header *ngIf="logged">
 		<div class="row">
 			<div class="col col-11 logo">
 			</div>
@@ -12,7 +12,7 @@
 					<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
 						<a class="dropdown-item" href="#"><i class="fa fa-user-circle"></i> Cuenta</a>
 						<a class="dropdown-item" href="#"><i class="fa fa-user-circle"></i> Supervisiorías</a>
-						<a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Cerrar sesión</a>
+						<a class="dropdown-item" href="#" (click)="logOut()"><i class="fa fa-sign-out" ></i>Cerrar sesión</a>
 					</div>
 				</div>
 
@@ -22,14 +22,14 @@
 
 
 
-<!-- 	<div class="login">
-		<app-login-panel></app-login-panel>
-	</div>-->
+	<div class="login" *ngIf="!logged" >
+		<app-login-panel (loginEvent)= processLogin($event)></app-login-panel>
+	</div>
 
 
 
 
- <div class="main">
+ <div class="main" *ngIf="logged">
 		<app-home-page></app-home-page>
 	</div>
 	<footer>Vicerrectoría de Cultura y Bienestar | Universidad del Cauca | {{ getCurrentYear() }} ©</footer> 

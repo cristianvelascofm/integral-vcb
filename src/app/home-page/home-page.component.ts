@@ -20,4 +20,23 @@ export class HomePageComponent {
       this.home=false;
     }
   }
+
+  actualWindow(selector :string){
+    switch (selector) {
+      case 'home':
+        this.home = true;
+        this.document = false;
+        break; // Agregar break para evitar la ejecución del siguiente caso
+      case 'document':
+        this.document = true;
+        this.home = false;
+        break; // Agregar break aquí también
+      default:
+        // Manejo para un valor no válido de selector
+        break;
+    }
+    
+    
+
+  }
 }

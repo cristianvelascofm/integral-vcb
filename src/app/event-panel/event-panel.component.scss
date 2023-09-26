@@ -1,82 +1,129 @@
-// $document: rgb(64, 51, 182);
-// $event: rgb(228, 26, 38);
-// $place: rgb(0, 170, 229);
-// $budget: rgb(138, 194, 18);
-// $config: rgb(175, 175, 175);
+$document: rgb(64, 51, 182);
+$event: rgb(228, 26, 38);
+$place: rgb(0, 170, 229);
+$budget: rgb(138, 194, 18);
+$config: rgb(175, 175, 175);
 
-// $base-color: rgba(64, 51, 182, 0.164);
-// $mid-color: rgba(0, 0, 255, 0.164);
-// $light-color: rgb(255, 255, 255);
+$base-color: rgba(64, 51, 182, 0.164);
+$mid-color: rgba(0, 0, 255, 0.164);
+$light-color: rgb(255, 255, 255);
 
 $shadow-color: rgba(0, 0, 0, 0.3);
 $shadow-size: 20px;
 
 
-.event-resume{
-    background-color: rgba(176, 170, 231, 0.11);
-    // border-radius: 25px;
-    box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+.event-resume {
+  // background-color: rgba(176, 170, 231, 0.11);
+  // background-color: aqua;
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+  height: 230px;
+  max-height: 230px;
+  min-height: 230px;
+  width: 690px;
+  min-width: 690px;
+  max-width: 690px;
+}
+
+// .event-resume{
+//     background-color: rgba(176, 170, 231, 0.11);
+//     // border-radius: 25px;
+//     box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+// }
+
+
+
+
+.card {
+  // margin-top: 40px !important;
+  // padding-top: 15px;
+  // background-color: rgba(160, 24, 24, 0.568);
+  // background-color: blue;
+  // box-shadow: 0 10px 10px $shadow-color;
+  // transform: translateY(-$shadow-size);
+
+    border-radius: 25px;
+  background: linear-gradient(to right, rgba(228, 26, 38, 0.13), #ffffff, rgb(228, 26, 38, 0.13));
+  background-size: 600% 600%;
+  // background-color: blue !important;
+  background-position: 0% 0%;
+  /* Cambia la posición inicial del gradiente */
+  animation: gradient-animation 5s linear infinite;
+  
+  text-align: center;
 }
 
 
-.card-body{
-    // background-color: red;
-    padding-top: 20px;
+.card-body {
+  background-color: red;
+  padding-top: 120px  ;
+  padding-top: 0px;
+  height: 180px;
+  min-height: 180px;
+  max-height: 180px;
 }
 
-.card-content{
-    padding-top: 0px;
+.card-body-carousel {
+  // background-color: rgb(0, 255, 64);
+  padding-top: 20px;
+  padding-top: 0px;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
 }
 
-.card{
-    margin: 0px !important;
-}
-
-.crd-carousel{
-//   height: 300px;
+.crd-carousel {
+  //   height: 300px;
   // width: 260px;
   // margin-top: 35px;
   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
   transform: translateY(-$shadow-size);
-//   border-radius: 25px;
-  background: linear-gradient(to right, rgba(228, 26, 38, 0.13), #ffffff, rgb(228, 26, 38, 0.13));
-  background-size: 600% 600%;
-  background-position: 0% 0%;
+  //   border-radius: 25px;
+  // background: linear-gradient(to right, rgba(228, 26, 38, 0.13), #ffffff, rgb(228, 26, 38, 0.13));
+  // background-size: 600% 600%;
+  // background-color: blue !important;
+  // background-position: 0% 0%;
   /* Cambia la posición inicial del gradiente */
-  animation: gradient-animation 5s linear infinite;
-text-align: center;
+  // animation: gradient-animation 5s linear infinite;
+  text-align: center;
+
   // Agrega una superposición
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: 1;
+  // }
 }
 
-.carousel-item{
-    height: 450px;
+
+
+.carousel-item {
+  // min-height: 50px;
+
+  // max-height: 200px;
+  height: 120px;
+  // background-color: yellow;
 }
 
 
 @keyframes gradient-animation {
-    0% {
-      background-position: -10% 50%;
-      /* Cambia la posición inicial del gradiente */
-    }
-  
-    90% {
-      background-position: 100% 450%;
-    }
-  
-    100% {
-      background-position: 110% 50%;
-      /* Mueve la posición ligeramente más allá del 100% */
-    }
+  0% {
+    background-position: -10% 50%;
+    /* Cambia la posición inicial del gradiente */
   }
+
+  90% {
+    background-position: 100% 450%;
+  }
+
+  100% {
+    background-position: 110% 50%;
+    /* Mueve la posición ligeramente más allá del 100% */
+  }
+}
 
 // .card-header-event {
 //   color: $event;
@@ -169,4 +216,3 @@ text-align: center;
 //   color: white;
 //   cursor: pointer !important;
 // }
-
