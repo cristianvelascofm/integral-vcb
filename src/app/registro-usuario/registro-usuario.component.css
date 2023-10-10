@@ -1,7 +1,3 @@
-.titulo{
-  text-align: center;
-}
-
 .registro-container {
   max-width: 400px;
   margin: 0 auto;
@@ -23,13 +19,28 @@
     .form-group {
       margin-bottom: 20px;
 
-      input.form-control {
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      input.form-control,
+      select.form-control {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 3px;
         font-size: 16px;
         color: #333;
+      }
+
+      select.form-control {
+        appearance: none;
+        background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><path fill="%23333" d="M6 0l-6 6h12z"/></svg>') no-repeat right center;
+        background-size: 12px;
+        padding-right: 30px;
       }
 
       button.btn {
@@ -54,4 +65,118 @@
       }
     }
   }
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Raleway:400,700'); */
+
+/* Iconos */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+/* * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} */
+
+
+.login_panel{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* min-height: 100%; */
+    
+    /* background-color: yellow; */
+}
+
+.logo_vcb_header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/images/Escudo_VCB_Negro.png');
+    background-size: 90%;
+ background-position: center;
+ /* background-position-x: 36px; */
+    background-repeat: no-repeat;
+    height: 90px;
+    width: 160px;
+    /* border-bottom: solid 2px black; */
+    /* background-color: red; */
+}
+
+.screen {		
+	background: linear-gradient(90deg, rgb(0,40,130), rgb(59, 97, 185));		
+	position: relative;	
+	height: 700px;
+	width: 390px;	
+	box-shadow: 0px 0px 24px #5C5696;
+}
+
+.login_field {
+	padding: 4px 0px;	
+	position: relative;	
+}
+
+.screen_content {
+	z-index: 1;
+	position: relative;	
+	height: 100%;
+}
+
+.screen_background {		
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	-webkit-clip-path: inset(0 0 0 0);
+	clip-path: inset(0 0 0 0);	
+}
+
+.screen_background_shape {
+	transform: rotate(45deg);
+	position: absolute;
+}
+
+.screen_background_shape1 {
+	height: 520px;
+	width: 520px;
+	background: #FFF;	
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 72px 0 0;
+    box-shadow: 3px 3px 3px   rgb(230,0,10);
+}
+
+.screen_background_shape2 {
+	height: 220px;
+	width: 220px;
+	background: rgb(0,40,130);	
+	top: -172px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen_background_shape3 {
+	height: 540px;
+	width: 190px;
+	background: linear-gradient(270deg, rgb(35,52,92), rgb(0,40,130));
+	top: -24px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.login {
+	width: 320px;
+	padding: 20px;
+	padding-top: 18px;
+}
+
+.screen_background_shape4 {
+	height: 200px;
+	width: 150px;
+	background: rgb(76, 97, 145);	
+	top: 380px;
+	right: -30px;	
+	border-radius: 40px;
 }

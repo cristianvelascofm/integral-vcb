@@ -1,38 +1,92 @@
-<div class="titulo">
-    <h2>La Vice Se Ve</h2>
-</div>
+<div class="login_panel">
+  <div class="screen">
+    <div class="screen_content">
+      <div class="logo_vcb_header">
+        <span class="logo"></span>
+      </div>
+      <div class="login">
+        <h2>Crear una cuenta</h2>
+        <form (ngSubmit)="registrar()" #registroForm="ngForm">
+          <div class="form-group login_field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" class="form-control"
+              placeholder="Nombre" required>
 
-<div class="registro-container">
-    <h2>Crear una cuenta</h2>
-    <form (ngSubmit)="registrar()" #registroForm="ngForm">
-      <div class="form-group">
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" class="form-control" placeholder="Nombre" required>
+          </div>
+
+          <div class="form-group login_field">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" [(ngModel)]="usuario.apellido" class="form-control"
+              placeholder="Apellido" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="fechaNacimiento">Fecha Nacimiento</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento"
+              class="form-control" placeholder="Fecha de Nacimiento" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="genero">Genero:</label>
+            <select id="genero" name="genero" [(ngModel)]="usuario.genero" class="form-control" required>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
+          <div class="form-group login_field">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" [(ngModel)]="usuario.direccion" class="form-control"
+              placeholder="Dirección" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular" [(ngModel)]="usuario.celular" class="form-control"
+              placeholder="Celular" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="cargo">Cargo:</label>
+            <select id="cargo" name="cargo" [(ngModel)]="usuario.cargo" class="form-control" required>
+              <option value="OPS">OPS</option>
+              <option value="Administrativo">Administrativo</option>
+              <option value="Vicerrector">Vicerrector</option>
+            </select>
+          </div>
+          <div class="form-group login_field">
+            <label for="dependencia">Dependencia:</label>
+            <select id="dependencia" name="dependencia" [(ngModel)]="usuario.dependencia" class="form-control" required>
+              <option value="Vicerrectoría">Vicerrectoría</option>
+              <option value="Unicauca">Unicauca</option>
+            </select>
+          </div>
+          <div class="form-group login_field">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" [(ngModel)]="usuario.email" class="form-control"
+              placeholder="Correo electrónico" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario.usuario" class="form-control"
+              placeholder="Usuario" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" [(ngModel)]="usuario.contrasena"
+              class="form-control" placeholder="Contraseña" required>
+          </div>
+          <div class="form-group login_field">
+            <label for="repetirContrasena">Repetir Contraseña</label>
+            <input type="password" id="repetirContrasena" name="repetirContrasena"
+              [(ngModel)]="usuario.repetirContrasena" class="form-control" placeholder="Repetir Contraseña" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">Crear cuenta</button>
+        </form>
       </div>
-      <div class="form-group">
-        <input type="text" id="apellido" name="apellido" [(ngModel)]="usuario.apellido" class="form-control" placeholder="Apellido" required>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" name="email" [(ngModel)]="usuario.email" class="form-control" placeholder="Correo Electrónico" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="dependencia" name="dependencia" [(ngModel)]="usuario.dependencia" disabled="true" class="form-control" placeholder="Dependencia" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="direccion" name="direccion" [(ngModel)]="usuario.direccion"  class="form-control" placeholder="Dirección" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="celular" name="celular" [(ngModel)]="usuario.celular"  class="form-control" placeholder="Celular" required>
-      </div>
-      <div class="form-group">
-        <input type="date" id="fechanacimiento" name="fechanacimiento" [(ngModel)]="usuario.fechaNacimiento"  class="form-control" placeholder="Celular" required>
-      </div>
-      <div class="form-group">
-        <input type="password" id="contrasena" name="contrasena" [(ngModel)]="usuario.contrasena" class="form-control" placeholder="Contraseña" required>
-      </div>
-      <div class="form-group">
-        <input type="password" id="repetir-contrasena" name="repetir-contrasena" [(ngModel)]="usuario.repetirContrasena" class="form-control" placeholder="Repetir Contraseña" required>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">Crear cuenta</button>
-    </form>
+
+
+    </div>
+    <div class="screen_background">
+      <span class="screen_background_shape screen_background_shape4"></span>
+      <span class="screen_background_shape screen_background_shape3"></span>
+      <span class="screen_background_shape screen_background_shape2"></span>
+      <span class="screen_background_shape screen_background_shape1"></span>
+    </div>
   </div>
-  
+</div>

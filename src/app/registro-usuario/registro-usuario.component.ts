@@ -9,33 +9,43 @@ export class RegistroUsuarioComponent {
   usuario = {
     nombre: '',
     apellido: '',
-    direccion: '',
     fechaNacimiento: '',
-    genero: '',
-    email: '',
-    contrasena: '',
-    dependencia: 'Vicerrectoría de Cultura y Bienestar',
+    genero: 'Masculino', // Establece el valor predeterminado para el género
+    direccion: '',
     celular: '',
+    cargo: 'OPS', // Establece el valor predeterminado para el cargo
+    dependencia: 'Vicerrectoría', // Establece el valor predeterminado para la dependencia
+    email: '',
+    usuario: '',
+    contrasena: '',
     repetirContrasena: ''
-    
   };
 
   registrar() {
+    // Validar que las contraseñas coincidan antes de enviar el formulario
+    if (this.usuario.contrasena !== this.usuario.repetirContrasena) {
+      alert('Las contraseñas no coinciden.');
+      return;
+    }
+
     // Aquí puedes agregar la lógica para enviar los datos de registro al servidor
     console.log('Datos de registro:', this.usuario);
-    // Reinicia el formulario
+
+    // Reiniciar el formulario después de enviarlo
     this.usuario = {
       nombre: '',
       apellido: '',
-      direccion: '',
       fechaNacimiento: '',
-      genero: '',
+      genero: 'Masculino',
+      direccion: '',
+      celular: '',
+      cargo: 'OPS',
+      dependencia: 'Vicerrectoría',
       email: '',
+      usuario: '',
       contrasena: '',
-      dependencia: 'Vicerrectoría de Cultura y Bienestar',
-      celular:'', 
       repetirContrasena: ''
-
     };
   }
+  
 }
