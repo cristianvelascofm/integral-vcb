@@ -13,6 +13,7 @@ export class MainPageComponent {
 
 
   logged = false
+  register = false
 
   getCurrentYear() {
     return this.currentYear;
@@ -25,13 +26,17 @@ export class MainPageComponent {
     // En este ejemplo, simplemente imprimimos el valor en la consola
     console.log('Valor emitido desde login-panel:', eventData);
     this.logged = true;
+    this.register = false;
   }
 
 
   logOut(){
     console.log('bye')
     this.logged = false;
+    this.register = false;
   }
+
+
   // }
 
 }

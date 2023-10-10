@@ -31,6 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon'
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -47,6 +48,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     BudgetPanelComponent,
     PlacePanelComponent,
     DocumentModuleComponent,
+    RegistroUsuarioComponent,
   ],
   imports: [
     BrowserModule,

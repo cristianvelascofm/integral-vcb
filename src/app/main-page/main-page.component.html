@@ -21,12 +21,14 @@
 	</header> 
 
 
+	<div class="registro" *ngIf="true">
+		<app-registro-usuario></app-registro-usuario>
+	</div>
+
 
 	<div class="login" *ngIf="!logged" >
 		<app-login-panel (loginEvent)= processLogin($event)></app-login-panel>
 	</div>
-
-
 
 
  <div class="main" *ngIf="logged">
