@@ -29,6 +29,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon'
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
@@ -63,9 +65,11 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AutocompleteLibModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatNativeDateModule,
     FormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatDatepickerModule,
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule
