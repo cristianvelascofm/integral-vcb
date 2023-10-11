@@ -1,15 +1,19 @@
 <!-- <div class="login_panel">
   <div class="screen">
     <div class="screen_content"> -->
-<div class="formulario">
+
+<div class="header-registro" style="display: flex; align-items: center; justify-content: center; margin: 0px;">
   <div class="logo_vcb_header">
     <span class="logo"></span>
   </div>
+</div>
+
+<div class="contenedor" style="display: flex; align-items: center;justify-content: center; height: 80vh;">
+
+
+
   <div class="login">
     <h2>Crear una cuenta</h2>
-
-
-
     <form (ngSubmit)="registrar()" #registroForm="ngForm">
       <div class="row">
         <div class="col-6">
@@ -86,7 +90,7 @@
         <div class="col-6">
           <mat-form-field class="example-full-width">
             <mat-label>Dependencia</mat-label>
-            <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.tipoDocumento" required>
+            <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.dependencia" required>
               <mat-option value="vcb">Vicerrectoría de Cultura y Bienestar</mat-option>
               <mat-option value="salud">División de Gestión de Salud Integral y Desarrollo Humano</mat-option>
               <mat-option value="deportes">División de Gestión de Recreación y Deporte</mat-option>
@@ -99,6 +103,8 @@
             <mat-select id="cargo" name="cargo" [(ngModel)]="usuario.cargo" required>
               <mat-option value="administrativo">Administrativo</mat-option>
               <mat-option value="ops">OPS</mat-option>
+              <mat-option value="pasante">Pasante</mat-option>
+              <mat-option value="monitor">Monitor</mat-option>
               <mat-option value="vicerrector">Vicerrector</mat-option>
               <mat-option value="jefe-dependecia">Jefe Dependencia</mat-option>
             </mat-select>
@@ -143,7 +149,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Confirmar Contraseña</mat-label>
             <input matInput [type]="hideConfirm ? 'password' : 'text'" id="repetirContrasena" name="repetirContrasena"
-              [(ngModel)]="usuario.repetirContrasena" required>
+              [(ngModel)]="repetirContrasena" required>
             <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hideConfirm">
               <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -157,6 +163,13 @@
       </div>
     </form>
   </div>
+</div>
+
+
+
+<div class="formulario">
+
+
 </div>
 <!-- </div>
     <div class="screen_background">
