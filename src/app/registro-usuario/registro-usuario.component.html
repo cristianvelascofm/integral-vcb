@@ -1,159 +1,164 @@
-<div class="login_panel">
+<!-- <div class="login_panel">
   <div class="screen">
-    <div class="screen_content">
-      <div class="logo_vcb_header">
-        <span class="logo"></span>
+    <div class="screen_content"> -->
+<div class="formulario">
+  <div class="logo_vcb_header">
+    <span class="logo"></span>
+  </div>
+  <div class="login">
+    <h2>Crear una cuenta</h2>
+
+
+
+    <form (ngSubmit)="registrar()" #registroForm="ngForm">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombres</mat-label>
+            <input matInput placeholder="Nombres" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Apellidos</mat-label>
+            <input matInput placeholder="Apellidos" id="apellido" name="apellido" [(ngModel)]="usuario.apellido"
+              required>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="login">
-        <h2>Crear una cuenta</h2>
-        <form (ngSubmit)="registrar()" #registroForm="ngForm">
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field class="example-full-width">
-                <mat-label>Nombres</mat-label>
-                <input matInput placeholder="Nombres" id="nombre" name="nombre" [(ngModel)]="usuario.nombre" required>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field class="">
-                <mat-label>Apellidos</mat-label>
-                <input matInput placeholder="Apellidos" id="apellido" name="apellido" [(ngModel)]="usuario.apellido"
-                  required>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Género</mat-label>
-                <mat-select id="genero" name="genero" [(ngModel)]="usuario.genero" required>
-                  <mat-option value="m">Masculino</mat-option>
-                  <mat-option value="f">Femenino</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Fecha de Nacimiento</mat-label>
-                <input matInput [matDatepicker]="picker" [value]="usuario.fechaNacimiento" id="fechaNacimiento"
-                  name="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento" required>
-                <mat-hint>MM/DD/AAAA</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Tipo de Documento</mat-label>
-                <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.tipoDocumento" required>
-                  <mat-option value="cedula">Cédula de Ciudadanía</mat-option>
-                  <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
-                  <mat-option value="pasaporte">Pasaporte</mat-option>
-                  <mat-option value="dni">DNI</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field class="example-full-width">
-                <mat-label>Número de Documento</mat-label>
-                <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
-                  [(ngModel)]="usuario.numeroDocumento" required>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field class="example-full-width">
-                <mat-label>Dirección</mat-label>
-                <input matInput placeholder="Residencia" id="direccion" name="direccion" [(ngModel)]="usuario.direccion"
-                  required>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field class="example-full-width">
-                <mat-label>Celular</mat-label>
-                <input matInput placeholder="Número" id="celular" name="celular" [(ngModel)]="usuario.celular" required>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Dependencia</mat-label>
-                <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.tipoDocumento" required>
-                  <mat-option value="vcb">Vicerrectoría de Cultura y Bienestar</mat-option>
-                  <mat-option value="salud">División de Gestión de Salud Integral y Desarrollo Humano</mat-option>
-                  <mat-option value="deportes">División de Gestión de Recreación y Deporte</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Cargo</mat-label>
-                <mat-select id="cargo" name="cargo" [(ngModel)]="usuario.cargo" required>
-                  <mat-option value="administrativo">Administrativo</mat-option>
-                  <mat-option value="ops">OPS</mat-option>
-                  <mat-option value="vicerrector">Vicerrector</mat-option>
-                  <mat-option value="jefe-dependecia">Jefe Dependencia</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                  placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email" [(ngModel)]="usuario.email">
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                  Por favor, ingrese una correo válido
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                  Correo es <strong>requerido</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field class="">
-                <mat-label>Usuario</mat-label>
-                <input matInput placeholder="Usuario" value="" id="usuario" name="usuario" [(ngModel)]="usuario.usuario"
-                  required>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Contraseña</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" id="contrasena" name="contrasena"
-                  [(ngModel)]="usuario.contrasena" required>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Confirmar Contraseña</mat-label>
-                <input matInput [type]="hideConfirm ? 'password' : 'text'" id="repetirContrasena"
-                  name="repetirContrasena" [(ngModel)]="usuario.repetirContrasena" required>
-                <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm"
-                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm">
-                  <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-            </div>
-          </div>
-          <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">Crear
-              cuenta</button>
-          </div>
-        </form>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Género</mat-label>
+            <mat-select id="genero" name="genero" [(ngModel)]="usuario.genero" required>
+              <mat-option value="m">Masculino</mat-option>
+              <mat-option value="f">Femenino</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" [value]="usuario.fechaNacimiento" id="fechaNacimiento"
+              name="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento" required>
+            <mat-hint>MM/DD/AAAA</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.tipoDocumento" required>
+              <mat-option value="cedula">Cédula de Ciudadanía</mat-option>
+              <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
+              <mat-option value="pasaporte">Pasaporte</mat-option>
+              <mat-option value="dni">DNI</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Número de Documento</mat-label>
+            <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
+              [(ngModel)]="usuario.numeroDocumento" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Dirección</mat-label>
+            <input matInput placeholder="Residencia" id="direccion" name="direccion" [(ngModel)]="usuario.direccion"
+              required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Celular</mat-label>
+            <input matInput placeholder="Número" id="celular" name="celular" [(ngModel)]="usuario.celular" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Dependencia</mat-label>
+            <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.tipoDocumento" required>
+              <mat-option value="vcb">Vicerrectoría de Cultura y Bienestar</mat-option>
+              <mat-option value="salud">División de Gestión de Salud Integral y Desarrollo Humano</mat-option>
+              <mat-option value="deportes">División de Gestión de Recreación y Deporte</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Cargo</mat-label>
+            <mat-select id="cargo" name="cargo" [(ngModel)]="usuario.cargo" required>
+              <mat-option value="administrativo">Administrativo</mat-option>
+              <mat-option value="ops">OPS</mat-option>
+              <mat-option value="vicerrector">Vicerrector</mat-option>
+              <mat-option value="jefe-dependecia">Jefe Dependencia</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+              placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email" [(ngModel)]="usuario.email">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Por favor, ingrese una correo válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Correo es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="Usuario" value="" id="usuario" name="usuario" [(ngModel)]="usuario.usuario"
+              required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="contrasena" name="contrasena"
+              [(ngModel)]="usuario.contrasena" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Confirmar Contraseña</mat-label>
+            <input matInput [type]="hideConfirm ? 'password' : 'text'" id="repetirContrasena" name="repetirContrasena"
+              [(ngModel)]="usuario.repetirContrasena" required>
+            <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hideConfirm">
+              <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">Crear
+          cuenta</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- </div>
     <div class="screen_background">
       <span class="screen_background_shape screen_background_shape4"></span>
       <span class="screen_background_shape screen_background_shape3"></span>
@@ -161,4 +166,4 @@
       <span class="screen_background_shape screen_background_shape1"></span>
     </div>
   </div>
-</div>
+</div> -->
