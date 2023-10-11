@@ -90,7 +90,7 @@
         <div class="col-6">
           <mat-form-field class="example-full-width">
             <mat-label>Dependencia</mat-label>
-            <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="usuario.dependencia" required>
+            <mat-select id="dependencia" name="dependencia" [(ngModel)]="usuario.dependencia" required>
               <mat-option value="vcb">Vicerrectoría de Cultura y Bienestar</mat-option>
               <mat-option value="salud">División de Gestión de Salud Integral y Desarrollo Humano</mat-option>
               <mat-option value="deportes">División de Gestión de Recreación y Deporte</mat-option>
@@ -137,39 +137,35 @@
         <div class="col-6">
           <mat-form-field class="example-full-width">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" id="contrasena" name="contrasena"
-              [(ngModel)]="usuario.contrasena" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            <input matInput [type]="ocultarContrasena ? 'password' : 'text'" id="contrasena" name="contrasena"
+              [(ngModel)]="usuario.contrasena" required (keydown.enter)="focusConfirmar()">
+            <!-- <button mat-icon-button matSuffix (click)="ocultarContrasena = !ocultarContrasena"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="ocultarContrasena">
+              <mat-icon>{{ocultarContrasena ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button> -->
           </mat-form-field>
         </div>
         <div class="col-6">
           <mat-form-field class="example-full-width">
             <mat-label>Confirmar Contraseña</mat-label>
-            <input matInput [type]="hideConfirm ? 'password' : 'text'" id="repetirContrasena" name="repetirContrasena"
-              [(ngModel)]="repetirContrasena" required>
-            <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hideConfirm">
-              <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            <input matInput [type]="ocultarConfirmarContrasena ? 'password' : '4text'" id="confirmarContrasena"
+              name="confirmarContrasena" [(ngModel)]="confirmarContrasena" required>
+            <!-- <button mat-icon-button matSuffix (click)="ocultarConfirmarContrasena = !ocultarConfirmarContrasena"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="ocultarConfirmarContrasena">
+              <mat-icon>{{ocultarConfirmarContrasena ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button> -->
           </mat-form-field>
         </div>
+        
       </div>
+      
       <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">Crear
-          cuenta</button>
+        <button type="submit" class="btn btn-primary btn-block">CREAR
+        </button>
+        <!-- [disabled]="!registroForm.valid" -->
       </div>
     </form>
   </div>
-</div>
-
-
-
-<div class="formulario">
-
-
 </div>
 <!-- </div>
     <div class="screen_background">

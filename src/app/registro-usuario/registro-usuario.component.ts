@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef  } from '@angular/core';
 import {
   FormControl,
   FormGroupDirective,
@@ -22,9 +22,9 @@ export class RegistroUsuarioComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   matcher = new ErrorStateMatcher();
-  hide = true; // Ocultar/Mostrar Contraseña
-  hideConfirm = true;
-  repetirContrasena = '';
+  ocultarContrasena = true; // Ocultar/Mostrar Contraseña
+  ocultarConfirmarContrasena = true; // Ocultar /
+  confirmarContrasena = '';
 
   usuario = {
     nombre: '',
@@ -42,20 +42,29 @@ export class RegistroUsuarioComponent {
     contrasena: '',
   };
 
+hide= true;
+constructor(private elementRef: ElementRef) {}
 
+focusConfirmar(): void {
+  const confirmarInput: HTMLElement = this.elementRef.nativeElement.querySelector('#repetirContrasena');
+  confirmarInput.focus();
+}
 
   registrar() {
     // Validar que las contraseñas coincidan antes de enviar el formulario
-    if (this.usuario.contrasena !== this.repetirContrasena) {
+    if (this.usuario.contrasena !== this.confirmarContrasena) {
+      console.log(this.usuario.contrasena+' - '+this.confirmarContrasena)
       alert('Las contraseñas no coinciden.');
       return;
     }
+    
 
     // Aquí puedes agregar la lógica para enviar los datos de registro al servidor
     console.log('USUARIO A REGISTRAR:', this.usuario);
 
     axios.post(this.path, this.usuario).then((response) => {
       console.log("Respuesta= " + JSON.stringify(response.data));
+      alert('CUENTA CREADA')
       return console.log('Registro Exitoso')
     })
 
