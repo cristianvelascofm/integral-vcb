@@ -1,5 +1,5 @@
-<div class="main_page">
-	<header *ngIf="logged">
+<div class="main_page" style="">
+	<header *ngIf="false">
 		<div class="row">
 			<div class="col col-11 logo">
 			</div>
@@ -25,17 +25,22 @@
 		<app-registro-usuario></app-registro-usuario>
 	</div>
 
-	<div class="evento" *ngIf="true">
+	<div>
+		<app-feria></app-feria>
+	</div>
+
+
+	<div class="evento" *ngIf="false">
 		<app-event-module></app-event-module>
 	</div>
 
 
-	<div class="login" *ngIf="false" >
-		<app-login-panel (loginEvent)= processLogin($event)></app-login-panel>
+	<div class="login" *ngIf="!logged" >
+		<app-login-panel (usuarioEvent)= processLogin($event)></app-login-panel>
 	</div>
 
 
- <div class="main" *ngIf="logged">
+ <div class="main" *ngIf="false">
 		<app-home-page></app-home-page>
 	</div>
 	<footer>Vicerrectoría de Cultura y Bienestar | Universidad del Cauca | {{ getCurrentYear() }} ©</footer> 

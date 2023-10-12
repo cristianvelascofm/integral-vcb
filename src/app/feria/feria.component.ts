@@ -13,24 +13,52 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import axios from 'axios';
 
 @Component({
-  selector: 'app-event-module',
-  templateUrl: './event-module.component.html',
-  styleUrls: ['./event-module.component.scss']
+  selector: 'app-feria',
+  templateUrl: './feria.component.html',
+  styleUrls: ['./feria.component.scss']
 })
-export class EventModuleComponent {
+export class FeriaComponent {
   path = 'http://192.168.1.100:5050';
   // path = 'http://192.168.130.79:5050'; #oficina
 
-  evento = {
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+  matcher = new ErrorStateMatcher();
+  ocultarContrasena = true; // Ocultar/Mostrar Contraseña
+  ocultarConfirmarContrasena = true; // Ocultar /
+  confirmarContrasena = '';
+
+  asistente = {
     nombre: '',
-    edicion: '',
-    categoria: 'general', // Establece el valor predeterminado para el género
-    lugar: '',
-    fechaInicio: '',
+    apellido: '',
+    fechaNacimiento: '10/01/2023',
+    genero: 'm', // Establece el valor predeterminado para el género
+    tipoDocumento: 'cedula',
+    numeroDocumento: '',
+    direccion: '',
+    celular: '',
+    email: '',
+    institucion: ''
+  };
+
+  hide = true;
+
+
+  evento = {
+    nombre: 'POPAYÁN CIUDAD LIBRO 2023',
+    edicion: 6,
+    categoria: 'CULTURAL', // Establece el valor predeterminado para el género
+    lugar: 'Teatro Municipal Guillermo León Valencia',
+    fechaInicio: '10/12/2023',
     fechaFin: '',
-    responsable: '',
+    hora: '06:15 P.M.',
+    responsable: 'JORGE VELOSA',
     organizador: '',
-    actividades: {},
+    actividades: {
+      nombre: 'En Verso y En Prosa Con Velosa',
+      categoria: 'conversatorio'
+    },
   };
 
   dictSend: any = {};
@@ -71,18 +99,19 @@ export class EventModuleComponent {
     // Reiniciar el formulario después de enviarlo
     this.evento = {
       nombre: '',
-      edicion: '',
+      edicion: 1,
       categoria: 'general', // Establece el valor predeterminado para el género
       lugar: '',
       fechaInicio: '',
       fechaFin: '',
+      hora: '',
       responsable: '',
       organizador: '',
-      actividades: {},
+      actividades: {
+        nombre: '',
+        categoria: '',
+      },
     };
   }
 
 }
-
-
-

@@ -38,6 +38,7 @@ import { EventModuleComponent } from './event-module/event-module.component';
 import { EventoActividadComponent } from './dialogs/evento-actividad/evento-actividad.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { FeriaComponent } from './feria/feria.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -57,6 +58,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     RegistroUsuarioComponent,
     EventModuleComponent,
     EventoActividadComponent,
+    FeriaComponent,
   ],
   imports: [
     BrowserModule,

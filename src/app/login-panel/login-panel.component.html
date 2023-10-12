@@ -8,11 +8,11 @@
                 <h2>Inciar sesión</h2>
                 <div class="login_field">
                     <i class="login_icon fas fa-user"></i>
-                    <input type="text" class="login_input" placeholder="Usuario">
+                    <input type="text" class="login_input" name="usuario"  [(ngModel)]="usuario"  placeholder="Usuario">
                 </div>
                 <div class="login_field">
                     <i class="login_icon fas fa-lock"></i>
-                    <input type="password" class="login_input" placeholder="Contraseña">
+                    <input type="password" class="login_input" name="contrasena"  [(ngModel)]="contrasena" placeholder="Contraseña">
                 </div>
                 <button class="button login_submit" (click)="login()">
                     <span class="button_text">Ingresar</span>
