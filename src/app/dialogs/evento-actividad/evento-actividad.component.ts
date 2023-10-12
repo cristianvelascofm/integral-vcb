@@ -8,17 +8,34 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';;
 })
 
 export class EventoActividadComponent {
-
   constructor(public dialogRef: MatDialogRef<EventoActividadComponent>,@Inject(MAT_DIALOG_DATA) public msg: string){
-
   }
 
   ngOnInit(){
     
   }
+  selectedTime: string = "12:00";
+
+  onTimeChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedTime = inputElement.value;
+    console.log('Nueva hora seleccionada:', this.selectedTime);
+  }
+
+  actividad={
+    nombre: '',
+    lugar: '',
+    categoria: 'conversatorio',
+    responsable:'',
+    fechaInicio: '',
+    fechaFin: '',
+    hora: this.selectedTime
+
+
+  }
 
   onClickNO():void{
     this.dialogRef.close();
   }
-
+  agregarActividad(){}
 }

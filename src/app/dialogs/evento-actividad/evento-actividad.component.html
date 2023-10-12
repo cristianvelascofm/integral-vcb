@@ -1,5 +1,93 @@
 <div mat-dialog-content>{{msg}}</div>
+<div class="contenedor" style="display: flex; align-items: center;justify-content: center; height: auto;">
+    <div class="login">
+        <h2>AGREGAR ACTIVIDADES</h2>
+        <form (ngSubmit)="agregarActividad()" #actividadForm="ngForm">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre de la Actividad</mat-label>
+                        <input matInput placeholder="Actividad" id="actividad" name="actividad"
+                            [(ngModel)]="actividad.nombre" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Lugar Realización</mat-label>
+                        <input matInput placeholder="Lugar Actividad" id="lugar" name="lugar"
+                            [(ngModel)]="actividad.lugar" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Categoría</mat-label>
+                        <mat-select id="categoria" name="categoría" [(ngModel)]="actividad.categoria" required>
+                            <mat-option value="conferencia">Conferencia</mat-option>
+                            <mat-option value="taller">Taller</mat-option>
+                            <mat-option value="conversatorio">Conversatorio</mat-option>
+                            <mat-option value="charla">Charla</mat-option>
+                            <mat-option value="exposicion">Exposición</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Responsable</mat-label>
+                        <input matInput placeholder="responsable" id="responsable" name="responsable"
+                            [(ngModel)]="actividad.responsable" required>
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Fecha Inicio</mat-label>
+                        <input matInput [matDatepicker]="picker" [value]="actividad.fechaInicio" id="fechaInicio"
+                            name="fechaInicio" [(ngModel)]="actividad.fechaInicio" required>
+                        <mat-hint>MM/DD/AAAA</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Fecha Fin</mat-label>
+                        <input matInput [matDatepicker]="pickerF" [value]="actividad.fechaFin" id="fechaFin"
+                            name="fechaFin" [(ngModel)]="actividad.fechaFin" required>
+                        <mat-hint>MM/DD/AAAA</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerF"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerF></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col-6">
+<!-- 
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Hora del Evento</mat-label>
+                        <input matInput type="time" placeholder="Hora" id="hora" name="hora"
+                            [(ngModel)]="selectedTime" (change)="onTimeChange($event)" required>
+                    </mat-form-field> -->
+                    <!-- <label for="hora">Hora del Evento</label> -->
+                    <input type="time" id="hora" name="hora" [(ngModel)]="selectedTime" (change)="onTimeChange($event)">
+                </div>
+                
+            </div>
+            <div class="row">
+
+            <!-- </div>
+            <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
+                <button type="submit" class="btn btn-primary btn-block">CREAR
+                </button> -->
+                <!-- [disabled]="!registroForm.valid" -->
+            </div>
+        </form>
+    </div>
+</div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onClickNO()">NO</button>
-    <button mat-button [mat-dialog-close]="true">SI</button>
+    <button mat-button (click)="onClickNO()">CANCELAR</button>
+    <button mat-button [mat-dialog-close]="true">CREAR</button>
 </div>

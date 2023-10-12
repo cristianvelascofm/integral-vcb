@@ -37,6 +37,7 @@ import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.co
 import { EventModuleComponent } from './event-module/event-module.component';
 import { EventoActividadComponent } from './dialogs/evento-actividad/evento-actividad.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -77,6 +78,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     MatFormFieldModule,
     MatDatepickerModule,
     ReactiveFormsModule,
+    NgxMaterialTimepickerModule,
     NgbModule,
     BrowserAnimationsModule
   ],

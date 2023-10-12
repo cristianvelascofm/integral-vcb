@@ -1,0 +1,15 @@
+#actividad{
+    text-transform: uppercase;
+}
+
+#lugar{
+    text-transform: capitalize;
+}
+
+#responsable{
+    text-transform: capitalize;
+}
+
+.ngx-timepicker-overlay {
+    z-index: 9999; /* O cualquier valor que funcione para superponer el timepicker sobre otros elementos */
+}

@@ -22,7 +22,7 @@
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Edición</mat-label>
-                        <input matInput placeholder="Número" id="edicion" name="edicion" [(ngModel)]="evento.edicion"
+                        <input matInput type="number" placeholder="Número" id="edicion" name="edicion" [(ngModel)]="evento.edicion"
                             required>
                     </mat-form-field>
                 </div>
@@ -91,22 +91,23 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Actividades</mat-label>
                         <input matInput placeholder="Actividades" value="" id="actividades" name="actividades"
-                            [(ngModel)]="evento.actividades" required>
+                            [(ngModel)]="evento.actividades" >
                     </mat-form-field>
                 </div>
                 
-                <div class="col-6">
-                    <li>
-                        <button mat-raised-button (click)="openDialog()">Agregar Actividades</button>
-                      </li>
-                </div>
+
              
             </div>
             <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
-                <button type="submit" class="btn btn-primary btn-block">CREAR
+                <button type="submit" class="btn btn-primary btn-block" >CREAR
                 </button>
-                <!-- [disabled]="!registroForm.valid" -->
+                <!-- [disabled]="!eventoForm.valid" -->
             </div>
         </form>
+        <div class="col-6" *ngIf="actividades">
+            <button mat-raised-button color="accent"  (click)="openDialog()">AGREGAR ACTIVIDADES</button>
+                
+              
+        </div>
     </div>
 </div>
