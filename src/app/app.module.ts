@@ -34,6 +34,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+import { EventModuleComponent } from './event-module/event-module.component';
+import { EventoActividadComponent } from './dialogs/evento-actividad/evento-actividad.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -51,6 +54,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     PlacePanelComponent,
     DocumentModuleComponent,
     RegistroUsuarioComponent,
+    EventModuleComponent,
+    EventoActividadComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +70,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AutocompleteLibModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatDialogModule,
     MatNativeDateModule,
     FormsModule,
     MatAutocompleteModule,
