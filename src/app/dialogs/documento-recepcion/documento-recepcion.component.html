@@ -1,0 +1,80 @@
+<div mat-dialog-title>
+    <div class="row">
+        <div class="col-2">
+            <img src="../../assets/images/icon/documentos_pendientes.png" alt="" class="logo-document">
+        </div>
+        <div class="col-8">
+            <h1 id="modal-basic-title">Recepción de Documentos</h1>
+        </div>
+    </div>
+</div>
+<div mat-dialog-content style="width: 100%;">{{msg}}
+
+    <form (ngSubmit)="nuevaRecepcion()" #recepcionForm="ngForm" style="width: 100%">
+        <!-- Asunto -->
+        <div class="row form-group" style="">
+            <div class="col-2" style="display: flex; align-items: center;">
+                <label for="asasunto">Asunto:</label>
+            </div>
+
+            <div class="col-10">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Asunto del Documento</mat-label>
+                    <input matInput placeholder="Asunto del Documento" #inputAsunto [(ngModel)]="asunto">
+                    <button *ngIf="asunto" matSuffix mat-icon-button aria-label="Borrar" (click)="asunto=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+            </div>
+        </div>
+        <!-- Emisor - Remitente -->
+        <div class="row  form-group">
+            <div class="col-2 " style="display: flex; align-items: center;">
+                <label for="remitente">Remitente:</label>
+            </div>
+            <div class="col-10" style="display: flex; align-items: center;">
+                <ng-autocomplete [data]="remitente" [searchKeyword]="buscarRemitente"
+                    placeholder="Remitente del Documento" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" notFoundText="Sin Resultados">
+                </ng-autocomplete>
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+
+
+        </div>
+        <div class="row  form-group">
+            <div class="col-2 " style="display: flex; align-items: center;">
+                <mat-checkbox class="checkbox-emisor" [(ngModel)]="emisorEnabled">Emisor</mat-checkbox>
+            </div>
+            <div class="col-10" style="display: flex; align-items: center;">
+
+                <ng-autocomplete [disabled]="!emisorEnabled" [data]="emisor" [searchKeyword]="buscarEmisor"
+                    placeholder="Emisor del Documento" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" notFoundText="Sin Resultados">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onClickNO()">CANCELAR</button>
+    <button mat-button [mat-dialog-close]="true" type="submit" [disabled]="!recepcionForm.valid">CREAR</button>
+</div>

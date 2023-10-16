@@ -49,8 +49,11 @@ export class LoginPanelComponent {
 
       axios.post(this.path, this.dictSend).then((response) => {
         this.respuestaJson = JSON.stringify(response.data)
+        console.log(this.respuestaJson)
         if (this.respuestaJson == '{"error":"USUARIO NO ENCONTRADO"}') {
           alert("Usuario no encontrado")
+        } else if (this.respuestaJson == '{"error":"CONTRASEÑAS INVALIDAS"}') {
+          alert("Contraseña no coincide")
         } else {
           alert('Bienvenido!')
           this.usuarioEvent.emit(true);

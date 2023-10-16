@@ -21,21 +21,26 @@ $shadow-size: 20px;
   padding-left: 95px;
   padding-right: 30px;
   padding-bottom: 0px;
-  width: 100vw;
-  height: 62vh;
+  width: 100%;
+  height: 95%;
+  // background-color: #286090;
 }
 
 .lateral-left {
-  padding-top: 0px !important;
+  // background-color: red;
+  margin-top: 0px;
+  height: 100%;
 }
 
 .lateral-right {
   padding-top: 0px !important;
+  height: 100%;
+  // background-color: aqua;
 }
 
 
 .table-reception-doc {
-  // background-color: red !important;
+  // background-color: blue!important;
   height: auto;
 }
 
@@ -167,9 +172,9 @@ $shadow-size: 20px;
 
 
 .table-reception {
-  height: 28vh !important;
-  min-height: 28vh !important;
-  max-height: 28vh !important;
+  // height: 28vh !important;
+  // min-height: 28vh !important;
+  // max-height: 28vh !important;
   // width: 100% !important;
 }
 

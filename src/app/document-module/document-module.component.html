@@ -1,17 +1,14 @@
-<div class="row container-content mb-2">
-    <div class="mt-3">
-        <h4 class="text-uppercase">Gestión Documental</h4>
-    </div>
-
+<div class="" style="height: 5%; display: flex; align-items: center; justify-content: center;">
+    <h4 class="text-uppercase" style="margin:0px;">Gestión Documental</h4>
+</div>
+<div class="row container-content">
     <div class="col-6 lateral-left p-0 ">
-
         <div class=" document-resume container-fluid">
             <section id="resume" class="p-2 mb-1">
                 <div class="col ">
                     <p>Recepción de Documentos</p>
                 </div>
             </section>
-
             <section class="table-reception-doc" style="margin-bottom: 0px;">
                 <div class="col-12">
                     <div class="card crd-reception">
@@ -35,23 +32,19 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <button mat-raised-button extended color="primary" style="top: 25%;"
-                                                        (click)="open(newReception, 'new-reception')">Nueva
+                                                        (click)="openModal()" matTooltip="Info about the action">Nueva
                                                         Recepción</button>
                                                 </div>
-
                                             </div>
-
                                             <table mat-table [dataSource]="dataSource"
                                                 class="mat-elevation-z8 table-reception demo-table"
                                                 style="margin-top: 0px;" #tabla1>
-
                                                 <ng-container matColumnDef="codigo">
                                                     <th mat-header-cell *matHeaderCellDef> Código </th>
                                                     <td [title]="document_reception._id" mat-cell
                                                         *matCellDef="let document_reception">
                                                         {{document_reception._id}} </td>
                                                 </ng-container>
-
                                                 <ng-container matColumnDef="descripcion">
                                                     <th mat-header-cell *matHeaderCellDef> Asunto </th>
                                                     <td [title]="document_reception.asunto" mat-cell
@@ -59,21 +52,18 @@
                                                         {{document_reception.asunto}}
                                                     </td>
                                                 </ng-container>
-
                                                 <ng-container matColumnDef="fecha">
                                                     <th mat-header-cell *matHeaderCellDef> Fecha Recepción </th>
                                                     <td [title]="document_reception.fecha_recepcion" mat-cell
                                                         *matCellDef="let document_reception">
                                                         {{document_reception.fecha_recepcion}} </td>
                                                 </ng-container>
-
                                                 <ng-container matColumnDef="funcionario">
                                                     <th mat-header-cell *matHeaderCellDef> Funcionario </th>
                                                     <td [title]="document_reception.funcionario_recepcion" mat-cell
                                                         *matCellDef="let document_reception">
                                                         {{document_reception.funcionario_recepcion}} </td>
                                                 </ng-container>
-
                                                 <tr mat-header-row *matHeaderRowDef="columnas"></tr>
                                                 <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
                                             </table>
@@ -88,7 +78,7 @@
                 </div>
             </section>
 
-            <section class="mt-1 mb-2">
+            <section class="mt-5 mb-2">
                 <div class="col ">
                     <p>Generalidades</p>
                 </div>
@@ -219,7 +209,7 @@
                 </div>
             </section>
 
-            <section class="mt-1 mb-2">
+            <section class="mt-5 mb-2">
                 <div class="col ">
                     <p>Mis Documentos</p>
                 </div>
@@ -567,13 +557,14 @@
             <div class="col-10">
                 <div class="row">
                     <div class="col-6">
-                        <mat-checkbox class="checkbox-emisor" [(ngModel)]="funcionamientoAvance">Funcionamiento</mat-checkbox>           
+                        <mat-checkbox class="checkbox-emisor"
+                            [(ngModel)]="funcionamientoAvance">Funcionamiento</mat-checkbox>
                     </div>
                     <div class="col-6">
                         <mat-checkbox class="checkbox-emisor" [(ngModel)]="inversionAvance">Inversión</mat-checkbox>
                     </div>
                 </div>
-             
+
 
 
 
@@ -585,7 +576,7 @@
             </div>
 
             <div class="col-10">
-               
+
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Concepto</mat-label>
                     <input matInput placeholder="Concepto" #inputAsunto [(ngModel)]="conceptoAvance">

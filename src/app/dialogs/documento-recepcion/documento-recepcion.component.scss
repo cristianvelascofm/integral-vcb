@@ -1,0 +1,76 @@
+$document: rgb(64, 51, 182);
+$event: rgb(228, 26, 38);
+$place: rgb(0, 170, 229);
+$budget: rgb(138, 194, 18);
+$config: rgb(175, 175, 175);
+
+$base-color: rgba(64, 51, 182, 0.164);
+$mid-color: rgba(0, 0, 255, 0.164);
+$light-color: rgb(255, 255, 255);
+
+$shadow-color: rgba(0, 0, 0, 0.3);
+$shadow-size: 20px;
+
+.logo-document {
+    /* margin-top: 15%; */
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.example-form-field{
+  width: 100% !important;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: $document;
+    }
+
+    input[type="date"]{
+      width: 80%;
+      margin-left: 30px;
+    }
+    input[type="text"]{
+      
+      width: 1233px;
+      margin-left: 30px;
+
+    }
+    
+    input[type="file"] {
+      width: 100%;
+      // padding: 8 border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 3px;
+      // box-sizing: border-box;
+      color: $document;
+
+      &:focus {
+        // outline: none;
+        border-bottom: solid 2px $document;
+        border-color: $document; // Cambia el color del borde al obtener el enfoque
+      }
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      min-height: 100px;
+      max-height: 100px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical; // Permite redimensionar verticalmente el textarea si se necesita
+      color: $document;
+
+      &:focus {
+        outline: none;
+        border-color: $document ; // Cambia el color del borde al obtener el enfoque
+      }
+    }
+  }

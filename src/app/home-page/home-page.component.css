@@ -3,3 +3,14 @@
     z-index: 1;
     top: 50%;
   }
+
+  .aloja{
+    /* background-color: aqua; */
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .home{
+    background-color: blue !important;
+  }

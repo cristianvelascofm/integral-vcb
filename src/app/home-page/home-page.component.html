@@ -4,6 +4,9 @@
 
 <!-- Lógica de Activación de Módulos -->
 
+<div class="aloja">
+    <app-home-module *ngIf="false" class="home"></app-home-module>
+    <app-document-module *ngIf="true" class="document"></app-document-module>
+</div>
 
-<app-home-module *ngIf="home" class="home"></app-home-module>
-<app-document-module *ngIf="document" class="document"></app-document-module>
+<!-- <app-home-module *ngIf="home" class="home"></app-home-module> -->

@@ -13,15 +13,17 @@ $shadow-size: 20px;
 
 .document-resume {
   background-color: rgba(176, 170, 231, 0.11);
+  // background-color: chartreuse;
   // border-radius: 25px; 
   box-shadow: 0 $shadow-size $shadow-size $shadow-color;
 
-  height: 350px;
-  max-height: 350px;
+  height: 100%;
+  // max-height: 350px;
   min-height: 350px;
-  width: 690px;
-  min-width: 690px;
-  max-width: 690px;
+
+  width: 100%;
+  min-width: 640px;
+  // max-width: 690px;
 }
 
 .number {

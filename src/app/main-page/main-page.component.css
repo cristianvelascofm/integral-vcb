@@ -11,6 +11,22 @@
 }
 
 
+.home-main{
+  /* background-color: red !important;   */
+  height: 96vh;
+  width: 100vw;
+  position: relative; 
+}
+
+.home{
+  width: 100%; /* El hijo ocupará el 100% del ancho del contenedor padre */
+  height: 100%; /* El hijo ocupará el 100% de la altura del contenedor padre */
+  max-width: 100%; /* Ancho máximo del hijo al 100% del contenedor padre */
+  max-height: 100%; /* Altura máxima del hijo al 100% del contenedor padre */
+  /* border: 1px solid red; Solo para visualización */
+  position: absolute;
+}
+
 header{
     /* display: inline-block; */
     overflow: hidden;
@@ -38,10 +54,6 @@ header{
     z-index: 1;
   }
 
-  .btn{
-    /* background-color: red;
-    color: white; */
-  }
 
   .button{
     display: flex;

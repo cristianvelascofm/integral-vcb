@@ -8,6 +8,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DocumentReception, DocumentReceptionService } from '../services/document-reception.service';
 import { DocumentVCB, DocumentVcbService } from '../services/document-vcb.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EventoActividadComponent } from '../dialogs/evento-actividad/evento-actividad.component';
+import { DocumentoRecepcionComponent } from '../dialogs/documento-recepcion/documento-recepcion.component';
 
 @Component({
   selector: 'app-document-module',
@@ -15,10 +18,13 @@ import { DocumentVCB, DocumentVcbService } from '../services/document-vcb.servic
   styleUrls: ['./document-module.component.scss']
 })
 export class DocumentModuleComponent implements OnInit {
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private documentReceptionService: DocumentReceptionService, private documentVcbService: DocumentVcbService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private documentReceptionService: DocumentReceptionService, private documentVcbService: DocumentVcbService, public dialog:MatDialog) {
     config.backdrop = 'static';
     config.keyboard = false;
+    
+    
   }
+
 
   private _filtered(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -563,6 +569,18 @@ export class DocumentModuleComponent implements OnInit {
   onClearC() {
 
   }
+
+
+openModal(){
+  const dialogRef = this.dialog.open(DocumentoRecepcionComponent, {
+    disableClose: true,
+    width: '550px',
+    // data: 'CONTENIDO'
+  });
+  dialogRef.afterClosed().subscribe(res => {
+    console.log(res)
+  })
+}
 
   modalRef: any;
   open(content: any, modo: string) {
