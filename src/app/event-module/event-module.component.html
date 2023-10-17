@@ -1,113 +1,85 @@
-<!-- <div class="login_panel">
-  <div class="screen">
-    <div class="screen_content"> -->
-
-<div class="header-registro" style="display: flex; align-items: center; justify-content: center; margin: 0px;">
-    <div class="logo_vcb_header">
-        <span class="logo"></span>
-    </div>
+<div class="" style="height: 5%; display: flex; align-items: center; justify-content: center;">
+    <h4 class="text-uppercase" style="margin:0px;">Gestión de Eventos</h4>
 </div>
-<div class="contenedor" style="display: flex; align-items: center;justify-content: center; height: 80vh;">
-    <div class="login">
-        <h2>CREAR EVENTO</h2>
-        <form (ngSubmit)="crearEvento()" #eventoForm="ngForm">
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Nombre del Evento</mat-label>
-                        <input matInput placeholder="Evento" id="evento" name="evento" [(ngModel)]="evento.nombre"
-                            required>
-                    </mat-form-field>
-                </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Edición</mat-label>
-                        <input matInput type="number" placeholder="Número" id="edicion" name="edicion" [(ngModel)]="evento.edicion"
-                            required>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Categoría</mat-label>
-                        <mat-select id="categoria" name="categoría" [(ngModel)]="evento.categoria" required>
-                            <mat-option value="academico">Acedémico</mat-option>
-                            <mat-option value="cultural">Cultural</mat-option>
-                            <mat-option value="deporte">Deportes</mat-option>
-                            <mat-option value="salud">Salud</mat-option>
-                            <mat-option value="general">General</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Lugar Realización</mat-label>
-                        <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="evento.lugar" required>
-                    </mat-form-field>
+<div class="row container-content">
 
+    <div class="col-6 lateral-left p-0 ">
+        <div class=" document-resume container-fluid">
+            <section id="resume" class="p-2 mb-1">
+                <div class="col ">
+                    <p>Eventos</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Fecha Inicio</mat-label>
-                        <input matInput [matDatepicker]="picker" [value]="evento.fechaInicio" id="fechaInicio"
-                            name="fechaInicio" [(ngModel)]="evento.fechaInicio" required>
-                        <mat-hint>MM/DD/AAAA</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+            </section>
+            <section class="table-reception-doc" style="margin-bottom: 0px;">
+                <div class="col-12">
+                    <div class="card crd-reception">
+                        <div class="card-content p-0">
+                            <div class="card-body">
+                                <div class="media d-flex">
+                                    <div class="media-body text-right p-1" style="width: 100%;">
+                                        <div class="">
+                                            <div class="row header-search">
+                                                <div class="col-8 ">
+                                                    <mat-form-field class="example-form-field" appearance="fill">
+                                                        <mat-label>Buscar Evento</mat-label>
+                                                        <input matInput (keyup)="applyFilter($event)"
+                                                            [(ngModel)]="terminoBusqueda" placeholder="Ingrese un Valor"
+                                                            #input>
+                                                        <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
+                                                            aria-label="Borrar" (click)="cleanSearchReception()">
+                                                            <mat-icon>close</mat-icon>
+                                                        </button>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button mat-raised-button extended color="primary" style="top: 25%;"
+                                                        (click)="openNuevoEvento()"
+                                                        matTooltip="Info about the action">Nuevo Evento</button>
+                                                </div>
+                                            </div>
+                                            <table mat-table [dataSource]="dataSource"
+                                                class="mat-elevation-z8 table-evento demo-table"
+                                                style="margin-top: 0px;" #tabla1>
+                                                <ng-container matColumnDef="nombre">
+                                                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                                    <td [title]="evento.nombre" mat-cell *matCellDef="let evento">
+                                                        {{evento.nombre}} </td>
+                                                </ng-container>
+                                                <ng-container matColumnDef="edicion">
+                                                    <th mat-header-cell *matHeaderCellDef> Edición </th>
+                                                    <td [title]="evento.edicion" mat-cell *matCellDef="let evento">
+                                                        {{evento.edicion}}
+                                                    </td>
+                                                </ng-container>
+                                                <ng-container matColumnDef="fecha">
+                                                    <th mat-header-cell *matHeaderCellDef> Fecha</th>
+                                                    <td [title]="evento.fechaInicio" mat-cell *matCellDef="let evento">
+                                                        {{evento.fechaInicio}} </td>
+                                                </ng-container>
+                                                <ng-container matColumnDef="organizador">
+                                                    <th mat-header-cell *matHeaderCellDef> Organizador </th>
+                                                    <td [title]="evento.organizador[0].nombre" mat-cell
+                                                        *matCellDef="let evento">
+                                                        {{evento.organizador[0].nombre}} </td>
+                                                </ng-container>
+                                                <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                                            </table>
+                                            <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
+                                                style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Fecha Fin</mat-label>
-                        <input matInput [matDatepicker]="pickerF" [value]="evento.fechaFin" id="fechaFin" name="fechaFin"
-                            [(ngModel)]="evento.fechaFin" required>
-                        <mat-hint>MM/DD/AAAA</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="pickerF"></mat-datepicker-toggle>
-                        <mat-datepicker #pickerF></mat-datepicker>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Responsable</mat-label>
-                        <input matInput placeholder="Responsable" id="responsable" name="responsable"
-                            [(ngModel)]="evento.responsable" required>
-                    </mat-form-field>
-                </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Organizador</mat-label>
-                        <input matInput placeholder="Organizador" id="organizador" name="organizador"
-                            [(ngModel)]="evento.organizador" required>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                   <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Actividades</mat-label>
-                        <input matInput placeholder="Actividades" value="" id="actividades" name="actividades"
-                            [(ngModel)]="evento.actividades" >
-                    </mat-form-field>
-                </div>
-                
+            </section>
 
-             
-            </div>
-            <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
-                <button type="submit" class="btn btn-primary btn-block" >CREAR
-                </button>
-                <!-- [disabled]="!eventoForm.valid" -->
-            </div>
-        </form>
-        <div class="col-6" *ngIf="actividades">
-            <button mat-raised-button color="accent"  (click)="openDialog()">AGREGAR ACTIVIDADES</button>
-                
-              
+
         </div>
+    </div>
+    <div class="col-6">
+
     </div>
 </div>

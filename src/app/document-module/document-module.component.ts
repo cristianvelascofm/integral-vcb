@@ -50,13 +50,14 @@ export class DocumentModuleComponent implements OnInit {
     this.dataSourceVCB.paginator = this.paginatorVCB;
   }
 
+  
   // Tabla Recepción de Documentos
   columnas: string[] = ['codigo', 'descripcion', 'fecha', 'funcionario'];
   datos: DocumentReception[] = [];
   dataSource: any;
   @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
 
-  // Tabla Documentos VCB
+  // Tabla Documentos VCB°
   columnasVCB: string[] = ['trd', 'asunto', 'fecha', 'funcionario']
   dataSourceVCB: any;
   datosVCB: DocumentVCB[] = [];

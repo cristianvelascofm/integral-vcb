@@ -1,0 +1,113 @@
+<div mat-dialog-title>
+    <div class="header-registro" style="display: flex; align-items: center; justify-content: center; margin: 0px;">
+        <div class="logo_vcb_header">
+            <span class="logo"></span>
+        </div>
+    </div>
+</div>
+<div mat-dialog-content style="width: 100%;">
+    <div class="contenedor" style="display: flex; align-items: center;justify-content: center; height: 80vh;">
+        <div class="login">
+            <h2>CREAR EVENTO</h2>
+            <form (ngSubmit)="crearEvento()" #eventoForm="ngForm">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nombre del Evento</mat-label>
+                            <input matInput placeholder="Evento" id="evento" name="evento" [(ngModel)]="evento.nombre"
+                                required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Edición</mat-label>
+                            <input matInput type="number" placeholder="Número" id="edicion" name="edicion" [(ngModel)]="evento.edicion"
+                                required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Categoría</mat-label>
+                            <mat-select id="categoria" name="categoría" [(ngModel)]="evento.categoria" required>
+                                <mat-option value="academico">Acedémico</mat-option>
+                                <mat-option value="cultural">Cultural</mat-option>
+                                <mat-option value="deporte">Deportes</mat-option>
+                                <mat-option value="salud">Salud</mat-option>
+                                <mat-option value="general">General</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Lugar Realización</mat-label>
+                            <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="evento.lugar" required>
+                        </mat-form-field>
+    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Fecha Inicio</mat-label>
+                            <input matInput [matDatepicker]="picker" [value]="evento.fechaInicio" id="fechaInicio"
+                                name="fechaInicio" [(ngModel)]="evento.fechaInicio" required>
+                            <mat-hint>MM/DD/AAAA</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Fecha Fin</mat-label>
+                            <input matInput [matDatepicker]="pickerF" [value]="evento.fechaFin" id="fechaFin" name="fechaFin"
+                                [(ngModel)]="evento.fechaFin" required>
+                            <mat-hint>MM/DD/AAAA</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="pickerF"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerF></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Responsable</mat-label>
+                            <input matInput placeholder="Responsable" id="responsable" name="responsable"
+                                [(ngModel)]="evento.responsable" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Organizador</mat-label>
+                            <input matInput placeholder="Organizador" id="organizador" name="organizador"
+                                [(ngModel)]="evento.organizador" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                       <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Actividades</mat-label>
+                            <input matInput placeholder="Actividades" value="" id="actividades" name="actividades"
+                                [(ngModel)]="evento.actividades" >
+                        </mat-form-field>
+                    </div>
+                    
+    
+                 
+                </div>
+                <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
+                    <button type="submit" class="btn btn-primary btn-block" >CREAR
+                    </button>
+                    <!-- [disabled]="!eventoForm.valid" -->
+                </div>
+            </form>
+            <div class="col-6" *ngIf="actividades">
+                <button mat-raised-button color="accent"  (click)="openDialog()">AGREGAR ACTIVIDADES</button>
+                    
+                  
+            </div>
+        </div>
+    </div>
+</div>

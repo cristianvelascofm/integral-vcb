@@ -1,3 +1,16 @@
+$document: rgb(64, 51, 182);
+$event: rgb(228, 26, 38);
+$place: rgb(0, 170, 229);
+$budget: rgb(138, 194, 18);
+$config: rgb(175, 175, 175);
+
+$base-color: rgba(64, 51, 182, 0.164);
+$mid-color: rgba(0, 0, 255, 0.164);
+$light-color: rgb(255, 255, 255);
+
+$shadow-color: rgba(0, 0, 0, 0.3);
+$shadow-size: 20px;
+
 #evento{
     text-transform: uppercase;
 }
@@ -13,3 +26,46 @@
 #organizador{
     text-transform: capitalize;
 }
+
+.container-content {
+    display: flex;
+    padding-top: 0px;
+    padding-left: 95px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    width: 100%;
+    height: 95%;
+    // background-color: #286090;
+  }
+
+  .lateral-left {
+    // background-color: red;
+    margin-top: 0px;
+    height: 100%;
+  }
+
+  .table-evento-doc {
+    // background-color: blue!important;
+    height: auto;
+  }
+
+  .example-form-field {
+    width: 100%;
+    background-color: #cccccc00;
+  }
+
+  .document-resume {
+    background-color: rgba(176, 170, 231, 0.11);
+    box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+  }
+
+  .mat-table td:hover {
+    cursor: pointer !important;
+  }
+
+  .table-evento {
+    height: 28vh !important;
+    min-height: 28vh !important;
+    max-height: 28vh !important;
+    width: 100% !important;
+  }
