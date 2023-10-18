@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import axios from 'axios';
 import { MatDialog } from '@angular/material/dialog';
 import { EventoActividadComponent } from '../evento-actividad/evento-actividad.component';
+
 @Component({
   selector: 'app-evento-crear',
   templateUrl: './evento-crear.component.html',
@@ -14,21 +15,23 @@ export class EventoCrearComponent {
   ) { }
   path = 'http://192.168.1.100:5050';
   // path = 'http://192.168.130.79:5050'; #oficina
-
+  selectedTime: string = "12:00";
   evento = {
     nombre: '',
     edicion: '',
-    categoria: 'general', // Establece el valor predeterminado para el género
+    categoria: '', // Establece el valor predeterminado para el género
     lugar: '',
+    descripcion:'',
+    hora: '',
     fechaInicio: '',
     fechaFin: '',
     responsable: '',
-    organizador: '',
+    organizador: {},
     actividades: {},
   };
-  dictSend:any={};
+  dictSend: any = {};
 
-  actividades =false;
+  actividades = false;
 
   crearEvento() {
 
@@ -52,10 +55,12 @@ export class EventoCrearComponent {
       edicion: '',
       categoria: 'general', // Establece el valor predeterminado para el género
       lugar: '',
+      hora: '',
+      descripcion:'', 
       fechaInicio: '',
       fechaFin: '',
       responsable: '',
-      organizador: '',
+      organizador: {},
       actividades: {},
     };
   }
@@ -68,5 +73,15 @@ export class EventoCrearComponent {
     dialogRef.afterClosed().subscribe(res => {
       console.log(res)
     })
+  }
+  onTimeChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedTime = inputElement.value;
+    console.log('Nueva hora seleccionada:', this.selectedTime);
+  }
+
+  nuevaActividad(){}
+  onNoClick(): void {
+    // this.dialogRef.close();
   }
 }

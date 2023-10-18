@@ -14,7 +14,7 @@ export class EventoActividadComponent {
   ngOnInit(){
     
   }
-  selectedTime: string = "12:00";
+  selectedTime: string = "08:00";
 
   onTimeChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;

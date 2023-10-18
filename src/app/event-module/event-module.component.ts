@@ -15,6 +15,7 @@ import axios from 'axios';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable, map, startWith } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { EventoCrearComponent } from '../dialogs/evento-crear/evento-crear.component';
 
 @Component({
   selector: 'app-event-module',
@@ -77,9 +78,10 @@ export class EventModuleComponent {
   actividades = false;
 
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EventoActividadComponent, {
-      width: '550px',
+  openNuevoEvento() {
+    const dialogRef = this.dialog.open(EventoCrearComponent, {
+      width: '650px',
+      // height: '650px'
       // data: 'CONTENIDO'
     });
     dialogRef.afterClosed().subscribe(res => {
@@ -136,9 +138,6 @@ export class EventModuleComponent {
     this.dataSource.filter = this.terminoBusqueda.trim();
   }
 
-  openNuevoEvento() {
-
-  }
 
 }
 

@@ -1,10 +1,10 @@
-<div class="" style="height: 5%; display: flex; align-items: center; justify-content: center;">
+<div class="titulo" style="height: 5%; display: flex; align-items: center; justify-content: center;">
     <h4 class="text-uppercase" style="margin:0px;">Gestión de Eventos</h4>
 </div>
 <div class="row container-content">
 
     <div class="col-6 lateral-left p-0 ">
-        <div class=" document-resume container-fluid">
+        <div class=" evento-resume-tabla container-fluid">
             <section id="resume" class="p-2 mb-1">
                 <div class="col ">
                     <p>Eventos</p>
@@ -32,7 +32,7 @@
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-4">
-                                                    <button mat-raised-button extended color="primary" style="top: 25%;"
+                                                    <button mat-raised-button extended color="primary" style="top: 25%; width: 100%;"
                                                         (click)="openNuevoEvento()"
                                                         matTooltip="Info about the action">Nuevo Evento</button>
                                                 </div>
@@ -77,61 +77,62 @@
             </section>
         </div>
 
-        <div class="document-resume mt-4 container-fluid pb-3">
-            <section id="resume" class="p-2 mb-1">
+        <div class="evento-resume mt-4 container-fluid pb-3">
+            <section id="resume" class="p-1 mb-0">
                 <div class="col ">
                     <p>Detalles del Evento</p>
                 </div>
             </section>
             <section class="evento-resumen">
-                <div class="card crd-reception p-3">
-                        <div class="row">
-                            <h5>EVENTO</h5>
-                            <div class="col-8">
-                                <mat-form-field class="example-form-field">
-                                    <mat-label>Nombre del Evento</mat-label>
-                                    <input matInput placeholder="Evento" id="evento" name="evento" [(ngModel)]="evento.nombre"
-                                        disabled>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-2">
-                                <mat-form-field class="example-form-field">
-                                    <mat-label>Edición</mat-label>
-                                    <input matInput type="number" placeholder="Número" id="edicion" name="edicion"
-                                        [(ngModel)]="evento.edicion" disabled>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-2">
-                                <mat-form-field class="example-form-field">
-                                    <mat-label>Categoría</mat-label>
-                                    <input matInput placeholder="Categoría" id="categoria" name="categoria"
-                                        [(ngModel)]="evento.categoria" disabled>
-                                </mat-form-field>
-                            </div>
+                <div class="card crd-evento p-3">
+                    <div class="row" style=" margin-bottom:-15px;">
+                        <div class="col-7">
+                            <mat-form-field class="example-form-field">
+                                <mat-label>Nombre del Evento</mat-label>
+                                <input matInput placeholder="Evento" id="evento" name="evento"
+                                    [(ngModel)]="evento.nombre" disabled>
+                            </mat-form-field>
                         </div>
-                        <div class="row">
-            
-                            <div class="col-4">
-                                <mat-form-field class="example-form-field">
-                                    <mat-label>Lugar Realización</mat-label>
-                                    <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="evento.lugar" disabled>
-                                </mat-form-field>
-            
-                            </div>
-                            <div class="col-4">
-                                <mat-form-field class="example-form-field"> <mat-label>Fecha</mat-label>
-                                    <input matInput placeholder="Hora" id="fechaInicio" name="fechaInicio"
-                                        [(ngModel)]="evento.fechaInicio" disabled>
-                                    <mat-hint style="color: rgb(167, 164, 164) ;">MM/DD/AAAA</mat-hint>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-4">
-                                <mat-form-field class="example-form-field"> <mat-label>Hora</mat-label>
-                                    <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="evento.hora" disabled>
-                                </mat-form-field>
-                            </div>
+                        <div class="col-2">
+                            <mat-form-field class="example-form-field">
+                                <mat-label>Edición</mat-label>
+                                <input matInput type="number" placeholder="Número" id="edicion" name="edicion"
+                                    [(ngModel)]="evento.edicion" disabled>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-form-field">
+                                <mat-label>Categoría</mat-label>
+                                <input matInput placeholder="Categoría" id="categoria" name="categoria"
+                                    [(ngModel)]="evento.categoria" disabled>
+                            </mat-form-field>
                         </div>
                     </div>
+                    <div class="row" style="">
+
+                        <div class="col-4">
+                            <mat-form-field class="example-form-field">
+                                <mat-label>Lugar Realización</mat-label>
+                                <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="evento.lugar"
+                                    disabled>
+                            </mat-form-field>
+
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field class="example-form-field"> <mat-label>Fecha</mat-label>
+                                <input matInput placeholder="Hora" id="fechaInicio" name="fechaInicio"
+                                    [(ngModel)]="evento.fechaInicio" disabled>
+                                <mat-hint style="color: rgb(167, 164, 164) ;">MM/DD/AAAA</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field class="example-form-field"> <mat-label>Hora</mat-label>
+                                <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="evento.hora"
+                                    disabled>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </div>

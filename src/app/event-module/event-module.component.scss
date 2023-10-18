@@ -11,64 +11,104 @@ $light-color: rgb(255, 255, 255);
 $shadow-color: rgba(0, 0, 0, 0.3);
 $shadow-size: 20px;
 
-#evento{
-    text-transform: uppercase;
-    
+#evento {
+  text-transform: uppercase;
+
 }
 
-#lugar{
-    text-transform: capitalize;
+#lugar {
+  text-transform: capitalize;
 }
 
-#responsable{
-    text-transform: capitalize;
+#responsable {
+  text-transform: capitalize;
 }
 
-#organizador{
-    text-transform: capitalize;
+#organizador {
+  text-transform: capitalize;
+}
+
+.titulo {
+  // background-color: red;
+  width: 100%;
+  height: 1%;
+}
+.contenedor{
+  width: 100%;
+  height: 100%;
+  background-color: red;
 }
 
 .container-content {
-    display: flex;
-    padding-top: 0px;
-    padding-left: 95px;
-    padding-right: 30px;
-    padding-bottom: 0px;
-    width: 100%;
-    height: 95%;
-    // background-color: #286090;
-  }
+  display: flex;
+  padding-top: 0px;
+  padding-left: 95px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+  width: 100%;
+  height: 99% !important;
+  // background-color: #286090;
+}
 
-  .lateral-left {
-    // background-color: red;
-    margin-top: 0px;
-    height: 100%;
-  }
+.lateral-left {
+  // background-color: red;
+  margin-top: 0px;
+  height: 100%;
+  width: 50%;
+}
 
-  .table-evento-doc {
-    // background-color: blue!important;
-    height: auto;
-  }
+.table-evento-doc {
+  // background-color: blue!important;
+  height: auto;
+}
 
-  .example-form-field {
-    width: 100%;
-    background-color: #cccccc00;
-  }
+.example-form-field {
+  width: 100%;
+  background-color: #cccccc00;
+}
 
-  .document-resume {
-    background-color: rgba(176, 170, 231, 0.11);
-    box-shadow: 0 $shadow-size $shadow-size $shadow-color;
-  }
+.evento-resume-tabla {
+  // background-color: rgba(176, 170, 231, 0.11);
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+  // height: 60%;
+  // background-color: blue;
+}
 
-  .mat-table td:hover {
-    cursor: pointer !important;
-  }
+.evento-resume {
+  // background-color: rgba(176, 170, 231, 0.11);
+  box-shadow: 0 $shadow-size $shadow-size $shadow-color;
+  // height: 20vh;
+  // height: 27%;
+  // background-color: red;
+}
 
-  .table-evento {
-    height: 28vh !important;
-    min-height: 28vh !important;
-    max-height: 28vh !important;
-    width: 100% !important;
-  }
+.evento-resumen {
+  // height: 100% !important;
+  width: 100%;
+  // background-color: brown;
+}
 
-  
+.mat-table td:hover {
+  cursor: pointer !important;
+}
+
+
+.example-form-field {
+  height: 65px;
+  padding: 0px;
+  border: 0px;
+  font-size: small;
+
+  input {
+    color: rgb(59, 42, 42);
+    font-weight: 550;
+  }
+}
+
+
+.table-evento {
+  height: 28vh !important;
+  min-height: 28vh !important;
+  max-height: 28vh !important;
+  // width: 100% !important;
+}

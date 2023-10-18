@@ -4,10 +4,10 @@ export interface Evento {
   _id: string;
   nombre: string;
   edicion: number;
+  categoria: string;
   fechaInicio: Date;
   fechaFin: Date;
   horaInicio: string;
-  categoria: string;
   descripcion: string;
   organizador: [{}];
   patrocinador: [{}];

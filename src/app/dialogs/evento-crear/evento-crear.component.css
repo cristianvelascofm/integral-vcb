@@ -1,0 +1,25 @@
+.hora-inicio{
+    /* background-color: red; */
+    height: 100%;
+    width: 100%;
+    border: 0px;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.hora-inicio:focus{
+    border: 0px;
+    outline: none;
+}
+
+.example-full-width{
+    width: 100%;
+}
+
+.logo-evento {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.encabezado{
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.418);
+}
