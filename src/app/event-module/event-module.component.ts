@@ -59,11 +59,12 @@ export class EventModuleComponent {
 
   terminoBusqueda: string = '';
   evento = {
-    nombre: '',
-    edicion: '',
-    categoria: 'general', // Establece el valor predeterminado para el género
-    lugar: '',
-    fechaInicio: '',
+    nombre: 'Popayán Ciudad Libro 2023',
+    edicion: '6',
+    categoria: 'CULTURAL', // Establece el valor predeterminado para el género
+    lugar: 'Claustro Santo Domingo',
+    hora: '05:00 p.m.',
+    fechaInicio: '10/22/2023',
     fecha: '',
     fechaFin: '',
     responsable: '',
@@ -111,10 +112,11 @@ export class EventModuleComponent {
     this.evento = {
       nombre: '',
       edicion: '',
-      categoria: 'general', // Establece el valor predeterminado para el género
+      categoria: 'cultural', // Establece el valor predeterminado para el género
       lugar: '',
       fechaInicio: '',
       fecha: '',
+      hora: '',
       fechaFin: '',
       responsable: '',
       organizador: '',
