@@ -1,0 +1,114 @@
+<div mat-dialog-content>{{msg}}</div>
+<div class="contenedor container-fluid" style="display: flex; align-items: center;justify-content: center; height: auto;">
+    <div class="login">
+        <h2>AGREGAR ACTIVIDADES</h2>
+        <form (ngSubmit)="registrarAsistente()" #registroForm="ngForm">
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombres</mat-label>
+                        <input matInput placeholder="Nombres" id="nombre" name="nombre" [(ngModel)]="asistente.nombre" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput placeholder="Apellidos" id="apellido" name="apellido" [(ngModel)]="asistente.apellido"
+                            required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Género</mat-label>
+                        <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required>
+                            <mat-option value="m">Masculino</mat-option>
+                            <mat-option value="f">Femenino</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" [value]="asistente.fechaNacimiento" id="fechaNacimiento"
+                            name="fechaNacimiento" [(ngModel)]="asistente.fechaNacimiento" required>
+                        <mat-hint>MM/DD/AAAA</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo de Documento</mat-label>
+                        <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="asistente.tipoDocumento" required>
+                            <mat-option value="cedula">Cédula de Ciudadanía</mat-option>
+                            <mat-option value="tarjeta">Tarjeta de Identidad</mat-option>
+                            <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
+                            <mat-option value="pasaporte">Pasaporte</mat-option>
+                            <mat-option value="dni">DNI</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Número de Documento</mat-label>
+                        <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
+                            [(ngModel)]="asistente.numeroDocumento" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput placeholder="Residencia" id="direccion" name="direccion"
+                            [(ngModel)]="asistente.direccion" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Celular</mat-label>
+                        <input matInput placeholder="Número" id="celular" name="celular" [(ngModel)]="asistente.celular"
+                            required>
+                    </mat-form-field>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email" [(ngModel)]="asistente.email">
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Por favor, ingrese una correo válido
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Correo es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Institución</mat-label>
+                        <input matInput placeholder="institucion" value="" id="institucion" name="institucion"
+                            [(ngModel)]="asistente.institucion" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">REGISTRAR
+                </button>
+                <!-- -->
+            </div>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onClickNO()">CANCELAR</button>
+    <button mat-button [mat-dialog-close]="true" (submit)='registroForm'>CREAR</button>
+</div>

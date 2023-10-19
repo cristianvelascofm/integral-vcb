@@ -2,8 +2,8 @@
 <!-- <div class="login_panel">
   <div class="screen">
     <div class="screen_content"> -->
-<div class="padre">
-    <div class="row">
+<div class="padre container-content">
+    <div class="row" style="height: 20%; width: 100%">
         <div class="col-3">
             <div class="header-registro" style="margin: 10px;">
                 <div class="logo_vcb_header">
@@ -13,8 +13,8 @@
 
         </div>
         <div class="col-9">
-            <div class="row">
-                <h5>EVENTO</h5>
+            <div class="row p-2">
+
                 <div class="col-4">
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombre del Evento</mat-label>
@@ -61,13 +61,12 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding: 0px; height: 80%;">
         <div class="col-6">
-            <div class="contenedor" style="margin: 20px;">
+            <div class="contenedor mt-3" style="margin-left: 0px; height: 100%;">
                 <div class="login">
                     <h2>GESTIÓN DE EVENTOS</h2>
                     <h5>ACTIVIDADES DEL EVENTO</h5>
-
                     <div class="row">
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
@@ -79,17 +78,15 @@
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Categoría</mat-label>
-                                <mat-select id="categoria" name="categoría" [(ngModel)]="evento.actividades.categoria"
-                                    disabled>
-                                    <mat-option value="conversatorio">Conversatorio</mat-option>
-                                </mat-select>
+                                <input matInput placeholder="Categoría" id="categoria" name="categoria"
+                                    [(ngModel)]="evento.actividades.categoria" disabled>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
-                                <mat-label>Responsable</mat-label>
+                                <mat-label>Invitado</mat-label>
                                 <input matInput placeholder="Responsable" id="responsable" name="responsable"
                                     [(ngModel)]="evento.responsable" disabled>
                             </mat-form-field>
@@ -102,131 +99,117 @@
                             </mat-form-field>
                         </div>
                     </div>
-
-                    <form (ngSubmit)="crearEvento()" #registroForm="ngForm">
-
-                        <div class="row">
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Nombres</mat-label>
-                                    <input matInput placeholder="Nombres" id="nombre" name="nombre"
-                                        [(ngModel)]="asistente.nombre" required>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Apellidos</mat-label>
-                                    <input matInput placeholder="Apellidos" id="apellido" name="apellido"
-                                        [(ngModel)]="asistente.apellido" required>
-                                </mat-form-field>
-                            </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha</mat-label>
+                                <input matInput placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio"
+                                    [(ngModel)]="evento.actividades.fechaInicio" disabled>
+                            </mat-form-field>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Género</mat-label>
-                                    <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required>
-                                        <mat-option value="m">Masculino</mat-option>
-                                        <mat-option value="f">Femenino</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Fecha de Nacimiento</mat-label>
-                                    <input matInput [matDatepicker]="picker" [value]="asistente.fechaNacimiento"
-                                        id="fechaNacimiento" name="fechaNacimiento"
-                                        [(ngModel)]="asistente.fechaNacimiento" required>
-                                    <mat-hint>MM/DD/AAAA</mat-hint>
-                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
-                            </div>
+                        <div class="col-6">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Hora</mat-label>
+                                <input matInput placeholder="Hora" id="horaInicio" name="horaInicio"
+                                    [(ngModel)]="evento.actividades.horaInicio" disabled>
+                            </mat-form-field>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Tipo de Documento</mat-label>
-                                    <mat-select id="tipo-documento" name="tipo-documento"
-                                        [(ngModel)]="asistente.tipoDocumento" required>
-                                        <mat-option value="cedula">Cédula de Ciudadanía</mat-option>
-                                        <mat-option value="tarjeta">Tarjeta de Identidad</mat-option>
-                                        <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
-                                        <mat-option value="pasaporte">Pasaporte</mat-option>
-                                        <mat-option value="dni">DNI</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Número de Documento</mat-label>
-                                    <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
-                                        [(ngModel)]="asistente.numeroDocumento" required>
-                                </mat-form-field>
-                            </div>
+                    </div>
+                    <div class="row" *ngIf="moderadorActivo">
+                        <div>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Moderador</mat-label>
+                                <input matInput placeholder="Moderador" id="moderador" name="moderador"
+                                    [(ngModel)]="evento.actividades.moderador" disabled>
+                            </mat-form-field>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Dirección</mat-label>
-                                    <input matInput placeholder="Residencia" id="direccion" name="direccion"
-                                        [(ngModel)]="asistente.direccion" required>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Celular</mat-label>
-                                    <input matInput placeholder="Número" id="celular" name="celular"
-                                        [(ngModel)]="asistente.celular" required>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Email</mat-label>
-                                    <input type="email" matInput [formControl]="emailFormControl"
-                                        [errorStateMatcher]="matcher" placeholder="Ej. alguien@unicauca.edu.co"
-                                        id="email" name="email" [(ngModel)]="asistente.email">
-                                    <mat-error
-                                        *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                                        Por favor, ingrese una correo válido
-                                    </mat-error>
-                                    <mat-error *ngIf="emailFormControl.hasError('required')">
-                                        Correo es <strong>requerido</strong>
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6">
-                                <mat-form-field class="example-full-width">
-                                    <mat-label>Institución</mat-label>
-                                    <input matInput placeholder="institucion" value="" id="institucion"
-                                        name="institucion" [(ngModel)]="asistente.institucion" required>
-                                </mat-form-field>
-                            </div>
-                        </div>
+                    </div>
 
 
-
-                        <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
-                            <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid" >REGISTRAR
-                            </button>
-                            <!-- -->
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
         <div class="col-6" style="display: flex; align-items: center; justify-content: center;">
-            <h5>conexion caida</h5>
+            <h5 *ngIf="false">conexion caida</h5>
+            <div class=" evento-resume-tabla container-fluid">
+                <section id="resume" class="p-2 mb-1">
+                    <div class="col ">
+                        <p>ASISTENTES</p>
+                    </div>
+                </section>
+                <section class="table-evento-doc pb-3" style="margin-bottom: 0px;">
+                    <div class="col-12">
+                        <div class="card crd-reception">
+                            <div class="card-content p-0">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-right p-1" style="width: 100%;">
+                                            <div class="">
+                                                <div class="row header-search">
+                                                    <div class="col-8 ">
+                                                        <mat-form-field class="example-form-field" appearance="fill">
+                                                            <mat-label>Buscar Asistente</mat-label>
+                                                            <input matInput (keyup)="applyFilter($event)"
+                                                                [(ngModel)]="terminoBusqueda"
+                                                                placeholder="Ingrese un Valor" #input>
+                                                            <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
+                                                                aria-label="Borrar" (click)="cleanSearchReception()">
+                                                                <mat-icon>close</mat-icon>
+                                                            </button>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button mat-raised-button extended color="primary"
+                                                            style="top: 25%; width: 100%;" (click)="openRegistro()"
+                                                            matTooltip="Info about the action">Nuevo Registro</button>
+                                                    </div>
+                                                </div>
+                                                <table mat-table [dataSource]="dataSource"
+                                                    class="mat-elevation-z8 table-evento demo-table"
+                                                    style="margin-top: 0px;" #tabla1>
+                                                    <ng-container matColumnDef="nombre">
+                                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                                        <td [title]="evento.nombre" mat-cell *matCellDef="let evento">
+                                                            {{evento.nombre}} </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="edicion">
+                                                        <th mat-header-cell *matHeaderCellDef> Edición </th>
+                                                        <td [title]="evento.edicion" mat-cell *matCellDef="let evento">
+                                                            {{evento.edicion}}
+                                                        </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="fecha">
+                                                        <th mat-header-cell *matHeaderCellDef> Fecha</th>
+                                                        <td [title]="evento.fechaInicio" mat-cell
+                                                            *matCellDef="let evento">
+                                                            {{evento.fechaInicio}} </td>
+                                                    </ng-container>
+                                                    <ng-container matColumnDef="organizador">
+                                                        <th mat-header-cell *matHeaderCellDef> Organizador </th>
+                                                        <td [title]="evento.organizador[0].nombre" mat-cell
+                                                            *matCellDef="let evento">
+                                                            {{evento.organizador[0].nombre}} </td>
+                                                    </ng-container>
+                                                    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                                                    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                                                </table>
+                                                <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
+                                                    style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row header-registro" style="margin: 10px;">
+            <div class="logo_vcb_footer">
+                <span class="logo"></span>
+            </div>
         </div>
     </div>
 
-</div>
-
-<div class="header-registro" style="margin: 10px;">
-    <div class="logo_vcb_footer">
-        <span class="logo"></span>
-    </div>
 </div>

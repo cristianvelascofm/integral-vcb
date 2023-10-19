@@ -42,6 +42,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { FeriaComponent } from './feria/feria.component';
 import { DocumentoRecepcionComponent } from './dialogs/documento-recepcion/documento-recepcion.component';
 import { EventoCrearComponent } from './dialogs/evento-crear/evento-crear.component';
+import { RegistarAsistenteComponent } from './dialogs/registar-asistente/registar-asistente.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -64,6 +65,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     FeriaComponent,
     DocumentoRecepcionComponent,
     EventoCrearComponent,
+    RegistarAsistenteComponent,
   ],
   imports: [
     BrowserModule,
