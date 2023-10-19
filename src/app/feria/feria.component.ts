@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EventoActividadComponent } from '../dialogs/evento-actividad/evento-actividad.component';
 import {
@@ -20,29 +20,42 @@ import { RegistarAsistenteComponent } from '../dialogs/registar-asistente/regist
   styleUrls: ['./feria.component.scss']
 })
 export class FeriaComponent {
+  ngOnInit(){
+    console.log('INICIO DEL CARGUE DE EVENTOS');
+    this.dictSend['accion'] = "cargar-evento";
+    this.dictSend['nombre-evento'] = "Popayán Ciudad Libro 2023";
+    axios.post(this.path, this.dictSend).then((response) => {
+      console.log("Respuesta= " + JSON.stringify(response.data));
+      alert('Consulta Realizada');
+      this.evento = response.data;
+      console.log("Nombre Evento: "+typeof(this.evento.actividades));
+
+    })
+  }
   constructor(
     public dialog: MatDialog
   ) { }
 
 
-  path = 'http://192.168.1.100:5050';
-  // path = 'http://192.168.130.79:5050'; #oficina
+  // path = 'http://192.168.1.100:5050';
+  path = 'http://192.168.130.79:5050';
+  //  #oficina
 
-  usuarioLogged= '';
+  usuarioLogged = '';
   moderadorActivo = true;
 
-  ngOnInit() {
 
-    this.dictSend['accion'] = "cargar-actividad";
-    this.dictSend['colaborador'] = this.usuarioLogged;
-    axios.post(this.path, this.dictSend).then((response) => {
-      console.log("Respuesta= " + JSON.stringify(response.data));
-      alert('Consulta Realizada');
-      this.actividades = true;
-      return console.log('EVENTO REGISTRADO CON ÉXITO')
-    })
+  // ngOnInit():void {
 
-  }
+    // this.dictSend['accion'] = "cargar-evento";
+    // this.dictSend['nombre-evento'] = "Popayán Ciudad Libro 2023";
+    // axios.post(this.path, this.dictSend).then((response) => {
+    //   console.log("Respuesta= " + JSON.stringify(response.data));
+    //   alert('Consulta Realizada');
+
+    // })
+
+  // }
   columnas: string[] = ['nombre', 'edicion', 'fecha', 'organizador'];
   datos = [];
   @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
@@ -125,24 +138,24 @@ export class FeriaComponent {
 
 
     // Reiniciar el formulario después de enviarlo
-    this.evento = {
-      nombre: '',
-      edicion: 1,
-      categoria: 'general', // Establece el valor predeterminado para el género
-      lugar: '',
-      fechaInicio: '',
-      fechaFin: '',
-      hora: '',
-      responsable: '',
-      organizador: '',
-      actividades: {
-        nombre: '',
-        categoria: '',
-        fechaInicio: '',
-        horaInicio: '',
-        moderador: '',
-      },
-    };
+    // this.evento = {
+      // nombre: '',
+      // edicion: 1,
+      // categoria: 'general', // Establece el valor predeterminado para el género
+      // lugar: '',
+      // fechaInicio: '',
+      // fechaFin: '',
+      // hora: '',
+      // responsable: '',
+      // organizador: '',
+      // actividades: {
+      //   nombre: '',
+      //   categoria: '',
+      //   fechaInicio: '',
+      //   horaInicio: '',
+      //   moderador: '',
+      // },
+    // };
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

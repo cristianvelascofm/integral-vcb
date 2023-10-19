@@ -13,38 +13,63 @@
 
 }
 
-#categoria{
+#categoria {
   text-transform: uppercase;
 }
 
 .container-content {
-  padding-top: 0px;
+  padding-top: 15px;
   padding-left: 95px;
   padding-right: 30px;
   padding-bottom: 0px;
   width: 100%;
   height: 99% !important;
+
   // background-color: #286090;
 }
 
 
 
-.logo_vcb_footer {
-  display: flex;
-  // background-color: red;
-  align-items: center;
-  justify-content: center;
-  background-image: url('../../assets/images/Logos-Popayán-horizontal-piezas-redes-sociales-Ciudad-Libro-2023.png');
-  background-size: 50%;
+.logo_vcb_footer_1 {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  background-image: url('../../assets/images/Logos-PCL-horizontal-para-pagina-web.png');
+  background-size: 60%;
   background-position: center;
   /* background-position-x: 36px; */
   background-repeat: no-repeat;
-  height: 97px;
+  height: 60px;
   width: 100%;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   /* border-bottom: solid 2px black; */
 
 }
+
+.footer1 {
+  width: 100%;
+}
+
+.footer2 {
+  width: 100%;
+}
+
+.logo_vcb_footer_2 {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  background-image: url('../../assets/images/Logos-PCL-horizontal-para-pagina-web2.png');
+  background-size: 60%;
+  background-position: center;
+  /* background-position-x: 36px; */
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 100%;
+  // margin-bottom: 10px;
+  /* border-bottom: solid 2px black; */
+
+}
+
 
 #evento {
   text-transform: uppercase;
@@ -75,7 +100,7 @@
   }
 }
 
-.example-form-field{
+.example-form-field {
   width: 100%;
   height: 65px;
   padding: 0px;
