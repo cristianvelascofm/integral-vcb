@@ -66,8 +66,8 @@ export interface Evento {
 export class EventService {
   static datos: Evento[];
   constructor() { }
-  private path = 'http://192.168.1.100:5050';
-  //  path = 'http://192.168.130.79:5050';
+  // private path = 'http://192.168.1.100:5050';
+  path = 'http://192.168.130.79:5050';
 
 
   // CARGAR EVENTO POR NOMBRE 

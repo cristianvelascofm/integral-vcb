@@ -24,13 +24,20 @@ export class FeriaComponent implements OnInit {
 
   ngOnInit() {
     const nombreEvento = 'Popayán Ciudad Libro 2023'; // Nombre del evento que deseas cargar
-    const usuario = 'cfvelasco'
+    const usuario = 'sfajardo'
     this.eventService.cargarEvento(nombreEvento, usuario)
       .then(evento => {
         this.evento = evento;
-        console.log('Evento cargado:', this.evento);
+        if ('Error' in this.evento) {
+          this.actividadesActivas = false;
+        } else {
+          this.actividadesActivas = true;
+          console.log('Evento cargado:', this.evento);
+        }
+
       })
       .catch(error => {
+        this.actividadesActivas = false;
         console.error('Error al cargar el evento:', error);
       });
   }
@@ -39,10 +46,10 @@ export class FeriaComponent implements OnInit {
   ) { }
 
 
-  path = 'http://192.168.1.100:5050';
-  // path = 'http://192.168.130.79:5050';
+  // path = 'http://192.168.1.100:5050';
+  path = 'http://192.168.130.79:5050';
   //  #oficina
-
+  actividadesActivas = false;
   usuarioLogged = '';
   moderadorActivo = true;
   evento: Evento = {
