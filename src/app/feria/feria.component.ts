@@ -13,47 +13,109 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import axios from 'axios';
 import { MatPaginator } from '@angular/material/paginator';
 import { RegistarAsistenteComponent } from '../dialogs/registar-asistente/registar-asistente.component';
+import { Evento, EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-feria',
   templateUrl: './feria.component.html',
   styleUrls: ['./feria.component.scss']
 })
-export class FeriaComponent {
-  ngOnInit(){
-    console.log('INICIO DEL CARGUE DE EVENTOS');
-    this.dictSend['accion'] = "cargar-evento";
-    this.dictSend['nombre-evento'] = "Popayán Ciudad Libro 2023";
-    axios.post(this.path, this.dictSend).then((response) => {
-      console.log("Respuesta= " + JSON.stringify(response.data));
-      alert('Consulta Realizada');
-      this.evento = response.data;
-      console.log("Nombre Evento: "+typeof(this.evento.actividades));
+export class FeriaComponent implements OnInit {
 
-    })
+  ngOnInit() {
+    const nombreEvento = 'Popayán Ciudad Libro 2023'; // Nombre del evento que deseas cargar
+    const usuario = 'cfvelasco'
+    this.eventService.cargarEvento(nombreEvento, usuario)
+      .then(evento => {
+        this.evento = evento;
+        console.log('Evento cargado:', this.evento);
+      })
+      .catch(error => {
+        console.error('Error al cargar el evento:', error);
+      });
   }
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog, private eventService: EventService
   ) { }
 
 
-  // path = 'http://192.168.1.100:5050';
-  path = 'http://192.168.130.79:5050';
+  path = 'http://192.168.1.100:5050';
+  // path = 'http://192.168.130.79:5050';
   //  #oficina
 
   usuarioLogged = '';
   moderadorActivo = true;
-
+  evento: Evento = {
+    id: '',
+    nombre: '',
+    edicion: 0,
+    categoria: '',
+    lugar: '',
+    descripcion: '',
+    fechaInicio: '',
+    fechaFin: '',
+    horaInicio: '',
+    estado: '',
+    organizadores: [{
+      nombre: "",
+      apellido: "",
+      cargo: "",
+      email: "",
+      entidad: "",
+      tipoIdentificacion: "",
+      identificacion: "",
+      correo: "",
+      direccion: "",
+      telefono: "",
+      sitioWeb: "",
+    }], // Propiedad opcional
+    aliados: [{
+      nombre: '',
+    }],
+    apoyos: [{
+      nombre: ''
+    }], // Propiedad opcional
+    patrocinadores: [{
+      nombre: ''
+    }], // Propiedad opcional
+    actividades: [{
+      nombre: '',
+      fechaInicio: '',
+      fechaFin: '',
+      horaInicio: '',
+      horaFin: '',
+      lugar: '',
+      tipo: '',
+      descripcion: '',
+      invitados: [{
+        nombre: ''
+      }],
+      asistentes: [{
+        nombre: ''
+      }],
+      moderadores: [{
+        nombre: ''
+      }],
+      apoyos: [{
+        nombre: ''
+      }],
+      souvenir: [],
+      registrador: [{
+        nombre: '',
+        usuario: ''
+      }]
+    }],
+  };
 
   // ngOnInit():void {
 
-    // this.dictSend['accion'] = "cargar-evento";
-    // this.dictSend['nombre-evento'] = "Popayán Ciudad Libro 2023";
-    // axios.post(this.path, this.dictSend).then((response) => {
-    //   console.log("Respuesta= " + JSON.stringify(response.data));
-    //   alert('Consulta Realizada');
+  // this.dictSend['accion'] = "cargar-evento";
+  // this.dictSend['nombre-evento'] = "Popayán Ciudad Libro 2023";
+  // axios.post(this.path, this.dictSend).then((response) => {
+  //   console.log("Respuesta= " + JSON.stringify(response.data));
+  //   alert('Consulta Realizada');
 
-    // })
+  // })
 
   // }
   columnas: string[] = ['nombre', 'edicion', 'fecha', 'organizador'];
@@ -85,24 +147,24 @@ export class FeriaComponent {
   hide = true;
 
 
-  evento = {
-    nombre: 'POPAYÁN CIUDAD LIBRO 2023',
-    edicion: 6,
-    categoria: 'Cultural', // Establece el valor predeterminado para el género
-    lugar: 'Claustro de Santo Domingo - Universidad del Cauca',
-    fechaInicio: '10-22-2023',
-    fechaFin: '',
-    hora: '05:00 P.M.',
-    responsable: 'JORGE VELOSA',
-    organizador: '',
-    actividades: {
-      nombre: 'En Verso y En Prosa Con Velosa',
-      categoria: 'Conversatorio',
-      fechaInicio: '22-10-2023',
-      horaInicio: '05:00 P.M.',
-      moderador: 'Carlos Humberto Zapata',
-    },
-  };
+  // evento = {
+  //   nombre: 'POPAYÁN CIUDAD LIBRO 2023',
+  //   edicion: 6,
+  //   categoria: 'Cultural', // Establece el valor predeterminado para el género
+  //   lugar: 'Claustro de Santo Domingo - Universidad del Cauca',
+  //   fechaInicio: '10-22-2023',
+  //   fechaFin: '',
+  //   hora: '05:00 P.M.',
+  //   responsable: 'JORGE VELOSA',
+  //   organizador: '',
+  //   actividades: {
+  //     nombre: 'En Verso y En Prosa Con Velosa',
+  //     categoria: 'Conversatorio',
+  //     fechaInicio: '22-10-2023',
+  //     horaInicio: '05:00 P.M.',
+  //     moderador: 'Carlos Humberto Zapata',
+  //   },
+  // };
 
   dictSend: any = {};
 
@@ -139,22 +201,22 @@ export class FeriaComponent {
 
     // Reiniciar el formulario después de enviarlo
     // this.evento = {
-      // nombre: '',
-      // edicion: 1,
-      // categoria: 'general', // Establece el valor predeterminado para el género
-      // lugar: '',
-      // fechaInicio: '',
-      // fechaFin: '',
-      // hora: '',
-      // responsable: '',
-      // organizador: '',
-      // actividades: {
-      //   nombre: '',
-      //   categoria: '',
-      //   fechaInicio: '',
-      //   horaInicio: '',
-      //   moderador: '',
-      // },
+    // nombre: '',
+    // edicion: 1,
+    // categoria: 'general', // Establece el valor predeterminado para el género
+    // lugar: '',
+    // fechaInicio: '',
+    // fechaFin: '',
+    // hora: '',
+    // responsable: '',
+    // organizador: '',
+    // actividades: {
+    //   nombre: '',
+    //   categoria: '',
+    //   fechaInicio: '',
+    //   horaInicio: '',
+    //   moderador: '',
+    // },
     // };
   }
   applyFilter(event: Event) {

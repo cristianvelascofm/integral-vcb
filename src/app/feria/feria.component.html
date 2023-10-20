@@ -1,5 +1,5 @@
 <div class="padre container-content">
-    <div class="row" style="height: 20%; width: 100%;   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
+    <div class="row mt-2" style="height: 20%; width: 100%;   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
         <div class="col-3">
             <div class="header-registro" style="margin: 10px;">
                 <div class="logo_vcb_header">
@@ -44,54 +44,57 @@
                 </div>
                 <div class="col-4">
                     <mat-form-field class="example-full-width"> <mat-label>Fecha</mat-label>
-                        <input matInput placeholder="Hora" id="fechaInicio" name="fechaInicio"
+                        <input matInput placeholder="Fecha" id="fechaInicio" name="fechaInicio"
                             [(ngModel)]="evento.fechaInicio" disabled>
-                        <mat-hint>MM/DD/AAAA</mat-hint>
+                        <mat-hint>dd/mm/aaaa</mat-hint>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field class="example-full-width"> <mat-label>Hora</mat-label>
-                        <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="evento.hora" disabled>
+                        <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="evento.horaInicio"
+                            disabled>
                     </mat-form-field>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row" style="padding: 0px; height: 80%;width: 100%;">
+    <div class="row" style="padding: 0px; height: 75%;width: 100%;">
         <div class="col-6 mt-3" style="height: 80%;    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
             <div class="contenedor mt-3" style="margin-left: 0px; height: 100%;">
                 <div class="login">
                     <h2>GESTIÓN DE EVENTOS</h2>
                     <h5>DETALLES ACTIVIDAD</h5>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Actividad</mat-label>
                                 <input matInput placeholder="Actividad" id="evento" name="evento"
-                                    [(ngModel)]="evento.actividades.nombre" disabled>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-6">
-                            <mat-form-field class="example-full-width">
-                                <mat-label>Categoría</mat-label>
-                                <input matInput placeholder="Categoría" id="categoria" name="categoria"
-                                    [(ngModel)]="evento.actividades.categoria" disabled>
+                                    [(ngModel)]="evento.actividades[0].nombre" disabled>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
+                                <mat-label>Categoría</mat-label>
+                                <input matInput placeholder="Categoría" id="categoria" name="categoria"
+                                    [(ngModel)]="evento.actividades[0].tipo" disabled>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" *ngIf="evento.actividades[0].invitados">
+                            <mat-form-field class="example-full-width">
                                 <mat-label>Invitado</mat-label>
                                 <input matInput placeholder="Responsable" id="responsable" name="responsable"
-                                    [(ngModel)]="evento.responsable" disabled>
+                                    [(ngModel)]="evento.actividades[0].invitados[0].nombre" disabled>
                             </mat-form-field>
                         </div>
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Lugar Realización</mat-label>
-                                <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="evento.lugar"
-                                    disabled>
+                                <input matInput placeholder="Lugar" id="lugar" name="lugar"
+                                    [(ngModel)]="evento.actividades[0].lugar" disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -100,23 +103,24 @@
                             <mat-form-field class="example-full-width">
                                 <mat-label>Fecha</mat-label>
                                 <input matInput placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio"
-                                    [(ngModel)]="evento.actividades.fechaInicio" disabled>
+                                    [(ngModel)]="evento.actividades[0].fechaInicio" disabled>
+                                <mat-hint>dd/mm/aaaa</mat-hint>
                             </mat-form-field>
                         </div>
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Hora</mat-label>
                                 <input matInput placeholder="Hora" id="horaInicio" name="horaInicio"
-                                    [(ngModel)]="evento.actividades.horaInicio" disabled>
+                                    [(ngModel)]="evento.actividades[0].horaInicio" disabled>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row" *ngIf="moderadorActivo">
-                        <div>
+                        <div *ngIf=" evento.actividades[0].moderadores">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Moderador</mat-label>
                                 <input matInput placeholder="Moderador" id="moderador" name="moderador"
-                                    [(ngModel)]="evento.actividades.moderador" disabled>
+                                    [(ngModel)]="evento.actividades[0].moderadores[0].nombre" disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -136,64 +140,59 @@
                 </section>
                 <section class="table-evento-doc pb-3" style="margin-bottom: 0px;">
                     <div class="col-12">
-                        <div class="card crd-reception">
-                            <div class="card-content p-0">
-                                <div class="card-body">
-                                    <div class="media d-flex">
-                                        <div class="media-body text-right p-1" style="width: 100%;">
-                                            <div class="">
-                                                <div class="row header-search">
-                                                    <div class="col-8 ">
-                                                        <mat-form-field class="example-form-field" appearance="fill">
-                                                            <mat-label>Buscar Asistente</mat-label>
-                                                            <input matInput (keyup)="applyFilter($event)"
-                                                                [(ngModel)]="terminoBusqueda"
-                                                                placeholder="Ingrese un Valor" #input>
-                                                            <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
-                                                                aria-label="Borrar" (click)="cleanSearchReception()">
-                                                                <mat-icon>close</mat-icon>
-                                                            </button>
-                                                        </mat-form-field>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <button mat-raised-button extended color="primary"
-                                                            style="top: 25%; width: 100%;" (click)="openRegistro()"
-                                                            matTooltip="Info about the action">Nuevo Registro</button>
-                                                    </div>
-                                                </div>
-                                                <table mat-table [dataSource]="dataSource"
-                                                    class="mat-elevation-z8 table-evento demo-table"
-                                                    style="margin-top: 0px;" #tabla1>
-                                                    <ng-container matColumnDef="nombre">
-                                                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                                                        <td [title]="evento.nombre" mat-cell *matCellDef="let evento">
-                                                            {{evento.nombre}} </td>
-                                                    </ng-container>
-                                                    <ng-container matColumnDef="edicion">
-                                                        <th mat-header-cell *matHeaderCellDef> Edición </th>
-                                                        <td [title]="evento.edicion" mat-cell *matCellDef="let evento">
-                                                            {{evento.edicion}}
-                                                        </td>
-                                                    </ng-container>
-                                                    <ng-container matColumnDef="fecha">
-                                                        <th mat-header-cell *matHeaderCellDef> Fecha</th>
-                                                        <td [title]="evento.fechaInicio" mat-cell
-                                                            *matCellDef="let evento">
-                                                            {{evento.fechaInicio}} </td>
-                                                    </ng-container>
-                                                    <ng-container matColumnDef="organizador">
-                                                        <th mat-header-cell *matHeaderCellDef> Organizador </th>
-                                                        <td [title]="evento.organizador[0].nombre" mat-cell
-                                                            *matCellDef="let evento">
-                                                            {{evento.organizador[0].nombre}} </td>
-                                                    </ng-container>
-                                                    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-                                                    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
-                                                </table>
-                                                <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
-                                                    style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
+                        <div class="card-content p-0">
+                            <div class="media d-flex">
+                                <div class="media-body text-right p-1" style="width: 100%;">
+                                    <div class="">
+                                        <div class="row header-search">
+                                            <div class="col-8 ">
+                                                <mat-form-field class="example-form-field" appearance="fill">
+                                                    <mat-label>Buscar Asistente</mat-label>
+                                                    <input matInput (keyup)="applyFilter($event)"
+                                                        [(ngModel)]="terminoBusqueda" placeholder="Ingrese un Valor"
+                                                        #input>
+                                                    <button *ngIf="terminoBusqueda" matSuffix mat-icon-button
+                                                        aria-label="Borrar" (click)="cleanSearchReception()">
+                                                        <mat-icon>close</mat-icon>
+                                                    </button>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-4">
+                                                <button mat-raised-button extended color="primary" style="width: 100%;"
+                                                    (click)="openRegistro()" matTooltip="Info about the action">Nuevo
+                                                    Registro</button>
                                             </div>
                                         </div>
+                                        <table mat-table [dataSource]="dataSource"
+                                            class="mat-elevation-z8 table-evento demo-table mt-2"
+                                            style="margin-top: 0px;" #tabla1>
+                                            <ng-container matColumnDef="nombre">
+                                                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                                <td [title]="evento.nombre" mat-cell *matCellDef="let evento">
+                                                    {{evento.nombre}} </td>
+                                            </ng-container>
+                                            <ng-container matColumnDef="edicion">
+                                                <th mat-header-cell *matHeaderCellDef> Edición </th>
+                                                <td [title]="evento.edicion" mat-cell *matCellDef="let evento">
+                                                    {{evento.edicion}}
+                                                </td>
+                                            </ng-container>
+                                            <ng-container matColumnDef="fecha">
+                                                <th mat-header-cell *matHeaderCellDef> Fecha</th>
+                                                <td [title]="evento.fechaInicio" mat-cell *matCellDef="let evento">
+                                                    {{evento.fechaInicio}} </td>
+                                            </ng-container>
+                                            <ng-container matColumnDef="organizador">
+                                                <th mat-header-cell *matHeaderCellDef> Organizador </th>
+                                                <td [title]="evento.organizador[0].nombre" mat-cell
+                                                    *matCellDef="let evento">
+                                                    {{evento.organizador[0].nombre}} </td>
+                                            </ng-container>
+                                            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                                        </table>
+                                        <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
+                                            style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
                                     </div>
                                 </div>
                             </div>
