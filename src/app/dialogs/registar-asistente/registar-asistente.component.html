@@ -32,7 +32,7 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Número de Documento</mat-label>
                         <input matInput placeholder="Número" id="numero-documento" name="numero-documento" (keydown.enter)="onEnter($event)"
-                            [(ngModel)]="asistente.numeroDocumento" required>
+                            [(ngModel)]="documento" required>
                     </mat-form-field>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombres</mat-label>
-                        <input matInput placeholder="Nombres" id="nombre" name="nombre" [(ngModel)]="asistente.nombre"
+                        <input matInput placeholder="Nombres" id="nombre" name="nombre" [(ngModel)]="nombreCompleto"
                             required>
                     </mat-form-field>
                 </div>
@@ -48,7 +48,7 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Apellidos</mat-label>
                         <input matInput placeholder="Apellidos" id="apellido" name="apellido"
-                            [(ngModel)]="asistente.apellido" required>
+                            [(ngModel)]="apellidoCompleto" required>
                     </mat-form-field>
                 </div>
             </div>
@@ -57,8 +57,8 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Género</mat-label>
                         <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required>
-                            <mat-option value="m">Masculino</mat-option>
-                            <mat-option value="f">Femenino</mat-option>
+                            <mat-option value="M">Masculino</mat-option>
+                            <mat-option value="F">Femenino</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Celular</mat-label>
-                        <input matInput placeholder="Número" id="celular" name="celular" [(ngModel)]="asistente.celular"
+                        <input matInput placeholder="Número" id="celular" name="celular" [(ngModel)]="asistente.telefono"
                             required>
                     </mat-form-field>
                 </div>
@@ -98,7 +98,7 @@
                         <mat-label>Email</mat-label>
                         <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                             placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email"
-                            [(ngModel)]="asistente.email">
+                            [(ngModel)]="asistente.emailPersonal">
                         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                             Por favor, ingrese una correo válido
                         </mat-error>
