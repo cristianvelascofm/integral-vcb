@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import axios from 'axios';
+import { environment } from '../config/config';
 
 @Component({
   selector: 'app-login-panel',
@@ -19,7 +20,9 @@ import axios from 'axios';
 })
 export class LoginPanelComponent {
 
-
+constructor(){
+  this.path = environment.apiBaseUrl;
+}
   // En el componente LoginPanel
   @Output() usuarioEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() contrasenaEvent: EventEmitter<string> = new EventEmitter<string>();
@@ -31,7 +34,7 @@ export class LoginPanelComponent {
     items: {} // Inicializa items como un objeto vacío
   };
 
-  path = 'http://192.168.1.100:5050';
+  path: string;
   // path = 'http://192.168.130.79:5050'; #oficina
   respuestaJson: any = {};
   login() {

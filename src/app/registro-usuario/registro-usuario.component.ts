@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import axios from 'axios';
+import { environment } from '../config/config';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -17,7 +18,10 @@ import axios from 'axios';
 })
 export class RegistroUsuarioComponent {
 
-  path = 'http://192.168.1.100:5050';
+  constructor(private elementRef: ElementRef) {
+    this.path = environment.apiBaseUrl;
+  }
+  path: string;
   // path = 'http://192.168.130.79:5050'; #oficina
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -44,7 +48,7 @@ export class RegistroUsuarioComponent {
   };
 
   hide = true;
-  constructor(private elementRef: ElementRef) { }
+
 
   focusConfirmar(): void {
     const confirmarInput: HTMLElement = this.elementRef.nativeElement.querySelector('#repetirContrasena');

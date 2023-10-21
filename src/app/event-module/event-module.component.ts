@@ -16,6 +16,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Observable, map, startWith } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { EventoCrearComponent } from '../dialogs/evento-crear/evento-crear.component';
+import { environment } from '../config/config';
 
 @Component({
   selector: 'app-event-module',
@@ -24,7 +25,9 @@ import { EventoCrearComponent } from '../dialogs/evento-crear/evento-crear.compo
 })
 export class EventModuleComponent {
 
-  constructor(public dialog: MatDialog, private eventService: EventService) { }
+  constructor(public dialog: MatDialog, private eventService: EventService) {
+    this.path = environment.apiBaseUrl;
+  }
   ngOnInit() {
     this.actualizarFechaHora();
     setInterval(() => {
@@ -46,7 +49,7 @@ export class EventModuleComponent {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  path = 'http://192.168.1.100:5050';
+  path: string;
   // path = 'http://192.168.130.79:5050'; #oficina
   filteredOptions: Observable<string[]> | undefined
   mControl = new FormControl('');

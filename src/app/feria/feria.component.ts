@@ -14,7 +14,7 @@ import axios from 'axios';
 import { MatPaginator } from '@angular/material/paginator';
 import { RegistarAsistenteComponent } from '../dialogs/registar-asistente/registar-asistente.component';
 import { Evento, EventService } from '../services/event.service';
-
+import { environment } from '../config/config';
 @Component({
   selector: 'app-feria',
   templateUrl: './feria.component.html',
@@ -43,11 +43,11 @@ export class FeriaComponent implements OnInit {
   }
   constructor(
     public dialog: MatDialog, private eventService: EventService
-  ) { }
+  ) {
+    this.path = environment.apiBaseUrl;
+  }
 
-
-  // path = 'http://192.168.1.100:5050';
-  path = 'http://192.168.130.79:5050';
+  path: string;
   //  #oficina
   actividadesActivas = false;
   usuarioLogged = '';
@@ -181,6 +181,7 @@ export class FeriaComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(EventoActividadComponent, {
+      disableClose: true,
       width: '550px',
       // data: 'CONTENIDO'
     });
@@ -239,6 +240,7 @@ export class FeriaComponent implements OnInit {
   }
   openRegistro() {
     const dialogRef = this.dialog.open(RegistarAsistenteComponent, {
+      disableClose: true,
       width: '650px',
       // height: '650px'
       // data: 'CONTENIDO'

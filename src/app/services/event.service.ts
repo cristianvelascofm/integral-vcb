@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { environment } from '../config/config';
 interface Actividad {
   nombre: string;
   fechaInicio: string;
@@ -65,11 +66,11 @@ export interface Evento {
 })
 export class EventService {
   static datos: Evento[];
-  constructor() { }
-  // private path = 'http://192.168.1.100:5050';
-  path = 'http://192.168.130.79:5050';
+  constructor() {
+    this.path= environment.apiBaseUrl
+   }
 
-
+  path: string;
   // CARGAR EVENTO POR NOMBRE 
   cargarEvento(nombreEvento: string, usuarioRegistrador: string): Promise<Evento> {
     const dictSend = {

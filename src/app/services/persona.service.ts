@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 // import { Persona } from '../model/Persona'; // Asegúrate de tener la ruta correcta hacia tu clase Persona
 import axios from 'axios';
+import { environment } from '../config/config';
 export interface Persona {
   identificacion?: string;
   tipoDocumento?: string;
@@ -55,10 +56,13 @@ export interface Asistente extends Estudiante {
   providedIn: 'root'
 })
 export class PersonaService {
+
+  constructor() {
+    this.path = environment.apiBaseUrl;
+  }
   private personas: Persona[] = [];
-  // private path = 'http://192.168.1.100:5050';
-  path = 'http://192.168.130.79:5050';
-  
+  path: string;
+
   // BUSCAR ESTUDIANTE POR ID
   async obtenerEstudianteId(identificacion: string) {
     const dictSend = {
@@ -72,7 +76,19 @@ export class PersonaService {
       throw error;
     }
   }
-
+  async registrarAsistente(asistente: Asistente) {
+    const dictSend = {
+      accion: 'registrar-asistente',
+      items: asistente,
+      id: asistente.identificacion
+    };
+    try {
+      const response = await axios.post(this.path, dictSend);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   // Método para agregar una nueva persona
   agregarPersona(persona: Persona): void {

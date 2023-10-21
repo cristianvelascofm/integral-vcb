@@ -43,6 +43,7 @@ import { FeriaComponent } from './feria/feria.component';
 import { DocumentoRecepcionComponent } from './dialogs/documento-recepcion/documento-recepcion.component';
 import { EventoCrearComponent } from './dialogs/evento-crear/evento-crear.component';
 import { RegistarAsistenteComponent } from './dialogs/registar-asistente/registar-asistente.component';
+import { DatePipe } from '@angular/common';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -66,6 +67,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     DocumentoRecepcionComponent,
     EventoCrearComponent,
     RegistarAsistenteComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,10 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     NgbModule,
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    DatePipe
+  ],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
