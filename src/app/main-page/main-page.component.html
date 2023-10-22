@@ -37,7 +37,7 @@
 
 
 	<div class="login" *ngIf="!logged">
-		<app-login-panel (usuarioEvent)=processLogin($event)></app-login-panel>
+		<app-login-panel (usuarioLoggeado)=processLogin($event)></app-login-panel>
 	</div>
 
 

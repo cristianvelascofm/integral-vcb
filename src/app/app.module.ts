@@ -95,7 +95,9 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     BrowserAnimationsModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    MainPageComponent,
+    FeriaComponent
   ],
   bootstrap: [AppComponent],
 

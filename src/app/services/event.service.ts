@@ -76,7 +76,8 @@ export class EventService {
     const dictSend = {
       accion: 'cargar-evento',
       'nombre-evento': nombreEvento,
-      'usuario': usuarioRegistrador
+      'usuario': usuarioRegistrador,
+      'actividad':'Entrega de Reconocimientos y Apertura de Popayán Ciudad Libro 2023'
     };
     return axios.post(this.path, dictSend)
       .then(response => {

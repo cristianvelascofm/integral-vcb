@@ -25,7 +25,7 @@ constructor(){
 }
   // En el componente LoginPanel
   @Output() usuarioEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() contrasenaEvent: EventEmitter<string> = new EventEmitter<string>();
+  @Output() usuarioLoggeado: EventEmitter<string> = new EventEmitter<string>();
 
   usuario = '';
   contrasena = '';
@@ -48,7 +48,7 @@ constructor(){
 
 
       // Aquí puedes agregar la lógica para enviar los datos de registro al servidor
-      console.log('EVENTO A REGISTRAR:', this.dictSend);
+      // console.log('EVENTO A REGISTRAR:', this.dictSend);
 
       axios.post(this.path, this.dictSend).then((response) => {
         this.respuestaJson = JSON.stringify(response.data)
@@ -60,6 +60,7 @@ constructor(){
         } else {
           alert('Bienvenido!')
           this.usuarioEvent.emit(true);
+          this.usuarioLoggeado.emit(this.usuario)
         }
 
         // return console.log('LOGGED')

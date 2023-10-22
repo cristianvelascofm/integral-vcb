@@ -12,7 +12,6 @@
 <div class="contenedor container-fluid"
     style="display: flex; align-items: center;justify-content: center; height: auto;">
     <div class="login">
-
         <form (ngSubmit)="registrarAsistente()" #registroForm="ngForm" id="registro_asistencia">
             <div class="row">
                 <div class="col-6">
@@ -32,7 +31,8 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Número de Documento</mat-label>
                         <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
-                            (keydown.enter)="onEnter($event)" [(ngModel)]="documento" (ngModelChange)="checkNumeroDocumento()" required>
+                            (keydown.enter)="onEnter($event)" [(ngModel)]="documento"
+                            (ngModelChange)="checkNumeroDocumento()" required>
                     </mat-form-field>
                 </div>
             </div>
@@ -40,14 +40,14 @@
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombres</mat-label>
-                        <input matInput placeholder="Nombres" id="nombre" name="nombre" [(ngModel)]="nombreCompleto"
+                        <input matInput placeholder="Nombres" id="nombre" name="nombre" class="intpus-mayusculas" [(ngModel)]="nombreCompleto"
                             required>
                     </mat-form-field>
                 </div>
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Apellidos</mat-label>
-                        <input matInput placeholder="Apellidos" id="apellido" name="apellido"
+                        <input matInput placeholder="Apellidos" id="apellido"  class="intpus-mayusculas" name="apellido"
                             [(ngModel)]="apellidoCompleto" required>
                     </mat-form-field>
                 </div>
@@ -65,8 +65,8 @@
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Fecha de Nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker" [value]="asistente.fechaNacimiento"
-                            id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="asistente.fechaNacimiento"
+                        <input matInput [matDatepicker]="picker" [value]="fechaFormadetaNacimiento"
+                            id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaFormadetaNacimiento"
                             required>
                         <mat-hint>MM/DD/AAAA</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -74,12 +74,27 @@
                     </mat-form-field>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email" class="intpus-minusculas"
+                            [(ngModel)]="asistente.emailPersonal">
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Por favor, ingrese una correo válido
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Correo es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Dirección</mat-label>
-                        <input matInput placeholder="Residencia" id="direccion" name="direccion"
+                        <input matInput placeholder="Ciudad, Procedencia, Dirección" id="direccion" class="intpus-mayusculas" name="direccion"
                             [(ngModel)]="asistente.direccion" required>
                     </mat-form-field>
                 </div>
@@ -91,30 +106,12 @@
                     </mat-form-field>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Email</mat-label>
-                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                            placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email"
-                            [(ngModel)]="asistente.emailPersonal">
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                            Por favor, ingrese una correo válido
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                            Correo es <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-            </div>
-
             <div class="row">
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Tipo Institución</mat-label>
-                        <mat-select id="tipo-institucion" name="tipo-institucion" [(ngModel)]="institucion" (ngModelChange)="institucionControl()">
+                        <mat-select id="tipo-institucion" name="tipo-institucion" [(ngModel)]="institucion"
+                            (ngModelChange)="institucionControl()" required>
                             <mat-option value="ninguna">Niunguna</mat-option>
                             <mat-option value="universidad">Universidad</mat-option>
                             <mat-option value="colegio">Colegio - I.E.</mat-option>
@@ -125,25 +122,31 @@
                 <div class="col-6" *ngIf="controlInstitucion">
                     <mat-form-field class="example-full-width">
                         <mat-label>Institución</mat-label>
-                        <input matInput placeholder="institucion" id="institucion" name="institucion"
-                            [(ngModel)]="asistente.institucion">
+                        <input matInput placeholder="institucion" id="institucion" name="institucion" class="intpus-mayusculas"
+                            [(ngModel)]="asistente.institucion" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-6" *ngIf="controlColegio">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Colegio</mat-label>
+                        <input matInput placeholder="institucion" id="institucion" name="institucion" class="intpus-mayusculas"
+                            [(ngModel)]="asistente.institucion" required>
                     </mat-form-field>
                 </div>
             </div>
-
             <div class="row" *ngIf="controlInstitucion">
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
-                        <mat-label>Facultad</mat-label>
-                        <input matInput placeholder="Facultad" id="facultad" name="facultad"
-                            [(ngModel)]="asistente.facultad">
+                        <mat-label>Programa</mat-label>
+                        <input matInput placeholder="Programa" id="programa" name="programa" class="intpus-mayusculas"
+                            [(ngModel)]="asistente.programa" required>
                     </mat-form-field>
                 </div>
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
-                        <mat-label>Programa</mat-label>
-                        <input matInput placeholder="Programa" id="programa" name="programa"
-                            [(ngModel)]="asistente.programa">
+                        <mat-label>Facultad</mat-label>
+                        <input matInput placeholder="Facultad" id="facultad" name="facultad" class="intpus-mayusculas"
+                            [(ngModel)]="asistente.facultad">
                     </mat-form-field>
                 </div>
             </div>
@@ -158,6 +161,6 @@
 <div mat-dialog-actions style="justify-content: end;margin-right: 15px;">
     <button mat-button style="margin-right: 15px;background-color:red;color: aliceblue;"
         (click)="onClickNO()">CANCELAR</button>
-    <button mat-button type="submit" class="btn btn-primary btn-block" style="background-color:blue;color: aliceblue;"
+    <button mat-button class="btn btn-primary btn-block" style="background-color:blue;color: aliceblue;"
         (click)=" confirmarRegistro()" [disabled]="!registroForm.valid">REGISTRAR</button>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-main-page',
@@ -8,28 +8,33 @@ import { Component } from '@angular/core';
 export class MainPageComponent {
   currentYear = new Date().getFullYear();
 
-  
+  // @Output() user: EventEmitter<string> = new EventEmitter<string>();
 
 
-
-  logged = true
-  register = false
+  usuarioLoggeado = '';
+  logged = false;
+  register = true;
 
   getCurrentYear() {
     return this.currentYear;
   }
 
+ obtenerUsuario(){
+  console.log('ACASASDASDASDASWSq:',this.usuarioLoggeado)
+  return this.usuarioLoggeado;
+}
 
-
-  processLogin(eventData: boolean) {
-    console.log('Valor emitido desde login-panel:', eventData);
-    if (eventData == true){
+  processLogin(eventData: string) {
+    
+    if (eventData !== '') {
       this.logged = true
+      this.usuarioLoggeado = eventData;
+      console.log('** USUARIO:', this.usuarioLoggeado);
     }
   }
 
 
-  logOut(){
+  logOut() {
     console.log('bye')
     this.logged = false;
     this.register = false;

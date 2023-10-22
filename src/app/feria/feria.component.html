@@ -168,25 +168,25 @@
                                             style="margin-top: 0px;" #tabla1>
                                             <ng-container matColumnDef="nombre">
                                                 <th mat-header-cell *matHeaderCellDef> Nombre </th>
-                                                <td [title]="evento.nombre" mat-cell *matCellDef="let evento">
-                                                    {{evento.nombre}} </td>
+                                                <td [title]="datos.primerNombre" mat-cell *matCellDef="let datos">
+                                                    {{datos.primerNombre}} </td>
                                             </ng-container>
-                                            <ng-container matColumnDef="edicion">
-                                                <th mat-header-cell *matHeaderCellDef> Edición </th>
-                                                <td [title]="evento.edicion" mat-cell *matCellDef="let evento">
-                                                    {{evento.edicion}}
+                                            <ng-container matColumnDef="apellido">
+                                                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                                                <td [title]="evento.primerApellido" mat-cell *matCellDef="let evento">
+                                                    {{evento.primerApellido}}
                                                 </td>
                                             </ng-container>
-                                            <ng-container matColumnDef="fecha">
-                                                <th mat-header-cell *matHeaderCellDef> Fecha</th>
-                                                <td [title]="evento.fechaInicio" mat-cell *matCellDef="let evento">
-                                                    {{evento.fechaInicio}} </td>
+                                            <ng-container matColumnDef="documento">
+                                                <th mat-header-cell *matHeaderCellDef>Documento</th>
+                                                <td [title]="evento.identificacion" mat-cell *matCellDef="let evento">
+                                                    {{evento.identificacion}} </td>
                                             </ng-container>
-                                            <ng-container matColumnDef="organizador">
-                                                <th mat-header-cell *matHeaderCellDef> Organizador </th>
-                                                <td [title]="evento.organizador[0].nombre" mat-cell
+                                            <ng-container matColumnDef="institucion">
+                                                <th mat-header-cell *matHeaderCellDef> Institución </th>
+                                                <td [title]="evento.institucion" mat-cell
                                                     *matCellDef="let evento">
-                                                    {{evento.organizador[0].nombre}} </td>
+                                                    {{evento.primerApellido}} </td>
                                             </ng-container>
                                             <tr mat-header-row *matHeaderRowDef="columnas"></tr>
                                             <tr mat-row *matRowDef="let row; columns: columnas;"></tr>

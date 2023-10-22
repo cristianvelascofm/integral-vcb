@@ -43,9 +43,8 @@ export interface Usuario extends Persona {
   supervisor?: Usuario;
 }
 
-export interface Participante extends Persona {
-  institucion: string;
-  sitioWeb: string;
+export interface Participante extends Estudiante {
+  sitioWeb?: string;
 }
 
 export interface Asistente extends Estudiante {
@@ -76,15 +75,18 @@ export class PersonaService {
       throw error;
     }
   }
-  async registrarAsistente(asistente: Asistente) {
+  async registrarAsistente(asistente: Asistente, usuario: string) {
     const dictSend = {
       accion: 'registrar-asistente',
       items: asistente,
-      id: asistente.identificacion
+      id: asistente.identificacion,
+      usuario: usuario
+
     };
     try {
       const response = await axios.post(this.path, dictSend);
-      return response;
+      console.log('JAJAU. ',response.data)
+      return response.data;
     } catch (error) {
       throw error;
     }
