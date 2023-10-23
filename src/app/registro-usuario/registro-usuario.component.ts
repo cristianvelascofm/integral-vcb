@@ -66,8 +66,11 @@ export class RegistroUsuarioComponent {
 
     // Aquí puedes agregar la lógica para enviar los datos de registro al servidor
     console.log('USUARIO A REGISTRAR:', this.usuario);
-
-    axios.post(this.path, this.usuario).then((response) => {
+    let dictSend={
+      items: this.usuario,
+      accion: 'crear-usuario'
+    }
+    axios.post(this.path, dictSend).then((response) => {
       console.log("Respuesta= " + JSON.stringify(response.data));
       alert('CUENTA CREADA')
       return console.log('Registro Exitoso')

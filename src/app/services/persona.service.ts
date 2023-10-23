@@ -59,6 +59,16 @@ export class PersonaService {
   constructor() {
     this.path = environment.apiBaseUrl;
   }
+
+  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD USUARIO EN EL LOCALSTORAGE
+  getUser(): any {
+    return localStorage.getItem('usuario');
+  }
+  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD ACTIVIDAD EN EL LOCALSTORAGE
+  getNombreActividad(): any {
+    return localStorage.getItem('actividad');
+  }
+
   private personas: Persona[] = [];
   path: string;
 
@@ -75,17 +85,34 @@ export class PersonaService {
       throw error;
     }
   }
+
+  // OBTENER TODOS LOS ASISTENTE SEGÚN LA ACTIVIDAD DE UN EVENTO
+  async obtenerAsistentesActividad(nombreEvento: string, nombreActividad: string) {
+    const dictSend = {
+      accion: 'cargar-estudiante-id',
+      evento: nombreEvento,
+      actividad: nombreActividad
+    };
+    try {
+      const response = await axios.post(this.path, dictSend);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
   async registrarAsistente(asistente: Asistente, usuario: string) {
     const dictSend = {
       accion: 'registrar-asistente',
       items: asistente,
       id: asistente.identificacion,
-      usuario: usuario
-
+      usuario: this.getUser(),
+      'nombre-actividad': this.getNombreActividad()
     };
     try {
       const response = await axios.post(this.path, dictSend);
-      console.log('JAJAU. ',response.data)
+      console.log('JAJAU. ', response.data)
       return response.data;
     } catch (error) {
       throw error;

@@ -33,6 +33,7 @@ export class DocumentModuleComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('paginator', this.paginator)
     this.actualizarFechaHora();
     setInterval(() => {
       this.actualizarFechaHora();
@@ -41,10 +42,12 @@ export class DocumentModuleComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value || '')),
     );
+
     // Carga inicial de Datos de las Tablas de Recepción y Documentos VCB
     this.datos = DocumentReceptionService.getDocumentosRecepcion();
     this.dataSource = new MatTableDataSource<DocumentReception>(this.datos);
     this.dataSource.paginator = this.paginator;
+    
     this.datosVCB = DocumentVcbService.getDocumentosVCB();
     this.dataSourceVCB = new MatTableDataSource<DocumentVCB>(this.datosVCB);
     this.dataSourceVCB.paginator = this.paginatorVCB;
@@ -56,7 +59,7 @@ export class DocumentModuleComponent implements OnInit {
   datos: DocumentReception[] = [];
   dataSource: any;
   @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
-
+  
   // Tabla Documentos VCB°
   columnasVCB: string[] = ['trd', 'asunto', 'fecha', 'funcionario']
   dataSourceVCB: any;
@@ -280,98 +283,6 @@ export class DocumentModuleComponent implements OnInit {
 
 
 
-
-  // public categorias: any[] = [
-
-  //   {
-
-  //     nombre: 'Citaciones',
-  //     subcategorias: [
-  //       'Citación Comité Bienestar Universitario',
-  //       'Citación de Consejo de Cultura y Bienestar',
-  //       'Citación a Reunión como Oficio del Vicerrector',
-  //       'Citación a Reunión Temas Generales',
-  //     ]
-  //   },
-  //   {
-
-  //     nombre: 'Actas',
-  //     subcategorias: [
-  //       'Citación Comité Bienestar Universitario',
-  //       'Acta de Comité Bienestar Universitario',
-  //       'Acta de Consejo de Cultura y Bienestar',
-  //       'Citación de Consejo de Cultura y Bienestar',
-  //       'Acta de Eliminación Documentos de Archivo',
-  //       'Acta de Reunión'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Circulares',
-  //     subcategorias: [
-  //       'Circular Informativa',//por lo general las tiene más el CDU
-  //       'Circular Normativa'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Certificados',
-  //     subcategorias: [
-  //       'Certificados de Supervisoría',
-  //       'Certificados de Monitoría',
-  //       'Certificados de Eventos',
-  //       'Certificados Realización Taller',
-  //       'Certificados de un Profesrional, Tallerista, o semejante'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Convocatoria',
-  //     subcategorias: [
-  //       'Convocatorias Grupos y Proyectos Sistema de Cultura y Bienestar'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Informes',
-  //     subcategorias: [
-  //       'Informe Administrativo',
-  //       'Informe de Eventos',
-  //       'Informes de Gestión',
-  //       'Informe Técnico',
-  //       'Informe Sistema Integrado de Gestión de Calidad'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Instrumentos de Control',
-  //     subcategorias: [
-  //       'Registro Diario de Correspondencia',
-  //       'Formato Único de Inventario Documental'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Programas',
-  //     subcategorias: [
-  //       'Voluntariado',
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Resoluciones',
-  //     subcategorias: [
-  //       'Resoluciones Vicerrectoría de Cultura y Bienestar'
-  //     ]
-  //   },
-  //   {
-  //     nombre: 'Solicitudes',
-  //     subcategorias: [
-  //       'Solicitud de Avances',
-  //       'Solicitud de Viáticos',
-  //       'Solicitud de Servicio Espécifico de la Universidad del Cauca',
-  //       'Solicitud de Elementos de Consumo',
-  //       'Solicitud de Elementos Devolutivos',
-  //       'Solicitud Mantenimiento de Equipos',
-  //       'Solicitud de Permisos y Compensatorios',
-  //       'Solicitud de Transporte',
-
-  //     ]
-  //   }
-  // ];
   categoriasFiltradas: any[] = [];
 
 
@@ -390,32 +301,6 @@ export class DocumentModuleComponent implements OnInit {
       this.titleNewDocument = 'Nuevo Informe Administrativo'
     }
   }
-
-  // buscarCategorias(event: Event): void {
-  //   const inputValue = (event.target as HTMLInputElement).value.toLowerCase();
-  //   this.categoriasFiltradas = [];
-
-  //   this.categorias.forEach(categoria => {
-  //     const categoriaEncontrada = {
-  //       nombre: categoria.nombre,
-  //       subcategorias: [] as string[] // Definir el tipo de datos para subcategorias
-  //     };
-
-  //     // Filtrar por categoría
-  //     if (categoria.nombre.toLowerCase().includes(inputValue)) {
-  //       this.categoriasFiltradas.push(categoriaEncontrada);
-  //     }
-
-  //     // Filtrar por subcategoría
-  //     categoria.subcategorias.forEach((subcategoria: string) => { // Definir el tipo de datos para subcategoria
-  //       if (subcategoria.toLowerCase().includes(inputValue)) {
-  //         categoriaEncontrada.subcategorias.push(subcategoria);
-  //         this.categoriasFiltradas.push(categoriaEncontrada);
-  //       }
-  //     });
-  //   });
-  // }
-
 
   documento: any = {
     asunto: '',
@@ -457,27 +342,6 @@ export class DocumentModuleComponent implements OnInit {
   ];
 
   seleccionada: string = this.operaciones[0].valor;
-
-  // operar() {
-  //   switch (this.seleccionada) {
-  //     case 'suma': this.resultado = this.valor1 + this.valor2;
-  //       break;
-  //     case 'resta': this.resultado = this.valor1 - this.valor2;
-  //       break;
-  //     case 'multiplicacion': this.resultado = this.valor1 * this.valor2;
-  //       break;
-  //     case 'division': this.resultado = this.valor1 / this.valor2;
-  //       break;
-  //   }
-  // }
-
-
-
-
-
-  // myControl = new FormControl('');
-  // options: string[] = ['One', 'Two', 'Three'];
-
 
   optiones = [
     {
@@ -557,8 +421,6 @@ export class DocumentModuleComponent implements OnInit {
     if (val === '') {
       this.trd = false;
     }
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
   }
 
   onFocusedC(e: any) {
@@ -607,9 +469,3 @@ openModal(){
 
 
 }
-// export class Articulo {
-//   constructor(public codigo: number, public descripcion: string, public precio: number, public serie: string, public asunto: string, public fecha: string, public operario: string) {
-
-
-//   }
-// }

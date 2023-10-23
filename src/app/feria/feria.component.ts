@@ -29,24 +29,37 @@ export class FeriaComponent implements OnInit {
     public dialog: MatDialog, private eventService: EventService, private mainPage: MainPageComponent
   ) {
     this.path = environment.apiBaseUrl;
+
   }
 
 
   ngOnInit() {
-    const nombreEvento = 'Popayán Ciudad Libro 2023'; // Nombre del evento que deseas cargar
-
-    this.usuario = this.mainPage.obtenerUsuario();
-    console.log('JAJAJAJAJA', this.usuario)
-    this.eventService.cargarEvento(nombreEvento, this.usuario)
+    const nombreEvento = 'Popayán Ciudad Libro 2023'; // Nombre del evento que desea cargar, en esta caso es estático por conveniencia temporal :v
+    this.eventService.cargarEvento(nombreEvento)
       .then(evento => {
         this.evento = evento;
-        if( this.evento.actividades[0].asistentes){
-          this.datos = this.evento.actividades[0].asistentes
-          console.log('asdasdasd: ',this.datos)
-          this.dataSource = new MatTableDataSource<Participante>(this.datos);
-          this.dataSource.paginator = this.paginator;
+
+        if (this.evento.actividades[0].invitados) {
+          const invitadosArray = this.evento.actividades[0].invitados.map(invitado => invitado.nombre);
+          const invitadosString = invitadosArray.join(', ');
+          this.invitados =invitadosString;
+          console.log(this.invitados);
         }
-        
+        this.setActividadLocalStorage();
+        if (this.evento.actividades[0].asistentes) {
+
+          this.eventService.cargarListadoAsistentesActividad()
+            .then(data => {
+              this.datos = data;
+              this.dataSource = new MatTableDataSource<Participante>(this.datos);
+              this.dataSource.paginator = this.paginator;
+              console.log(this.paginator)
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        }
+
         if ('Error' in this.evento) {
           this.actividadesActivas = false;
         } else {
@@ -57,23 +70,22 @@ export class FeriaComponent implements OnInit {
       })
       .catch(error => {
         this.actividadesActivas = false;
-        console.error('Error al cargar el evento:', error);
+        // console.error('Error al cargar el evento:', error);
       });
   }
-
-
-  getUsuario() {
-    console.log('Ay q lindooooo ', this.usuario);
-    return this.usuario;
+  setActividadLocalStorage() {
+    localStorage.setItem("actividad", this.evento.actividades[0].nombre);
   }
+
   @Output() usuarioLoggeado: EventEmitter<string> = new EventEmitter<string>();
 
-  usuario = '';
+
   path: string;
   //  #oficina
   actividadesActivas = false;
   usuarioLogged = '';
   moderadorActivo = true;
+  invitados = ''
   evento: Evento = {
     id: '',
     nombre: '',
@@ -138,11 +150,10 @@ export class FeriaComponent implements OnInit {
 
 
   columnas: string[] = ['nombre', 'apellido', 'documento', 'institucion'];
-  // columnas: string[] = ['nombre'];
-  datos: Participante[]=[];
-  // datos: Asistente[] = [];
-  @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
-  dataSource: any;
+  datos: Participante[] = []; // Asegúrate de que la clase 'Participante' esté importada
+  dataSource: any
+  // @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   terminoBusqueda: string = '';
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -253,7 +264,7 @@ export class FeriaComponent implements OnInit {
     this.dataSource.filter = this.terminoBusqueda.trim();
   }
   openRegistro() {
-    this.usuarioLoggeado.emit(this.usuario)
+    // this.usuarioLoggeado.emit(this.usuario)
     const dialogRef = this.dialog.open(RegistarAsistenteComponent, {
       disableClose: true,
       width: '650px',
@@ -261,7 +272,6 @@ export class FeriaComponent implements OnInit {
       // data: 'CONTENIDO'
     });
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res)
     })
   }
 }

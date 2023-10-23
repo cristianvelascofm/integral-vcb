@@ -11,9 +11,18 @@ export class PrincipalMenuComponent {
   menuSelector: EventEmitter <string> = new EventEmitter <string>();
   
 
+//MÉTODO QUE ELIMKINA LA PROPIEDAD usuario DEL LOCALSTORAGE
+logout(){
+  localStorage.removeItem('usuario');
+  localStorage.removeItem('actividad');
+
+}
 
   changeWindow(window: string){
     this.menuSelector.emit(window);
+    if(window==='admin'){
+      this.logout()
+    }
   }
 
 }

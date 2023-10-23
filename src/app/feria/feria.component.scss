@@ -83,13 +83,21 @@
 
 .example-form-field {
   width: 100%;
-  height: 65px;
+  height: 68px;
   padding: 0px;
   border: 0px;
   font-size: small;
 
   input {
-    color: rgb(59, 42, 42);
-    font-weight: 550;
+    // color: rgb(180, 27, 27);
+    font-size: 15px;
+    text-transform: uppercase;
   }
+}
+
+.tabla-actividad {
+  height: 23vh !important;
+  min-height: 23vh !important;
+  max-height: 23vh !important;
+  // width: 600% !important;
 }

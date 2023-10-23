@@ -20,9 +20,10 @@ import { environment } from '../config/config';
 })
 export class LoginPanelComponent {
 
-constructor(){
-  this.path = environment.apiBaseUrl;
-}
+  constructor() {
+    this.path = environment.apiBaseUrl;
+    
+  }
   // En el componente LoginPanel
   @Output() usuarioEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() usuarioLoggeado: EventEmitter<string> = new EventEmitter<string>();
@@ -35,8 +36,17 @@ constructor(){
   };
 
   path: string;
-  // path = 'http://192.168.130.79:5050'; #oficina
   respuestaJson: any = {};
+
+  // USO LOCAL STORAGE PARA ALMACENAR USUARIO
+
+  setlocalStorage() {
+    localStorage.setItem('usuario', this.usuario);
+  }
+
+
+
+  // MÉTODO QUE INICIA SESIÓN
   login() {
     if (this.usuario == '' || this.contrasena == '') {
       alert('Debe ingresar todos los campos');
@@ -59,6 +69,7 @@ constructor(){
           alert("Contraseña no coincide")
         } else {
           alert('Bienvenido!')
+          this.setlocalStorage();
           this.usuarioEvent.emit(true);
           this.usuarioLoggeado.emit(this.usuario)
         }

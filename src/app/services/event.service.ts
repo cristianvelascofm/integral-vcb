@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environment } from '../config/config';
+import { Asistente } from './persona.service';
 interface Actividad {
   nombre: string;
   fechaInicio: string;
@@ -67,17 +68,42 @@ export interface Evento {
 export class EventService {
   static datos: Evento[];
   constructor() {
-    this.path= environment.apiBaseUrl
-   }
+    this.path = environment.apiBaseUrl
+  }
+  cargarListadoAsistentesActividad() {
+    const dictSend = {
+      accion: 'cargar-asistentes',
+      'nombre-actividad': this.getNombreActividad(),
+    };
+    return axios.post(this.path, dictSend)
+      .then(response => {
+        const listado: Participante[] = response.data;
+        return listado;
+      })
+      .catch(error => {
+        console.error('Error al cargar el evento', error);
+        throw error;
+      });
+  }
+
+  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD USUARIO EN EL LOCALSTORAGE
+  getUser(): any {
+    return localStorage.getItem('usuario');
+  }
+  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD ACTIVIDAD EN EL LOCALSTORAGE
+  getNombreActividad(): any {
+    return localStorage.getItem('actividad');
+  }
+
 
   path: string;
   // CARGAR EVENTO POR NOMBRE 
-  cargarEvento(nombreEvento: string, usuarioRegistrador: string): Promise<Evento> {
+  cargarEvento(nombreEvento: string): Promise<Evento> {
     const dictSend = {
       accion: 'cargar-evento',
       'nombre-evento': nombreEvento,
-      'usuario': usuarioRegistrador,
-      'actividad':'Entrega de Reconocimientos y Apertura de Popayán Ciudad Libro 2023'
+      usuario: this.getUser(),
+      // 'actividad':'Entrega de Reconocimientos y Apertura de Popayán Ciudad Libro 2023'
     };
     return axios.post(this.path, dictSend)
       .then(response => {

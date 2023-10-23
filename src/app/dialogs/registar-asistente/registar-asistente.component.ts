@@ -9,7 +9,7 @@ import { Persona, Usuario, Participante, Estudiante, Asistente, PersonaService }
 import axios from 'axios';
 import { environment } from 'src/app/config/config';
 import { DatePipe } from '@angular/common';
-import {MainPageComponent} from 'src/app/main-page/main-page.component'
+import { MainPageComponent } from 'src/app/main-page/main-page.component'
 @Component({
   selector: 'app-registar-asistente',
   templateUrl: './registar-asistente.component.html',
@@ -18,7 +18,7 @@ import {MainPageComponent} from 'src/app/main-page/main-page.component'
 
 
 export class RegistarAsistenteComponent {
-  constructor(private mainPage: MainPageComponent,private datePipe: DatePipe, private personaService: PersonaService, public dialogRef: MatDialogRef<RegistarAsistenteComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
+  constructor(private mainPage: MainPageComponent, private datePipe: DatePipe, private personaService: PersonaService, public dialogRef: MatDialogRef<RegistarAsistenteComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
     this.path = environment.apiBaseUrl
   }
   // private path = 'http://192.168.1.100:5050';
@@ -60,7 +60,7 @@ export class RegistarAsistenteComponent {
   institucion = 'ninguna';
   controlInstitucion: boolean = false;
   controlColegio: boolean = false;
-  fechaFormadetaNacimiento = new Date ('');
+  fechaFormadetaNacimiento = new Date('');
 
   // BORRAR LOS CAMPOS AL BORRAR EL NÚMERO DOCUMENTO
   checkNumeroDocumento() {
@@ -70,10 +70,10 @@ export class RegistarAsistenteComponent {
   }
   institucionControl() {
     if (this.institucion !== 'ninguna') {
-      if(this.institucion !=='colegio'){
+      if (this.institucion !== 'colegio') {
         this.controlInstitucion = true;
         this.controlColegio = false;
-      }else{
+      } else {
         this.controlInstitucion = false;
         this.controlColegio = true;
       }
@@ -125,25 +125,27 @@ export class RegistarAsistenteComponent {
       } else {
         this.asistente['segundoApellido'] = fullLastName[1];
       }
-      if(this.institucion === 'ninguna'){
-        this.asistente['institucion']= '';
-        this.asistente['programa']='';
-        this.asistente['facultad']='';
-        this.asistente['grado']= -1;
+      if (this.institucion === 'ninguna') {
+        this.asistente['institucion'] = '';
+        this.asistente['programa'] = '';
+        this.asistente['facultad'] = '';
+        this.asistente['grado'] = -1;
       }
       // this.usuarioA = this.mainPage.obtenerUsuario();
       // console.log('A VER QP ASA ', this.usuarioA)
       const respuesta = this.personaService.registrarAsistente(this.asistente, this.usuarioA?.toString());
       console.log('Asistente Registrado: ', respuesta);
-      
+      alert('REGISTRO EXITOSO');
+      this.dialogRef.close();
 
-      
+
     }
     else {
+      alert('IMPOSIBLE REALIZAR EL REGISTRO');
     }
   }
-// @Input() 
-usuarioA=''
+  // @Input() 
+  usuarioA = ''
   borrarCampos() {
     this.asistente = {
       primerNombre: '',
@@ -177,7 +179,7 @@ usuarioA=''
     this.apellidoCompleto = '';
     this.institucion = 'ninguna';
     this.controlInstitucion = false;
-    this.fechaFormadetaNacimiento= new Date('')
+    this.fechaFormadetaNacimiento = new Date('')
 
   }
 
@@ -196,12 +198,12 @@ usuarioA=''
             const lastName = this.asistente['primerApellido']?.toString() + ' ' + this.asistente['segundoApellido']?.toString()
             console.log('Estudiante', estudiante);
             if (name !== undefined && lastName !== undefined) {
-              const parts =this.asistente['fechaNacimiento']?.split('-');
+              const parts = this.asistente['fechaNacimiento']?.split('-');
               if (parts && parts.length === 3) {
                 const day = parseInt(parts[0], 10);
                 const month = parseInt(parts[1], 10) - 1; // Resta 1 al mes, ya que en JavaScript los meses van de 0 a 11.
                 const year = parseInt(parts[2], 10);
-                this.fechaFormadetaNacimiento= new Date(year,month,day);
+                this.fechaFormadetaNacimiento = new Date(year, month, day);
               }
               if (estudiante.codigo !== '') {
                 this.institucion = 'universidad' // ESTA ES UNA VARIABLE LOCAL, NO SE ENVÍA AL SERVER PORQUE SOLO SIRVE DE FLAG
@@ -210,7 +212,7 @@ usuarioA=''
                 this.nombreCompleto = name.toLowerCase().charAt(0).toUpperCase() + name.slice(1).toLowerCase();
                 this.apellidoCompleto = lastName.toLowerCase().charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
                 this.controlInstitucion = true;
-                
+
                 return estudiante;
               } else {
                 this.institucion = 'ninguna'

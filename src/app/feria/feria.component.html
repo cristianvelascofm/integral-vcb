@@ -87,7 +87,8 @@
                             <mat-form-field class="example-full-width">
                                 <mat-label>Invitado</mat-label>
                                 <input matInput placeholder="Responsable" id="responsable" name="responsable"
-                                    [(ngModel)]="evento.actividades[0].invitados[0].nombre" disabled>
+                                    [(ngModel)]="invitados" disabled>
+                                    <!-- evento.actividades[0].invitados[0].nombre -->
                             </mat-form-field>
                         </div>
                         <div class="col-6">
@@ -132,10 +133,10 @@
         <div class="col-6 mt-3" style="height: 80%;    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
             <h5 *ngIf="false">conexion caida</h5>
             <div class=" evento-resume-tabla container-fluid">
-                <section id="resume" class="p-2 mb-1">
-                    <div class="col ">
+                <section id="resume" class="p-2">
+                    <div class="col-12 mb-0">
                         <h2>ASISTENTES</h2>
-                        <h5>REGISTRO DE ASISTENCIA</h5>
+                        <!-- <h5>REGISTRO DE ASISTENCIA</h5> -->
                     </div>
                 </section>
                 <section class="table-evento-doc pb-3" style="margin-bottom: 0px;">
@@ -164,35 +165,33 @@
                                             </div>
                                         </div>
                                         <table mat-table [dataSource]="dataSource"
-                                            class="mat-elevation-z8 table-evento demo-table mt-2"
+                                            class="mat-elevation-z8 tabla-actividad demo-table mt-2"
                                             style="margin-top: 0px;" #tabla1>
                                             <ng-container matColumnDef="nombre">
                                                 <th mat-header-cell *matHeaderCellDef> Nombre </th>
                                                 <td [title]="datos.primerNombre" mat-cell *matCellDef="let datos">
-                                                    {{datos.primerNombre}} </td>
+                                                    {{datos.primerNombre+' '+datos.segundoNombre}} </td>
                                             </ng-container>
                                             <ng-container matColumnDef="apellido">
                                                 <th mat-header-cell *matHeaderCellDef> Apellido </th>
-                                                <td [title]="evento.primerApellido" mat-cell *matCellDef="let evento">
-                                                    {{evento.primerApellido}}
+                                                <td [title]="datos.primerApellido" mat-cell *matCellDef="let datos">
+                                                    {{datos.primerApellido+' '+datos.segundoApellido}}
                                                 </td>
                                             </ng-container>
                                             <ng-container matColumnDef="documento">
                                                 <th mat-header-cell *matHeaderCellDef>Documento</th>
-                                                <td [title]="evento.identificacion" mat-cell *matCellDef="let evento">
-                                                    {{evento.identificacion}} </td>
+                                                <td [title]="datos.identificacion" mat-cell *matCellDef="let datos">
+                                                    {{datos.identificacion}} </td>
                                             </ng-container>
                                             <ng-container matColumnDef="institucion">
                                                 <th mat-header-cell *matHeaderCellDef> Institución </th>
-                                                <td [title]="evento.institucion" mat-cell
-                                                    *matCellDef="let evento">
-                                                    {{evento.primerApellido}} </td>
+                                                <td [title]="datos.institucion" mat-cell *matCellDef="let datos">
+                                                    {{datos.institucion}} </td>
                                             </ng-container>
                                             <tr mat-header-row *matHeaderRowDef="columnas"></tr>
                                             <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
                                         </table>
-                                        <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons
-                                            style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"></mat-paginator>
+                                        <mat-paginator #paginator [pageSizeOptions]="[3]" showFirstLastButtons style="box-shadow: 0 10px 10px rgba(34, 27, 27, 0.582);"></mat-paginator>
                                     </div>
                                 </div>
                             </div>
