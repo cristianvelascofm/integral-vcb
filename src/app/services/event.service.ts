@@ -61,19 +61,26 @@ export interface Evento {
   actividades: Actividad[];
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class EventService {
-  static datos: Evento[];
+  
   constructor() {
     this.path = environment.apiBaseUrl
+    this.username = environment.getUser();
+    this.actividadActual = environment.getActividad();
   }
+
+  static datos: Evento[];
+  username: string;
+  actividadActual: string;
+
   cargarListadoAsistentesActividad() {
     const dictSend = {
       accion: 'cargar-asistentes',
-      'nombre-actividad': this.getNombreActividad(),
+      'nombre-actividad': this.actividadActual,
     };
     return axios.post(this.path, dictSend)
       .then(response => {
@@ -86,14 +93,7 @@ export class EventService {
       });
   }
 
-  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD USUARIO EN EL LOCALSTORAGE
-  getUser(): any {
-    return localStorage.getItem('usuario');
-  }
-  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD ACTIVIDAD EN EL LOCALSTORAGE
-  getNombreActividad(): any {
-    return localStorage.getItem('actividad');
-  }
+
 
 
   path: string;
@@ -102,7 +102,7 @@ export class EventService {
     const dictSend = {
       accion: 'cargar-evento',
       'nombre-evento': nombreEvento,
-      usuario: this.getUser(),
+      usuario: this.username,
       // 'actividad':'Entrega de Reconocimientos y Apertura de Popayán Ciudad Libro 2023'
     };
     return axios.post(this.path, dictSend)

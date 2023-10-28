@@ -29,6 +29,7 @@ export class FeriaComponent implements OnInit {
     public dialog: MatDialog, private eventService: EventService, private mainPage: MainPageComponent
   ) {
     this.path = environment.apiBaseUrl;
+    this.actividadActual = environment.getActividad();
 
   }
 
@@ -45,7 +46,7 @@ export class FeriaComponent implements OnInit {
           this.invitados =invitadosString;
           console.log(this.invitados);
         }
-        this.setActividadLocalStorage();
+        environment.setActividad(this.evento.actividades[0].nombre);
         if (this.evento.actividades[0].asistentes) {
 
           this.eventService.cargarListadoAsistentesActividad()
@@ -72,9 +73,6 @@ export class FeriaComponent implements OnInit {
         this.actividadesActivas = false;
         // console.error('Error al cargar el evento:', error);
       });
-  }
-  setActividadLocalStorage() {
-    localStorage.setItem("actividad", this.evento.actividades[0].nombre);
   }
 
   @Output() usuarioLoggeado: EventEmitter<string> = new EventEmitter<string>();
@@ -147,6 +145,7 @@ export class FeriaComponent implements OnInit {
       }]
     }],
   };
+  actividadActual : string;
 
 
   columnas: string[] = ['nombre', 'apellido', 'documento', 'institucion'];

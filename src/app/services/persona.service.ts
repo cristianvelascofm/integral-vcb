@@ -58,16 +58,13 @@ export class PersonaService {
 
   constructor() {
     this.path = environment.apiBaseUrl;
+    this.username = environment.getUser();
+    this.actividadActual = environment.getActividad();
   }
 
-  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD USUARIO EN EL LOCALSTORAGE
-  getUser(): any {
-    return localStorage.getItem('usuario');
-  }
-  //  MÉTODO PARA OBTENER EL VALOR DE LA PROPIEDAD ACTIVIDAD EN EL LOCALSTORAGE
-  getNombreActividad(): any {
-    return localStorage.getItem('actividad');
-  }
+username: string
+actividadActual: string;
+  
 
   private personas: Persona[] = [];
   path: string;
@@ -107,8 +104,8 @@ export class PersonaService {
       accion: 'registrar-asistente',
       items: asistente,
       id: asistente.identificacion,
-      usuario: this.getUser(),
-      'nombre-actividad': this.getNombreActividad()
+      usuario: this.username,
+      'nombre-actividad': this.actividadActual
     };
     try {
       const response = await axios.post(this.path, dictSend);

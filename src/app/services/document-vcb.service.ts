@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface DocumentVCB {
-  _id: string;
+  id?: string;
   fecha_recepcion: string;
   funcionario_recepcion: string;
   asunto: string;
@@ -11,6 +11,9 @@ export interface DocumentVCB {
   archivo: File;
   observacion: string;
 }
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,9 +25,9 @@ export class DocumentVcbService {
 
   static getDocumentosVCB() {
 
-    this.datos=[
+    this.datos = [
       {
-        _id: "1",
+        id: "1",
         fecha_recepcion: "2023-01-05",
         funcionario_recepcion: "Cristian Velasco",
         asunto: "Informe de actividades",
@@ -35,7 +38,7 @@ export class DocumentVcbService {
         observacion: "Lorem ipsum dolor sit amet 1",
       },
       {
-        _id: "2",
+        id: "2",
         fecha_recepcion: "2023-02-10",
         funcionario_recepcion: "Socorro Fajardo",
         asunto: "Solicitud de financiamiento",
@@ -46,7 +49,7 @@ export class DocumentVcbService {
         observacion: "Lorem ipsum dolor sit amet 2",
       },
       {
-        _id: "3",
+        id: "3",
         fecha_recepcion: "2023-03-15",
         funcionario_recepcion: "Clara Gómez",
         asunto: "Programa de eventos",
@@ -57,7 +60,7 @@ export class DocumentVcbService {
         observacion: "Lorem ipsum dolor sit amet 3",
       },
       {
-        _id: "4",
+        id: "4",
         fecha_recepcion: "2023-04-20",
         funcionario_recepcion: "Vicerrectoría de Cultura y Bienestar",
         asunto: "Convocatoria de artistas",
@@ -68,7 +71,7 @@ export class DocumentVcbService {
         observacion: "Lorem ipsum dolor sit amet 4",
       },
       {
-        _id: "5",
+        id: "5",
         fecha_recepcion: "2023-05-25",
         funcionario_recepcion: "Vicerrectoría de Cultura y Bienestar",
         asunto: "Informe de gestión cultural",
@@ -78,9 +81,9 @@ export class DocumentVcbService {
         archivo: new File([''], 'archivo.pdf', { type: 'application/pdf' }),
         observacion: "Lorem ipsum dolor sit amet 5",
       },
-      
+
       {
-        _id: 'a',
+        id: 'a',
         fecha_recepcion: '2022-01-01',
         funcionario_recepcion: 'Juan Dela Cruz',
         asunto: 'Asunto Test',
@@ -93,7 +96,7 @@ export class DocumentVcbService {
 
       },
       {
-        _id: 'b',
+        id: 'b',
         fecha_recepcion: '2023-01-01',
         funcionario_recepcion: 'Juan Dela Cruz',
         asunto: 'Asunto Test',
@@ -104,7 +107,7 @@ export class DocumentVcbService {
         observacion: 'Observacion Test'
       },
       {
-        _id: 'c',
+        id: 'c',
         fecha_recepcion: '2020-01-01',
         funcionario_recepcion: 'Juan Dela Cruz',
         asunto: 'Asunto Test',
@@ -114,9 +117,9 @@ export class DocumentVcbService {
         archivo: new File([''], 'archivo.pdf', { type: 'application/pdf' }),
         observacion: 'Observacion Test'
       },
-      
+
       {
-        _id: 'd',
+        id: 'd',
         fecha_recepcion: '2021-23-11',
         funcionario_recepcion: 'Juan Dela Cruz',
         asunto: 'Asunto Test',
@@ -128,21 +131,21 @@ export class DocumentVcbService {
 
 
       },
-      
-        {
-          _id: 'e',
-          fecha_recepcion: '2020-21-06',
-          funcionario_recepcion: 'Juan Dela Cruz',
-          asunto: 'Asunto Test',
-          remitente: 'Juan Dela Cruz',
-          emisor: 'Juan Dela Cruz',
-          fecha_actividad: new Date(),
-          archivo: new File([''], 'archivo.pdf', { type: 'application/pdf' }),
-          observacion: 'Observacion Test'
-  
-  
-        },
-      
+
+      {
+        id: 'e',
+        fecha_recepcion: '2020-21-06',
+        funcionario_recepcion: 'Juan Dela Cruz',
+        asunto: 'Asunto Test',
+        remitente: 'Juan Dela Cruz',
+        emisor: 'Juan Dela Cruz',
+        fecha_actividad: new Date(),
+        archivo: new File([''], 'archivo.pdf', { type: 'application/pdf' }),
+        observacion: 'Observacion Test'
+
+
+      },
+
     ]
     return this.datos
   }

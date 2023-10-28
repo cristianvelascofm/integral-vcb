@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Location } from '@angular/common';
+import { environment } from '../config/config'
 
 @Component({
   selector: 'app-main-page',
@@ -8,31 +8,30 @@ import { Location } from '@angular/common';
 })
 export class MainPageComponent {
   currentYear = new Date().getFullYear();
-  constructor(private location: Location){
+  constructor() {
     this.verificadorLogin();
-    
+
   }
+
 
   // @Output() user: EventEmitter<string> = new EventEmitter<string>();
 
 
-  usuarioLoggeado = '';
+
   logged = false;
   register = false;
+  username = ''
 
   // OBTENGO EL VALOR DE LA CLAVE USUARIO DEL LOCAL STORAGE
-  getUserLocalStorage() {
-    return localStorage.getItem("usuario") as string;
-  }
+
 
   // MÉTODO PARA VERIFICAR SI EL USUARIO ESTA LOGGEADO PREVIAMENTE
   verificadorLogin(): void {
-    if (this.getUserLocalStorage()) {
+    if (environment.getUser() && environment.getUser() !== '') {
       console.log('** SESIÓN GUARDADA');
-      this.logged=true;
-    }else{
-      this.logged= false;
-      this.location.go(this.location.path());
+      this.logged = true;
+    } else {
+      this.logged = false;
     }
   }
 
@@ -40,24 +39,18 @@ export class MainPageComponent {
     return this.currentYear;
   }
 
-// MÉTODO QUE OBTIENE VERIFICA SI EXISTE LA CLAVE VALOR EN EL LOCALSTORAGE
-isKeyValue() {
+  // MÉTODO QUE OBTIENE VERIFICA SI EXISTE LA CLAVE VALOR EN EL LOCALSTORAGE
+  isKeyValue() {
 
 
-}
+  }
 
-
- obtenerUsuario(){
-  console.log('ACASASDASDASDASWSq:',this.usuarioLoggeado)
-  return this.usuarioLoggeado;
-}
-
-  processLogin(eventData: string) {
-    
-    if (eventData !== '') {
+  processLogin(eventData: boolean) {
+    if (eventData) {
       this.logged = true
-      this.usuarioLoggeado = eventData;
-      console.log('** USUARIO:', this.usuarioLoggeado);
+    }else{
+      this.logged=false
+      alert('Imposible Iniciar Sesión');
     }
   }
 

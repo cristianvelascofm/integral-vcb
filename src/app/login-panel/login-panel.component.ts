@@ -22,7 +22,7 @@ export class LoginPanelComponent {
 
   constructor() {
     this.path = environment.apiBaseUrl;
-    
+
   }
   // En el componente LoginPanel
   @Output() usuarioEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -55,26 +55,18 @@ export class LoginPanelComponent {
       this.dictSend['accion'] = "login";
       this.dictSend['items'].usuario = this.usuario;
       this.dictSend['items'].password = this.contrasena;
-
-
-      // Aquí puedes agregar la lógica para enviar los datos de registro al servidor
-      // console.log('EVENTO A REGISTRAR:', this.dictSend);
-
       axios.post(this.path, this.dictSend).then((response) => {
         this.respuestaJson = JSON.stringify(response.data)
         console.log(this.respuestaJson)
-        if (this.respuestaJson == '{"error":"USUARIO NO ENCONTRADO"}') {
+        if (this.respuestaJson == '{"error":"user"}') {
           alert("Usuario no encontrado")
-        } else if (this.respuestaJson == '{"error":"CONTRASEÑAS INVALIDAS"}') {
+        } else if (this.respuestaJson == '{"error":"password"}') {
           alert("Contraseña no coincide")
         } else {
           alert('Bienvenido!')
-          this.setlocalStorage();
+          environment.setUser(this.usuario);
           this.usuarioEvent.emit(true);
-          this.usuarioLoggeado.emit(this.usuario)
         }
-
-        // return console.log('LOGGED')
       })
     }
 
