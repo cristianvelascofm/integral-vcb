@@ -20,3 +20,20 @@ $shadow-size: 20px;
 .example-form-field {
   width: 100% !important;
 }
+
+.example-full-width{
+  width: 100% !important;
+}
+
+.file-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.icon {
+  font-size: 36px;
+  color: #007bff; /* Color del icono, puedes cambiarlo según tus preferencias */
+}
+input[type="file"] {
+  // display: none;
+}

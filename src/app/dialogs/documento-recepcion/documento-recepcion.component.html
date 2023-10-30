@@ -1,4 +1,4 @@
-<div mat-dialog-title>
+<div mat-dialog-title style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
     <div class="row">
         <div class="col-2">
             <img src="../../assets/images/icon/documentos_pendientes.png" alt="" class="logo-document">
@@ -12,20 +12,21 @@
 
     <form (ngSubmit)="nuevaRecepcion()" #recepcionForm="ngForm" style="width: 100%">
 
-        <div class="row">
-            <mat-label>Tipo</mat-label>
+        <div class="row mt-3">
+            <!-- <mat-label>Tipo</mat-label> -->
             <div class="col-6">
-                <div class="row">
-                    <div class="col-6">
-                        <mat-checkbox [(ngModel)]="fisico">
+                <div class="row" style=" width: 100%; text-align: center;" >
+                    <div class="col-6" style="border: solid 1px rgba(128, 128, 128, 0.461);">
+                        <mat-checkbox [(ngModel)]="recepcion.fisico" name="fisico">
                             <mat-icon>description</mat-icon> <!-- Icono de documento -->
                         </mat-checkbox>
+                        <mat-label >Físico</mat-label>
                     </div>
-                    <div class="col-6">
-                        <mat-checkbox color="primary" [(ngModel)]="virtual">
-
+                    <div class="col-6" style="border: solid 1px rgba(128, 128, 128, 0.461);">
+                        <mat-checkbox color="primary" name="virtual" [(ngModel)]="recepcion.virtual">
                             <mat-icon>computer</mat-icon>
                         </mat-checkbox>
+                        <mat-label >Virtual</mat-label>
                     </div>
                 </div>
             </div>
@@ -40,10 +41,69 @@
                 </mat-form-field>
             </div>
         </div>
+
+        <div class="row mt-2">
+            <div class="col-6">
+                <mat-form-field class="example-full-width">
+                    <mat-label>TRD</mat-label>
+                    <input matInput placeholder="TRD Recepción" name="trd" [value]="recepcion.trd">
+                  </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Venitanilla Única</mat-label>
+                    <input matInput placeholder="V.U:" name="vu" [value]="recepcion.ventanillaUnica">
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-full-width">
+                <mat-label>Remitente</mat-label>
+                <input type="text"
+                name="remitente"
+                       placeholder="Escriba un Nombre"
+                       aria-label="Nombre del Remitente"
+                       matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width">
+                <mat-label>Emisor</mat-label>
+                <input type="text"
+                name="emisor"
+                       placeholder="Escriba un Nombre"
+                       aria-label="Nombre del Emisor"
+                       matInput
+                       [formControl]="myControl2"
+                       [matAutocomplete]="autoEmisor">
+                <mat-autocomplete #autoEmisor="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptionsEmisor | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+        <div class="row ">
+            <div class=" file-selector">
+                <mat-icon class="icon">description</mat-icon>
+                <input type="file" (change)="onFileSelected($event)" accept=".pdf" />
+                <span *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</span>
+            </div>
+           
+        </div>
     </form>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onClickNO()">CANCELAR</button>
-    <button mat-button [mat-dialog-close]="true" (click)="registrarDocumentoRecepcion()"
-        [disabled]="!recepcionForm.valid">CREAR</button>
+    <button mat-button [mat-dialog-close]="true" (click)="enviarDocumento()"
+        >CREAR</button>
+        <!-- [disabled]="!recepcionForm.valid">CREAR</button> -->
 </div>

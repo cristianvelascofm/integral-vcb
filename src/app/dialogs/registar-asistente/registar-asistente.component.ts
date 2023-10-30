@@ -21,7 +21,6 @@ export class RegistarAsistenteComponent {
   constructor(private mainPage: MainPageComponent, private datePipe: DatePipe, private personaService: PersonaService, public dialogRef: MatDialogRef<RegistarAsistenteComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
     this.path = environment.apiBaseUrl
   }
-  // private path = 'http://192.168.1.100:5050';
   path: string;
 
   asistente: Asistente = {
