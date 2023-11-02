@@ -8,102 +8,140 @@
         </div>
     </div>
 </div>
-<div mat-dialog-content>{{msg}}
-
-    <form (ngSubmit)="nuevaRecepcion()" #recepcionForm="ngForm" style="width: 100%">
-
-        <div class="row mt-3">
-            <!-- <mat-label>Tipo</mat-label> -->
-            <div class="col-6">
-                <div class="row" style=" width: 100%; text-align: center;" >
-                    <div class="col-6" style="border: solid 1px rgba(128, 128, 128, 0.461);">
-                        <mat-checkbox [(ngModel)]="recepcion.fisico" name="fisico">
-                            <mat-icon>description</mat-icon> <!-- Icono de documento -->
-                        </mat-checkbox>
-                        <mat-label >Físico</mat-label>
+<div mat-dialog-content class="mt-4">{{msg}}
+    <div class="container" style="overflow: auto; height: auto   !important;">
+        <form (ngSubmit)="nuevaRecepcion()" #recepcionForm="ngForm" style="width: 100%">
+            <mat-tab-group style="width: 100% !important; " class="">
+                <mat-tab label="Generalidades">
+                    <div class="container mt-2" style="height: 380px; overflow: auto;">
+                        <div class="row" style="width: 100%; ">
+                            <!-- <mat-label>Tipo</mat-label> -->
+                            <div class="col-6">
+                                <div class="row pt-3"
+                                    style="width: auto ;height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                                    <div class="col-6">
+                                        <mat-checkbox [(ngModel)]="recepcion.fisico" name="fisico">
+                                            <mat-icon class="fisico"></mat-icon> <!-- Icono de documento -->
+                                        </mat-checkbox>
+                                        <!-- <mat-label >Físico</mat-label> -->
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-checkbox color="primary" name="virtual" [(ngModel)]="recepcion.virtual">
+                                            <mat-icon class="virtual"></mat-icon>
+                                        </mat-checkbox>
+                                        <!-- <mat-label  >Virtual</mat-label> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6  form-field-wrapper"
+                                style=" box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);border: 1px gray solid;">
+                                <img src="../../../assets/images/icon/fecha-tope.png" alt="casa" class="casa">
+    
+                                <mat-form-field class="example-full-width mt-2">
+    
+                                    <mat-label>Fecha del Documento</mat-label>
+                                    <input matInput [matDatepicker]="picker" [value]="fechaDocumento" id="fecha-documento"
+                                        name="fecha-documento" [(ngModel)]="fechaDocumento" required>
+                                    <mat-hint>MM/DD/AAAA</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+    
+                                </mat-form-field>
+                            </div>
+                        </div>
+    
+                        <!-- <div class="row mt-2" style="width: 100%;">
+                            <div class="col-6 form-field-wrapper"
+                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                                <img src="../../../assets/images/icon/codigo-de-barras.png" alt="casa" class="casa">
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>TRD</mat-label>
+                                    <input matInput placeholder="TRD Recepción" name="trd" [value]="recepcion.trd">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-6 form-field-wrapper"
+                                style="text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                                <img src="../../../assets/images/icon/ventana.png" alt="casa" class="casa">
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Venitanilla Única</mat-label>
+                                    <input matInput placeholder="V.U:" name="vu" [value]="recepcion.ventanillaUnica">
+                                </mat-form-field>
+                            </div>
+                        </div> -->
+                        
+                        <div class="row mt-2" style="width: 100%;">
+                            <div class="col-12 form-field-wrapper"
+                            style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                            <img src="../../../assets/images/icon/asunto.png" alt="casa" class="casa">
+                            <mat-form-field class="example-full-width mt-2">
+                                <mat-label>Asunto</mat-label>
+                                <input matInput placeholder="Asunto del Documento" name="asunto" [value]="recepcion.asunto">
+                            </mat-form-field>
+                        </div>
+                        </div>
+                        <div class="row mt-2" style="width: 100%;">
+                            <div class="col-12 form-field-wrapper"
+                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                                <img src="../../../assets/images/icon/remitente.png" alt="casa" class="casa">
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Remitente</mat-label>
+                                    <input type="text" name="remitente" placeholder="Escriba un Nombre"
+                                        aria-label="Nombre del Remitente" matInput [formControl]="myControl"
+                                        [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </div>
+    
+                        </div>
+    
+                        <!-- <div class="row mt-2" style="width: 100%;">
+                            <div class="col-12 form-field-wrapper"
+                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center;box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                                <img src="../../../assets/images/icon/cartero.png" alt="casa" class="casa">
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Emisor</mat-label>
+                                    <input type="text" name="emisor" placeholder="Escriba un Nombre"
+                                        aria-label="Nombre del Emisor" matInput [formControl]="myControl2"
+                                        [matAutocomplete]="autoEmisor">
+                                    <mat-autocomplete #autoEmisor="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptionsEmisor | async" [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </div>
+    
+                        </div> -->
                     </div>
-                    <div class="col-6" style="border: solid 1px rgba(128, 128, 128, 0.461);">
-                        <mat-checkbox color="primary" name="virtual" [(ngModel)]="recepcion.virtual">
-                            <mat-icon>computer</mat-icon>
-                        </mat-checkbox>
-                        <mat-label >Virtual</mat-label>
+    
+    
+                </mat-tab>
+                <mat-tab label="Detalles">
+                    <div class="container" style="height: 380px; overflow: auto;">
+                        <div class="row ">
+                            <div class="col-12 file-selector mt-2"
+                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
+                                <mat-icon class="icon">description</mat-icon>
+                                <input type="file" (change)="onFileSelected($event)" accept=".pdf" />
+                                <span *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</span>
+                            </div>
+    
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Fecha del Documento</mat-label>
-                    <input matInput [matDatepicker]="picker" [value]="fechaDocumento" id="fecha-documento"
-                        name="fecha-documento" [(ngModel)]="fechaDocumento" required>
-                    <mat-hint>MM/DD/AAAA</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-            </div>
-        </div>
+                </mat-tab>
+    
+            </mat-tab-group>
+        </form>
+    </div>
 
-        <div class="row mt-2">
-            <div class="col-6">
-                <mat-form-field class="example-full-width">
-                    <mat-label>TRD</mat-label>
-                    <input matInput placeholder="TRD Recepción" name="trd" [value]="recepcion.trd">
-                  </mat-form-field>
-            </div>
-            <div class="col-6">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Venitanilla Única</mat-label>
-                    <input matInput placeholder="V.U:" name="vu" [value]="recepcion.ventanillaUnica">
-                  </mat-form-field>
-            </div>
-        </div>
-        <div class="row">
-            <mat-form-field class="example-full-width">
-                <mat-label>Remitente</mat-label>
-                <input type="text"
-                name="remitente"
-                       placeholder="Escriba un Nombre"
-                       aria-label="Nombre del Remitente"
-                       matInput
-                       [formControl]="myControl"
-                       [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                    {{option}}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
-        </div>
-
-        <div class="row">
-            <mat-form-field class="example-full-width">
-                <mat-label>Emisor</mat-label>
-                <input type="text"
-                name="emisor"
-                       placeholder="Escriba un Nombre"
-                       aria-label="Nombre del Emisor"
-                       matInput
-                       [formControl]="myControl2"
-                       [matAutocomplete]="autoEmisor">
-                <mat-autocomplete #autoEmisor="matAutocomplete">
-                  <mat-option *ngFor="let option of filteredOptionsEmisor | async" [value]="option">
-                    {{option}}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
-        </div>
-        <div class="row ">
-            <div class=" file-selector">
-                <mat-icon class="icon">description</mat-icon>
-                <input type="file" (change)="onFileSelected($event)" accept=".pdf" />
-                <span *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</span>
-            </div>
-           
-        </div>
-    </form>
+    
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onClickNO()">CANCELAR</button>
-    <button mat-button [mat-dialog-close]="true" (click)="enviarDocumento()"
-        >CREAR</button>
-        <!-- [disabled]="!recepcionForm.valid">CREAR</button> -->
+    <button mat-button [mat-dialog-close]="true" (click)="enviarDocumento()">CREAR</button>
+    <!-- [disabled]="!recepcionForm.valid">CREAR</button> -->
 </div>

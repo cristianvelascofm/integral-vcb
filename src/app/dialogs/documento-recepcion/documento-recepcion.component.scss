@@ -34,6 +34,55 @@ $shadow-size: 20px;
   font-size: 36px;
   color: #007bff; /* Color del icono, puedes cambiarlo según tus preferencias */
 }
-input[type="file"] {
-  // display: none;
+
+
+.fisico{
+  background-image: url('../../../assets/images/icon/correo-electronico.png');
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 80px;
+  max-width: 80px;
+  background-size: 90%;
+  background-position: center;
+}
+
+.virtual{
+  background-image: url('../../../assets/images/icon/mensajes.png');
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 80px;
+  max-width: 80px;
+  background-size: 90%;
+  background-position: center;
+}
+
+
+.date{
+  background-image: url('../../../assets/images/icon/fecha-tope.png');
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 80px;
+  max-width: 80px;
+  background-size: 90%;
+  background-position: center;
+}
+.trd{
+  // background-image: url('../../../assets/images/icon/fecha-tope.png');
+  min-height: 20px;
+  min-width: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  background-size: 50%;
+  background-position: center;
+}
+
+.casa{
+  width: 40px; /* Establece el ancho deseado para la imagen */
+  height: 40px; /* Permite que la altura se ajuste automáticamente */
+  margin-right: 5px; /* Agrega margen a la derecha de la imagen para separarla del texto */
+}
+
+.form-field-wrapper {
+  display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+  align-items: center; /* Alinea verticalmente los elementos al centro */
 }
