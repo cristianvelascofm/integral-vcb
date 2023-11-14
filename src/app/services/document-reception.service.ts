@@ -10,6 +10,7 @@ export interface DocumentReception {
   fecha_actividad: Date;
   archivo: File;
   observacion: string;
+  estado?: string;
 }
 
 

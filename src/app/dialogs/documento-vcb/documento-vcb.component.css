@@ -1,0 +1,26 @@
+.logo-document {
+    /* margin-top: 15%; */
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.asunto {
+    background-image: url('../../../assets/images/icon/megafono.png');
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 80px;
+    max-width: 80px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.example-full-width {
+    width: 100% !important;
+    height: 80% !important;
+}
+
+.form-field-wrapper {
+    display: flex;
+    align-items: center;
+}

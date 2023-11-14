@@ -1,43 +1,47 @@
-<div mat-dialog-title style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
+<div mat-dialog-title style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418)">
     <div class="row">
         <div class="col-2">
             <img src="../../assets/images/icon/documentos_pendientes.png" alt="" class="logo-document">
         </div>
-        <div class="col-8">
+        <div class="col-10">
             <h1 id="modal-basic-title">Recepción de Documentos</h1>
         </div>
     </div>
 </div>
-<div mat-dialog-content class="mt-3" style="height: 100%;">{{msg}}
+<div mat-dialog-content class="mt-3" style="height: 100% !important;">{{msg}}
     <div class="container" style=" height: 100% !important;width: 100% !important;">
         <form (ngSubmit)="nuevaRecepcion()" #recepcionForm="ngForm" style="width: 100%">
             <mat-tab-group style="width: 100% !important; height: 100%;" class="">
                 <mat-tab label="Generalidades">
-                    <div class="container mt-4" style="height:auto; overflow: auto;">
+                    <div class="container" style="height:410px; overflow: auto;">
                         <div class="row" style="width: 100%; ">
-                            <!-- <mat-label>Tipo</mat-label> -->
                             <div class="col-6 ">
                                 <div class="row pt-3  ">
                                     <div class="col-6">
                                         <mat-checkbox [(ngModel)]="recepcion.fisico" name="fisico">
-                                            <mat-icon class="fisico"></mat-icon> 
+                                            <div style="display: flex; align-items: center; justify-content: center;">
+                                                <mat-icon class="fisico"></mat-icon>
+                                            </div>
+                                            <div style="display: flex; align-items: center; justify-content: center;">
+                                                <mat-label>Físico</mat-label>
+                                            </div>
                                         </mat-checkbox>
-                                        <!-- <mat-label>Físico</mat-label> -->
                                     </div>
                                     <div class="col-6">
                                         <mat-checkbox color="primary" name="virtual" [(ngModel)]="recepcion.virtual">
-                                            <mat-icon class="virtual"></mat-icon>
+                                            <div style="display: flex; align-items: center; justify-content: center;">
+                                                <mat-icon class="virtual"></mat-icon>
+                                            </div>
+                                            <div style="display: flex; align-items: center; justify-content: center;">
+                                                <mat-label>Digital</mat-label>
+                                            </div>
                                         </mat-checkbox>
-                                        <!-- <mat-label>Digital</mat-label> -->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6  form-field-wrapper">
-                                <!-- <img src="../../../assets/images/icon/fecha-tope.png" alt="casa" class="casa"> -->
-                                <!-- <mat-icon class="fecha-documento"></mat-icon> -->
-
+                                <mat-icon class="fecha-documento"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
-
                                     <mat-label> Fecha del Documento</mat-label>
                                     <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
                                         id="fecha-documento" name="fecha-documento" [(ngModel)]="fechaDocumento"
@@ -45,41 +49,17 @@
                                     <mat-hint>MM/DD/AAAA</mat-hint>
                                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
-
                                 </mat-form-field>
                             </div>
                         </div>
-
-                        <!-- <div class="row mt-2" style="width: 100%;">
-                            <div class="col-6 form-field-wrapper"
-                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/codigo-de-barras.png" alt="casa" class="casa">
-                                <mat-form-field class="example-full-width mt-2">
-                                    <mat-label>TRD</mat-label>
-                                    <input matInput placeholder="TRD Recepción" name="trd" [value]="recepcion.trd">
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6 form-field-wrapper"
-                                style="text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/ventana.png" alt="casa" class="casa">
-                                <mat-form-field class="example-full-width mt-2">
-                                    <mat-label>Venitanilla Única</mat-label>
-                                    <input matInput placeholder="V.U:" name="vu" [value]="recepcion.ventanillaUnica">
-                                </mat-form-field>
-                            </div>
-                        </div> -->
-
-
                         <div class="row " style="width: 100%;">
                             <div class="col-12 form-field-wrapper">
-                                <mat-icon class="fecha-documento"></mat-icon>
-                                <!-- <img src="../../../assets/images/icon/remitente.png" alt="casa" class="casa"> -->
-                                <mat-form-field class="example-full-width" >
-                                    
+                                <mat-icon class="remitente"></mat-icon>
+                                <mat-form-field class="example-full-width mt-3">
                                     <mat-label>Remitente</mat-label>
                                     <input type="text" name="remitente" placeholder="Escriba un Nombre"
                                         aria-label="Nombre del Remitente" matInput [formControl]="myControl"
-                                        [matAutocomplete]="auto">
+                                        [matAutocomplete]="auto" required>
                                     <mat-autocomplete #auto="matAutocomplete">
                                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                                             {{option}}
@@ -91,19 +71,17 @@
                         </div>
                         <div class="row " style="width: 100%;">
                             <div class="col-12 form-field-wrapper">
-                                <!-- <img src="../../../assets/images/icon/asunto.png" alt="casa" class="casa"> -->
+                                <mat-icon class="asunto"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Asunto</mat-label>
                                     <input matInput placeholder="Asunto del Documento" name="asunto"
-                                        [value]="recepcion.asunto">
+                                        [value]="recepcion.asunto"  required>
                                 </mat-form-field>
                             </div>
                         </div>
-
                         <div class="row " style="width: 100%;">
                             <div class="col-6  form-field-wrapper">
-                                <!-- <img src="../../../assets/images/icon/programar.png" alt="casa" class="casa"> -->
-
+                                <mat-icon class="fecha_realizacion"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
 
                                     <mat-label>Fecha de Realización</mat-label>
@@ -117,7 +95,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="col-6  form-field-wrapper">
-                                <!-- <img src="../../../assets/images/icon/signo-de-dolar.png" alt="casa" class="casa"> -->
+                                <mat-icon class="valor"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Valor</mat-label>
                                     <input matInput placeholder="Valor de la Solicitud" name="valor"
@@ -127,53 +105,40 @@
                             </div>
 
                         </div>
-
-                        <!-- <div class="row mt-2" style="width: 100%;">
-                            <div class="col-12 form-field-wrapper"
-                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center;box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/cartero.png" alt="casa" class="casa">
-                                <mat-form-field class="example-full-width mt-2">
-                                    <mat-label>Emisor</mat-label>
-                                    <input type="text" name="emisor" placeholder="Escriba un Nombre"
-                                        aria-label="Nombre del Emisor" matInput [formControl]="myControl2"
-                                        [matAutocomplete]="autoEmisor">
-                                    <mat-autocomplete #autoEmisor="matAutocomplete">
-                                        <mat-option *ngFor="let option of filteredOptionsEmisor | async" [value]="option">
-                                            {{option}}
-                                        </mat-option>
-                                    </mat-autocomplete>
-                                </mat-form-field>
+                        <div class="row mt-2" style="width: 100%">
+                            <div class="col-12 form-field-wrapper">
+                                <mat-icon class="file"></mat-icon>
+                                <input  required style="font-size: smaller;" type="file" (change)="onFileSelected($event)"
+                                    accept=".pdf" />
+                                <span style="font-size: smaller;" *ngIf="selectedFile">Archivo seleccionado: {{
+                                    selectedFile.name }}</span>
                             </div>
-    
-                        </div> -->
+
+                        </div>
                     </div>
-
-
                 </mat-tab>
+
                 <mat-tab label="Detalles">
-                    <div class="container mt-4" style="height: 410px; overflow: auto;">
-                        <div class="row mt-2" style="width: 100%;">
-                            <div class="col-6 form-field-wrapper"
-                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/codigo-de-barras.png" alt="casa" class="casa">
-                                <mat-form-field class="example-full-width mt-2">
+                    <div class="container" style="height: 410px; overflow: auto;">
+                        <div class="row " style="width: 100%;">
+                            <div class="col-6 form-field-wrapper">
+                                <mat-icon class="trd"></mat-icon>
+                                <mat-form-field class="example-full-width mt-3">
                                     <mat-label>TRD</mat-label>
                                     <input matInput placeholder="TRD Recepción" name="trd" [value]="recepcion.trd">
                                 </mat-form-field>
                             </div>
-                            <div class="col-6 form-field-wrapper"
-                                style="text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/ventana.png" alt="casa" class="casa">
+                            <div class="col-6 form-field-wrapper">
+                                <mat-icon class="vu"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Venitanilla Única</mat-label>
-                                    <input matInput placeholder="V.U:" name="vu" [value]="recepcion.ventanillaUnica">
+                                    <input matInput placeholder="V.U." name="vu" [value]="recepcion.ventanillaUnica">
                                 </mat-form-field>
                             </div>
                         </div>
-                        <div class="row mt-3" style="width: 100%;">
-                            <div class="col-12 form-field-wrapper"
-                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center;box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/cartero.png" alt="casa" class="casa">
+                        <div class="row" style="width: 100%;">
+                            <div class="col-12 form-field-wrapper">
+                                <mat-icon class="emisor"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Emisor</mat-label>
                                     <input type="text" name="emisor" placeholder="Escriba un Nombre"
@@ -187,65 +152,28 @@
                                     </mat-autocomplete>
                                 </mat-form-field>
                             </div>
-
-                        </div>
-                        <div class="row mt-3" style="width: 100%;">
-                            <div class="col-6  form-field-wrapper"
-                                style=" box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);border: 1px gray solid;">
-                                <img src="../../../assets/images/icon/programar.png" alt="casa" class="casa">
-
-                                <mat-form-field class="example-full-width mt-2">
-
-                                    <mat-label>Fecha de Realización</mat-label>
-                                    <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
-                                        id="fecha-realizacion" name="fecha-realizacion" [(ngModel)]="fechaDocumento"
-                                        required>
-                                    <mat-hint>MM/DD/AAAA</mat-hint>
-                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-
-                                </mat-form-field>
-                            </div>
-                            <div class="col-6  form-field-wrapper"
-                                style=" box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);border: 1px gray solid;">
-                                <img src="../../../assets/images/icon/signo-de-dolar.png" alt="casa" class="casa">
-                                <mat-form-field class="example-full-width mt-2">
-                                    <mat-label>Valor</mat-label>
-                                    <input matInput placeholder="Valor de la Solicitud" name="valor"
-                                        [value]="recepcion.asunto">
-                                </mat-form-field>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row mt-3" style="width: 100%; height: 60px;">
-                            <div class="col-12 file-selector mt-2"
-                                style="height: 100%; text-align: center; border: 1px gray solid; display: flex; justify-content: center; box-shadow: 0 3px 3px rgba(0, 0, 0, 0.418);">
-                                <img src="../../../assets/images/icon/adjunto.png" alt="casa" class="casa">
-                                <input type="file" (change)="onFileSelected($event)" accept=".pdf" />
-                                <span *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</span>
-                            </div>
-
                         </div>
                     </div>
                 </mat-tab>
+                
                 <mat-tab label="Anotaciones">
-                    <div class="container mt-4" style="height: 410px; overflow: auto;">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Anotaciones para este Documento</mat-label>
-                            <textarea matInput placeholder="Notas"></textarea>
-                        </mat-form-field>
+                    <div class="container mt-4" style="height: 387px; overflow: auto;">
+                        <div class="row" style="width: 100%">
+                            <div class="col-12 form-field-wrapper">
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Anotaciones para este Documento</mat-label>
+                                    <textarea matInput placeholder="Notas"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
                     </div>
                 </mat-tab>
             </mat-tab-group>
         </form>
     </div>
-
-
 </div>
-<div mat-dialog-actions style="height: auto;">
-    <button mat-button (click)="onClickNO()">CANCELAR</button>
-    <button mat-button [mat-dialog-close]="true" (click)="enviarDocumento()">CREAR</button>
+<div mat-dialog-actions style="justify-content: end;">
+    <button mat-raised-button (click)="onClickNO()" color="primary">CANCELAR</button>
+    <button mat-raised-button [mat-dialog-close]="true" (click)="enviarDocumento()" color="accent">ACEPTAR</button>
     <!-- [disabled]="!recepcionForm.valid">CREAR</button> -->
 </div>

@@ -11,6 +11,7 @@ import { DocumentVCB, DocumentVcbService } from '../services/document-vcb.servic
 import { MatDialog } from '@angular/material/dialog';
 import { EventoActividadComponent } from '../dialogs/evento-actividad/evento-actividad.component';
 import { DocumentoRecepcionComponent } from '../dialogs/documento-recepcion/documento-recepcion.component';
+import { DocumentoVcbComponent } from '../dialogs/documento-vcb/documento-vcb.component';
 
 @Component({
   selector: 'app-document-module',
@@ -438,7 +439,7 @@ openModal(){
   const dialogRef = this.dialog.open(DocumentoRecepcionComponent, {
     disableClose: true,
     width: '700px',
-    height: '700px'
+    // height: '700px'
     // data: 'CONTENIDO'
   });
   dialogRef.afterClosed().subscribe(res => {
@@ -446,6 +447,17 @@ openModal(){
   })
 }
 
+openVCB(){
+  const dialogRef = this.dialog.open(DocumentoVcbComponent, {
+    disableClose: true,
+    width: '700px',
+    // height: '700px'
+    // data: 'CONTENIDO'
+  });
+  dialogRef.afterClosed().subscribe(res => {
+    console.log(res)
+  })
+}
   modalRef: any;
   open(content: any, modo: string) {
 
