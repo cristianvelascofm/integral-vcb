@@ -66,8 +66,12 @@
                                         </mat-option>
                                     </mat-autocomplete>
                                 </mat-form-field>
+                                <div class="m-3">
+                                    <button mat-mini-fab color="primary" aria-label="Add Person">
+                                      <mat-icon>perm_identity</mat-icon>
+                                    </button>
+                                  </div>
                             </div>
-
                         </div>
                         <div class="row " style="width: 100%;">
                             <div class="col-12 form-field-wrapper">
@@ -173,7 +177,7 @@
     </div>
 </div>
 <div mat-dialog-actions style="justify-content: end;">
-    <button mat-raised-button (click)="onClickNO()" color="primary">CANCELAR</button>
-    <button mat-raised-button [mat-dialog-close]="true" (click)="enviarDocumento()" color="accent">ACEPTAR</button>
+    <button mat-raised-button (click)="onClickNO()" color="accent">CANCELAR</button>
+    <button mat-raised-button [mat-dialog-close]="true" (click)="enviarDocumento()" color="primary">ACEPTAR</button>
     <!-- [disabled]="!recepcionForm.valid">CREAR</button> -->
 </div>
