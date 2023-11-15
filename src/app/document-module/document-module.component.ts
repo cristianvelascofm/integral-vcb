@@ -438,8 +438,8 @@ export class DocumentModuleComponent implements OnInit {
 openModal(){
   const dialogRef = this.dialog.open(DocumentoRecepcionComponent, {
     disableClose: true,
-    width: '700px',
-    // height: '700px'
+    width: '800px',
+    // height: '1000px'
     // data: 'CONTENIDO'
   });
   dialogRef.afterClosed().subscribe(res => {

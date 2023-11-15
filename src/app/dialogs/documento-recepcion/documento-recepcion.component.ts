@@ -1,9 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import axios from 'axios';
 import { Observable, map, startWith } from 'rxjs';
 import { DocumentoRecepcion } from 'src/app/services/documento.service';
+
+
+interface oficioRecepcion {
+  tipo: string;
+}
 
 @Component({
   selector: 'app-documento-recepcion',
@@ -53,6 +58,26 @@ export class DocumentoRecepcionComponent {
     usuario: '',
   }
 
+  oficioRecepcionControl = new FormControl<oficioRecepcion[]>([], [Validators.required]);
+
+  oficios: oficioRecepcion[] = [
+    { tipo: 'Apoyo Económico' },
+    { tipo: 'Sonido' },
+    { tipo: 'Transporte Aéreo - Tiquetes' },
+    { tipo: 'Transporte Terrestre' },
+    { tipo: 'Refrigerios' },
+    { tipo: 'Souvenirs' },
+    { tipo: 'Espacios Físicos' },
+  ];
+  onAnimalSelectionChange() {
+    const selectedOficios = this.oficioRecepcionControl.value;
+
+    if (selectedOficios && selectedOficios.length > 0) {
+      // Muestra una alerta con los tipos de solicitud seleccionados
+      const selectedTipos = selectedOficios.map(oficio => oficio.tipo);
+      alert(`Has seleccionado los siguientes tipos de solicitud: ${selectedTipos.join(', ')}`);
+    }
+  }
 
   onClickNO(): void {
     this.dialogRef.close();
@@ -102,7 +127,7 @@ export class DocumentoRecepcionComponent {
 
           }
         });
-    
+
         // La solicitud se completó con éxito
         console.log('Documento enviado correctamente.');
       } catch (error) {
@@ -110,7 +135,7 @@ export class DocumentoRecepcionComponent {
         console.error('Error al enviar el documento:', error);
       }
     }
-    
+
 
   }
 }
