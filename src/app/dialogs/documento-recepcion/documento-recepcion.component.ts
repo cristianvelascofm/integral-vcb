@@ -59,7 +59,7 @@ export class DocumentoRecepcionComponent {
   }
 
   oficioRecepcionControl = new FormControl<oficioRecepcion[]>([], [Validators.required]);
-
+  previousSelectedOficios: oficioRecepcion[] = [];
   oficios: oficioRecepcion[] = [
     { tipo: 'Apoyo Económico' },
     { tipo: 'Sonido' },
@@ -68,16 +68,150 @@ export class DocumentoRecepcionComponent {
     { tipo: 'Refrigerios' },
     { tipo: 'Souvenirs' },
     { tipo: 'Espacios Físicos' },
+    { tipo: 'Invitación' },
+    { tipo: 'Informativa' },
   ];
-  onAnimalSelectionChange() {
+
+
+  // Variables booleanas para activar/desactivar propiedades en el template
+  mostrarApoyoEconomico = false;
+  mostrarSonido = false;
+  mostrarTransporteAereo = false;
+  mostrarTransporteTerrestre = false;
+  mostrarRefrigerios = false;
+  mostrarSouvenirs = false;
+  mostrarEspaciosFisicos = false;
+  mostrarInvitacion = false;
+  mostrarInformativa = false;
+
+  onSelectionChange() {
     const selectedOficios = this.oficioRecepcionControl.value;
 
-    if (selectedOficios && selectedOficios.length > 0) {
-      // Muestra una alerta con los tipos de solicitud seleccionados
-      const selectedTipos = selectedOficios.map(oficio => oficio.tipo);
-      alert(`Has seleccionado los siguientes tipos de solicitud: ${selectedTipos.join(', ')}`);
+    if (selectedOficios) {
+      const addedOficios = selectedOficios.filter(oficio => !this.previousSelectedOficios.includes(oficio));
+      const removedOficios = this.previousSelectedOficios.filter(oficio => !selectedOficios.includes(oficio));
+
+      if (addedOficios.length > 0) {
+        addedOficios.forEach(oficio => this.activarPropiedad(oficio.tipo));
+        // ... otras operaciones que desees realizar al agregar opciones
+      }
+
+      if (removedOficios.length > 0) {
+        removedOficios.forEach(oficio => this.desactivarPropiedad(oficio.tipo));
+        // ... otras operaciones que desees realizar al quitar opciones
+      }
+
+      // Actualiza el valor previo con la selección actual
+      this.previousSelectedOficios = selectedOficios;
+    } else {
+      // Manejar el caso cuando selectedOficios es nulo (puede ser un escenario raro)
+      console.error('selectedOficios es nulo');
     }
   }
+
+  // Funciones para activar/desactivar propiedades en función de la opción seleccionada
+  private activarPropiedad(tipo: string): void {
+    switch (tipo) {
+      case 'Apoyo Económico':
+        this.mostrarApoyoEconomico = true;
+        break;
+      case 'Sonido':
+        this.mostrarSonido = true;
+        break;
+      case 'Transporte Aéreo - Tiquetes':
+        this.mostrarTransporteAereo = true;
+        break;
+      case 'Transporte Terrestre':
+        this.mostrarTransporteTerrestre = true;
+        break;
+      case 'Refrigerios':
+        this.mostrarRefrigerios = true;
+        break;
+      case 'Souvenirs':
+        this.mostrarSouvenirs = true;
+        break;
+      case 'Espacios Físicos':
+        this.mostrarEspaciosFisicos = true;
+        break;
+      case 'Invitación':
+        this.mostrarInvitacion = true;
+        break;
+      case 'Informativa':
+        this.mostrarInformativa = true;
+        break;
+      // Agregar casos para las opciones restantes
+    }
+  }
+
+  private desactivarPropiedad(tipo: string): void {
+    switch (tipo) {
+      case 'Apoyo Económico':
+        this.mostrarApoyoEconomico = false;
+        break;
+      case 'Sonido':
+        this.mostrarSonido = false;
+        break;
+      case 'Transporte Aéreo - Tiquetes':
+        this.mostrarTransporteAereo = false;
+        break;
+      case 'Transporte Terrestre':
+        this.mostrarTransporteTerrestre = false;
+        break;
+      case 'Refrigerios':
+        this.mostrarRefrigerios = false;
+        break;
+      case 'Souvenirs':
+        this.mostrarSouvenirs = false;
+        break;
+      case 'Espacios Físicos':
+        this.mostrarEspaciosFisicos = false;
+        break;
+      case 'Invitación':
+        this.mostrarInvitacion = false;
+        break;
+      case 'Informativa':
+        this.mostrarInformativa = false;
+        break;
+      // Agregar casos para las opciones restantes
+    }
+  }
+
+  apoyoEconomico = 0;
+
+  formatoMiles(valor: number) {
+    //toma el valor y lo separa en miles
+    let num = String(valor);
+    if (num[1] == undefined || num[1] == ".") {
+      return num[0];
+    } else {
+      return num[0] + '.' + num[1];
+    }
+  }
+
+
+
+
+  // Función para dar formato al valor como moneda colombiana
+  // formatoMiles(valor: string): string {
+  //   const valorNumerico = parseFloat(valor.replace(/,/g, ''));
+
+  //   if (!isNaN(valorNumerico)) {
+  //     const valorFormateado = valorNumerico.toFixed(2);
+  //     const partes = valorFormateado.split('.');
+  //     partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  //     return partes.join(',');
+  //   }
+
+  //   return '0';
+  // }
+
+  // Función para actualizar el valor del apoyo económico
+  actualizarApoyoEconomico(event: any): void {
+    // Eliminar cualquier separador de miles existente antes de actualizar el valor
+    this.apoyoEconomico = event.target.value.replace(/,/g, '');
+  }
+
 
   onClickNO(): void {
     this.dialogRef.close();
