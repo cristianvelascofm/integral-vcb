@@ -45,6 +45,7 @@ import { DocumentoRecepcionComponent } from './dialogs/documento-recepcion/docum
 import { EventoCrearComponent } from './dialogs/evento-crear/evento-crear.component';
 import { RegistarAsistenteComponent } from './dialogs/registar-asistente/registar-asistente.component';
 import { DatePipe } from '@angular/common';
+import { NumeroFormateadoPipe } from './config/numero-formateado.pipe';
 import { DocumentoVcbComponent } from './dialogs/documento-vcb/documento-vcb.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
@@ -53,6 +54,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AppComponent,
     MainPageComponent,
     HomePageComponent,
+    NumeroFormateadoPipe,
     PrincipalMenuComponent,
     LoginPanelComponent,
     DocumentPanelComponent,

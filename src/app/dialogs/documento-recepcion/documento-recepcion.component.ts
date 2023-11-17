@@ -73,6 +73,7 @@ export class DocumentoRecepcionComponent {
   ];
 
 
+
   // Variables booleanas para activar/desactivar propiedades en el template
   mostrarApoyoEconomico = false;
   mostrarSonido = false;
@@ -176,42 +177,24 @@ export class DocumentoRecepcionComponent {
     }
   }
 
-  apoyoEconomico = 0;
+  // FORMATEADOR VALOR SOLICITUD
+  numeroEntrada: string = '';
 
-  formatoMiles(valor: number) {
-    //toma el valor y lo separa en miles
-    let num = String(valor);
-    if (num[1] == undefined || num[1] == ".") {
-      return num[0];
+  formatearNumero() {
+    if (this.numeroEntrada && this.numeroEntrada != '') {
+      const numero = parseFloat(this.numeroEntrada.replace(/,/g, '')); // Elimina comas existentes
+      this.numeroEntrada = this.formatearConSeparadores(numero);
     } else {
-      return num[0] + '.' + num[1];
+      this.numeroEntrada = '';
     }
+
+
+
   }
 
-
-
-
-  // Función para dar formato al valor como moneda colombiana
-  // formatoMiles(valor: string): string {
-  //   const valorNumerico = parseFloat(valor.replace(/,/g, ''));
-
-  //   if (!isNaN(valorNumerico)) {
-  //     const valorFormateado = valorNumerico.toFixed(2);
-  //     const partes = valorFormateado.split('.');
-  //     partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-  //     return partes.join(',');
-  //   }
-
-  //   return '0';
-  // }
-
-  // Función para actualizar el valor del apoyo económico
-  actualizarApoyoEconomico(event: any): void {
-    // Eliminar cualquier separador de miles existente antes de actualizar el valor
-    this.apoyoEconomico = event.target.value.replace(/,/g, '');
+  private formatearConSeparadores(numero: number): string {
+    return numero.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
-
 
   onClickNO(): void {
     this.dialogRef.close();
