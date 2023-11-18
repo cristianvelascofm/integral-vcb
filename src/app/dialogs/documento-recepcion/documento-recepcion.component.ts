@@ -28,7 +28,8 @@ export class DocumentoRecepcionComponent {
   }
 
   fileName = '';
-  fechaDocumento = ''
+  fechaDocumento = '';
+  fechaRealizacion ='';
   labelPosition: 'before' | 'after' = 'after';
 
   // VARIABLES CONTROL FILTRO REMITENTE
@@ -71,19 +72,41 @@ export class DocumentoRecepcionComponent {
     { tipo: 'Invitación' },
     { tipo: 'Informativa' },
   ];
+  selectedTime: string = "12:00";
+  selectedTimeRegreso: string = "12:00";
 
-
+  onTimeChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedTime = inputElement.value;
+    console.log('Nueva hora seleccionada:', this.selectedTime);
+  }
+  onTimeChangeRegreso(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedTimeRegreso = inputElement.value;
+    console.log('Nueva hora seleccionada:', this.selectedTimeRegreso);
+  }
 
   // Variables booleanas para activar/desactivar propiedades en el template
   mostrarApoyoEconomico = false;
   mostrarSonido = false;
   mostrarTransporteAereo = false;
-  mostrarTransporteTerrestre = false;
+  mostrarTransporteTerrestre = true;
   mostrarRefrigerios = false;
   mostrarSouvenirs = false;
   mostrarEspaciosFisicos = false;
   mostrarInvitacion = false;
   mostrarInformativa = false;
+
+  numeroEntrada: string = '';
+  destinoApoyo: string = '';
+  detallesSonido: string= '';
+  ciudadOrigen: string='';
+  ciudadDestino: string='';
+  ciudadOrigenVehiculo: string = '';
+  ciudadDestinoVehiculo: string = '';
+  responsableViaje:string='';
+  lugarRecogidaIda: string=''
+  dependenciaSolicitante:string='';
 
   onSelectionChange() {
     const selectedOficios = this.oficioRecepcionControl.value;
@@ -178,9 +201,11 @@ export class DocumentoRecepcionComponent {
   }
 
   // FORMATEADOR VALOR SOLICITUD
-  numeroEntrada: string = '';
+
 
   formatearNumero() {
+
+    
     if (this.numeroEntrada && this.numeroEntrada != '') {
       const numero = parseFloat(this.numeroEntrada.replace(/,/g, '')); // Elimina comas existentes
       this.numeroEntrada = this.formatearConSeparadores(numero);

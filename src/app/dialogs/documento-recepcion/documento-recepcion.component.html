@@ -7,14 +7,14 @@
             <h1 id="modal-basic-title">Recepción de Documentos</h1>
         </div>
     </div>
-    
+
 </div>
-<div mat-dialog-content class="mt-3" style="height: 100% !important;">{{msg}}
+<div mat-dialog-content class="mt-3" style="height: 610px!important;">{{msg}}
     <div class="container" style=" height: 100% !important;width: 100% !important;">
         <form (ngSubmit)="nuevaRecepcion()" #recepcionForm="ngForm" style="width: 100%">
-            <mat-tab-group style="width: 100% !important; height: 100%;" class="">
+            <mat-tab-group style="width: 100% !important; height: 100% !important;" class="">
                 <mat-tab label="Generalidades">
-                    <div class="container" style="height:410px; overflow: auto;">
+                    <div class="container" style="height:100%; overflow: auto;">
                         <div class="row" style="width: 100%; ">
                             <div class="col-6 ">
                                 <div class="row pt-3  ">
@@ -90,12 +90,12 @@
                                 <mat-form-field class="example-full-width mt-2">
 
                                     <mat-label>Fecha de Realización</mat-label>
-                                    <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
-                                        id="fecha-realizacion" name="fecha-realizacion" [(ngModel)]="fechaDocumento"
+                                    <input matInput [matDatepicker]="pickerR" [value]="fechaRealizacion"
+                                        id="fecha-realizacion" name="fecha-realizacion" [(ngModel)]="fechaRealizacion"
                                         required>
                                     <mat-hint>MM/DD/AAAA</mat-hint>
-                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-datepicker-toggle matIconSuffix [for]="pickerR"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerR></mat-datepicker>
 
                                 </mat-form-field>
                             </div>
@@ -126,26 +126,257 @@
                                     selectedFile.name }}</span>
                             </div>
                         </div> -->
-                        <div class="row mt-2" style="width: 100%;">
+                        <div class="row" *ngIf="mostrarApoyoEconomico" style="width: 100%;">
                             <div class="col-6 form-field-wrapper">
                                 <mat-icon class="valor"></mat-icon>
-                                <mat-form-field>
+                                <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Apoyo Económico</mat-label>
                                     <input matInput type="text" name="valorSolicitud" id="valorNumerico"
                                         [(ngModel)]="numeroEntrada" (input)="formatearNumero()"
-                                        placeholder="Ingrese un número">
+                                        placeholder="Ingrese un número" required>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col-6 form-field-wrapper">
+                                <mat-icon class="destino-apoyo"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Destino</mat-label>
+                                    <input matInput type="text" name="destino-apoyo" id="destino-apoyo"
+                                        [(ngModel)]="destinoApoyo" placeholder="Destino del Apoyo" required>
                                 </mat-form-field>
 
                             </div>
                         </div>
-                        <div class="row"></div>
+                        <div class="row" *ngIf="mostrarSonido" style="width: 100%;">
+                            <div class="col-12 form-field-wrapper">
+                                <mat-icon class="detalles-sonido"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Sonido</mat-label>
+                                    <textarea matInput placeholder="Detalles Sonido Requerido"
+                                        [(ngModel)]="detallesSonido"></textarea>
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
                     </div>
                 </mat-tab>
-                <mat-tab label="Sonido" *ngIf="mostrarSonido">
-                </mat-tab>
+
                 <mat-tab label="Tiquetes" *ngIf="mostrarTransporteAereo">
+                    <!-- <ng-template mat-tab-label>
+                      <mat-icon class="viajes"></mat-icon> -->
+                    <!-- </ng-template> -->
+                    <div class="container mt-4" style="height: 387px; overflow: auto;">
+
+                        <div class="row" style="width: 100%">
+                            <div class="col-4 form-field-wrapper">
+                                <mat-icon class="origen"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Ciudad de Origen</mat-label>
+                                    <input matInput type="text" name="destino-apoyo" id="destino-apoyo"
+                                        [(ngModel)]="ciudadOrigen" placeholder="Escriba la Ciudad" required>
+
+                                </mat-form-field>
+                            </div>
+                            <div class="col-4 form-field-wrapper">
+                                <mat-icon class="calendario"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label> Fecha Salida</mat-label>
+                                    <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
+                                        id="fecha-documento" name="fecha-documento" [(ngModel)]="fechaDocumento"
+                                        required>
+                                    <mat-hint>MM/DD/AAAA</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-4" style="display: flex; align-items: center; justify-content: center;">
+                                <div class="row mt-2" style="width: 100%;">
+                                    <div class="col-4" align="center">
+                                        <mat-icon class="reloj"></mat-icon>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="time" placeholder="Hora de Salida" class="hora-inicio" id="hora"
+                                            name="hora" [(ngModel)]="selectedTime" (change)="onTimeChange($event)">
+                                    </div>
+                                    <div align="end">
+                                        <!-- <mat-label> Hora Salida</mat-label> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" style="width: 100%">
+                            <div class="col-4 form-field-wrapper">
+                                <mat-icon class="destino"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Ciudad de Destino</mat-label>
+                                    <input matInput type="text" name="destino-ciudad" id="destino-ciudad"
+                                        [(ngModel)]="ciudadDestino" placeholder="Escriba la Ciudad" required>
+
+                                </mat-form-field>
+                            </div>
+                            <div class="col-4 form-field-wrapper">
+                                <mat-icon class="calendario2"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label> Fecha Regreso</mat-label>
+                                    <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
+                                        id="fecha-documento" name="fecha-documento" [(ngModel)]="fechaDocumento"
+                                        required>
+                                    <mat-hint>MM/DD/AAAA</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-4" style="display: flex; align-items: center; justify-content: center;">
+                                <div class="row mt-2" style="width: 100%;">
+                                    <div class="col-4" align="center">
+                                        <mat-icon class="reloj2"></mat-icon>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="time" placeholder="Hora de Salida" class="hora-inicio" id="hora"
+                                            name="hora" [(ngModel)]="selectedTimeRegreso"
+                                            (change)="onTimeChangeRegreso($event)">
+                                    </div>
+                                    <div align="end">
+                                        <!-- <mat-label> Hora Salida</mat-label> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </mat-tab>
                 <mat-tab label="Vehículo" *ngIf="mostrarTransporteTerrestre">
+                    <div class="container" style="height: 100% !important; overflow: auto;">
+                        <div class="row" style="width: 100%;">
+                            <div class="col-6 form-field-wrapper">
+                                <mat-icon class="responsable-vehiculo"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Responsable Viaje</mat-label>
+                                    <input matInput type="text" name="ciudad-origen-vehiculo"
+                                        id="ciudad-origen-vehiculo" [(ngModel)]="responsableViaje"
+                                        placeholder="Escriba el Nombre" required>
+                                </mat-form-field>
+                                <div class="m-3" aling="end">
+                                    <button mat-mini-fab color="primary" aria-label="Add Person">
+                                        <mat-icon>perm_identity</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6 form-field-wrapper" >
+                                <mat-icon class="dependencia-solicitante"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Dependencia Solicitante</mat-label>
+                                    <input matInput type="text" name="dependencia-solicitante"
+                                        id="dependencia-solicitante" [(ngModel)]="dependenciaSolicitante"
+                                        placeholder="Escriba el Nombre" >
+                                </mat-form-field>
+                                <div class="m-3">
+                                    <button mat-mini-fab color="warn" aria-label="Add Person">
+                                        <mat-icon>account_balance</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="width: 100%;">
+                            <div class="col-6">
+                                <div class=" form-field-wrapper">
+                                    <mat-icon class="origen"></mat-icon>
+                                    <mat-form-field class="example-full-width mt-2">
+                                        <mat-label>Ciudad de Origen</mat-label>
+                                        <input matInput type="text" name="destino-apoyo" id="destino-apoyo"
+                                            [(ngModel)]="ciudadOrigen" placeholder="Escriba la Ciudad" required>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-field-wrapper">
+                                    <mat-icon class="lugar-recogida"></mat-icon>
+                                    <mat-form-field class="example-full-width mt-2">
+                                        <mat-label>Lugar Recogida</mat-label>
+                                        <input matInput type="text" name="lugar-recogida" id="lugar-recogida
+                                        " [(ngModel)]="lugarRecogidaIda" placeholder="Escriba el Lugar" required>
+                                    </mat-form-field>
+
+                                </div>
+                                <div class="form-field-wrapper">
+                                    <mat-icon class="calendario"></mat-icon>
+                                    <mat-form-field class="example-full-width mt-2">
+                                        <mat-label> Fecha Salida</mat-label>
+                                        <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
+                                            id="fecha-documento" name="fecha-documento" [(ngModel)]="fechaDocumento"
+                                            required>
+                                        <mat-hint>MM/DD/AAAA</mat-hint>
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-field-wrapper">
+                                    <div class="row mt-2" style="width: 100%;">
+                                        <div class="col-4" align="start">
+                                            <mat-icon class="reloj"></mat-icon>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="time" placeholder="Hora de Salida" class="hora-inicio"
+                                                id="hora" name="hora" [(ngModel)]="selectedTime"
+                                                (change)="onTimeChange($event)">
+                                        </div>
+                                        <div align="end">
+                                            <!-- <mat-label> Hora Salida</mat-label> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class=" form-field-wrapper">
+                                    <mat-icon class="destino"></mat-icon>
+                                    <mat-form-field class="example-full-width mt-2">
+                                        <mat-label>Ciudad de Destino</mat-label>
+                                        <input matInput type="text" name="destino-ciudad" id="destino-ciudad"
+                                            [(ngModel)]="ciudadDestino" placeholder="Escriba la Ciudad" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class=" form-field-wrapper ">
+                                    <mat-icon class="lugar-recogida2"></mat-icon>
+                                    <mat-form-field class="example-full-width mt-2">
+                                        <mat-label>Lugar Recogida</mat-label>
+                                        <input matInput type="text" name="lugar-recogida2" id="lugar-recogida2"
+                                            [(ngModel)]="lugarRecogidaIda" placeholder="Escriba el Lugar" required>
+                                    </mat-form-field>
+
+                                </div>
+                                <div class=" form-field-wrapper">
+                                    <mat-icon class="calendario2 "></mat-icon>
+                                    <mat-form-field class="example-full-width mt-2">
+                                        <mat-label> Fecha Regreso</mat-label>
+                                        <input matInput [matDatepicker]="picker" [value]="fechaDocumento"
+                                            id="fecha-documento" name="fecha-documento" [(ngModel)]="fechaDocumento"
+                                            required>
+                                        <mat-hint>MM/DD/AAAA</mat-hint>
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <div class="row mt-2" style="width: 100%;">
+                                        <div class="col-4" align="">
+                                            <mat-icon class="reloj2"></mat-icon>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="time" placeholder="Hora de Salida" class="hora-inicio"
+                                                id="hora" name="hora" [(ngModel)]="selectedTimeRegreso"
+                                                (change)="onTimeChangeRegreso($event)">
+                                        </div>
+                                        <div align="end">
+                                            <!-- <mat-label> Hora Salida</mat-label> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </mat-tab>
                 <mat-tab label="Refrigerios" *ngIf="mostrarRefrigerios">
                 </mat-tab>
