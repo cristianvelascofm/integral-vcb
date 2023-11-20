@@ -29,6 +29,17 @@ $shadow-size: 20px;
   height: 80% !important;
 }
 
+.numeros{
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  outline: none ;
+  border-bottom: 1px solid black;
+  width: 60% !important;
+  height: 70% !important;
+  margin-left: 10px !important;
+  
+}
+
 .file-selector {
   display: flex;
   align-items: center;
@@ -150,6 +161,28 @@ $shadow-size: 20px;
   background-position: center;
 }
 
+.detalles-refrigerio {
+  background-image: url('../../../assets/images/icon/refrigerio.png  ');
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 80px;
+  max-width: 80px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+.detalles-souvenir {
+  background-image: url('../../../assets/images/icon/recuerdo.png');
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 80px;
+  max-width: 80px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
 .file {
   background-image: url('../../../assets/images/icon/adjunto.png');
   min-height: 40px;
@@ -216,7 +249,7 @@ $shadow-size: 20px;
 
 }
 
-.viajes {
+.viaje {
   background-image: url('../../../assets/images/icon/viajes.png');
   min-height: 40px;
   min-width: 40px;
@@ -357,4 +390,15 @@ $shadow-size: 20px;
   margin-right: 10px !important;
   background-position: center;
 
+}
+
+.espacios {
+  background-image: url('../../../assets/images/icon/universidad.png');
+  min-height: 40px;
+  min-width: 40px;
+  max-height: 80px;
+  max-width: 80px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
 }
