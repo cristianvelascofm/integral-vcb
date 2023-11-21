@@ -201,16 +201,17 @@
                                 <mat-form-field class="example-form-field mt-2" appearance="fill">
                                     <mat-label>Buscar Lista de Viajeros</mat-label>
                                     <input matInput (keyup)="applyFilter($event)" [(ngModel)]="terminoBusquedaViajero"
-                                        placeholder="Ingrese un Valor" #input>
+                                        placeholder="Ingrese un Valor" name="valor-busqueda-viajero" #input>
                                     <button *ngIf="terminoBusquedaViajero" matSuffix mat-icon-button aria-label="Borrar"
-                                        (click)="cleanSearchTiqutes()">
+                                        (click)="cleanSearchTiqutes()" name="eliminar-contenido-viajero">
                                         <mat-icon>close</mat-icon>
                                     </button>
                                 </mat-form-field>
                             </div>
                             <div class="col-4">
                                 <button mat-raised-button extended color="primary" style="top: 25%; width: 100%;"
-                                    (click)="openModalViajero()" matTooltip="Info about the action">Nuevo
+                                    (click)="openModalViajero()" matTooltip="Info about the action"
+                                    name="nuevo-viajero">Nuevo
                                     Viajero</button>
                             </div>
                         </div>
@@ -390,17 +391,18 @@
 
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <mat-divider class="mt-2"></mat-divider>
+                        <div class="row pt-3">
                             <div class="col-4">
                                 <div class="row">
-                                    <div class="col-6" style="display: flex; align-items: center;">
-                                        <mat-label>Docentes</mat-label>
-                                        <mat-checkbox [(ngModel)]="docentesSelected" name="fisico">
+                                    <div class="col-6">
+                                        <mat-checkbox [(ngModel)]="docentesSelected" name="docente" (change)="resetNumeroViajerosTerrestres()">
+                                            <mat-label>Docentes</mat-label>
                                         </mat-checkbox>
                                     </div>
                                     <div class="col-6">
                                         <div *ngIf="docentesSelected">
-                                            <input matInput type="number" class="numeros" name="numero-docentes"
+                                            <input (input)="sumaViajerosTerrestres()" matInput type="number" class="numeros" name="numero-docentes"
                                                 [(ngModel)]="numeroDocentes" placeholder="Número de Docentes">
                                         </div>
                                     </div>
@@ -408,14 +410,14 @@
                             </div>
                             <div class="col-4">
                                 <div class="row">
-                                    <div class="col-6" style="display: flex; align-items: center;">
-                                        <mat-label>Estudiantes</mat-label>
-                                        <mat-checkbox [(ngModel)]="estudiantesSelected" name="fisico">
+                                    <div class="col-6">
+                                        <mat-checkbox [(ngModel)]="estudiantesSelected" name="estudiantes" (change)="resetNumeroViajerosTerrestres()">
+                                            <mat-label>Estudiantes</mat-label>
                                         </mat-checkbox>
                                     </div>
                                     <div class="col-6">
                                         <div *ngIf="estudiantesSelected">
-                                            <input matInput type="number" name="numero-estudiantes" class="numeros"
+                                            <input (input)="sumaViajerosTerrestres()" matInput type="number" name="numero-estudiantes" class="numeros"
                                                 [(ngModel)]="numeroEstudiantes" placeholder="Número de Estudiantes">
                                         </div>
                                     </div>
@@ -423,46 +425,57 @@
                             </div>
                             <div class="col-4">
                                 <div class="row">
-                                    <div class="col-6" style="display: flex; align-items: center;">
-                                        <mat-label>Administrativos</mat-label>
+                                    <div class="col-8">
                                         <mat-checkbox [(ngModel)]="administrativosSelected"
-                                            name="numero-administrativos">
+                                            name="administrativos" (change)="resetNumeroViajerosTerrestres()">
+                                            <mat-label>Administrativos</mat-label>
                                         </mat-checkbox>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div *ngIf="administrativosSelected">
-                                            <input matInput type="number" class="numeros" name="numero-administrativos"
+                                            <input (input)="sumaViajerosTerrestres()" matInput type="number" class="numeros" name="numero-administrativos"
                                                 [(ngModel)]="numeroAdministrativos">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-4">
                                 <div class="row">
-                                    <div class="col-6" style="display: flex; align-items: center;">
-                                        <mat-label>Contratistas</mat-label>
-                                        <mat-checkbox [(ngModel)]="contratistasSelected" name="contratistas">
+                                    <div class="col-6">
+                                        <mat-checkbox [(ngModel)]="contratistasSelected" (change)="resetNumeroViajerosTerrestres()" name="contratistas">
+                                            <mat-label>Contratistas</mat-label>
                                         </mat-checkbox>
-
                                     </div>
                                     <div class="col-6" *ngIf="contratistasSelected">
-                                        <input type="number" class="numeros" name="numero-contratistas"
+                                        <input (input)="sumaViajerosTerrestres()" type="number" class="numeros" name="numero-contratistas"
                                             [(ngModel)]="numeroContratistas">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="row">
-                                    <div class="col-6" style="display: flex; align-items: center;">
-                                        <mat-label>Visitantes</mat-label>
-                                        <mat-checkbox [(ngModel)]="visitantesSelected" name="visitantes">
+                                    <div class="col-6">
+                                        <mat-checkbox [(ngModel)]="visitantesSelected" (change)="resetNumeroViajerosTerrestres()" name="visitantes">
+                                            <mat-label>Visitantes</mat-label>
                                         </mat-checkbox>
                                     </div>
                                     <div class="col-6" *ngIf="visitantesSelected">
-                                        <input type="number" class="numeros" name="numero-visitantes" [(ngModel)]="numeroVisitantes"
-                                            placeholder="Número de Visitantes">
+                                        <input (input)="sumaViajerosTerrestres()" type="number" class="numeros" name="numero-visitantes"
+                                            [(ngModel)]="numeroVisitantes" placeholder="Número de Visitantes">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-label>Visitantes</mat-label>
+                                            
+                                    </div>
+                                    <div class="col-6">
+                                        <input  type="number" class="numeros" name="numero-visitantes" readonly
+                                            [value]="totalViajerosTerrestres" placeholder="Número de Visitantes">
                                     </div>
                                 </div>
                             </div>

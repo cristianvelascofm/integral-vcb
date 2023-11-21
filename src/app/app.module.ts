@@ -37,6 +37,7 @@ import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.co
 import { EventModuleComponent } from './event-module/event-module.component';
 import { EventoActividadComponent } from './dialogs/evento-actividad/evento-actividad.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatRadioModule} from '@angular/material/radio';
@@ -84,6 +85,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AppRoutingModule,
     MatTableModule,
     MatCheckboxModule,
+    MatDividerModule,
     MatRadioModule,
     MatPaginatorModule,
     MatInputModule,

@@ -66,6 +66,7 @@ export class DocumentoRecepcionComponent {
   numeroAdministrativos: number = 0;
   numeroContratistas: number = 0;
   numeroVisitantes: number = 0;
+  totalViajerosTerrestres: number = 0;
 
   recepcion: DocumentoRecepcion = {
     trd: '',
@@ -123,7 +124,7 @@ export class DocumentoRecepcionComponent {
     const inputElement = event.target as HTMLInputElement;
     this.selectedTime = inputElement.value;
   }
-// SELECT HORA PARA VIAJE TERRESTRE
+  // SELECT HORA PARA VIAJE TERRESTRE
   onTimeChangeSalidaTerrestre(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     this.selectedTimeSalidaTerrestre = inputElement.value;
@@ -351,7 +352,27 @@ export class DocumentoRecepcionComponent {
         console.error('Error al enviar el documento:', error);
       }
     }
+  }
 
-
+  sumaViajerosTerrestres() {
+    this.totalViajerosTerrestres = this.numeroAdministrativos + this.numeroContratistas + this.numeroDocentes + this.numeroEstudiantes + this.numeroVisitantes;
+  }
+  resetNumeroViajerosTerrestres() {
+    if (!this.administrativosSelected) {
+      this.numeroAdministrativos = 0;
+    }
+    if(!this.docentesSelected){
+      this.numeroDocentes = 0;
+    }
+    if(!this.estudiantesSelected){
+      this.numeroEstudiantes = 0;
+      }
+      if(!this.visitantesSelected){
+        this.numeroVisitantes = 0;
+      }
+      if(!this.contratistasSelected){
+        this.numeroContratistas = 0;
+      }
+    this.sumaViajerosTerrestres();
   }
 }
