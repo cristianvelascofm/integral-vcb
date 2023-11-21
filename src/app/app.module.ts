@@ -37,6 +37,7 @@ import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.co
 import { EventModuleComponent } from './event-module/event-module.component';
 import { EventoActividadComponent } from './dialogs/evento-actividad/evento-actividad.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatRadioModule} from '@angular/material/radio';
@@ -47,6 +48,7 @@ import { RegistarAsistenteComponent } from './dialogs/registar-asistente/regista
 import { DatePipe } from '@angular/common';
 import { NumeroFormateadoPipe } from './config/numero-formateado.pipe';
 import { DocumentoVcbComponent } from './dialogs/documento-vcb/documento-vcb.component';
+import { ViajeAereoComponent } from './dialogs/viajeAereo/viaje-aereo/viaje-aereo.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -72,6 +74,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     EventoCrearComponent,
     RegistarAsistenteComponent,
     DocumentoVcbComponent,
+    ViajeAereoComponent,
     
   ],
   imports: [
@@ -82,6 +85,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AppRoutingModule,
     MatTableModule,
     MatCheckboxModule,
+    MatDividerModule,
     MatRadioModule,
     MatPaginatorModule,
     MatInputModule,

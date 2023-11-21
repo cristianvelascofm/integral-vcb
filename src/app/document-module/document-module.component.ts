@@ -34,7 +34,6 @@ export class DocumentModuleComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('paginator', this.paginator)
     this.actualizarFechaHora();
     setInterval(() => {
       this.actualizarFechaHora();
