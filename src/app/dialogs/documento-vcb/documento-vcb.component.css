@@ -24,3 +24,56 @@
     display: flex;
     align-items: center;
 }
+
+.contestar-documento{
+    background-image: url('../../../assets/images/icon/responder-a-todos.png');
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 80px;
+    max-width: 80px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.nuevo-documento{
+    background-image: url('../../../assets/images/icon/nuevo-documento.png');
+    min-height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.buscar-solicitud {
+    background-image: url('../../../assets/images/icon/buscar.png');
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 80px;
+    max-width: 80px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.fisico {
+    background-image: url('../../../assets/images/icon/correo-electronico.png');
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    background-size: 90%;
+    background-position: center;
+  }
+  
+  .virtual {
+    background-image: url('../../../assets/images/icon/mensajes.png');
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    background-size: 90%;
+    background-position: center;
+  }

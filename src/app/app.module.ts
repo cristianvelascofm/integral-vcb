@@ -49,6 +49,8 @@ import { DatePipe } from '@angular/common';
 import { NumeroFormateadoPipe } from './config/numero-formateado.pipe';
 import { DocumentoVcbComponent } from './dialogs/documento-vcb/documento-vcb.component';
 import { ViajeAereoComponent } from './dialogs/viajeAereo/viaje-aereo/viaje-aereo.component';
+import { DocumentoSolicitudesComponent } from './dialogs/documento-solicitudes/documento-solicitudes.component';
+import { DocumentoInformesComponent } from './dialogs/documento-informes/documento-informes.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -75,6 +77,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     RegistarAsistenteComponent,
     DocumentoVcbComponent,
     ViajeAereoComponent,
+    DocumentoSolicitudesComponent,
+    DocumentoInformesComponent,
     
   ],
   imports: [

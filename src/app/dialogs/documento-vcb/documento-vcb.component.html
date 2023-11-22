@@ -8,29 +8,89 @@
         </div>
     </div>
 </div>
-
 <div mat-dialog-content class="mt-3" style="height: 100% !important;">
-    <p>Asunto del Documento:</p>
-    <div class="row" style="width: 100%;">
-        <div class="col-12 form-field-wrapper">
-            <mat-icon class="asunto"></mat-icon>
-            <mat-form-field class="example-full-width mt-2">
-                <mat-label>Asunto</mat-label>
-                <input type="text" name="asunto" placeholder="Escriba un Criterio" aria-label="Nombre del Asunto" matInput
-                    [formControl]="myControl" [matAutocomplete]="autoAsunto" required>
-                <mat-autocomplete #autoAsunto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                        {{option}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+    <div class="container">
+        <div class="row mt-3" style="width: 100%;">
+            <div class="col-3" align="center">
+                <mat-checkbox color="primary" name="nuevo-documento" [(ngModel)]="nuevoDocumento">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-icon class="nuevo-documento"></mat-icon>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-label>Nuevo Oficio</mat-label>
+                    </div>
+                </mat-checkbox>
+            </div>
+            <div class="col-3" align="center" style="border-right: solid 1px rgb(187, 185, 185);">
+                <mat-checkbox [(ngModel)]="contestarDocumento" name="contestar-documento">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-icon class="contestar-documento"></mat-icon>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-label>Responder Oficio</mat-label>
+                    </div>
+                </mat-checkbox>
+            </div>
+            
+            <div class="col-3" align="center">
+                
+                <mat-checkbox [(ngModel)]="fisico" name="contestar-documento">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-icon class="fisico"></mat-icon>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-label>Físico</mat-label>
+                    </div>
+                </mat-checkbox>
+            </div>
+            <div class="col-3" align="center">
+                <mat-checkbox [(ngModel)]="virtual" name="contestar-documento">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-icon class="virtual"></mat-icon>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <mat-label>Virtual</mat-label>
+                    </div>
+                </mat-checkbox>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row mt-3" style="width: 100%;" *ngIf="contestarDocumento">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="buscar-solicitud"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Buscar Oficio en Recepción</mat-label>
+                    <input type="text" name="buscar-solicitud" placeholder="Búsqueda en Recepción"
+                        aria-label="buscar solicitud" matInput [formControl]="myControlOficios"
+                        [matAutocomplete]="autoBuscar" required>
+                    <mat-autocomplete #autoBuscar="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptionsOficio | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+            </div>
+        </div>
+        <div class="row mt-2" style="width: 100%;">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="asunto"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Asunto del Documento</mat-label>
+                    <input type="text" name="asunto" placeholder="Escriba un Criterio" aria-label="Nombre del Asunto"
+                        matInput [formControl]="myControl" [matAutocomplete]="autoAsunto" required>
+                    <mat-autocomplete #autoAsunto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
         </div>
     </div>
 </div>
-
-
 <div mat-dialog-actions style="justify-content: end;">
-    <button mat-raised-button (click)="onClickNO()" color="primary">CANCELAR</button>
-    <button mat-raised-button [mat-dialog-close]="true" (click)="crear()" color="accent">ACEPTAR</button>
+    <button mat-raised-button (click)="onClickNO()" color="accent">CANCELAR</button>
+    <button mat-raised-button [mat-dialog-close]="true" (click)="crear()" color="primary">ACEPTAR</button>
     <!-- [disabled]="!recepcionForm.valid">CREAR</button> -->
 </div>

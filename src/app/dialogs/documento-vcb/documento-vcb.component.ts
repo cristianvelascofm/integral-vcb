@@ -1,17 +1,22 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable, map, startWith } from 'rxjs';
+import { DocumentoInformesComponent } from '../documento-informes/documento-informes.component';
 @Component({
   selector: 'app-documento-vcb',
   templateUrl: './documento-vcb.component.html',
   styleUrls: ['./documento-vcb.component.css']
 })
 export class DocumentoVcbComponent {
-  constructor(public dialogRef: MatDialogRef<DocumentoVcbComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
+  constructor(public dialogRef: MatDialogRef<DocumentoVcbComponent>, @Inject(MAT_DIALOG_DATA) public msg: string, public dialog: MatDialog) {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filterEmisor(value || '')),
+    );
+    this.filteredOptionsOficio = this.myControlOficios.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterOficios(value || '')),
     );
   }
   myControl = new FormControl('');
@@ -21,6 +26,36 @@ export class DocumentoVcbComponent {
     return this.categorias.filter(categorias => categorias.toLowerCase().includes(filterValue));
   }
 
+  myControlOficios = new FormControl('');
+  filteredOptionsOficio: Observable<string[]>;
+  private _filterOficios(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.oficios.filter(oficios => oficios.toLowerCase().includes(filterValue));
+  }
+
+  //arreglo de string de ejemplos de asuntos de solicitudes
+  oficios: string[] = [
+    'Solicitud de Prestamo',
+    'Solicitud de Pago',
+    'Solicitud de Reintegro',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud dePago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas',
+    'Solicitud de Pago de Cuotas'
+  ];
+
+
+  contestarDocumento = false;
+  nuevoDocumento = false;
+  fisico = false;
+  virtual = false;
   categorias: string[] = [
     'Citaciones',
     'Citación Comité Bienestar Universitario',
@@ -28,10 +63,8 @@ export class DocumentoVcbComponent {
     'Citación a Reunión como Oficio del Vicerrector',
     'Citación a Reunión Temas Generales',
     'Actas',
-    'Citación Comité Bienestar Universitario',
     'Acta de Comité Bienestar Universitario',
     'Acta de Consejo de Cultura y Bienestar',
-    'Citación de Consejo de Cultura y Bienestar',
     'Acta de Eliminación Documentos de Archivo',
     'Acta de Reunión',
     'Circulares',
@@ -74,7 +107,15 @@ export class DocumentoVcbComponent {
     this.dialogRef.close();
   }
 
-  crear(): void {
-
+  crear() {
+    const dialogRef = this.dialog.open(DocumentoInformesComponent, {
+      disableClose: true,
+      width: '700px',
+      // height: '700px'
+      // data: 'CONTENIDO'
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res)
+    })
   }
 }
