@@ -102,8 +102,11 @@ export class DocumentoRecepcionComponent {
     { tipo: 'Refrigerios' },
     { tipo: 'Souvenirs' },
     { tipo: 'Espacios Físicos' },
+    { tipo: 'Trámite Interno' },
     { tipo: 'Invitación' },
     { tipo: 'Informativa' },
+    
+
   ];
 
   oficioEspaciosControl = new FormControl<oficioRecepcion[]>([], [Validators.required]);
@@ -120,6 +123,7 @@ export class DocumentoRecepcionComponent {
   fechaRegresoTerrestre = '';
   selectedTimeSalidaTerrestre = '';
   selectedTimeLlegadaTerrestre = '';
+
   onTimeChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     this.selectedTime = inputElement.value;
@@ -144,6 +148,8 @@ export class DocumentoRecepcionComponent {
   mostrarEspaciosFisicos = false;
   mostrarInvitacion = false;
   mostrarInformativa = false;
+  mostrarTramiteInterno = false;
+
 
   numeroEntrada: string = '';
   destinoApoyo: string = '';
