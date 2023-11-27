@@ -74,41 +74,51 @@ export class DocumentoVcbComponent {
     'Citación Reunión o Evento General - 7.1-52.5',
     'Citación de Comité Bienestar Universitario - 7.1-1.10',
     'Citación de Consejo de Cultura y Bienestar - 7.1-1.15',
-    'Acta General - 7.1-1',
-    'Acta de Comité de Bienestar Universitario - 7.1-1.10',
+    'Acta - 7.1-1',
+    // 'Acta de Comité de Bienestar Universitario - 7.1-1.10', - SALUD DIV
     'Acta de Consejo de Cultura y Bienestar 7.1-1.15',
+    // 'Acta de Comité Estratégico - ' FALTA DE TRD
     'Acta de Eliminación de Documentos de Archivo 7.1-1.43',
-    'Acta de Reunión General - 7.1-1.56',
-    'Acta de Comité Ad-Hoc de Asesoría y Consulta - 7.1-1.75', //Posiblemente a eliminar
+    'Acta de Reunión - 7.1-1.56',// ACTA COMITE PROVISIONALMENTE
+    // 'Acta de Comité Ad-Hoc de Asesoría y Consulta - 7.1-1.75', //Posiblemente a eliminar
+    'Circular - 7.1-220',
     'Circular Informariva - 7.1-22.1',
     'Circular Normativa - 7.1-22.2',
-    'Certifiado General - 7.1-20',
+    'Certificacion - 7.1-20',
     'Certificación a Experto - 7.1-20', 
+    'Certificación a Estudiante - 7.1-20', 
     'Certificado de Supervisoría - 7.1-20.8',
-    'Certificación Laboral Orden de Prestación de Servicios (OPS) - 7.1-20.8',
+    // 'Certificación Laboral Orden de Prestación de Servicios (OPS) - 7.1-20.8',
     // 'Certificación de Pago Orden de Prestación de Servicios (OPS) - 7.1-20.8',
     'Certificado de Monitoría - 7.1-20.15',
     'Convenio - 7.1-32',
-    'Convenio ICETEX - 7.1-32',
+    'Convenio Interinstitucionales - ', // icetex, jovenes accion
+    'Convenio Interadministrativos - ',// gonbernaciones y demás 
     'Solicitud Ampliación de Plazo ICETEX - 7.1-32',
     'Solicitud Giro Adicional ICETEX - 7.1-32',
-    'Convocatoria - 7.1-33',
-    'Convocatoria Grupos y Proyecto de Cultura y Bienestar - 7.1-33.4',
+    'Convocatoria - 7.1-33', // planificador NECESARIO
+    // 'Convocatoria Grupos y Proyecto de Cultura y Bienestar - 7.1-33.4',
     'Informe - 7.1-52',
     'Informe Administrativo - 7.1-52.5',
     'Respuesta Asuntos Generales - 7.1-52.5',
     'Oficio Reporte - 7.1-52.5',
     'Remisión Oficio - 7.1-52.5',
-    // 'Solicitud Liquidación Contrato - 7.1-52.5',
+    // 'Solicitud Liquidación Contrato - 7.1-52.5', // colocarlo con trd OPS cert superv
     'Infome de Eventos - 7.1-52.19',
     'Informe de Gestión - 7.1-52.20',
-    'Informe Técnico - 7.1-52.43',
+    'Informe Técnico - 7.1-52.43', // puede ser lo de isabel - residencias
     'Informe Sistema Integrado de Gestión de Calidad - 7.1-52.46',
+    'INSTRUMENTPS DE CONTROL - 7.1-52.47',
     'Registro Diario de Correspondencia - 7.1-53.7',
     'Formato Único de Inventario Documental - 7.1-53.9',
-    'Resolución General - 7.1-90',
+    'PROGRAMAS - ',
+    'programa PermaneSer - ',
+    'PROYECTOS - ',
+    'Proyección de INVERSION - ', //NECESSARIO TABALA PARA CADA PROYECTO
+
+    'Resolución - 7.1-90',
     'Resolución Vicerrectoría de Cultura y Bienestar - 7.1-90.13',
-    'Solicitud General - 7.1-92',
+    'Solicitud - 7.1-92',
     'Solicitud de Apoyo en Actividad - 7.1-92',
     'Solicitud Vinculación Monitores - 7.1-92',
     'Solicitud Avances o Viáticos - 7.1-92.1',

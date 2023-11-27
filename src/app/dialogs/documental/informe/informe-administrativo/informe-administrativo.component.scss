@@ -1,21 +1,6 @@
-.logo-document {
-  /* margin-top: 15%; */
-  max-width: 50px;
-  max-height: 50px;
-}
-.header {
-  background-image: url('../../../assets/images/icon/documentos_cupo.png');
-  min-height: 50px;
-  min-width: 50px;
-  max-height: 50px;
-  max-width: 50px;
-  background-size: 100%;
-  margin-right: 10px !important;
-  background-position: center;
-}
 .example-form-field {
   width: 100% !important;
-  // height: 100% !important;
+  /* // height: 100% !important; */
 }
 
 .example-full-width {
@@ -29,7 +14,7 @@
 }
 
 .fecha-actual {
-  background-image: url('../../../assets/images/icon/calendario.png');
+  background-image: url('../../../../../assets/images/icon/calendario.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
@@ -40,7 +25,7 @@
 }
 
 .unico {
-  background-image: url('../../../assets/images/icon/avatar.png');
+  background-image: url('../../../../../assets/images/icon/avatar.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
@@ -51,7 +36,7 @@
 }
 
 .multiple {
-  background-image: url('../../../assets/images/icon/familia.png');
+  background-image: url('../../../../../assets/images/icon/familia.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
@@ -60,15 +45,16 @@
   margin-right: 10px !important;
   background-position: center;
 }
-// .mat-checkbox:checked:before{
-//   background-color:green;
-//   }
-.boton-mas{
+
+/* // .mat-checkbox:checked:before{
+  //   background-color:green;
+  //   } */
+.boton-mas {
   background-color: red !important;
 }
 
 .asunto {
-  background-image: url('../../../assets/images/icon/megafono.png');
+  background-image: url('../../../../../assets/images/icon/megafono.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
@@ -80,7 +66,7 @@
 }
 
 .observaciones {
-  background-image: url('../../../assets/images/icon/notas-adhesivas.png');
+  background-image: url('../../../../../assets/images/icon/notas-adhesivas.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
@@ -92,7 +78,7 @@
 }
 
 .copia-unica {
-  background-image: url('../../../assets/images/icon/empleado.png');
+  background-image: url('../../../../../assets/images/icon/empleado.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
@@ -104,7 +90,7 @@
 }
 
 .copia-multiple {
-  background-image: url('../../../assets/images/icon/humano.png');
+  background-image: url('../../../../../assets/images/icon/humano.png');
   min-height: 35px;
   min-width: 35px;
   max-height: 35px;
