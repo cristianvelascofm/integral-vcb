@@ -404,3 +404,56 @@ $shadow-size: 20px;
 .pasajero {
   height: 90% !important;
 }
+
+.tramite {
+  background-image: url('../../../assets/images/icon/carpeta.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 90%;
+  background-position: center;
+}
+
+.ceder {
+  background-image: url('../../../assets/images/icon/grupo.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 90%;
+  background-position: center;
+}
+
+.invitacion {
+  background-image: url('../../../assets/images/icon/ubicacion-invitacion.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 90%;
+  background-position: center;
+}
+
+
+.archivar {
+  background-image: url('../../../assets/images/icon/archivador.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 90%;
+  background-position: center;
+}
+
+.oficio-tramite{
+  background-image: url('../../../assets/images/icon/documentos_generados.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 90%;
+  background-position: center;
+}
+
+

@@ -3,7 +3,7 @@
         <div class="col-2">
             <mat-icon class="logo-header"></mat-icon>
         </div>
-        <div class="col-10" style="background-color: red;">
+        <div class="col-10">
             <h1 id="modal-basic-title">Recepción de Documentos</h1>
         </div>
     </div>
@@ -150,7 +150,7 @@
                                 <mat-icon class="detalles-sonido"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Sonido</mat-label>
-                                    <textarea matInput placeholder="Detalles Sonido Requerido"
+                                    <textarea matInput placeholder="Detalles Sonido Requerido" name="sonido"
                                         [(ngModel)]="detallesSonido"></textarea>
                                 </mat-form-field>
                             </div>
@@ -160,7 +160,7 @@
                                 <mat-icon class="detalles-refrigerio"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Refrigerios</mat-label>
-                                    <textarea matInput placeholder="Detalles Refrigerio Requerido"
+                                    <textarea matInput placeholder="Detalles Refrigerio Requerido" name="refrigerios"
                                         [(ngModel)]="detallesRefrigerio"></textarea>
                                 </mat-form-field>
                             </div>
@@ -170,7 +170,7 @@
                                 <mat-icon class="detalles-souvenir"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Sovenirs</mat-label>
-                                    <textarea matInput placeholder="Detalles Souvenir Requerido"
+                                    <textarea matInput placeholder="Detalles Souvenir Requerido" name="souvenirs"
                                         [(ngModel)]="detallesSoivenir"></textarea>
                                 </mat-form-field>
                             </div>
@@ -180,14 +180,107 @@
                                 <mat-icon class="espacios"></mat-icon>
                                 <mat-form-field class="example-full-width mt-2">
                                     <mat-label>Espacio</mat-label>
-                                    <mat-select [formControl]="oficioEspaciosControl" required
+                                    <mat-select [formControl]="oficioEspaciosControl" required name="espacios"
                                         (selectionChange)="onSelectionChange()" multiple>
-                                        <!-- <mat-option>--</mat-option> -->
                                         <mat-option *ngFor="let espacio of espacios" [value]="espacio">{{ espacio.nombre
                                             }}</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="oficioRecepcionControl.hasError('required')">Por favor, elija un
                                         tipo de solicitud</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="mostrarInvitacion" style="width: 100%;">
+                            <div class="col-12  form-field-wrapper">
+                                <mat-icon class="invitacion"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Lugar Evento</mat-label>
+                                    <input matInput placeholder="Lugar del Evento" name="invitacion"
+                                        [value]="lugarInvitacion" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="mostrarInformativa" style="width: 100%;">
+                            <div class="col-6  form-field-wrapper">
+                                <mat-icon class="ceder"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Ceder a</mat-label>
+                                    <input type="text" name="ceder-infomrativa" placeholder="Escriba un Nombre"
+                                        aria-label="Nombre del Funcionario VCB" matInput
+                                        [formControl]="myControlFuncionarioVCB" [matAutocomplete]="autoFuncionario">
+                                    <mat-autocomplete #autoFuncionario="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptionsFuncionarioVCB | async"
+                                            [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-6" align="center">
+                                <mat-checkbox color="primary" name="archivar-informativa" [(ngModel)]="archivar"
+                                    (ngModelChange)="cambioCheckArchivar()">
+                                    <div align="center">
+                                        <mat-icon class="archivar mt-2"></mat-icon>
+                                    </div>
+                                    <div align="center">
+                                        <mat-label>Archivar</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="mostrarTramiteInterno" style="width: 100%;">
+                            <div class="col-6  form-field-wrapper">
+                                <mat-icon class="tramite"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Acción</mat-label>
+                                    <mat-select [formControl]="oficioTramiteControl" required name="tramite"
+                                        (selectionChange)="onSelectionChangeTramite($event)">
+                                        <mat-option *ngFor="let tramite of tramites" [value]="tramite">{{ tramite
+                                            }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-6" align="center" *ngIf="mostrarCheckArchivar">
+                                <mat-checkbox disabled=disabledArchivar color="primary" name="archivar-informativa" [(ngModel)]="archivar"
+                                    (ngModelChange)="cambioCheckArchivar()">
+                                    <div align="center">
+                                        <mat-icon class="archivar mt-2"></mat-icon>
+                                    </div>
+                                    <div align="center">
+                                        <mat-label>Archivar</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-6 form-field-wrapper" *ngIf="mostrarOficioTramite">
+                                <mat-icon class="oficio-tramite"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Oficio VCB</mat-label>
+                                    <input type="text" name="oficio-tramite" placeholder="Escriba el Consecutivo"
+                                        aria-label="TRD-VCB" matInput
+                                        [formControl]="myControlOficioVCB" [matAutocomplete]="autoOficioVCB">
+                                    <mat-autocomplete #autoOficioVCB="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptionsOficioVCB | async"
+                                            [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 form-field-wrapper" *ngIf="mostrarCeder">
+                                <mat-icon class="ceder"></mat-icon>
+                                <mat-form-field class="example-full-width mt-2">
+                                    <mat-label>Ceder a</mat-label>
+                                    <input type="text" name="ceder" placeholder="Escriba un Nombre"
+                                        aria-label="Nombre del Funcionario VCB" matInput
+                                        [formControl]="myControlFuncionarioVCB" [matAutocomplete]="autoFuncionario">
+                                    <mat-autocomplete #autoFuncionario="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptionsFuncionarioVCB | async"
+                                            [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-autocomplete>
                                 </mat-form-field>
                             </div>
                         </div>

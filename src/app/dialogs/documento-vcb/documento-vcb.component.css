@@ -25,7 +25,7 @@
     align-items: center;
 }
 
-.contestar-documento{
+.contestar-documento {
     background-image: url('../../../assets/images/icon/responder-a-todos.png');
     min-height: 40px;
     min-width: 40px;
@@ -36,7 +36,7 @@
     background-position: center;
 }
 
-.nuevo-documento{
+.nuevo-documento {
     background-image: url('../../../assets/images/icon/nuevo-documento.png');
     min-height: 30px;
     min-width: 30px;
@@ -66,9 +66,9 @@
     max-width: 35px;
     background-size: 90%;
     background-position: center;
-  }
-  
-  .virtual {
+}
+
+.virtual {
     background-image: url('../../../assets/images/icon/mensajes.png');
     min-height: 35px;
     min-width: 35px;
@@ -76,4 +76,24 @@
     max-width: 35px;
     background-size: 90%;
     background-position: center;
-  }
+}
+
+.retomar-documento {
+    background-image: url('../../../assets/images/icon/abrir-documento.png');
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 80px;
+    max-width: 80px;
+    background-size: 90%;
+    background-position: center;
+}
+
+.buscar-archivo {
+    background-image: url('../../../assets/images/icon/documentos_generados.png');
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 80px;
+    max-width: 80px;
+    background-size: 90%;
+    background-position: center;
+}

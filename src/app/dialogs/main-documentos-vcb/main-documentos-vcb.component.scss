@@ -1,0 +1,83 @@
+.logo-document {
+  /* margin-top: 15%; */
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.example-form-field {
+  width: 100% !important;
+  // height: 100% !important;
+}
+
+.example-full-width {
+  width: 100% !important;
+  height: 80% !important;
+}
+
+.form-field-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.fecha-actual {
+  background-image: url('../../../assets/images/icon/calendario.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+.unico {
+  background-image: url('../../../assets/images/icon/avatar.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+.multiple {
+  background-image: url('../../../assets/images/icon/familia.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+// .mat-checkbox:checked:before{
+//   background-color:green;
+//   }
+.boton-mas{
+  background-color: red !important;
+}
+
+.asunto {
+  background-image: url('../../../assets/images/icon/megafono.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+
+}
+
+.observaciones {
+  background-image: url('../../../assets/images/icon/notas-adhesivas.png');
+  min-height: 35px;
+  min-width: 35px;
+  max-height: 35px;
+  max-width: 35px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+
+}

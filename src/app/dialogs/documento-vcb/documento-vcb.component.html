@@ -10,9 +10,9 @@
 </div>
 <div mat-dialog-content class="mt-3" style="height: 100% !important;">
     <div class="container">
-        <div class="row mt-3" style="width: 100%;">
-            <div class="col-3" align="center">
-                <mat-checkbox color="primary" name="nuevo-documento" [(ngModel)]="nuevoDocumento">
+        <div class="row mt-3" style="width: 100%;" align="center">
+            <div class="col-4" align="center" style="border-right: solid 1px rgb(187, 185, 185);">
+                <mat-checkbox color="primary" name="nuevo-documento" [(ngModel)]="nuevoDocumento" (change)="onRadioChange('nuevoDocumento')">
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <mat-icon class="nuevo-documento"></mat-icon>
                     </div>
@@ -21,8 +21,8 @@
                     </div>
                 </mat-checkbox>
             </div>
-            <div class="col-3" align="center" style="border-right: solid 1px rgb(187, 185, 185);">
-                <mat-checkbox [(ngModel)]="contestarDocumento" name="contestar-documento">
+            <div class="col-4" align="center" style="border-right: solid 1px rgb(187, 185, 185);">
+                <mat-checkbox [(ngModel)]="contestarDocumento" name="contestar-documento" (change)="onRadioChange('contestarDocumento')">
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <mat-icon class="contestar-documento"></mat-icon>
                     </div>
@@ -31,25 +31,14 @@
                     </div>
                 </mat-checkbox>
             </div>
-            
-            <div class="col-3" align="center">
-                
-                <mat-checkbox [(ngModel)]="fisico" name="contestar-documento">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <mat-icon class="fisico"></mat-icon>
+
+            <div class="col-4" align="center" style="border-right: solid 1px rgb(187, 185, 185);">
+                <mat-checkbox [(ngModel)]="retomarDocumento" name="retomar-documento" (change)="onRadioChange('retomarDocumento')">
+                    <div align="center">
+                        <mat-icon class="retomar-documento"></mat-icon>
                     </div>
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <mat-label>Físico</mat-label>
-                    </div>
-                </mat-checkbox>
-            </div>
-            <div class="col-3" align="center">
-                <mat-checkbox [(ngModel)]="virtual" name="contestar-documento">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <mat-icon class="virtual"></mat-icon>
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <mat-label>Virtual</mat-label>
+                    <div align="center">
+                        <mat-label>Retomar Proceso</mat-label>
                     </div>
                 </mat-checkbox>
             </div>
@@ -72,7 +61,23 @@
 
             </div>
         </div>
-        <div class="row mt-2" style="width: 100%;">
+        <div class="row mt-3" style="width: 100%;" *ngIf="retomarDocumento">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="buscar-archivo"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Buscar Oficio</mat-label>
+                    <input type="text" name="oficio-archivo" placeholder="Buscar Oficio en Archivo"
+                        aria-label="Nombre del Oficio" matInput [formControl]="myControlOficioArchivo"
+                        [matAutocomplete]="autoOficioArchivo" required>
+                    <mat-autocomplete #autoOficioArchivo="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptionsOficioArchivo | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" style="width: 100%;">
             <div class="col-12 form-field-wrapper">
                 <mat-icon class="asunto"></mat-icon>
                 <mat-form-field class="example-full-width mt-2">
@@ -87,6 +92,7 @@
                 </mat-form-field>
             </div>
         </div>
+
     </div>
 </div>
 <div mat-dialog-actions style="justify-content: end;">

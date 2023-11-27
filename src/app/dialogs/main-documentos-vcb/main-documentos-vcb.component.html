@@ -1,0 +1,116 @@
+<div mat-dialog-title style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418)">
+    <div class="row">
+        <div class="col-2">
+            <img src="../../assets/images/icon/documentos_pendientes.png" alt="" class="logo-document">
+        </div>
+        <div class="col-10">
+            <h1 id="modal-basic-title">{{tituloDialog}}</h1>
+        </div>
+    </div>
+</div>
+<div mat-dialog-content class="mt-3" style="height: 420px !important;">
+    <div class="container" style=" height: 100% !important;width: 100% !important;">
+        <div class="row" style="width: 100% !important;">
+            <div class="col-6 " style="border-right: solid 1px rgb(212, 210, 210);">
+                <mat-label>Destinatario</mat-label>
+                <div class="row pt-3  ">
+                    <div class="col-6">
+                        <mat-checkbox [(ngModel)]="destinatarioUnico" name="destinatario-unico"
+                            (change)="onRadioChange('unico')">
+                            <div align="center">
+                                <mat-icon class="unico"></mat-icon>
+                            </div>
+                            <div align="center">
+                                <mat-label>Único</mat-label>
+                            </div>
+                        </mat-checkbox>
+                    </div>
+                    <div class="col-6">
+                        <mat-checkbox name="destinatario-multiple" [(ngModel)]="destinatarioMultiple"
+                            (change)="onRadioChange('multiple')">
+                            <div align="center">
+                                <mat-icon class="multiple"></mat-icon>
+                            </div>
+                            <div align="center">
+                                <mat-label>Múltiple</mat-label>
+                            </div>
+                        </mat-checkbox>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 pt-3  form-field-wrapper">
+                <mat-icon class="fecha-actual"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput [matDatepicker]="pickerFechaActual" [value]="fechaActual" id="fecha-actual"
+                        name="fecha-actual" [(ngModel)]="fechaActual" disabled>
+                    <mat-hint>MM/DD/AAAA</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerFechaActual"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFechaActual></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row" style="width: 100%;" *ngIf="destinatarioMultiple">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="multiple"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Destinatarios</mat-label>
+                    <textarea matInput placeholder="Lista de Destinatarios" name="destinatarios"
+                        [(ngModel)]="destinatarios" readonly></textarea>
+                </mat-form-field>
+                <div class="m-3" align="center">
+                    <button mat-mini-fab class="boton-mas" aria-label="Add Person">
+                        <mat-icon>library_add</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row " style="width: 100%;" *ngIf="destinatarioUnico">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="unico" *ngIf="destinatarioUnico"></mat-icon>
+                <mat-icon class="multiple" *ngIf="destinatarioMultiple"></mat-icon>
+                <mat-form-field class="example-full-width mt-3">
+                    <mat-label>Destinatario</mat-label>
+                    <input type="text" name="destinatario-u" placeholder="Escriba un Nombre"
+                        aria-label="Nombre del Destinatario" matInput [formControl]="myControlDestinatarioU"
+                        [matAutocomplete]="autoDestinatarioU" required>
+                    <mat-autocomplete #autoDestinatarioU="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptionsDestinatarioU | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <div class="m-3" align="center">
+                    <button mat-mini-fab color="primary" aria-label="Add Person">
+                        <mat-icon>perm_identity</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row " style="width: 100%;">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="asunto"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Asunto</mat-label>
+                    <input matInput placeholder="Asunto del Documento" name="asunto" [value]="asunto" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" style="width: 100%;">
+            <div class="col-12 form-field-wrapper">
+                <mat-icon class="observaciones"></mat-icon>
+                <mat-form-field class="example-full-width mt-2">
+                    <mat-label>Observaciones</mat-label>
+                    <textarea matInput placeholder="Anotaciones para este oficio" name="observaciones"
+                        [(ngModel)]="observaciones"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions style="justify-content: end;">
+    <button mat-raised-button (click)="onClickNO()" color="accent">CANCELAR</button>
+    <button mat-raised-button (click)="crear()" color="primary">ACEPTAR</button>
+</div>

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSelectChange } from '@angular/material/select';
 import axios from 'axios';
 import { Observable, map, startWith } from 'rxjs';
 import { Persona } from 'src/app/model/Persona';
@@ -10,6 +11,10 @@ import { DocumentoRecepcion } from 'src/app/services/documento.service';
 
 interface oficioRecepcion {
   tipo: string;
+}
+
+interface Tramite {
+  nombre: string;
 }
 interface espacios {
   nombre: string;
@@ -31,6 +36,7 @@ interface Viaje {
 })
 export class DocumentoRecepcionComponent {
   constructor(public dialogRef: MatDialogRef<DocumentoRecepcionComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -39,16 +45,37 @@ export class DocumentoRecepcionComponent {
       startWith(''),
       map(value => this._filterEmisor(value || '')),
     );
-  }
 
+    this.filteredOptionsFuncionarioVCB = this.myControlFuncionarioVCB.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterFuncionarioVCB(value || '')),
+    );
+    this.filteredOptionsOficioVCB = this.myControlOficioVCB.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterOficioVCB(value || '')),
+    );
+  }
+  archivar = false;
+  disabledCeder = false;
+  disabledArchivar = false
   fileName = '';
   fechaDocumento = '';
   fechaRealizacion = '';
   labelPosition: 'before' | 'after' = 'after';
   // VARIABLES CONTROL FILTRO REMITENTE
   myControl = new FormControl('');
+  myControlOficioVCB = new FormControl('');
+  myControlFuncionarioVCB = new FormControl({ value: '', disabled: this.disabledCeder });
   remitente: string[] = ['Rector - Deibar René Hurtado Herrera', 'Vicerrector de Cultura y Bienestar - Cesar Alfaro Mosquera Dorado', 'Secretaria General - Laura Ismenia Castellanos Vivas'];
   filteredOptions: Observable<string[]>;
+  filteredOptionsFuncionarioVCB: Observable<string[]>;
+  filteredOptionsOficioVCB: Observable<string[]>;
+  oficioVCB: string[]=[
+    '7.1-92.8/226 - Solicitud CDP Andrés Peréz',
+    '7.1-93.4/225 - Solicitud CDP Carlos Sánchez',
+    '7.1-93.4/227 - Solicitud CDP Carlos Sánchez',
+  ]
+  funcionarioVCB: string[] = ['Cesar Alfaro Mosquera Dorado', 'María del Socorro Fajardo', 'Isabel Cristina Chamorro López', 'Deicy Coral']
   // VARIABLES CONTROL FILTRO EMISOR
   myControl2 = new FormControl('');
   emisor: string[] = ['Rector - Deibar René Hurtado Herrera', 'Vicerrector de Cultura y Bienestar - Cesar Alfaro Mosquera Dorado', 'Secretaria General - Laura Ismenia Castellanos Vivas'];
@@ -102,14 +129,13 @@ export class DocumentoRecepcionComponent {
     { tipo: 'Refrigerios' },
     { tipo: 'Souvenirs' },
     { tipo: 'Espacios Físicos' },
-    { tipo: 'Trámite Interno' },
     { tipo: 'Invitación' },
     { tipo: 'Informativa' },
-    
-
+    { tipo: 'Trámite Interno' }
   ];
 
   oficioEspaciosControl = new FormControl<oficioRecepcion[]>([], [Validators.required]);
+  oficioTramiteControl = new FormControl<String[]>([], [Validators.required]);
   previousSelectedEspacios: oficioRecepcion[] = [];
   espacios: espacios[] = [
     { nombre: 'Patio Principal - Casa Museo Mosquera' },
@@ -117,6 +143,18 @@ export class DocumentoRecepcionComponent {
     { nombre: 'Auditorio - Casa Museo Mosquera' },
     { nombre: 'Paraninfo Francisco José de Caldas' },
   ];
+
+  mostrarObservaciones = false;
+  mostrarCeder = false;
+  mostrarCompletarTramite = false;
+  mostrarCheckArchivar = false;
+  tramites = [
+    'Observaciones',
+    'Completar Trámite',
+    'Archivar Trámite'
+  ]
+  tramiteInterno = '';
+
   selectedTime: string = "12:00";
   selectedTimeRegreso: string = "12:00";
   fechaSalidaTerrestre = '';
@@ -142,15 +180,26 @@ export class DocumentoRecepcionComponent {
   mostrarApoyoEconomico = false;
   mostrarSonido = false;
   mostrarTransporteAereo = false;
-  mostrarTransporteTerrestre = true;
+  mostrarTransporteTerrestre = false;
   mostrarRefrigerios = false;
   mostrarSouvenirs = false;
   mostrarEspaciosFisicos = false;
   mostrarInvitacion = false;
   mostrarInformativa = false;
   mostrarTramiteInterno = false;
+mostrarOficioTramite = false;
+
+  cambioCheckArchivar() {
+    if (this.archivar === true) {
+      this.myControlFuncionarioVCB.disable();
+      this.myControlFuncionarioVCB.setValue('');
+    } else {
+      this.myControlFuncionarioVCB.enable()
+    }
+  }
 
 
+  lugarInvitacion = '';
   numeroEntrada: string = '';
   destinoApoyo: string = '';
   detallesSonido: string = '';
@@ -225,6 +274,9 @@ export class DocumentoRecepcionComponent {
       case 'Informativa':
         this.mostrarInformativa = true;
         break;
+      case 'Trámite Interno':
+        this.mostrarTramiteInterno = true
+        break;
       // Agregar casos para las opciones restantes
     }
   }
@@ -258,8 +310,41 @@ export class DocumentoRecepcionComponent {
       case 'Informativa':
         this.mostrarInformativa = false;
         break;
+      case 'Trámite Interno':
+        this.mostrarTramiteInterno = false;
+        break;
       // Agregar casos para las opciones restantes
     }
+  }
+
+  
+  onSelectionChangeTramite(event: MatSelectChange) {
+    const valorSeleccionado = event.value;
+    this.activarTramite(valorSeleccionado);
+  }
+
+  activarTramite(nombre: string) {
+    switch (nombre) {
+      case 'Observaciones':
+        this.mostrarCeder = true;
+        this.mostrarCheckArchivar = false;
+        this.mostrarOficioTramite = true;
+        break;
+      case 'Completar Trámite':
+        this.mostrarCeder = true;
+        this.mostrarCheckArchivar = false;
+        this.mostrarOficioTramite = true;
+        break
+      case 'Archivar Trámite':
+        this.mostrarCheckArchivar = true;
+        this.archivar = true;
+        this.disabledArchivar= true;
+        this.mostrarCeder = false;
+        this.mostrarOficioTramite = false;
+        break;
+    }
+
+
   }
 
   // filtor de busqueda para el viajero aéreo
@@ -324,6 +409,15 @@ export class DocumentoRecepcionComponent {
     return this.emisor.filter(emisor => emisor.toLowerCase().includes(filterValue));
   }
 
+  private _filterFuncionarioVCB(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.funcionarioVCB.filter(funcionario => funcionario.toLowerCase().includes(filterValue));
+  }
+
+  private _filterOficioVCB(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.oficioVCB.filter(oficioVCB => oficioVCB.toLowerCase().includes(filterValue));
+  }
 
   selectedFile: File | null = null;
 
@@ -367,18 +461,18 @@ export class DocumentoRecepcionComponent {
     if (!this.administrativosSelected) {
       this.numeroAdministrativos = 0;
     }
-    if(!this.docentesSelected){
+    if (!this.docentesSelected) {
       this.numeroDocentes = 0;
     }
-    if(!this.estudiantesSelected){
+    if (!this.estudiantesSelected) {
       this.numeroEstudiantes = 0;
-      }
-      if(!this.visitantesSelected){
-        this.numeroVisitantes = 0;
-      }
-      if(!this.contratistasSelected){
-        this.numeroContratistas = 0;
-      }
+    }
+    if (!this.visitantesSelected) {
+      this.numeroVisitantes = 0;
+    }
+    if (!this.contratistasSelected) {
+      this.numeroContratistas = 0;
+    }
     this.sumaViajerosTerrestres();
   }
 }
