@@ -69,7 +69,7 @@ export class DocumentoVcbComponent {
 
   fisico = false;
   virtual = false;
-// Categorías de ASUNTO DEL DOCUMENTO según TRD
+  // Categorías de ASUNTO DEL DOCUMENTO según TRD
   categorias: string[] = [
     'Citación Reunión o Evento General - 7.1-52.5',
     'Citación de Comité Bienestar Universitario - 7.1-1.10',
@@ -85,8 +85,8 @@ export class DocumentoVcbComponent {
     'Circular Informariva - 7.1-22.1',
     'Circular Normativa - 7.1-22.2',
     'Certificacion - 7.1-20',
-    'Certificación a Experto - 7.1-20', 
-    'Certificación a Estudiante - 7.1-20', 
+    'Certificación a Experto - 7.1-20',
+    'Certificación a Estudiante - 7.1-20',
     'Certificado de Supervisoría - 7.1-20.8',
     // 'Certificación Laboral Orden de Prestación de Servicios (OPS) - 7.1-20.8',
     // 'Certificación de Pago Orden de Prestación de Servicios (OPS) - 7.1-20.8',
