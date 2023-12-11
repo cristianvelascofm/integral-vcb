@@ -114,7 +114,7 @@ export class DocumentoVcbComponent {
     'PROGRAMAS - ',
     'programa PermaneSer - ',
     'PROYECTOS - ',
-    'Proyección de INVERSION - ', //NECESSARIO TABALA PARA CADA PROYECTO
+    'Proyección de INVERSION - ', //g
 
     'Resolución - 7.1-90',
     'Resolución Vicerrectoría de Cultura y Bienestar - 7.1-90.13',
