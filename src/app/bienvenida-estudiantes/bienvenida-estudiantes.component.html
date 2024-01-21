@@ -1,35 +1,33 @@
 <div class="padre container-content">
-    <div class="row mt-2" style="height: 20%; width: 100%;   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);"> 
-        <div class="col-3">
+    <div class="row mt-2" style="height: 20%; width: 100%;   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
+        <div class="col-2">
             <div class="header-registro" style="margin: 10px;">
                 <div class="logo_vcb_header">
                     <span class="logo"></span>
                 </div>
             </div>
-
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <div class="row p-2">
-
                 <div class="col-4">
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombre del Evento</mat-label>
-                        <input matInput placeholder="Evento" id="evento" name="evento" [(ngModel)]="evento.nombre"
+                        <input matInput placeholder="Evento" id="evento" name="evento" [(ngModel)]="nombreEvento"
                             disabled>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field class="example-full-width">
                         <mat-label>Edición</mat-label>
-                        <input matInput type="number" placeholder="Número" id="edicion" name="edicion"
-                            [(ngModel)]="evento.edicion" disabled>
+                        <input matInput  placeholder="Número" id="edicion" name="edicion"
+                            [(ngModel)]="edicionEvento" disabled>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field class="example-full-width">
                         <mat-label>Categoría</mat-label>
                         <input matInput placeholder="Categoría" id="categoria" name="categoria"
-                            [(ngModel)]="evento.categoria" disabled>
+                            [(ngModel)]="categoriaEvento" disabled>
                     </mat-form-field>
                 </div>
             </div>
@@ -38,20 +36,20 @@
                 <div class="col-4">
                     <mat-form-field class="example-full-width">
                         <mat-label>Lugar Realización</mat-label>
-                        <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="evento.lugar" disabled>
+                        <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarEvento" disabled>
                     </mat-form-field>
 
                 </div>
                 <div class="col-4">
-                    <mat-form-field class="example-full-width"> <mat-label>Fecha</mat-label>
+                    <mat-form-field class="example-full-width"> <mat-label>Fecha de Inicio</mat-label>
                         <input matInput placeholder="Fecha" id="fechaInicio" name="fechaInicio"
-                            [(ngModel)]="evento.fechaInicio" disabled>
-                        <mat-hint>dd/mm/aaaa</mat-hint>
+                            [(ngModel)]="fechaInicioEvento" disabled>
+                        <!-- <mat-hint>dd/mm/aaaa</mat-hint> -->
                     </mat-form-field>
                 </div>
                 <div class="col-4">
-                    <mat-form-field class="example-full-width"> <mat-label>Hora</mat-label>
-                        <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="evento.horaInicio"
+                    <mat-form-field class="example-full-width"> <mat-label>Hora de Inicio</mat-label>
+                        <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="horaInicioEvento"
                             disabled>
                     </mat-form-field>
                 </div>
@@ -67,9 +65,9 @@
                     <div class="row">
                         <div class="col-12">
                             <mat-form-field class="example-full-width">
-                                <mat-label>Actividad</mat-label>
-                                <input matInput placeholder="Actividad" id="evento" name="evento"
-                                    [(ngModel)]="evento.actividades[0].nombre" disabled>
+                                <mat-label>Nombre de la Actividad</mat-label>
+                                <input matInput placeholder="Actividad" id="actividad" name="actividad" [(ngModel)]="actividadActual"
+                                     disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -78,7 +76,7 @@
                             <mat-form-field class="example-full-width">
                                 <mat-label>Categoría</mat-label>
                                 <input matInput placeholder="Categoría" id="categoria" name="categoria"
-                                    [(ngModel)]="evento.actividades[0].tipo" disabled>
+                                    [(ngModel)]="categoriaActividad" disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -94,8 +92,8 @@
                         <div class="col-6">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Lugar Realización</mat-label>
-                                <input matInput placeholder="Lugar" id="lugar" name="lugar"
-                                    [(ngModel)]="evento.actividades[0].lugar" disabled>
+                                <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarActividad"
+                                    disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -104,7 +102,7 @@
                             <mat-form-field class="example-full-width">
                                 <mat-label>Fecha</mat-label>
                                 <input matInput placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio"
-                                    [(ngModel)]="evento.actividades[0].fechaInicio" disabled>
+                                    [(ngModel)]="fechaActividad" disabled>
                                 <mat-hint>dd/mm/aaaa</mat-hint>
                             </mat-form-field>
                         </div>
@@ -112,7 +110,7 @@
                             <mat-form-field class="example-full-width">
                                 <mat-label>Hora</mat-label>
                                 <input matInput placeholder="Hora" id="horaInicio" name="horaInicio"
-                                    [(ngModel)]="evento.actividades[0].horaInicio" disabled>
+                                    [(ngModel)]="horaActividad" disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -121,7 +119,7 @@
                             <mat-form-field class="example-full-width">
                                 <mat-label>Moderador</mat-label>
                                 <input matInput placeholder="Moderador" id="moderador" name="moderador"
-                                    [(ngModel)]="evento.actividades[0].moderadores[0].nombre" disabled>
+                                    [(ngModel)]="moderadorEvento" disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -200,13 +198,8 @@
                 </section>
             </div>
         </div>
-        <div class="footer1 mt-4">
-            <div class="logo_vcb_footer_1">
-                <span class="logo"></span>
-            </div>
-        </div>
-        <div class="footer2">
-            <div class="logo_vcb_footer_2">
+        <div class="footer mt-4">
+            <div class="logo_vcb_footer">
                 <span class="logo"></span>
             </div>
         </div>

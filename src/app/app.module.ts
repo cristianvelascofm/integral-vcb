@@ -55,6 +55,7 @@ import { SolicitudCdpComponent } from './dialogs/documental/solicitudes/solicitu
 import { SolicitudTiquetesComponent } from './dialogs/documental/solicitudes/solicitud-tiquetes/solicitud-tiquetes.component';
 import { SolicitudVehiculoComponent } from './dialogs/documental/solicitudes/solicitud-vehiculo/solicitud-vehiculo.component';
 import { InformeAdministrativoComponent } from './dialogs/documental/informe/informe-administrativo/informe-administrativo.component';
+import { BienvenidaEstudiantesComponent } from './bienvenida-estudiantes/bienvenida-estudiantes.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -86,6 +87,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     SolicitudTiquetesComponent,
     SolicitudVehiculoComponent,
     InformeAdministrativoComponent,
+    BienvenidaEstudiantesComponent,
 
   ],
   imports: [

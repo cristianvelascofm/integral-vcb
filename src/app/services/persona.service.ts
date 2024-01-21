@@ -72,7 +72,8 @@ actividadActual: string;
   // BUSCAR ESTUDIANTE POR ID
   async obtenerEstudianteId(identificacion: string) {
     const dictSend = {
-      accion: 'cargar-estudiante-id',
+      // accion: 'cargar-estudiante-id',
+      accion: 'cargar-estudiante-id-primer-semestre',
       id: identificacion
     };
     try {

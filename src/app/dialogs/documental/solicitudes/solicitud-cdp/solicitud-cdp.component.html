@@ -1,1 +1,319 @@
-<p>solicitud-cdp works!</p>
+<!-- <div class="container" style=" height: 100% !important;width: 100% !important;">
+    <form (ngSubmit)="nuevoCDP()" #tiqueteForm="ngForm" style="width: 100%">
+        <mat-tab-group style="width: 100% !important; height: 100% !important;" class="">
+            <mat-tab label="Generalidades">
+                <div class="row mt-2" style="width: 100%;">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="asunto"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Asunto</mat-label>
+                            <input matInput placeholder="Asunto" name="asunto" [value]="asunto" required readonly>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="fecha-actual"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput [matDatepicker]="pickerFechaActual" [value]="fechaActual" id="fecha-actual"
+                                name="fecha-actual" [(ngModel)]="fechaActual" disabled>
+                            <mat-hint>MM/DD/AAAA</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="pickerFechaActual"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFechaActual></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row mt-2" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="asunto"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Dirigido a</mat-label>
+                            <input matInput placeholder="Vicerrector Administrativo" name="dirigido" [value]="dirigido" required readonly>
+                        </mat-form-field>
+                    </div>
+                </div>
+                
+                <div class="row " style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="unico"></mat-icon>
+                        <mat-form-field class="example-full-width mt-3">
+                            <mat-label>Nombre</mat-label>
+                            <input type="text" name="viajero" placeholder="Escriba el Nombre del Viajero"
+                                aria-label="Nombre del Viajero" matInput [formControl]="myControlViajero"
+                                [matAutocomplete]="autoViajero" required>
+                            <mat-autocomplete #autoViajero="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptionsViajero | async"
+                                    [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab color="primary" aria-label="Add Person">
+                                <mat-icon>perm_identity</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="width: 100%;">
+                    <div class="col-6  form-field-wrapper">
+                        <mat-icon class="tipo-documento"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Tipo Vinculación</mat-label>
+                            <mat-select [formControl]="vinculacionControl" required
+                                > -->
+                                <!-- <mat-option>--</mat-option> -->
+                                <!-- <mat-option *ngFor="let oficio of vinculacion" [value]="oficio">{{ oficio.nombre
+                                    }}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="vinculacionControl.hasError('required')">Por favor, elija un
+                                tipo de solicitud</mat-error> -->
+                            <!-- <mat-hint>
+                                    {{ oficioRecepcionControl.value && oficioRecepcionControl.value.length > 0 ? oficioRecepcionControl.value[0].tipo : '' }}
+                                  </mat-hint> -->
+                        <!-- </mat-form-field>
+                    </div>
+                </div> -->
+                <!-- <div class="row" style="width: 100% !important;">
+                    <div class="col-6 " style="border-right: solid 1px rgb(212, 210, 210);">
+                        <div class="row pt-3  ">
+                            <div class="col-6">
+                                <mat-checkbox [(ngModel)]="destinatarioUnico" name="destinatario-unico"
+                                    (change)="onRadioChange('unico')">
+                                    <div align="center">
+                                        <mat-icon class="unico"></mat-icon>
+                                    </div>
+                                    <div align="center">
+                                        <mat-label>Único</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-6">
+                                <mat-checkbox name="destinatario-multiple" [(ngModel)]="destinatarioMultiple"
+                                    (change)="onRadioChange('multiple')">
+                                    <div align="center">
+                                        <mat-icon class="multiple"></mat-icon>
+                                    </div>
+                                    <div align="center">
+                                        <mat-label>Múltiple</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 pt-3  form-field-wrapper">
+                        <mat-icon class="fecha-actual"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput [matDatepicker]="pickerFechaActual" [value]="fechaActual" id="fecha-actual"
+                                name="fecha-actual" [(ngModel)]="fechaActual" disabled>
+                            <mat-hint>MM/DD/AAAA</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="pickerFechaActual"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerFechaActual></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="row " style="width: 100%;" *ngIf="destinatarioUnico">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="unico" *ngIf="destinatarioUnico"></mat-icon>
+                        <mat-form-field class="example-full-width mt-3">
+                            <mat-label>Destinatario</mat-label>
+                            <input type="text" name="destinatario-u" placeholder="Escriba un Nombre"
+                                aria-label="Nombre del Destinatario" matInput [formControl]="myControlDestinatarioU"
+                                [matAutocomplete]="autoDestinatarioU" required>
+                            <mat-autocomplete #autoDestinatarioU="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptionsDestinatarioU | async"
+                                    [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab color="primary" aria-label="Add Person">
+                                <mat-icon>perm_identity</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="row mt-2" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="asunto"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Asunto</mat-label>
+                            <input matInput placeholder="Asunto del Documento" name="asunto" [value]="asunto" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row" style="width: 100%;">
+                    <div class="col-6 " style="border-right: solid 1px rgb(212, 210, 210);">
+                        <mat-label>Copia</mat-label>
+                        <div class="row pt-3  ">
+                            <div class="col-6">
+                                <mat-checkbox [(ngModel)]="copiaUnica" name="copia-unica" color="warn"
+                                    (change)="onRadioChange('copia-unica')">
+                                    <div align="center">
+                                        <mat-icon class="copia-unica"></mat-icon>
+                                    </div>
+                                    <div align="center">
+                                        <mat-label>Única</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-6">
+                                <mat-checkbox name="destinatario-multiple" [(ngModel)]="copiaMultiple"
+                                    (change)="onRadioChange('copia-multiple')">
+                                    <div align="center">
+                                        <mat-icon class="copia-multiple"></mat-icon>
+                                    </div>
+                                    <div align="center">
+                                        <mat-label>Múltiple</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 pt-3  form-field-wrapper" *ngIf="copiaUnica">
+                        <mat-icon class="copia-unica" *ngIf="copiaUnica"></mat-icon>
+                        <mat-form-field class="example-full-width mt-3">
+                            <mat-label>Destinatario Copia</mat-label>
+                            <input type="text" name="destinatario-copia" placeholder="Escriba un Nombre"
+                                aria-label="Nombre del Destinatario" matInput [formControl]="myControlCopiaUnica"
+                                [matAutocomplete]="autoCopiaU" required>
+                            <mat-autocomplete #autoCopiaU="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptionsCopiaUnica | async" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab color="primary" aria-label="Add Person">
+                                <mat-icon>perm_identity</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+            <!-- </mat-tab> -->
+            <!-- <mat-tab label="Destinatarios" *ngIf="destinatarioMultiple">
+                <div class="row" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="multiple"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Destinatarios</mat-label>
+                            <input type="text" name="destinatarios" placeholder="Escriba un Nombre"
+                                aria-label="Nombre del Destinatario" matInput [formControl]="myControlDestinatarioM"
+                                [matAutocomplete]="autoDestinatariosM" required>
+                            <mat-autocomplete #autoDestinatariosM="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptionsDestinatarioM | async"
+                                    [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab class="boton-mas" aria-label="Add Person">
+                                <mat-icon>library_add</mat-icon>
+                            </button>
+                        </div>
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab color="primary" aria-label="Add Person">
+                                <mat-icon>perm_identity</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-reception demo-table"
+                            style="margin-top: 0px;" #tabla1>
+                            <ng-container matColumnDef="nombre">
+                                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                <td [title]="nombre" mat-cell *matCellDef="let nombre">
+                                    nombre </td>
+                            </ng-container>
+                            <ng-container matColumnDef="identificacion">
+                                <th mat-header-cell *matHeaderCellDef> Identificación </th>
+                                <td [title]="viaje.fechaSalida" mat-cell *matCellDef="let viaje">
+                                    {{viaje.fechaSalida}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="cargo">
+                                <th mat-header-cell *matHeaderCellDef>Cargo</th>
+                                <td [title]="viaje.horaSalida" mat-cell *matCellDef="let viaje">
+                                    {{viaje.horaSalida}} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                        </table>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Copia" *ngIf="copiaMultiple">
+                <div class="row" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="copia-multiple"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Destinatarios Copia</mat-label>
+                            <input type="text" name="destinatarios-copia" placeholder="Escriba un Nombre"
+                                aria-label="Nombre del Destinatario" matInput [formControl]="myControlCopiaMultiple"
+                                [matAutocomplete]="autoCopiaM" required>
+                            <mat-autocomplete #autoCopiaM="matAutocomplete">
+                                <mat-option *ngFor="let option of filteredOptionsCopiaMultiple | async"
+                                    [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab class="boton-mas" aria-label="Add Person">
+                                <mat-icon>library_add</mat-icon>
+                            </button>
+                        </div>
+                        <div class="m-3" align="center">
+                            <button mat-mini-fab color="primary" aria-label="Add Person">
+                                <mat-icon>perm_identity</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <table mat-table [dataSource]="dataSourceCopia"
+                            class="mat-elevation-z8 table-reception demo-table" style="margin-top: 0px;" #tabla1>
+                            <ng-container matColumnDef="nombre">
+                                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                <td [title]="nombre" mat-cell *matCellDef="let nombre">
+                                    nombre </td>
+                            </ng-container>
+                            <ng-container matColumnDef="identificacion">
+                                <th mat-header-cell *matHeaderCellDef> Identificación </th>
+                                <td [title]="viaje.fechaSalida" mat-cell *matCellDef="let viaje">
+                                    {{viaje.fechaSalida}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="cargo">
+                                <th mat-header-cell *matHeaderCellDef>Cargo</th>
+                                <td [title]="viaje.horaSalida" mat-cell *matCellDef="let viaje">
+                                    {{viaje.horaSalida}} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                        </table>
+                    </div>
+                </div>
+            </mat-tab> -->
+            <!-- <mat-tab label="Anotaciones">
+                <div class="row" style="width: 100%;">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="observaciones"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Anotaciones</mat-label>
+                            <textarea matInput placeholder="Notas para este oficio" name="observaciones"
+                                [(ngModel)]="observaciones"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-tab> -->
+        <!-- </mat-tab-group>
+    </form>
+</div> -->

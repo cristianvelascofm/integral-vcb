@@ -1,4 +1,3 @@
-
 <!-- Menú Lateral Principal -->
 <app-principal-menu (menuSelector)="actualWindow($event)" class="lateral-menu"></app-principal-menu>
 
@@ -6,9 +5,10 @@
 
 <div class="aloja">
     <app-home-module *ngIf="false" class="home"></app-home-module>
-    <app-document-module *ngIf="true" class="document"></app-document-module>
+    <app-document-module *ngIf="false" class="document"></app-document-module>
     <app-event-module *ngIf="false" class="event"></app-event-module>
     <app-feria class="feria" *ngIf="false"></app-feria>
+    <app-bienvenida-estudiantes class="feria" *ngIf="true"></app-bienvenida-estudiantes>
 </div>
 
 <!-- <app-home-module *ngIf="home" class="home"></app-home-module> -->

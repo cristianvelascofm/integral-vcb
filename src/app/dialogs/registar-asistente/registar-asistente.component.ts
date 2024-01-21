@@ -207,7 +207,14 @@ export class RegistarAsistenteComponent {
               if (estudiante.codigo !== '') {
                 this.institucion = 'universidad' // ESTA ES UNA VARIABLE LOCAL, NO SE ENVÍA AL SERVER PORQUE SOLO SIRVE DE FLAG
                 this.asistente['institucion'] = 'Universidad del Cauca'; //Esta línea se agrega porque no tiene institucion por defecto el estudiante unicaucano en el diccionario del server
-                this.asistente['tipoDocumento'] = 'cedula' //Esta línea es porq no conocemos el tipo de Documento
+                console.log('AAAA: ', this.asistente['tipoDocumento'])
+
+                var tipoDocumento = this.asistente['tipoDocumento'] 
+                if(tipoDocumento == 'Cédula'){
+                  this.asistente['tipoDocumento'] ='cedula'
+                }else if(tipoDocumento == 'Tarjeta de Identidad'){
+                  this.asistente['tipoDocumento']='tarjeta'
+                }
                 this.nombreCompleto = name.toLowerCase().charAt(0).toUpperCase() + name.slice(1).toLowerCase();
                 this.apellidoCompleto = lastName.toLowerCase().charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
                 this.controlInstitucion = true;

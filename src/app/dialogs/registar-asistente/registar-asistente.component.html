@@ -18,7 +18,7 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Tipo de Documento</mat-label>
                         <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="asistente.tipoDocumento"
-                            required>
+                            required  required disabled="">
                             <mat-option value="cedula">Cédula de Ciudadanía</mat-option>
                             <mat-option value="tarjeta">Tarjeta de Identidad</mat-option>
                             <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
@@ -41,14 +41,14 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombres</mat-label>
                         <input matInput placeholder="Nombres" id="nombre" name="nombre" class="intpus-mayusculas" [(ngModel)]="nombreCompleto"
-                            required>
+                            required disabled="">
                     </mat-form-field>
                 </div>
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Apellidos</mat-label>
                         <input matInput placeholder="Apellidos" id="apellido"  class="intpus-mayusculas" name="apellido"
-                            [(ngModel)]="apellidoCompleto" required>
+                            [(ngModel)]="apellidoCompleto" required disabled="">
                     </mat-form-field>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Género</mat-label>
-                        <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required>
+                        <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required disabled="">
                             <mat-option value="M">Masculino</mat-option>
                             <mat-option value="F">Femenino</mat-option>
                         </mat-select>
@@ -67,7 +67,7 @@
                         <mat-label>Fecha de Nacimiento</mat-label>
                         <input matInput [matDatepicker]="picker" [value]="fechaFormadetaNacimiento"
                             id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaFormadetaNacimiento"
-                            required>
+                            required disabled="">
                         <mat-hint>MM/DD/AAAA</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -102,7 +102,7 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Celular</mat-label>
                         <input matInput placeholder="Número" id="celular" name="celular"
-                            [(ngModel)]="asistente.telefono" required>
+                            [(ngModel)]="asistente.telefono">
                     </mat-form-field>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Tipo Institución</mat-label>
                         <mat-select id="tipo-institucion" name="tipo-institucion" [(ngModel)]="institucion"
-                            (ngModelChange)="institucionControl()" required>
+                            (ngModelChange)="institucionControl()" required disabled="">
                             <mat-option value="ninguna">Niunguna</mat-option>
                             <mat-option value="universidad">Universidad</mat-option>
                             <mat-option value="colegio">Colegio - I.E.</mat-option>
@@ -123,14 +123,14 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Institución</mat-label>
                         <input matInput placeholder="institucion" id="institucion" name="institucion" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.institucion" required>
+                            [(ngModel)]="asistente.institucion" required disabled="">
                     </mat-form-field>
                 </div>
                 <div class="col-6" *ngIf="controlColegio">
                     <mat-form-field class="example-full-width">
                         <mat-label>Colegio</mat-label>
                         <input matInput placeholder="institucion" id="institucion" name="institucion" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.institucion" required>
+                            [(ngModel)]="asistente.institucion" required disabled="">
                     </mat-form-field>
                 </div>
             </div>
@@ -139,14 +139,14 @@
                     <mat-form-field class="example-full-width">
                         <mat-label>Programa</mat-label>
                         <input matInput placeholder="Programa" id="programa" name="programa" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.programa" required>
+                            [(ngModel)]="asistente.programa" required disabled="">
                     </mat-form-field>
                 </div>
                 <div class="col-6">
                     <mat-form-field class="example-full-width">
                         <mat-label>Facultad</mat-label>
                         <input matInput placeholder="Facultad" id="facultad" name="facultad" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.facultad">
+                            [(ngModel)]="asistente.facultad" disabled="">
                     </mat-form-field>
                 </div>
             </div>
