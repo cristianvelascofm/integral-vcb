@@ -13,7 +13,7 @@ import { MainPageComponent } from 'src/app/main-page/main-page.component'
 @Component({
   selector: 'app-registar-asistente',
   templateUrl: './registar-asistente.component.html',
-  styleUrls: ['./registar-asistente.component.css']
+  styleUrls: ['./registar-asistente.component.scss']
 })
 
 
@@ -201,19 +201,26 @@ export class RegistarAsistenteComponent {
               if (parts && parts.length === 3) {
                 const day = parseInt(parts[0], 10);
                 const month = parseInt(parts[1], 10) - 1; // Resta 1 al mes, ya que en JavaScript los meses van de 0 a 11.
-                const year = parseInt(parts[2], 10);
+                let year = parseInt(parts[2], 10);
+
+                // Ajusta el año si es menor que 100
+                if (year < 100) {
+                  // Supongamos que queremos tratar los años menores a 30 como pertenecientes al siglo XXI
+                  // y los años mayores o iguales a 30 como pertenecientes al siglo XX.
+                  year += (year < 30) ? 2000 : 1900;
+                }
+
                 this.fechaFormadetaNacimiento = new Date(year, month, day);
+
               }
               if (estudiante.codigo !== '') {
                 this.institucion = 'universidad' // ESTA ES UNA VARIABLE LOCAL, NO SE ENVÍA AL SERVER PORQUE SOLO SIRVE DE FLAG
                 this.asistente['institucion'] = 'Universidad del Cauca'; //Esta línea se agrega porque no tiene institucion por defecto el estudiante unicaucano en el diccionario del server
-                console.log('AAAA: ', this.asistente['tipoDocumento'])
-
-                var tipoDocumento = this.asistente['tipoDocumento'] 
-                if(tipoDocumento == 'Cédula'){
-                  this.asistente['tipoDocumento'] ='cedula'
-                }else if(tipoDocumento == 'Tarjeta de Identidad'){
-                  this.asistente['tipoDocumento']='tarjeta'
+                var tipoDocumento = this.asistente['tipoDocumento']
+                if (tipoDocumento == 'Cédula') {
+                  this.asistente['tipoDocumento'] = 'cedula'
+                } else if (tipoDocumento == 'Tarjeta de Identidad') {
+                  this.asistente['tipoDocumento'] = 'tarjeta'
                 }
                 this.nombreCompleto = name.toLowerCase().charAt(0).toUpperCase() + name.slice(1).toLowerCase();
                 this.apellidoCompleto = lastName.toLowerCase().charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();

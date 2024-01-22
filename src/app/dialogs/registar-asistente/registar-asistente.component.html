@@ -8,154 +8,172 @@
         </div>
     </div>
 </div>
-<div mat-dialog-content>{{msg}}</div>
-<div class="contenedor container-fluid"
-    style="display: flex; align-items: center;justify-content: center; height: auto;">
-    <div class="login">
-        <form (ngSubmit)="registrarAsistente()" #registroForm="ngForm" id="registro_asistencia">
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Tipo de Documento</mat-label>
-                        <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="asistente.tipoDocumento"
-                            required  required disabled="">
-                            <mat-option value="cedula">Cédula de Ciudadanía</mat-option>
-                            <mat-option value="tarjeta">Tarjeta de Identidad</mat-option>
-                            <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
-                            <mat-option value="pasaporte">Pasaporte</mat-option>
-                            <mat-option value="dni">DNI</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+<div mat-dialog-content class="mt-3" style="height: 610px !important;">{{msg}}
+    <div class="contenedor container-fluid" style=" height: 100% !important;width: 100% !important;">
+        <div class="login">
+            <form (ngSubmit)="registrarAsistente()" #registroForm="ngForm" id="registro_asistencia">
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="tipo-documento"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Tipo de Documento</mat-label>
+                            <mat-select  id="tipo-documento" name="tipo-documento" [(ngModel)]="asistente.tipoDocumento"
+                                required required disabled="">
+                                <mat-option class="select-rc" value="cedula">Cédula de Ciudadanía</mat-option>
+                                <mat-option value="tarjeta">Tarjeta de Identidad</mat-option>
+                                <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
+                                <mat-option value="pasaporte">Pasaporte</mat-option>
+                                <mat-option value="dni">DNI</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="numero-documento"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Número de Documento</mat-label>
+                            <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
+                                (keydown.enter)="onEnter($event)" [(ngModel)]="documento"
+                                (ngModelChange)="checkNumeroDocumento()" required>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Número de Documento</mat-label>
-                        <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
-                            (keydown.enter)="onEnter($event)" [(ngModel)]="documento"
-                            (ngModelChange)="checkNumeroDocumento()" required>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="nombre"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nombres</mat-label>
+                            <input matInput placeholder="Nombres" id="nombre" name="nombre" class="intpus-mayusculas"
+                                [(ngModel)]="nombreCompleto" required disabled="">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="apellido"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput placeholder="Apellidos" id="apellido" class="intpus-mayusculas"
+                                name="apellido" [(ngModel)]="apellidoCompleto" required disabled="">
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Nombres</mat-label>
-                        <input matInput placeholder="Nombres" id="nombre" name="nombre" class="intpus-mayusculas" [(ngModel)]="nombreCompleto"
-                            required disabled="">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="genero"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Género</mat-label>
+                            <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required disabled="">
+                                <mat-option value="M">Masculino</mat-option>
+                                <mat-option value="F">Femenino</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="cumpleaños"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Fecha de Nacimiento</mat-label>
+                            <input matInput [matDatepicker]="picker" [value]="fechaFormadetaNacimiento"
+                                id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaFormadetaNacimiento"
+                                required disabled="">
+                            <mat-hint>MM/DD/AAAA</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Apellidos</mat-label>
-                        <input matInput placeholder="Apellidos" id="apellido"  class="intpus-mayusculas" name="apellido"
-                            [(ngModel)]="apellidoCompleto" required disabled="">
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Género</mat-label>
-                        <mat-select id="genero" name="genero" [(ngModel)]="asistente.genero" required disabled="">
-                            <mat-option value="M">Masculino</mat-option>
-                            <mat-option value="F">Femenino</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Fecha de Nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker" [value]="fechaFormadetaNacimiento"
-                            id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaFormadetaNacimiento"
-                            required disabled="">
-                        <mat-hint>MM/DD/AAAA</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Email</mat-label>
-                        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                <div class="row">
+                    <div class="col-12 form-field-wrapper">
+                        <mat-icon class="email"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <!-- <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                             placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email" class="intpus-minusculas"
-                            [(ngModel)]="asistente.emailPersonal">
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            [(ngModel)]="asistente.emailPersonal"> -->
+                            <input matInput placeholder="Ej. alguien@unicauca.edu.co" id="email" name="email"
+                                class="intpus-minusculas" [(ngModel)]="asistente.emailPersonal" disabled="">
+
+                            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                             Por favor, ingrese una correo válido
                         </mat-error>
                         <mat-error *ngIf="emailFormControl.hasError('required')">
                             Correo es <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
+                        </mat-error> -->
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Dirección</mat-label>
-                        <input matInput placeholder="Ciudad, Procedencia, Dirección" id="direccion" class="intpus-mayusculas" name="direccion"
-                            [(ngModel)]="asistente.direccion" required>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="direccion"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Dirección</mat-label>
+                            <input matInput placeholder="Ciudad, Procedencia, Dirección" id="direccion"
+                                class="intpus-mayusculas" name="direccion" [(ngModel)]="asistente.direccion" required
+                                disabled="">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="celular"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Celular</mat-label>
+                            <input matInput placeholder="Número" id="celular" name="celular"
+                                [(ngModel)]="asistente.telefono" disabled="">
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Celular</mat-label>
-                        <input matInput placeholder="Número" id="celular" name="celular"
-                            [(ngModel)]="asistente.telefono">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="tipo-institucion"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Tipo Institución</mat-label>
+                            <mat-select id="tipo-institucion" name="tipo-institucion" [(ngModel)]="institucion"
+                                (ngModelChange)="institucionControl()" required disabled="">
+                                <mat-option value="ninguna">Niunguna</mat-option>
+                                <mat-option value="universidad">Universidad</mat-option>
+                                <mat-option value="colegio">Colegio - I.E.</mat-option>
+                                <mat-option value="tecnico">Técnico o Tecnólogo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper" *ngIf="controlInstitucion">
+                        <mat-icon class="institucion"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Institución</mat-label>
+                            <input matInput placeholder="institucion" id="institucion" name="institucion"
+                                class="intpus-mayusculas" [(ngModel)]="asistente.institucion" required disabled="">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper" *ngIf="controlColegio">
+                        <mat-icon class=""></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Colegio</mat-label>
+                            <input matInput placeholder="institucion" id="institucion" name="institucion"
+                                class="intpus-mayusculas" [(ngModel)]="asistente.institucion" required disabled="">
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Tipo Institución</mat-label>
-                        <mat-select id="tipo-institucion" name="tipo-institucion" [(ngModel)]="institucion"
-                            (ngModelChange)="institucionControl()" required disabled="">
-                            <mat-option value="ninguna">Niunguna</mat-option>
-                            <mat-option value="universidad">Universidad</mat-option>
-                            <mat-option value="colegio">Colegio - I.E.</mat-option>
-                            <mat-option value="tecnico">Técnico o Tecnólogo</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <div class="row" *ngIf="controlInstitucion">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="programa"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Programa</mat-label>
+                            <input matInput placeholder="Programa" id="programa" name="programa"
+                                class="intpus-mayusculas" [(ngModel)]="asistente.programa" required disabled="">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="facultad"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Facultad</mat-label>
+                            <input matInput placeholder="Facultad" id="facultad" name="facultad"
+                                class="intpus-mayusculas" [(ngModel)]="asistente.facultad" disabled="">
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-6" *ngIf="controlInstitucion">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Institución</mat-label>
-                        <input matInput placeholder="institucion" id="institucion" name="institucion" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.institucion" required disabled="">
-                    </mat-form-field>
-                </div>
-                <div class="col-6" *ngIf="controlColegio">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Colegio</mat-label>
-                        <input matInput placeholder="institucion" id="institucion" name="institucion" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.institucion" required disabled="">
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row" *ngIf="controlInstitucion">
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Programa</mat-label>
-                        <input matInput placeholder="Programa" id="programa" name="programa" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.programa" required disabled="">
-                    </mat-form-field>
-                </div>
-                <div class="col-6">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Facultad</mat-label>
-                        <input matInput placeholder="Facultad" id="facultad" name="facultad" class="intpus-mayusculas"
-                            [(ngModel)]="asistente.facultad" disabled="">
-                    </mat-form-field>
-                </div>
-            </div>
-            <!-- <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
+                <!-- <div style="display: flex; align-items:end; justify-content: end; margin-top: 10px;">
                 <button type="submit" class="btn btn-primary btn-block" [disabled]="!registroForm.valid">REGISTRAR
                 </button> -->
-            <!-- -->
-            <!-- </div> -->
-        </form>
+                <!-- -->
+                <!-- </div> -->
+            </form>
+        </div>
     </div>
 </div>
 <div mat-dialog-actions style="justify-content: end;margin-right: 15px;">

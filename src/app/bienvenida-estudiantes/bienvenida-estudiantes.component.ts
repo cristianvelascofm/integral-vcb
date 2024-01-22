@@ -261,7 +261,7 @@ export class BienvenidaEstudiantesComponent {
     // this.usuarioLoggeado.emit(this.usuario)
     const dialogRef = this.dialog.open(RegistarAsistenteComponent, {
       disableClose: true,
-      width: '650px',
+      width: '720px',
       // height: '650px'
       // data: 'CONTENIDO'
     });
