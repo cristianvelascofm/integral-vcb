@@ -18,7 +18,7 @@ export class MainPageComponent {
 
 
 
-  logged = false;
+  logged = true;
   register = false;
   username = ''
 

@@ -3,7 +3,7 @@ $event: rgb(228, 26, 38);
 $place: rgb(0, 170, 229);
 $budget: rgb(98, 139, 11);
 $config: rgb(175, 175, 175);
-
+$logout: rgb(78, 9, 9);
 $background: #edf5e1;
 $shadow: #CCCCCC;
 $illumination: #fdc6be;
@@ -155,7 +155,7 @@ li a.title:hover {
 }
 
 .nav li:nth-child(6) a {
-  background: $config !important;
+  background: $logout !important;
 }
 
 

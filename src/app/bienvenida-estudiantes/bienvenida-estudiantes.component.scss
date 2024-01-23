@@ -28,6 +28,10 @@
   
   }
   
+  .form-field-wrapper {
+    display: flex;
+    align-items: center;
+}
   .footer {
     width: 100%;
   }
@@ -84,3 +88,71 @@
     max-height: 23vh !important;
     // width: 600% !important;
   }
+
+  .actividad{
+    background-image: url('../../assets/images/icon/desarrollo-de-productos.png');
+    min-height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.categoria{
+  background-image: url('../../assets/images/icon/categoria.png');
+  min-height: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  max-width: 30px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+
+.lugar{
+  background-image: url('../../assets/images/icon/ubicacion-invitacion.png');
+  min-height: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  max-width: 30px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+
+.fecha{
+  background-image: url('../../assets/images/icon/calendario.png');
+  min-height: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  max-width: 30px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+.hora{
+  background-image: url('../../assets/images/icon/reloj2.png');
+  min-height: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  max-width: 30px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}
+
+.registrador{
+  background-image: url('../../assets/images/icon/avatar.png');
+  min-height: 30px;
+  min-width: 30px;
+  max-height: 30px;
+  max-width: 30px;
+  background-size: 100%;
+  margin-right: 10px !important;
+  background-position: center;
+}

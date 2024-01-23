@@ -63,7 +63,8 @@
                     <h2>GESTIÓN DE EVENTOS</h2>
                     <h5>DETALLES ACTIVIDAD</h5>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 form-field-wrapper">
+                            <mat-icon class="actividad"></mat-icon>
                             <mat-form-field class="example-full-width">
                                 <mat-label>Nombre de la Actividad</mat-label>
                                 <input matInput placeholder="Actividad" id="actividad" name="actividad" [(ngModel)]="actividadActual"
@@ -72,7 +73,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-6 form-field-wrapper">
+                            <mat-icon class="categoria"></mat-icon>
                             <mat-form-field class="example-full-width">
                                 <mat-label>Categoría</mat-label>
                                 <input matInput placeholder="Categoría" id="categoria" name="categoria"
@@ -81,15 +83,15 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6" *ngIf="evento.actividades[0].invitados">
+                        <!-- <div class="col-6" *ngIf="evento.actividades[0].invitados">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Invitado</mat-label>
                                 <input matInput placeholder="Responsable" id="responsable" name="responsable"
                                     [(ngModel)]="invitados" disabled>
-                                    <!-- evento.actividades[0].invitados[0].nombre -->
                             </mat-form-field>
-                        </div>
-                        <div class="col-6">
+                        </div> -->
+                        <div class="col-12 form-field-wrapper">
+                            <mat-icon class="lugar"></mat-icon>
                             <mat-form-field class="example-full-width">
                                 <mat-label>Lugar Realización</mat-label>
                                 <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarActividad"
@@ -98,7 +100,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-6 form-field-wrapper">
+                            <mat-icon class="fecha"></mat-icon>
                             <mat-form-field class="example-full-width">
                                 <mat-label>Fecha</mat-label>
                                 <input matInput placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio"
@@ -106,7 +109,8 @@
                                 <mat-hint>dd/mm/aaaa</mat-hint>
                             </mat-form-field>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 form-field-wrapper">
+                            <mat-icon class="hora"></mat-icon>
                             <mat-form-field class="example-full-width">
                                 <mat-label>Hora</mat-label>
                                 <input matInput placeholder="Hora" id="horaInicio" name="horaInicio"
@@ -114,12 +118,22 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="row" *ngIf="moderadorActivo">
+                    <!-- <div class="row" *ngIf="moderadorActivo">
                         <div *ngIf=" evento.actividades[0].moderadores">
                             <mat-form-field class="example-full-width">
                                 <mat-label>Moderador</mat-label>
                                 <input matInput placeholder="Moderador" id="moderador" name="moderador"
                                     [(ngModel)]="moderadorEvento" disabled>
+                            </mat-form-field>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-12 form-field-wrapper">
+                            <mat-icon class="registrador"></mat-icon>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Registrador</mat-label>
+                                <input matInput placeholder="Moderador" id="moderador" name="moderador"
+                                    [(ngModel)]="usuarioLogged" disabled>
                             </mat-form-field>
                         </div>
                     </div>

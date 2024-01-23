@@ -23,6 +23,7 @@ export class BienvenidaEstudiantesComponent {
     public dialog: MatDialog, private eventService: EventService, private mainPage: MainPageComponent
   ) {
     this.path = environment.apiBaseUrl;
+    this.usuarioLogged = environment.getUser();
     this.actividadActual = environment.getActividad();
     this.cargarEventoInformacionInicial();
     // this.categoria_Actividad = this.evento.actividades[0].tipo;
@@ -98,6 +99,7 @@ export class BienvenidaEstudiantesComponent {
       }]
     }],
   };
+
   // Variables de Control Evento
   nombreEvento = 'none';
   edicionEvento = 0;
