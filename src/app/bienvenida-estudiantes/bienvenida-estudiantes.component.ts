@@ -24,7 +24,7 @@ export class BienvenidaEstudiantesComponent {
   ) {
     this.path = environment.apiBaseUrl;
     this.usuarioLogged = environment.getUser();
-    this.actividadActual = environment.getActividad();
+    // this.actividadActual = environment.getActividad();
     this.cargarEventoInformacionInicial();
     // this.categoria_Actividad = this.evento.actividades[0].tipo;
 
@@ -123,7 +123,7 @@ export class BienvenidaEstudiantesComponent {
   moderadorActivo = true;
   invitados = ''
 
-  actividadActual: string;
+  actividadActual: string = '';
 
 
   columnas: string[] = ['nombre', 'apellido', 'documento', 'institucion'];
@@ -203,14 +203,13 @@ export class BienvenidaEstudiantesComponent {
         this.lugarEvento = evento.lugar;
         this.fechaInicioEvento = evento.fechaInicio;
         this.horaInicioEvento = evento.horaInicio || "none";
-        // Initi Datos Actividad [0]
+
+        this.actividadActual = evento.actividades[0].nombre;
         this.categoriaActividad= evento.actividades[0].tipo;
         this.lugarActividad = evento.actividades[0].lugar;
         this.fechaActividad = evento.actividades[0].fechaInicio;
         this.horaActividad = evento.actividades[0].horaInicio;
         
-        //Imprimir en consola el json de evento
-        // console.log('Evento cargado: ', JSON.stringify(this.evento));
 
         if (this.evento.actividades[0].invitados) {
           const invitadosArray = this.evento.actividades[0].invitados.map(invitado => invitado.nombre);
@@ -228,7 +227,7 @@ export class BienvenidaEstudiantesComponent {
               this.datos = data;
               this.dataSource = new MatTableDataSource<Participante>(this.datos);
               this.dataSource.paginator = this.paginator;
-              console.log(this.paginator)
+              // console.log(this.paginator)
             })
             .catch(error => {
               console.error(error);
