@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Participante } from '../services/persona.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormControl, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { ErrorStateMatcher, ThemePalette } from '@angular/material/core';
 import axios from 'axios';
 import { EventoActividadComponent } from '../dialogs/evento-actividad/evento-actividad.component';
 import { RegistarAsistenteComponent } from '../dialogs/registar-asistente/registar-asistente.component';
@@ -115,7 +115,7 @@ export class BienvenidaEstudiantesComponent {
   lugarActividad = 'none'
   fechaActividad = 'none'
   horaActividad = 'none'
-
+  colorControl = new FormControl('primary' as ThemePalette);
   path: string;
   //  #oficina
   actividadesActivas = true;
