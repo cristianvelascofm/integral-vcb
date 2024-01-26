@@ -123,7 +123,7 @@ export class BienvenidaEstudiantesComponent {
   moderadorActivo = true;
   invitados = ''
 
-  actividadActual: string = '';
+  actividadActual: string = 'none';
 
 
   columnas: string[] = ['nombre', 'apellido', 'documento', 'institucion'];
@@ -209,7 +209,7 @@ export class BienvenidaEstudiantesComponent {
         this.lugarActividad = evento.actividades[0].lugar;
         this.fechaActividad = evento.actividades[0].fechaInicio;
         this.horaActividad = evento.actividades[0].horaInicio;
-        
+        console.log('Actividad: '+ this.actividadActual)
 
         if (this.evento.actividades[0].invitados) {
           const invitadosArray = this.evento.actividades[0].invitados.map(invitado => invitado.nombre);

@@ -8,47 +8,49 @@
             </div>
         </div>
         <div class="col-10">
-            <div class="row p-2">
+            <div class="row mt-3">
                 <div class="col-4">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Nombre del Evento</mat-label>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white; font-weight: 950;">Nombre del Evento</mat-label>
                         <input matInput placeholder="Evento" id="evento" name="evento" [(ngModel)]="nombreEvento"
                             disabled>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Edición</mat-label>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white; font-weight: 950;">Edición</mat-label>
                         <input matInput  placeholder="Número" id="edicion" name="edicion"
                             [(ngModel)]="edicionEvento" disabled>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Categoría</mat-label>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label style="color: white; font-weight: 950;">Categoría</mat-label>
                         <input matInput placeholder="Categoría" id="categoria" name="categoria"
                             [(ngModel)]="categoriaEvento" disabled>
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
 
                 <div class="col-4">
-                    <mat-form-field class="example-full-width custom-form-field">
-                      <mat-label>Lugar Realización</mat-label>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label style="color: white; font-weight: 950;">Lugar Realización</mat-label>
                       <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarEvento" disabled>
                     </mat-form-field>
                   </div>
                   
-                <div class="col-4">
-                    <mat-form-field  appearance="outline"  class="example-full-width"> <mat-label>Fecha de Inicio</mat-label>
-                        <input matInput placeholder="Fecha" id="fechaInicio" name="fechaInicio"
+                <div class="col-4" >
+                    <mat-form-field  appearance="outline"  class="example-full-width" > 
+                        <mat-label style="color: white; font-weight: 950;">Fecha de Inicio</mat-label>
+                        <input matInput placeholder="Fecha" id="fechaInicio" name="fechaInicio" 
                             [(ngModel)]="fechaInicioEvento" disabled>
                         <!-- <mat-hint>dd/mm/aaaa</mat-hint> -->
                     </mat-form-field>
                 </div>
                 <div class="col-4">
-                    <mat-form-field class="example-full-width"> <mat-label>Hora de Inicio</mat-label>
+                    <mat-form-field class="example-full-width" appearance="outline"> 
+                        <mat-label style="color: white; font-weight: 950;">Hora de Inicio</mat-label>
                         <input matInput placeholder="Hora" id="hora" name="hora" [(ngModel)]="horaInicioEvento"
                             disabled>
                     </mat-form-field>
@@ -57,15 +59,15 @@
         </div>
     </div>
     <div class="row" *ngIf="actividadesActivas" style="padding: 0px; height: 75%;width: 100%;">
-        <div class="col-6 mt-3" style="height: 80%;    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
+        <div class="col-6 mt-4" style="height: 80%;    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
             <div class="contenedor mt-3" style="margin-left: 0px; height: 100%;">
                 <div class="login">
-                    <h2>GESTIÓN DE EVENTOS</h2>
+                    <h2>GESTIÓN DE ACTIVIDADES</h2>
                     <h5>DETALLES ACTIVIDAD</h5>
                     <div class="row">
                         <div class="col-12 form-field-wrapper">
                             <mat-icon class="actividad"></mat-icon>
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field class="example-full-width-actividad">
                                 <mat-label>Nombre de la Actividad</mat-label>
                                 <input matInput placeholder="Actividad" id="actividad" name="actividad" [(ngModel)]="actividadActual"
                                      disabled>
@@ -73,9 +75,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 form-field-wrapper">
+                        <div class="col-12 form-field-wrapper">
                             <mat-icon class="categoria"></mat-icon>
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field class="example-full-width-actividad">
                                 <mat-label>Categoría</mat-label>
                                 <input matInput placeholder="Categoría" id="categoria" name="categoria"
                                     [(ngModel)]="categoriaActividad" disabled>
@@ -92,7 +94,7 @@
                         </div> -->
                         <div class="col-12 form-field-wrapper">
                             <mat-icon class="lugar"></mat-icon>
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field class="example-full-width-actividad">
                                 <mat-label>Lugar Realización</mat-label>
                                 <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarActividad"
                                     disabled>
@@ -102,7 +104,7 @@
                     <div class="row">
                         <div class="col-6 form-field-wrapper">
                             <mat-icon class="fecha"></mat-icon>
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field class="example-full-width-actividad">
                                 <mat-label>Fecha</mat-label>
                                 <input matInput placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio"
                                     [(ngModel)]="fechaActividad" disabled>
@@ -111,7 +113,7 @@
                         </div>
                         <div class="col-6 form-field-wrapper">
                             <mat-icon class="hora"></mat-icon>
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field class="example-full-width-actividad">
                                 <mat-label>Hora</mat-label>
                                 <input matInput placeholder="Hora" id="horaInicio" name="horaInicio"
                                     [(ngModel)]="horaActividad" disabled>
@@ -130,7 +132,7 @@
                     <div class="row">
                         <div class="col-12 form-field-wrapper">
                             <mat-icon class="registrador"></mat-icon>
-                            <mat-form-field class="example-full-width">
+                            <mat-form-field class="example-full-width-actividad">
                                 <mat-label>Registrador</mat-label>
                                 <input matInput placeholder="Moderador" id="moderador" name="moderador"
                                     [(ngModel)]="usuarioLogged" disabled>
@@ -142,7 +144,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 mt-3" style="height: 80%;    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
+        <div class="col-6 mt-4" style="height: 80%;    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
             <h5 *ngIf="false">conexion caida</h5>
             <div class=" evento-resume-tabla container-fluid">
                 <section id="resume" class="p-2">
