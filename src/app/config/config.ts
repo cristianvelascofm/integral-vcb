@@ -1,8 +1,9 @@
 export const environment = {
   production: false,
   // path :'http://192.168.1.100:5050',
-  apiBaseUrl : 'http://192.168.0.12:5050', //CASA
+  // apiBaseUrl : 'http://192.168.0.12:5050', //CASA
   // apiBaseUrl: 'http://192.168.130.79:5050', // OFFICE
+  apiBaseUrl : 'http://192.168.0.11:5050', //PORTATIL
 
   // SE DEFINE EL SET Y EL GET DEL LOCALSTORAGE DE LA VARIABLE USER
   setUser(username: string) {

@@ -22,6 +22,7 @@ export class RegistarAsistenteComponent {
     this.path = environment.apiBaseUrl
   }
   path: string;
+  control= true;
 
   asistente: Asistente = {
     primerNombre: '',
@@ -91,57 +92,66 @@ export class RegistarAsistenteComponent {
     // console.log('y AJA')
   }
 
-  confirmarRegistro() {
-    const formulario = document.getElementById('registro_asistencia') as HTMLFormElement;
-    formulario.dispatchEvent(new Event('submit'));
-    console.log(this.asistente['fechaNacimiento']);
-    this.asistente['identificacion'] = this.documento;
-    const birthday = this.fechaFormadetaNacimiento;
-    console.log("ASISTENTE LOCAL: ", this.asistente)
-    if (birthday !== undefined) {
-      const fechaOriginal = new Date(birthday);
-      const fechaFormateada = this.datePipe.transform(fechaOriginal, 'dd-MM-yyyy');
-      this.asistente['fechaNacimiento'] = fechaFormateada?.toString()
-      const fullName = this.nombreCompleto.split(' ')
-      if (fullName[0]) {
-        this.asistente['primerNombre'] = fullName[0];
-      } else {
-        this.asistente['primerNombre'] = "";
-      }
-      if (fullName[1]) {
-        this.asistente['segundoNombre'] = fullName[1];
-      } else {
-        this.asistente['segundoNombre'] = fullName[1];
-      }
-      const fullLastName = this.apellidoCompleto.split(' ')
-      if (fullLastName[0]) {
-        this.asistente['primerApellido'] = fullLastName[0];
-      } else {
-        this.asistente['primerApellido'] = "";
-      }
-      if (fullLastName[1]) {
-        this.asistente['segundoApellido'] = fullLastName[1];
-      } else {
-        this.asistente['segundoApellido'] = fullLastName[1];
-      }
-      if (this.institucion === 'ninguna') {
-        this.asistente['institucion'] = '';
-        this.asistente['programa'] = '';
-        this.asistente['facultad'] = '';
-        this.asistente['grado'] = -1;
-      }
-      // this.usuarioA = this.mainPage.obtenerUsuario();
-      // console.log('A VER QP ASA ', this.usuarioA)
-      const respuesta = this.personaService.registrarAsistente(this.asistente, this.usuarioA?.toString());
-      console.log('Asistente Registrado: ', respuesta);
-      alert('REGISTRO EXITOSO');
-      this.dialogRef.close();
+  async confirmarRegistro() {
+    if (this.documento != '' && this.nombreCompleto !== '') {
+      const formulario = document.getElementById('registro_asistencia') as HTMLFormElement;
+      formulario.dispatchEvent(new Event('submit'));
+      console.log(this.asistente['fechaNacimiento']);
+      this.asistente['identificacion'] = this.documento;
+      const birthday = this.fechaFormadetaNacimiento;
+      console.log("ASISTENTE LOCAL: ", birthday)
+      if (birthday !== undefined) {
+        const fechaOriginal = new Date(birthday);
+        const fechaFormateada = this.datePipe.transform(fechaOriginal, 'dd-MM-yyyy');
+        this.asistente['fechaNacimiento'] = fechaFormateada?.toString()
+        const fullName = this.nombreCompleto.split(' ')
+        if (fullName[0]) {
+          this.asistente['primerNombre'] = fullName[0];
+        } else {
+          this.asistente['primerNombre'] = "";
+        }
+        if (fullName[1]) {
+          this.asistente['segundoNombre'] = fullName[1];
+        } else {
+          this.asistente['segundoNombre'] = fullName[1];
+        }
+        const fullLastName = this.apellidoCompleto.split(' ')
+        if (fullLastName[0]) {
+          this.asistente['primerApellido'] = fullLastName[0];
+        } else {
+          this.asistente['primerApellido'] = "";
+        }
+        if (fullLastName[1]) {
+          this.asistente['segundoApellido'] = fullLastName[1];
+        } else {
+          this.asistente['segundoApellido'] = fullLastName[1];
+        }
+        if (this.institucion === 'ninguna') {
+          this.asistente['institucion'] = '';
+          this.asistente['programa'] = '';
+          this.asistente['facultad'] = '';
+          this.asistente['grado'] = -1;
+        }
+        const respuesta = await this.personaService.registrarAsistente(this.asistente, this.usuarioA?.toString());
+        if ('error' in respuesta) {
+          alert('ERROR: ESTUDIANTE PREVIAMENTE REGISTRADO');
+          window.location.reload();
+        } else {
+          alert('REGISTRO EXITOSO');
+          window.location.reload();
+        }
+
+        this.dialogRef.close();
 
 
+      }
+      else {
+        alert('IMPOSIBLE REALIZAR EL REGISTRO');
+      }
+    }else{
+      alert('NO SE PUEDE REGISTRAR')
     }
-    else {
-      alert('IMPOSIBLE REALIZAR EL REGISTRO');
-    }
+
   }
   // @Input() 
   usuarioA = ''
@@ -238,7 +248,7 @@ export class RegistarAsistenteComponent {
 
             }
           } else {
-
+            alert("IDENTIFICACIÓN NO ENCONTRADA");
             this.borrarCampos();
           }
 

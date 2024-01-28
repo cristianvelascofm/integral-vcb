@@ -29,6 +29,7 @@ constructor(private location: Location){
         this.feria = false;
         this.location.go(this.location.path());
         alert('Sesión Finalizada');
+        window.location.reload();
       break;
       default:
         // Manejo para un valor no válido de selector

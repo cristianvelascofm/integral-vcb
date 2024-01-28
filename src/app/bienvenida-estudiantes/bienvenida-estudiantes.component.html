@@ -1,7 +1,7 @@
 <div class="padre container-content">
     <div class="row mt-2 encabezado_evento">
         <div class="col-2">
-            <div class="header-registro" style="">
+            <div class="header-registro">
                 <div class="logo_vcb_header">
                     <span class="logo"></span>
                 </div>
@@ -35,7 +35,7 @@
 
                 <div class="col-4">
                     <mat-form-field class="example-full-width" appearance="outline">
-                      <mat-label style="color: white; font-weight: 950;">Lugar Realización</mat-label>
+                      <mat-label style="color: white; font-weight: 950;">Lugar de Realización</mat-label>
                       <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarEvento" disabled>
                     </mat-form-field>
                   </div>
@@ -95,28 +95,36 @@
                         <div class="col-12 form-field-wrapper">
                             <mat-icon class="lugar"></mat-icon>
                             <mat-form-field class="example-full-width-actividad">
-                                <mat-label>Lugar Realización</mat-label>
+                                <mat-label>Lugar de Realización</mat-label>
                                 <input matInput placeholder="Lugar" id="lugar" name="lugar" [(ngModel)]="lugarActividad"
                                     disabled>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 form-field-wrapper">
+                        <div class="col-4 form-field-wrapper">
                             <mat-icon class="fecha"></mat-icon>
                             <mat-form-field class="example-full-width-actividad">
-                                <mat-label>Fecha</mat-label>
+                                <mat-label>Fecha de Realización</mat-label>
                                 <input matInput placeholder="Fecha de Inicio" id="fechaInicio" name="fechaInicio"
                                     [(ngModel)]="fechaActividad" disabled>
                                 <mat-hint>dd/mm/aaaa</mat-hint>
                             </mat-form-field>
                         </div>
-                        <div class="col-6 form-field-wrapper">
+                        <div class="col-4 form-field-wrapper">
                             <mat-icon class="hora"></mat-icon>
                             <mat-form-field class="example-full-width-actividad">
-                                <mat-label>Hora</mat-label>
+                                <mat-label>Hora de Inicio</mat-label>
                                 <input matInput placeholder="Hora" id="horaInicio" name="horaInicio"
                                     [(ngModel)]="horaActividad" disabled>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4 form-field-wrapper">
+                            <mat-icon class="hora-f"></mat-icon>
+                            <mat-form-field class="example-full-width-actividad">
+                                <mat-label>Hora de Finalización</mat-label>
+                                <input matInput placeholder="Hora" id="horaFinal" name="horaFinal"
+                                    [(ngModel)]="horaFinalActividad" disabled>
                             </mat-form-field>
                         </div>
                     </div>
@@ -161,7 +169,7 @@
                                     <div class="">
                                         <div class="row header-search">
                                             <div class="col-8 ">
-                                                <mat-form-field class="example-form-field" appearance="fill">
+                                                <mat-form-field class="example-form-field-search" appearance="fill">
                                                     <mat-label>Buscar Asistente</mat-label>
                                                     <input matInput (keyup)="applyFilter($event)"
                                                         [(ngModel)]="terminoBusqueda" placeholder="Ingrese un Valor"
@@ -173,7 +181,7 @@
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-4">
-                                                <button mat-raised-button extended color="primary" style="width: 100%;"
+                                                <button mat-raised-button extended color="primary" style="width: 100%; height: 70%;background-color: rgb(0, 74, 204) !important;"
                                                     (click)="openRegistro()" matTooltip="Info about the action">Nuevo
                                                     Registro</button>
                                             </div>
@@ -182,12 +190,12 @@
                                             class="mat-elevation-z8 tabla-actividad demo-table mt-2"
                                             style="margin-top: 0px;" #tabla1>
                                             <ng-container matColumnDef="nombre">
-                                                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                                <th mat-header-cell *matHeaderCellDef> Nombres </th>
                                                 <td [title]="datos.primerNombre" mat-cell *matCellDef="let datos">
                                                     {{datos.primerNombre+' '+datos.segundoNombre}} </td>
                                             </ng-container>
                                             <ng-container matColumnDef="apellido">
-                                                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                                                <th mat-header-cell *matHeaderCellDef> Apellidos </th>
                                                 <td [title]="datos.primerApellido" mat-cell *matCellDef="let datos">
                                                     {{datos.primerApellido+' '+datos.segundoApellido}}
                                                 </td>
@@ -197,10 +205,10 @@
                                                 <td [title]="datos.identificacion" mat-cell *matCellDef="let datos">
                                                     {{datos.identificacion}} </td>
                                             </ng-container>
-                                            <ng-container matColumnDef="institucion">
-                                                <th mat-header-cell *matHeaderCellDef> Institución </th>
-                                                <td [title]="datos.institucion" mat-cell *matCellDef="let datos">
-                                                    {{datos.institucion}} </td>
+                                            <ng-container matColumnDef="facultad">
+                                                <th mat-header-cell *matHeaderCellDef> Facultad </th>
+                                                <td [title]="datos.facultad" mat-cell *matCellDef="let datos">
+                                                    {{datos.facultad}} </td>
                                             </ng-container>
                                             <tr mat-header-row *matHeaderRowDef="columnas"></tr>
                                             <tr mat-row *matRowDef="let row; columns: columnas;"></tr>

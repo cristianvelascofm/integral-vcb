@@ -104,7 +104,7 @@ export class BienvenidaEstudiantesComponent {
   nombreEvento = 'none';
   edicionEvento = 0;
   categoriaEvento = 'none';
-  lugarEvento= 'none';
+  lugarEvento = 'none';
   fechaInicioEvento = 'none';
   horaInicioEvento = 'none';
   moderadorEvento = 'none';
@@ -115,6 +115,7 @@ export class BienvenidaEstudiantesComponent {
   lugarActividad = 'none'
   fechaActividad = 'none'
   horaActividad = 'none'
+  horaFinalActividad = 'none'
   colorControl = new FormControl('primary' as ThemePalette);
   path: string;
   //  #oficina
@@ -126,7 +127,7 @@ export class BienvenidaEstudiantesComponent {
   actividadActual: string = 'none';
 
 
-  columnas: string[] = ['nombre', 'apellido', 'documento', 'institucion'];
+  columnas: string[] = ['nombre', 'apellido', 'documento', 'facultad'];
   datos: Participante[] = []; // Asegúrate de que la clase 'Participante' esté importada
   dataSource: any
   // @ViewChild('paginator', { static: true }) paginator!: MatPaginator;
@@ -205,18 +206,19 @@ export class BienvenidaEstudiantesComponent {
         this.horaInicioEvento = evento.horaInicio || "none";
 
         this.actividadActual = evento.actividades[0].nombre;
-        this.categoriaActividad= evento.actividades[0].tipo;
+        this.categoriaActividad = evento.actividades[0].tipo;
         this.lugarActividad = evento.actividades[0].lugar;
         this.fechaActividad = evento.actividades[0].fechaInicio;
         this.horaActividad = evento.actividades[0].horaInicio;
-        console.log('Actividad: '+ this.actividadActual)
+        this.horaFinalActividad = evento.actividades[0].horaFin;
+        console.log('Actividad: ' + this.actividadActual)
 
         if (this.evento.actividades[0].invitados) {
           const invitadosArray = this.evento.actividades[0].invitados.map(invitado => invitado.nombre);
           const invitadosString = invitadosArray.join(', ');
           this.invitados = invitadosString;
           console.log(this.invitados);
-        }else{
+        } else {
 
         }
         environment.setActividad(this.evento.actividades[0].nombre);
@@ -225,6 +227,7 @@ export class BienvenidaEstudiantesComponent {
           this.eventService.cargarListadoAsistentesActividad()
             .then(data => {
               this.datos = data;
+              console.log('datos participante: ', data)
               this.dataSource = new MatTableDataSource<Participante>(this.datos);
               this.dataSource.paginator = this.paginator;
               // console.log(this.paginator)

@@ -102,7 +102,9 @@ actividadActual: string;
 
   async registrarAsistente(asistente: Asistente, usuario: string) {
     const dictSend = {
-      accion: 'registrar-asistente',
+      second: 'resgistrar-estudiante-primer-semestre',
+
+      accion: 'registrar-asistente-',
       items: asistente,
       id: asistente.identificacion,
       usuario: this.username,
