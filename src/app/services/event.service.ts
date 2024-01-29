@@ -78,6 +78,7 @@ export class EventService {
   actividadActual: string;
 
   cargarListadoAsistentesActividad() {
+    console.log('Acgividad_ ', this.actividadActual)
     const dictSend = {
       accion: 'cargar-asistentes',
       'nombre-actividad': this.actividadActual,

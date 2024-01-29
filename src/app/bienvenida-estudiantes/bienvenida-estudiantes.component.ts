@@ -11,6 +11,7 @@ import { ErrorStateMatcher, ThemePalette } from '@angular/material/core';
 import axios from 'axios';
 import { EventoActividadComponent } from '../dialogs/evento-actividad/evento-actividad.component';
 import { RegistarAsistenteComponent } from '../dialogs/registar-asistente/registar-asistente.component';
+import { RegistrarEntregaSouvenirComponent } from '../dialogs/registrar-entrega-souvenir/registrar-entrega-souvenir.component';
 
 @Component({
   selector: 'app-bienvenida-estudiantes',
@@ -217,7 +218,6 @@ export class BienvenidaEstudiantesComponent {
           const invitadosArray = this.evento.actividades[0].invitados.map(invitado => invitado.nombre);
           const invitadosString = invitadosArray.join(', ');
           this.invitados = invitadosString;
-          console.log(this.invitados);
         } else {
 
         }
@@ -227,10 +227,8 @@ export class BienvenidaEstudiantesComponent {
           this.eventService.cargarListadoAsistentesActividad()
             .then(data => {
               this.datos = data;
-              console.log('datos participante: ', data)
               this.dataSource = new MatTableDataSource<Participante>(this.datos);
               this.dataSource.paginator = this.paginator;
-              // console.log(this.paginator)
             })
             .catch(error => {
               console.error(error);
@@ -263,15 +261,50 @@ export class BienvenidaEstudiantesComponent {
   }
   openRegistro() {
     // this.usuarioLoggeado.emit(this.usuario)
-    const dialogRef = this.dialog.open(RegistarAsistenteComponent, {
-      disableClose: true,
-      width: '720px',
-      // height: '650px'
-      // data: 'CONTENIDO'
-    });
-    dialogRef.afterClosed().subscribe(res => {
-    })
+    environment.eliminarAsistenteSeleccionado()
+    if (this.actividadActual === 'Registro de Estudiantes 2024-1') {
+      const dialogRef = this.dialog.open(RegistarAsistenteComponent, {
+        disableClose: true,
+        width: '720px',
+        // height: '650px'
+      });
+      dialogRef.afterClosed().subscribe(res => {
+      })
+    } else {
+      const dialogRef = this.dialog.open(RegistrarEntregaSouvenirComponent, {
+        disableClose: true,
+        width: '720px',
+        // height: '650px'
+      });
+      dialogRef.afterClosed().subscribe(res => {
+      })
+    }
+
+  }
+  mostrarDatos(datos: any) {
+    environment.setAsistenteSeleccionado(datos);
+    console.log('Datos seleccionados:', datos);
+    if (this.actividadActual === 'Registro de Estudiantes 2024-1') {
+      const dialogRef = this.dialog.open(RegistarAsistenteComponent, {
+        disableClose: true,
+        width: '720px',
+        // height: '650px'
+      });
+      dialogRef.afterClosed().subscribe(res => {
+      })
+    } else {
+      const dialogRef = this.dialog.open(RegistrarEntregaSouvenirComponent, {
+        disableClose: true,
+        width: '720px',
+        // height: '650px'
+      });
+      dialogRef.afterClosed().subscribe(res => {
+      })
+    }
   }
 
+  eliminarSt() {
+    environment.eliminarAsistenteSeleccionado();
+  }
 }
 

@@ -1,0 +1,141 @@
+.example-full-width {
+    width: 100%;
+    input {
+      color: rgb(59, 42, 42);
+      font-weight: 450;
+    }
+  
+  }
+
+.form-field-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.intpus-mayusculas {
+    text-transform: uppercase;
+}
+
+.select-rc{
+    color: rgb(59, 42, 42);
+    font-weight: 450; 
+}
+
+.intpus-minusculas {
+    text-transform: lowercase;
+}
+
+.logo-evento {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.tipo-documento {
+    background-image: url('../../../assets/images/icon/licencia.png');
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.numero-documento {
+    background-image: url('../../../assets/images/icon/tarjetas-de-identificacion.png');
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.nombre {
+    background-image: url('../../../assets/images/icon/hombre_uno.png');
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+
+.apellido {
+    background-image: url('../../../assets/images/icon/hombre_dos.png');
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    background-size: 100%;
+    margin-right: 10px !important;
+    background-position: center;
+}
+.refrigerio {
+    background-image: url('../../../assets/images/icon/comida.png');
+    min-height: 45px;
+    min-width: 45px;
+    max-height: 45px;
+    max-width: 45px;
+    background-size: 90%;
+    background-position: center;
+    
+  }
+
+.card-refrigerio{
+    background-color: rgb(247, 243, 243);
+    opacity: 0.8;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+.card-refrigerio:hover{
+    background-color: rgba(255, 0, 0, 0.123);
+    opacity: 1;
+}
+
+
+.card-agenda{
+    background-color: rgb(247, 243, 243);
+    opacity: 0.8;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+.card-agenda:hover{
+    background-color: rgba(0, 26, 255, 0.123);
+    opacity: 1;
+}
+
+.card-souvenir{
+    background-color: rgb(247, 243, 243);
+    opacity: 0.8;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+.card-souvenir:hover{
+    background-color: rgba(0, 255, 85, 0.123);
+    opacity: 1;
+}
+
+
+  .agenda {
+    background-image: url('../../../assets/images/icon/agenda_souvenir.png');
+    min-height: 45px;
+    min-width: 45px;
+    max-height: 45px;
+    max-width: 45px;
+    background-size: 90%;
+    background-position: center;
+  }
+
+  .potilito {
+    background-image: url('../../../assets/images/icon/potilito_souvenir.png');
+    min-height: 45px;
+    min-width: 45px;
+    max-height: 45px;
+    max-width: 45px;
+    background-size: 90%;
+    background-position: center;
+  }
+  

@@ -191,23 +191,23 @@
                                             style="margin-top: 0px;" #tabla1>
                                             <ng-container matColumnDef="nombre">
                                                 <th mat-header-cell *matHeaderCellDef> Nombres </th>
-                                                <td [title]="datos.primerNombre" mat-cell *matCellDef="let datos">
+                                                <td [title]="datos.primerNombre" mat-cell *matCellDef="let datos" (click)="mostrarDatos(datos)" id="filas-tabla">
                                                     {{datos.primerNombre+' '+datos.segundoNombre}} </td>
                                             </ng-container>
                                             <ng-container matColumnDef="apellido">
                                                 <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-                                                <td [title]="datos.primerApellido" mat-cell *matCellDef="let datos">
+                                                <td [title]="datos.primerApellido" mat-cell *matCellDef="let datos" (click)="eliminarSt()"  id="filas-tabla">
                                                     {{datos.primerApellido+' '+datos.segundoApellido}}
                                                 </td>
                                             </ng-container>
                                             <ng-container matColumnDef="documento">
                                                 <th mat-header-cell *matHeaderCellDef>Documento</th>
-                                                <td [title]="datos.identificacion" mat-cell *matCellDef="let datos">
+                                                <td [title]="datos.identificacion" mat-cell *matCellDef="let datos" (click)="mostrarDatos(datos)"  id="filas-tabla">
                                                     {{datos.identificacion}} </td>
                                             </ng-container>
                                             <ng-container matColumnDef="facultad">
                                                 <th mat-header-cell *matHeaderCellDef> Facultad </th>
-                                                <td [title]="datos.facultad" mat-cell *matCellDef="let datos">
+                                                <td [title]="datos.facultad" mat-cell *matCellDef="let datos" (click)="mostrarDatos(datos)"  id="filas-tabla">
                                                     {{datos.facultad}} </td>
                                             </ng-container>
                                             <tr mat-header-row *matHeaderRowDef="columnas"></tr>

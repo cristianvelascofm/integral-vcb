@@ -33,7 +33,7 @@
                             <mat-label>Número de Documento</mat-label>
                             <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
                                 (keydown.enter)="onEnter($event)" [(ngModel)]="documento"
-                                (ngModelChange)="checkNumeroDocumento()" required>
+                                (ngModelChange)="checkNumeroDocumento()" required [disabled]="controlIdentificacion">
                         </mat-form-field>
                     </div>
                 </div>

@@ -1,0 +1,119 @@
+<div mat-dialog-title class="encabezado" style="box-shadow: 0 10px 10px rgba(0, 0, 0, 0.418);">
+    <div class="row">
+        <div class="col-2">
+            <img src="../../assets/images/icon/registro_asistencia.png" alt="" class="logo-evento">
+        </div>
+        <div class="col-8">
+            <h2 id="modal-basic-title">REGISTRAR ENTREGA</h2>
+        </div>
+    </div>
+</div>
+<div mat-dialog-content class="mt-3" style="height: 390px !important;">{{msg}}
+    <div class="contenedor container-fluid" style=" height: 100% !important;width: 100% !important;">
+        <div class="login">
+            <form (ngSubmit)="registrarAsistente()" #registroForm="ngForm" id="registro_asistencia">
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="tipo-documento"></mat-icon>
+                        <mat-form-field class="example-full-width mt-2">
+                            <mat-label>Tipo de Documento</mat-label>
+                            <mat-select id="tipo-documento" name="tipo-documento" [(ngModel)]="asistente.tipoDocumento"
+                                required required disabled="">
+                                <mat-option class="select-rc" value="cedula">Cédula de Ciudadanía</mat-option>
+                                <mat-option value="tarjeta">Tarjeta de Identidad</mat-option>
+                                <mat-option value="cedula-extranjera">Cédula Extranjera</mat-option>
+                                <mat-option value="pasaporte">Pasaporte</mat-option>
+                                <mat-option value="dni">DNI</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="numero-documento"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Número de Documento</mat-label>
+                            <input matInput placeholder="Número" id="numero-documento" name="numero-documento"
+                                (keydown.enter)="onEnter($event)" [(ngModel)]="documento" [disabled]="controlIdentificacion"
+                                (ngModelChange)="checkNumeroDocumento()" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="nombre"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nombres</mat-label>
+                            <input matInput placeholder="Nombres" id="nombre" name="nombre" class="intpus-mayusculas"
+                                [(ngModel)]="nombreCompleto" required disabled="">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6 form-field-wrapper">
+                        <mat-icon class="apellido"></mat-icon>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput placeholder="Apellidos" id="apellido" class="intpus-mayusculas"
+                                name="apellido" [(ngModel)]="apellidoCompleto" required disabled="">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <hr>
+                <h4>Entregables</h4>
+                <div class="row" *ngIf="refrigerioActivo">
+                    <div class="col-12"
+                        style="display: flex;align-items: center;justify-content: center;">
+                        <mat-card>
+                            <mat-card-content class="card-refrigerio">
+                                <mat-checkbox [(ngModel)]="refrigerio" name="refrigerio" [disabled]="controlCheck">
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        <mat-icon class="refrigerio"></mat-icon>
+                                    </div>
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        <mat-label>Refrigerio</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+
+                </div>
+                <div class="row" *ngIf="!refrigerioActivo">
+                    
+                    <div class="col-6"  style="display: flex;align-items: center;justify-content: end;">
+                        <mat-card>
+                            <mat-card-content class="card-agenda"><mat-checkbox [disabled]="controlCheck" color="primary" [(ngModel)]="agenda"
+                                    name="agenda">
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        <mat-icon class="agenda"></mat-icon>
+                                    </div>
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        <mat-label>Agenda</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="col-6"  style="display: flex;align-items: center;justify-content: initial;">
+                        <mat-card>
+                            <mat-card-content class="card-souvenir"><mat-checkbox [disabled]="controlCheck" color="warn" [(ngModel)]="potilito"
+                                    name="potilito">
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        <mat-icon class="potilito"></mat-icon>
+                                    </div>
+                                    <div style="display: flex; align-items: center; justify-content: center;">
+                                        <mat-label>Souvenir</mat-label>
+                                    </div>
+                                </mat-checkbox>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+                <hr style="margin-top: 40px;">
+            </form>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions style="justify-content: end;margin-right: 15px;">
+    <button mat-button style="margin-right: 15px;background-color:red;color: aliceblue;"
+        (click)="onClickNO()">CANCELAR</button>
+    <button mat-button class="btn btn-primary btn-block" style="background-color:blue;color: aliceblue;"
+        (click)=" confirmarRegistro()" [disabled]="!registroForm.valid" [disabled]=control>REGISTRAR</button>
+</div>

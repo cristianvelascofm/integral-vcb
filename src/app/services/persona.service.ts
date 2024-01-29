@@ -62,12 +62,29 @@ export class PersonaService {
     this.actividadActual = environment.getActividad();
   }
 
-username: string
-actividadActual: string;
-  
+  username: string
+  actividadActual: string;
+
 
   private personas: Persona[] = [];
   path: string;
+
+
+  async obtenerEstudianteIdConfirmacion(identificacion: string) {
+    const dictSend = {
+      // accion: 'cargar-estudiante-id',
+      accion: 'info-pre-registro',
+      id: identificacion,
+      actividad: this.actividadActual
+    };
+    try {
+      const response = await axios.post(this.path, dictSend);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 
   // BUSCAR ESTUDIANTE POR ID
   async obtenerEstudianteId(identificacion: string) {
@@ -99,16 +116,38 @@ actividadActual: string;
     }
   }
 
-
-  async registrarAsistente(asistente: Asistente, usuario: string) {
-    const dictSend = {
-      second: 'resgistrar-estudiante-primer-semestre',
-
+  async registrarAsistente(asistente: Asistente, usuario: string, agenda: boolean, potilito: boolean) {
+    var dictSend = {
+      second: 'registrar-estudiante-primer-semestre',
       accion: 'registrar-asistente-',
       items: asistente,
       id: asistente.identificacion,
       usuario: this.username,
-      'nombre-actividad': this.actividadActual
+      'nombre-actividad': this.actividadActual,
+      entregable: {
+        "agenda": agenda,
+        "botilito": potilito
+      }
+    };
+
+
+    try {
+      const response = await axios.post(this.path, dictSend);
+      console.log('JAJAU. ', response.data)
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
+  async cargarEntregables(asistente: Asistente) {
+    var dictSend = {
+      accion: 'cargar-entregables',
+      items: asistente,
+      id: asistente.identificacion,
+      usuario: this.username,
+      'nombre-actividad': this.actividadActual,
     };
     try {
       const response = await axios.post(this.path, dictSend);

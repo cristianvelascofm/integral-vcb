@@ -10,7 +10,7 @@ import { LoginPanelComponent } from './login-panel/login-panel.component';
 import { DocumentPanelComponent } from './document-panel/document-panel.component';
 import { EventPanelComponent } from './event-panel/event-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
-
+import {MatCardModule} from '@angular/material/card';
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
 import { BudgetPanelComponent } from './budget-panel/budget-panel.component';
 import { PlacePanelComponent } from './place-panel/place-panel.component';
@@ -56,6 +56,7 @@ import { SolicitudTiquetesComponent } from './dialogs/documental/solicitudes/sol
 import { SolicitudVehiculoComponent } from './dialogs/documental/solicitudes/solicitud-vehiculo/solicitud-vehiculo.component';
 import { InformeAdministrativoComponent } from './dialogs/documental/informe/informe-administrativo/informe-administrativo.component';
 import { BienvenidaEstudiantesComponent } from './bienvenida-estudiantes/bienvenida-estudiantes.component';
+import { RegistrarEntregaSouvenirComponent } from './dialogs/registrar-entrega-souvenir/registrar-entrega-souvenir.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -88,11 +89,13 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     SolicitudVehiculoComponent,
     InformeAdministrativoComponent,
     BienvenidaEstudiantesComponent,
+    RegistrarEntregaSouvenirComponent,
 
   ],
   imports: [
     BrowserModule,
     MatIconModule,
+    MatCardModule,
     MatMenuModule,
     MatListModule,
     MatButtonModule,

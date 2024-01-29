@@ -1,30 +1,29 @@
-import { Component, Inject, Input } from '@angular/core';
-import {
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Persona, Usuario, Participante, Estudiante, Asistente, PersonaService } from 'src/app/services/persona.service';
-import axios from 'axios';
 import { environment } from 'src/app/config/config';
-import { DatePipe } from '@angular/common';
-import { MainPageComponent } from 'src/app/main-page/main-page.component'
+import { MainPageComponent } from 'src/app/main-page/main-page.component';
+import { Asistente, PersonaService } from 'src/app/services/persona.service';
+
 @Component({
-  selector: 'app-registar-asistente',
-  templateUrl: './registar-asistente.component.html',
-  styleUrls: ['./registar-asistente.component.scss']
+  selector: 'app-registrar-entrega-souvenir',
+  templateUrl: './registrar-entrega-souvenir.component.html',
+  styleUrls: ['./registrar-entrega-souvenir.component.scss']
 })
-
-
-export class RegistarAsistenteComponent {
-  constructor(private mainPage: MainPageComponent, private datePipe: DatePipe, private personaService: PersonaService, public dialogRef: MatDialogRef<RegistarAsistenteComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
+export class RegistrarEntregaSouvenirComponent {
+  constructor(private mainPage: MainPageComponent, private datePipe: DatePipe, private personaService: PersonaService, public dialogRef: MatDialogRef<RegistrarEntregaSouvenirComponent>, @Inject(MAT_DIALOG_DATA) public msg: string) {
     this.path = environment.apiBaseUrl
+    this.cargarEntregable()
     this.cargarDatosAsistente()
   }
   path: string;
   control = true;
-  controlIdentificacion= false;
+  refrigerio = true;
+  agenda = false;
+  potilito = false;
+  refrigerioActivo = false;
   asistente: Asistente = {
     primerNombre: '',
     segundoNombre: '',
@@ -53,8 +52,6 @@ export class RegistarAsistenteComponent {
     telefono: ''
   };
 
-
-
   nombreCompleto = '';
   apellidoCompleto = '';
   documento = '';
@@ -62,9 +59,20 @@ export class RegistarAsistenteComponent {
   controlInstitucion: boolean = false;
   controlColegio: boolean = false;
   fechaFormadetaNacimiento = new Date('');
+  actividadActual = '';
+  controlCheck = false;
+  controlIdentificacion = false;
+  cargarEntregable() {
+    this.actividadActual = environment.getActividad()
+    if (this.actividadActual === 'Entrega Refrigerio 2024.1') {
+      this.refrigerioActivo = true;
+    } else if (this.actividadActual === 'Entrega Souvenirs 2024-1') {
+      this.refrigerioActivo = false;
+    }
 
+  }
 
-  cargarDatosAsistente() {
+  async cargarDatosAsistente() {
 
     var asistente_str = environment.getAsistenteSeleccionado()
 
@@ -72,7 +80,23 @@ export class RegistarAsistenteComponent {
       var asistente = JSON.parse(asistente_str);
       this.asistente = asistente;
       this.documento = asistente['identificacion']
-      this.controlIdentificacion =true;
+      this.controlIdentificacion = true;
+      this.controlCheck = true;
+      if (this.actividadActual === 'Entrega Souvenirs 2024-1') {
+        try {
+          const respuesta = await this.personaService.cargarEntregables(asistente);
+          console.log('REs: ', respuesta)
+          if (respuesta['entregables']['agenda'] == true) {
+            this.agenda = true;
+          }
+          if (respuesta['entregables']['botilito']) {
+            this.potilito = true;
+          }
+        }
+        catch (error) {
+          return alert("Error al obtener información del estudiante")
+        }
+      }
       this.nombreCompleto = asistente.primerNombre + " " + asistente.segundoNombre;
       this.apellidoCompleto = asistente.primerApellido + " " + asistente.segundoApellido;
       const parts = this.asistente['fechaNacimiento']?.split('-');
@@ -103,6 +127,10 @@ export class RegistarAsistenteComponent {
       }
     }
 
+    if ('entregables') {
+
+    }
+
 
   }
 
@@ -129,7 +157,6 @@ export class RegistarAsistenteComponent {
   matcher = new ErrorStateMatcher();
   onClickNO(): void {
     environment.eliminarAsistenteSeleccionado();
-    this.controlIdentificacion = false;
     this.dialogRef.close();
   }
 
@@ -138,67 +165,7 @@ export class RegistarAsistenteComponent {
     // console.log('y AJA')
   }
 
-  async confirmarRegistro() {
-    if (this.documento != '' && this.nombreCompleto !== '') {
-      const formulario = document.getElementById('registro_asistencia') as HTMLFormElement;
-      formulario.dispatchEvent(new Event('submit'));
-      console.log(this.asistente['fechaNacimiento']);
-      this.asistente['identificacion'] = this.documento;
-      const birthday = this.fechaFormadetaNacimiento;
-      console.log("ASISTENTE LOCAL: ", birthday)
-      if (birthday !== undefined) {
-        const fechaOriginal = new Date(birthday);
-        const fechaFormateada = this.datePipe.transform(fechaOriginal, 'dd-MM-yyyy');
-        this.asistente['fechaNacimiento'] = fechaFormateada?.toString()
-        const fullName = this.nombreCompleto.split(' ')
-        if (fullName[0]) {
-          this.asistente['primerNombre'] = fullName[0];
-        } else {
-          this.asistente['primerNombre'] = "";
-        }
-        if (fullName[1]) {
-          this.asistente['segundoNombre'] = fullName[1];
-        } else {
-          this.asistente['segundoNombre'] = fullName[1];
-        }
-        const fullLastName = this.apellidoCompleto.split(' ')
-        if (fullLastName[0]) {
-          this.asistente['primerApellido'] = fullLastName[0];
-        } else {
-          this.asistente['primerApellido'] = "";
-        }
-        if (fullLastName[1]) {
-          this.asistente['segundoApellido'] = fullLastName[1];
-        } else {
-          this.asistente['segundoApellido'] = fullLastName[1];
-        }
-        if (this.institucion === 'ninguna') {
-          this.asistente['institucion'] = '';
-          this.asistente['programa'] = '';
-          this.asistente['facultad'] = '';
-          this.asistente['grado'] = -1;
-        }
-        const respuesta = await this.personaService.registrarAsistente(this.asistente, this.usuarioA?.toString(), false, false);
-        if ('error' in respuesta) {
-          alert('ERROR: ESTUDIANTE PREVIAMENTE REGISTRADO');
-          window.location.reload();
-        } else {
-          alert('REGISTRO EXITOSO');
-          window.location.reload();
-        }
 
-        this.dialogRef.close();
-
-
-      }
-      else {
-        alert('IMPOSIBLE REALIZAR EL REGISTRO');
-      }
-    } else {
-      alert('NO SE PUEDE REGISTRAR')
-    }
-
-  }
   // @Input() 
   usuarioA = ''
   borrarCampos() {
@@ -245,10 +212,11 @@ export class RegistarAsistenteComponent {
 
       if (this.documento !== '') {
         try {
-          const respuesta = await this.personaService.obtenerEstudianteId(this.documento);
+          const respuesta = await this.personaService.obtenerEstudianteIdConfirmacion(this.documento);
           const estudiante: any = respuesta.data;
           this.asistente = estudiante;
-          if (!estudiante['accion']) {
+          console.log('Error: ', estudiante['error']);
+          if (!estudiante['error']) {
             const name = this.asistente['primerNombre']?.toString() + ' ' + this.asistente['segundoNombre']?.toString()
             const lastName = this.asistente['primerApellido']?.toString() + ' ' + this.asistente['segundoApellido']?.toString()
             console.log('Estudiante', estudiante);
@@ -293,8 +261,12 @@ export class RegistarAsistenteComponent {
               }
 
             }
-          } else {
-            alert("IDENTIFICACIÓN NO ENCONTRADA");
+          }
+          if (estudiante['error'] == "sin-registro") {
+            alert("ESTUDIANTE SIN REGISTRO");
+            this.borrarCampos();
+          } else if (estudiante['error'] == 'no-existe') {
+            alert("NO ES ESTUDIANTE DE PRIMER SEMESTRE");
             this.borrarCampos();
           }
 
@@ -305,5 +277,70 @@ export class RegistarAsistenteComponent {
         }
       }
     }
+  }
+
+
+  async confirmarRegistro() {
+
+    if (this.documento != '' && this.nombreCompleto !== '') {
+      const formulario = document.getElementById('registro_asistencia') as HTMLFormElement;
+      formulario.dispatchEvent(new Event('submit'));
+      console.log(this.asistente['fechaNacimiento']);
+      this.asistente['identificacion'] = this.documento;
+      const birthday = this.fechaFormadetaNacimiento;
+      console.log("ASISTENTE LOCAL: ", birthday)
+      if (birthday !== undefined) {
+        const fechaOriginal = new Date(birthday);
+        const fechaFormateada = this.datePipe.transform(fechaOriginal, 'dd-MM-yyyy');
+        this.asistente['fechaNacimiento'] = fechaFormateada?.toString()
+        const fullName = this.nombreCompleto.split(' ')
+        if (fullName[0]) {
+          this.asistente['primerNombre'] = fullName[0];
+        } else {
+          this.asistente['primerNombre'] = "";
+        }
+        if (fullName[1]) {
+          this.asistente['segundoNombre'] = fullName[1];
+        } else {
+          this.asistente['segundoNombre'] = fullName[1];
+        }
+        const fullLastName = this.apellidoCompleto.split(' ')
+        if (fullLastName[0]) {
+          this.asistente['primerApellido'] = fullLastName[0];
+        } else {
+          this.asistente['primerApellido'] = "";
+        }
+        if (fullLastName[1]) {
+          this.asistente['segundoApellido'] = fullLastName[1];
+        } else {
+          this.asistente['segundoApellido'] = fullLastName[1];
+        }
+        if (this.institucion === 'ninguna') {
+          this.asistente['institucion'] = '';
+          this.asistente['programa'] = '';
+          this.asistente['facultad'] = '';
+          this.asistente['grado'] = -1;
+        }
+
+        const respuesta = await this.personaService.registrarAsistente(this.asistente, this.usuarioA?.toString(), this.agenda, this.potilito);
+        if ('error' in respuesta) {
+          alert('ERROR: ESTUDIANTE PREVIAMENTE REGISTRADO');
+          window.location.reload();
+        } else {
+          alert('REGISTRO EXITOSO');
+          window.location.reload();
+        }
+
+        this.dialogRef.close();
+
+
+      }
+      else {
+        alert('IMPOSIBLE REALIZAR EL REGISTRO');
+      }
+    } else {
+      alert('NO SE PUEDE REGISTRAR')
+    }
+
   }
 }
