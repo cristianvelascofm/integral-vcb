@@ -212,7 +212,11 @@ export class RegistrarEntregaSouvenirComponent {
 
       if (this.documento !== '') {
         try {
-          const respuesta = await this.personaService.obtenerEstudianteIdConfirmacion(this.documento);
+          // este método sirve para obtener el estudiante anidado registrado en una actividad de registro del evento
+          // const respuesta = await this.personaService.obtenerEstudianteIdConfirmacion(this.documento);
+          
+          const respuesta = await this.personaService.obtenerEstudianteId(this.documento);
+          console.log('casdasdsad ',JSON.stringify(respuesta))
           const estudiante: any = respuesta.data;
           this.asistente = estudiante;
           console.log('Error: ', estudiante['error']);
@@ -282,7 +286,7 @@ export class RegistrarEntregaSouvenirComponent {
 
   async confirmarRegistro() {
 
-    if (this.documento != '' && this.nombreCompleto !== '') {
+    if ((this.documento != '' && this.nombreCompleto !== '') && (this.agenda == true || this.potilito == true))  {
       const formulario = document.getElementById('registro_asistencia') as HTMLFormElement;
       formulario.dispatchEvent(new Event('submit'));
       console.log(this.asistente['fechaNacimiento']);
